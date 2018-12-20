@@ -65,6 +65,7 @@ class UIMaker {
         tf.text = text
         tf.placeholder = placeholder
         tf.textAlignment = alignment
+        tf.inputAccessoryView = makeKeyboardDoneView()
         return tf
     }
     

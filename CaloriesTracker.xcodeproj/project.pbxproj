@@ -58,6 +58,7 @@
 		C193047121CB913D00315ED3 /* Register.Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193046D21CB913D00315ED3 /* Register.Interactor.swift */; };
 		C193047321CB91D500315ED3 /* PasswordValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193047221CB91D500315ED3 /* PasswordValidation.swift */; };
 		C193047521CB927500315ED3 /* TermLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193047421CB927500315ED3 /* TermLabel.swift */; };
+		C193047721CB95E500315ED3 /* DataBucket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193047621CB95E500315ED3 /* DataBucket.swift */; };
 		C2F0A07394AADE51D770740B /* Pods_CaloriesTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B86763ED8DC2891F52136858 /* Pods_CaloriesTracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -117,6 +118,7 @@
 		C193046D21CB913D00315ED3 /* Register.Interactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Register.Interactor.swift; sourceTree = "<group>"; };
 		C193047221CB91D500315ED3 /* PasswordValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordValidation.swift; sourceTree = "<group>"; };
 		C193047421CB927500315ED3 /* TermLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermLabel.swift; sourceTree = "<group>"; };
+		C193047621CB95E500315ED3 /* DataBucket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBucket.swift; sourceTree = "<group>"; };
 		EE7D234AAD8C0C68B809DD8C /* Pods-CaloriesTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaloriesTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CaloriesTracker/Pods-CaloriesTracker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -268,6 +270,7 @@
 				C193047221CB91D500315ED3 /* PasswordValidation.swift */,
 				C120CD7B21CB84990080EC15 /* Colors.swift */,
 				C120CD8221CB87200080EC15 /* CTMessage.swift */,
+				C193047621CB95E500315ED3 /* DataBucket.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 				C120CD5221CB80FB0080EC15 /* knUIMaker.swift in Sources */,
 				C120CD9021CB874A0080EC15 /* Config.swift in Sources */,
 				C120CD9221CB874A0080EC15 /* ShoutFactory.swift in Sources */,
+				C193047721CB95E500315ED3 /* DataBucket.swift in Sources */,
 				C120CD5821CB80FB0080EC15 /* ServiceConnector.swift in Sources */,
 				C120CD5621CB80FB0080EC15 /* StringExtension.swift in Sources */,
 				C120CD5321CB80FB0080EC15 /* knListView.swift in Sources */,

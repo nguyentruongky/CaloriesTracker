@@ -25,8 +25,7 @@ extension CTRegisterCtr {
 extension CTRegisterCtr {
     class Interactor {
         func register(validation: Validation) {
-            snRegisterWorker(firstName: validation.firstName!,
-                             lastName: validation.lastName!,
+            snRegisterWorker(name: validation.name!,
                              email: validation.email!,
                              password: validation.password!,
                              success: output?.didRegister,
@@ -41,16 +40,13 @@ extension CTRegisterCtr {
 
 extension CTRegisterCtr {
     class Validation {
-        var firstName: String?
-        var lastName: String?
+        var name: String?
         var email: String?
         var password: String?
         func validate() -> (isValid: Bool, error: String?) {
             let emptyMessage = "%@ can't be empty"
-            if firstName == nil || firstName?.isEmpty == true {
-                return (false, String(format: emptyMessage, "First name")) }
-            if lastName == nil || lastName?.isEmpty == true {
-                return (false, String(format: emptyMessage, "Last name")) }
+            if name == nil || name?.isEmpty == true {
+                return (false, String(format: emptyMessage, "Name")) }
             if email == nil || email?.isEmpty == true {
                 return (false, String(format: emptyMessage, "Email")) }
             if password == nil || password?.isEmpty == true  {

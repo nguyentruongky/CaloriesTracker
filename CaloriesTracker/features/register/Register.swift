@@ -34,7 +34,7 @@ class CTRegisterCtr: knStaticListController {
     
     @objc func register() {
         hideKeyboard()
-        validation.firstName = ui.nameTextField.text
+        validation.name = ui.nameTextField.text
         validation.email = ui.emailTextField.text
         validation.password = ui.passwordTextField.text
         let (result, error) = validation.validate()

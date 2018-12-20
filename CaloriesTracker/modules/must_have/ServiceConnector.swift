@@ -98,7 +98,7 @@ struct AlamofireConnector {
         let url = response.request?.url?.absoluteString ?? ""
         print(url)
         
-        if let statusCode = response.response?.statusCode {
+        if let _ = response.response?.statusCode {
             // handle status code here: 401 -> show logout; 500 -> server error
         }
         

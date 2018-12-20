@@ -61,11 +61,14 @@ extension CTRegisterCtr {
         func setupView() -> [knTableCell] {
             emailTextField.keyboardType = .emailAddress
             emailTextField.autocapitalizationType = .none
+            emailTextField.autocorrectionType = .no
             emailTextField.returnKeyType = .next
             
+            passwordTextField.autocorrectionType = .no
             passwordTextField.isSecureTextEntry = true
             passwordTextField.returnKeyType = .next
             
+            nameTextField.autocorrectionType = .no
             nameTextField.autocapitalizationType = .words
             nameTextField.returnKeyType = .next
             
