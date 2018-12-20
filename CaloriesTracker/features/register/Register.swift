@@ -1,23 +1,23 @@
 //
 //  Register.swift
-//  SnapShop
+//  CaloriesTracker
 //
-//  Created by Ky Nguyen Coinhako on 10/30/18.
+//  Created by Ky Nguyen Coinhako on 12/20/18.
 //  Copyright © 2018 Ky Nguyen. All rights reserved.
 //
 
 import UIKit
 
-class snRegisterCtr: knStaticListController {
+class CTRegisterCtr: knStaticListController {
     lazy var output = Interactor(controller: self)
     let validation = Validation()
     let ui = UI()
     
     override func setupView() {
-        title = "JOIN SNAPSHOP"
+        title = "JOIN CALORIES TRACKER"
         let closeButton = UIBarButtonItem(image: UIImage(named: "close"),
                                           style: .done, target: self, action: #selector(close))
-        hideNavBar(false)
+        navigationController?.hideBar(false)
         navigationItem.leftBarButtonItem = closeButton
         super.setupView()
         datasource = ui.setupView()
@@ -27,21 +27,19 @@ class snRegisterCtr: knStaticListController {
         
         ui.registerButton.addTarget(self, action: #selector(register))
         ui.signinButton.addTarget(self, action: #selector(showSignin))
-        ui.firstNameTextField.delegate = self
-        ui.lastNameTextField.delegate = self
+        ui.nameTextField.delegate = self
         ui.emailTextField.delegate = self
         ui.passwordTextField.delegate = self
     }
     
     @objc func register() {
         hideKeyboard()
-        validation.firstName = ui.firstNameTextField.text
-        validation.lastName = ui.lastNameTextField.text
+        validation.firstName = ui.nameTextField.text
         validation.email = ui.emailTextField.text
         validation.password = ui.passwordTextField.text
         let (result, error) = validation.validate()
         if result == false {
-            snMessage.showError(error ?? "", inSeconds: 5)
+            CTMessage.showError(error ?? "", inSeconds: 5)
             return
         }
         ui.registerButton.setProcess(visible: true)
@@ -49,28 +47,24 @@ class snRegisterCtr: knStaticListController {
     }
     
     @objc func showSignin() {
-        hideNavBar(true)
-        setControllers([snLoginCtr()])
+        navigationController?.setControllers([CTLoginCtr()])
     }
     
     @objc func close() { dismiss() }
 }
 
-extension snRegisterCtr: UITextFieldDelegate {
+extension CTRegisterCtr: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        let isFirstNameEmpty = ui.firstNameTextField.text?.isEmpty == true
-        let isLastNameEmpty = ui.lastNameTextField.text?.isEmpty == true
+        let isNameEmpty = ui.nameTextField.text?.isEmpty == true
         let isEmailEmpty = ui.emailTextField.text?.isEmpty == true
         let isPasswordEmpty = ui.passwordTextField.text?.isEmpty == true
         
-        if !isFirstNameEmpty && !isLastNameEmpty && !isEmailEmpty && !isPasswordEmpty {
+        if !isNameEmpty && !isEmailEmpty && !isPasswordEmpty {
             register()
             return true
         }
         
-        if textField == ui.firstNameTextField {
-            ui.lastNameTextField.becomeFirstResponder()
-        } else if textField == ui.lastNameTextField {
+        if textField == ui.nameTextField {
             ui.emailTextField.becomeFirstResponder()
         } else if textField == ui.emailTextField {
             ui.passwordTextField.becomeFirstResponder()

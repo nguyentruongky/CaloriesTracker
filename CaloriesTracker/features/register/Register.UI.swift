@@ -1,19 +1,17 @@
 //
 //  Register.UI.swift
-//  SnapShop
+//  CaloriesTracker
 //
-//  Created by Ky Nguyen Coinhako on 10/30/18.
+//  Created by Ky Nguyen Coinhako on 12/20/18.
 //  Copyright © 2018 Ky Nguyen. All rights reserved.
 //
 
 import UIKit
 
-extension snRegisterCtr {
+extension CTRegisterCtr {
     class UI: NSObject {
         let padding: CGFloat = 32
-        let firstNameTextField = UIMaker.makeTextField(placeholder: "First Name",
-                                                   icon: UIImage(named: "profile"))
-        let lastNameTextField = UIMaker.makeTextField(placeholder: "Last Name",
+        let nameTextField = UIMaker.makeTextField(placeholder: "Full Name",
                                                    icon: UIImage(named: "profile"))
         let emailTextField = UIMaker.makeTextField(placeholder: "Email",
                                                    icon: UIImage(named: "email"))
@@ -25,18 +23,18 @@ extension snRegisterCtr {
         func makeSigninButton() -> UIButton {
             let strongText = "Sign In"
             let button = UIMaker.makeButton(title: "Already have an account? \(strongText)",
-                                            titleColor: UIColor.s_163_169_175,
+                                            titleColor: UIColor.CT_163_169_175,
                                             font: UIFont.main(size: 13))
             button.titleLabel?.formatText(boldStrings: [strongText],
                                           boldFont: UIFont.main(size: 13),
-                                          boldColor: UIColor.s_19)
+                                          boldColor: UIColor.CT_25)
             button.titleLabel?.underline(string: strongText)
             return button
         }
         lazy var termLabel: knTermLabel = {
             let label = knTermLabel()
             let font = UIFont.main(size: 11)
-            let color = UIColor.s_163_169_175
+            let color = UIColor.CT_163_169_175
             let strongText = "Terms and Conditions."
             label.formatText(fullText: "By signing up you agree with our \(strongText)",
                              boldTexts: [strongText],
@@ -68,19 +66,15 @@ extension snRegisterCtr {
             passwordTextField.isSecureTextEntry = true
             passwordTextField.returnKeyType = .next
             
-            firstNameTextField.autocapitalizationType = .words
-            firstNameTextField.returnKeyType = .next
-            
-            lastNameTextField.autocapitalizationType = .words
-            lastNameTextField.returnKeyType = .next
+            nameTextField.autocapitalizationType = .words
+            nameTextField.returnKeyType = .next
             
             revealButton = passwordTextField.setView(.right,
                                                      image: UIImage(named: "show_pass_inactive") ?? UIImage())
             revealButton.addTarget(self, action: #selector(showPassword))
             
             return [
-                makeCell(tf: firstNameTextField),
-                makeCell(tf: lastNameTextField),
+                makeCell(tf: nameTextField),
                 makeCell(tf: emailTextField),
                 makeCell(tf: passwordTextField)
             ]

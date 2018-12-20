@@ -1,28 +1,28 @@
 //
 //  Register.Interactor.swift
-//  SnapShop
+//  CaloriesTracker
 //
-//  Created by Ky Nguyen Coinhako on 11/1/18.
+//  Created by Ky Nguyen Coinhako on 12/20/18.
 //  Copyright © 2018 Ky Nguyen. All rights reserved.
 //
 
 import UIKit
 
-extension snRegisterCtr {
-    func didRegister(user: snUser) {
+extension CTRegisterCtr {
+    func didRegister(user: CTUser) {
         ui.registerButton.setProcess(visible: false)
-        setting.user = user
-        setting.token = user.token
+        appSetting.user = user
+        appSetting.token = user.token
         dismiss()
     }
     
     func didRegisterFail(_ err: knError) {
         ui.registerButton.setProcess(visible: false)
-        snMessage.showError(err.message ?? "Can't register at this time", inSeconds: 5)
+        CTMessage.showError(err.message ?? "Can't register at this time", inSeconds: 5)
     }
 }
 
-extension snRegisterCtr {
+extension CTRegisterCtr {
     class Interactor {
         func register(validation: Validation) {
             snRegisterWorker(firstName: validation.firstName!,
@@ -36,10 +36,10 @@ extension snRegisterCtr {
         private weak var output: Controller?
         init(controller: Controller) { output = controller }
     }
-    typealias Controller = snRegisterCtr
+    typealias Controller = CTRegisterCtr
 }
 
-extension snRegisterCtr {
+extension CTRegisterCtr {
     class Validation {
         var firstName: String?
         var lastName: String?
@@ -59,7 +59,7 @@ extension snRegisterCtr {
             if email?.isValidEmail() == false {
                 return (false, "Invalid email") }
             
-            let passwordCheck = snPasswordValidation()
+            let passwordCheck = CTPasswordValidation()
             if passwordCheck.checkCharCount(password!) == false {
                 return (false, "Password has at least 8 characters") }
             if passwordCheck.checkUpperCase(password!) == false {
