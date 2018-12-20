@@ -51,6 +51,13 @@
 		C120CD9321CB8A8D0080EC15 /* Muli-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C120CD8021CB85A80080EC15 /* Muli-Bold.ttf */; };
 		C120CD9421CB8A8D0080EC15 /* Muli-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C120CD7E21CB85A80080EC15 /* Muli-Regular.ttf */; };
 		C120CD9521CB8A8D0080EC15 /* Muli-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C120CD7F21CB85A80080EC15 /* Muli-SemiBold.ttf */; };
+		C120CD9721CB8E8A0080EC15 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C120CD9621CB8E8A0080EC15 /* GoogleService-Info.plist */; };
+		C193046E21CB913D00315ED3 /* RegisterWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193046A21CB913D00315ED3 /* RegisterWorker.swift */; };
+		C193046F21CB913D00315ED3 /* Register.UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193046B21CB913D00315ED3 /* Register.UI.swift */; };
+		C193047021CB913D00315ED3 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193046C21CB913D00315ED3 /* Register.swift */; };
+		C193047121CB913D00315ED3 /* Register.Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193046D21CB913D00315ED3 /* Register.Interactor.swift */; };
+		C193047321CB91D500315ED3 /* PasswordValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193047221CB91D500315ED3 /* PasswordValidation.swift */; };
+		C193047521CB927500315ED3 /* TermLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193047421CB927500315ED3 /* TermLabel.swift */; };
 		C2F0A07394AADE51D770740B /* Pods_CaloriesTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B86763ED8DC2891F52136858 /* Pods_CaloriesTracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +110,13 @@
 		C120CD8921CB874A0080EC15 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		C120CD8A21CB874A0080EC15 /* WhistleFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhistleFactory.swift; sourceTree = "<group>"; };
 		C120CD8B21CB874A0080EC15 /* ShoutFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoutFactory.swift; sourceTree = "<group>"; };
+		C120CD9621CB8E8A0080EC15 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C193046A21CB913D00315ED3 /* RegisterWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterWorker.swift; sourceTree = "<group>"; };
+		C193046B21CB913D00315ED3 /* Register.UI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Register.UI.swift; sourceTree = "<group>"; };
+		C193046C21CB913D00315ED3 /* Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
+		C193046D21CB913D00315ED3 /* Register.Interactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Register.Interactor.swift; sourceTree = "<group>"; };
+		C193047221CB91D500315ED3 /* PasswordValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordValidation.swift; sourceTree = "<group>"; };
+		C193047421CB927500315ED3 /* TermLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermLabel.swift; sourceTree = "<group>"; };
 		EE7D234AAD8C0C68B809DD8C /* Pods-CaloriesTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaloriesTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CaloriesTracker/Pods-CaloriesTracker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -149,6 +163,7 @@
 			children = (
 				C120CD2821CB80E40080EC15 /* assets */,
 				C120CD2721CB80D90080EC15 /* configuration */,
+				C120CD8121CB87180080EC15 /* common */,
 				C120CD5D21CB810B0080EC15 /* features */,
 				C120CD5C21CB81000080EC15 /* modules */,
 			);
@@ -158,6 +173,7 @@
 		C120CD2721CB80D90080EC15 /* configuration */ = {
 			isa = PBXGroup;
 			children = (
+				C120CD9621CB8E8A0080EC15 /* GoogleService-Info.plist */,
 				C120CD1521CB3D230080EC15 /* AppDelegate.swift */,
 				C120CD2121CB3D240080EC15 /* Info.plist */,
 				C120CD3221CB80FB0080EC15 /* StartPoint.swift */,
@@ -169,7 +185,6 @@
 		C120CD2821CB80E40080EC15 /* assets */ = {
 			isa = PBXGroup;
 			children = (
-				C120CD8121CB87180080EC15 /* common */,
 				C120CD7D21CB858A0080EC15 /* fonts */,
 				C120CD1C21CB3D240080EC15 /* Assets.xcassets */,
 				C120CD1E21CB3D240080EC15 /* LaunchScreen.storyboard */,
@@ -210,6 +225,7 @@
 		C120CD5C21CB81000080EC15 /* modules */ = {
 			isa = PBXGroup;
 			children = (
+				C193047421CB927500315ED3 /* TermLabel.swift */,
 				C120CD8421CB874A0080EC15 /* Whisper */,
 				C120CD2921CB80FB0080EC15 /* must_have */,
 			);
@@ -220,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				C120CD7221CB83F30080EC15 /* login */,
+				C193046921CB913D00315ED3 /* register */,
 			);
 			path = features;
 			sourceTree = "<group>";
@@ -248,6 +265,7 @@
 		C120CD8121CB87180080EC15 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				C193047221CB91D500315ED3 /* PasswordValidation.swift */,
 				C120CD7B21CB84990080EC15 /* Colors.swift */,
 				C120CD8221CB87200080EC15 /* CTMessage.swift */,
 			);
@@ -266,6 +284,17 @@
 				C120CD8B21CB874A0080EC15 /* ShoutFactory.swift */,
 			);
 			path = Whisper;
+			sourceTree = "<group>";
+		};
+		C193046921CB913D00315ED3 /* register */ = {
+			isa = PBXGroup;
+			children = (
+				C193046A21CB913D00315ED3 /* RegisterWorker.swift */,
+				C193046B21CB913D00315ED3 /* Register.UI.swift */,
+				C193046C21CB913D00315ED3 /* Register.swift */,
+				C193046D21CB913D00315ED3 /* Register.Interactor.swift */,
+			);
+			path = register;
 			sourceTree = "<group>";
 		};
 		DDA226BB38BE9112A6EEAD1D /* Pods */ = {
@@ -342,6 +371,7 @@
 				C120CD9421CB8A8D0080EC15 /* Muli-Regular.ttf in Resources */,
 				C120CD1D21CB3D240080EC15 /* Assets.xcassets in Resources */,
 				C120CD9521CB8A8D0080EC15 /* Muli-SemiBold.ttf in Resources */,
+				C120CD9721CB8E8A0080EC15 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,12 +404,18 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CaloriesTracker/Pods-CaloriesTracker-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -407,17 +443,23 @@
 				C120CD1621CB3D230080EC15 /* AppDelegate.swift in Sources */,
 				C120CD7921CB83F30080EC15 /* Login.Interactor.swift in Sources */,
 				C120CD5A21CB80FB0080EC15 /* UIImageExtension.swift in Sources */,
+				C193047121CB913D00315ED3 /* Register.Interactor.swift in Sources */,
+				C193046E21CB913D00315ED3 /* RegisterWorker.swift in Sources */,
 				C120CD5721CB80FB0080EC15 /* DeviceType.swift in Sources */,
+				C193046F21CB913D00315ED3 /* Register.UI.swift in Sources */,
 				C120CD4D21CB80FB0080EC15 /* Setting.swift in Sources */,
+				C193047021CB913D00315ED3 /* Register.swift in Sources */,
 				C120CD4921CB80FB0080EC15 /* UIApplicationExtension.swift in Sources */,
 				C120CD8C21CB874A0080EC15 /* WhisperFactory.swift in Sources */,
 				C120CD8321CB87200080EC15 /* CTMessage.swift in Sources */,
 				C120CD5521CB80FB0080EC15 /* UIFontExtension.swift in Sources */,
+				C193047521CB927500315ED3 /* TermLabel.swift in Sources */,
 				C120CD5021CB80FB0080EC15 /* knController.swift in Sources */,
 				C120CD4C21CB80FB0080EC15 /* UIViewControllerExtension.swift in Sources */,
 				C120CD7721CB83F30080EC15 /* Login.swift in Sources */,
 				C120CD4721CB80FB0080EC15 /* General.swift in Sources */,
 				C120CD5121CB80FB0080EC15 /* OtherExtensions.swift in Sources */,
+				C193047321CB91D500315ED3 /* PasswordValidation.swift in Sources */,
 				C120CD4E21CB80FB0080EC15 /* knView.swift in Sources */,
 				C120CD4B21CB80FB0080EC15 /* StartPoint.swift in Sources */,
 				C120CD8E21CB874A0080EC15 /* Message.swift in Sources */,
@@ -571,13 +613,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YM62LBZ4XN;
+				DEVELOPMENT_TEAM = 67FN8R2DGD;
 				INFOPLIST_FILE = "$(SRCROOT)/CaloriesTracker/configuration/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = kn.CaloriesTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = kn.caloriestracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -590,13 +632,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YM62LBZ4XN;
+				DEVELOPMENT_TEAM = 67FN8R2DGD;
 				INFOPLIST_FILE = "$(SRCROOT)/CaloriesTracker/configuration/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = kn.CaloriesTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = kn.caloriestracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

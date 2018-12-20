@@ -2,10 +2,12 @@
 # platform :ios, '9.0'
 
 target 'CaloriesTracker' do
+  inhibit_all_warnings!
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
   pod 'Alamofire', '~> 4.5.0'
   pod 'Kingfisher'
-  # Pods for CaloriesTracker
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
 
 end

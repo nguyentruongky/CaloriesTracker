@@ -33,7 +33,7 @@ class CTLoginCtr: knStaticListController {
     @objc func dismissScreen() { dismiss() }
     
     @objc func showRegister(){
-//        navigationController?.setControllers([snRegisterCtr()])
+        navigationController?.setControllers([CTRegisterCtr()])
     }
     
     @objc func showForgot(){

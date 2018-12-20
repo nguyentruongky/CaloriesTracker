@@ -10,7 +10,7 @@ import UIKit
 
 class StartPoint {
     static var startingController: UIViewController {
-        let ctr = CTLoginCtr()
+        let ctr = CTRegisterCtr()
         return wrap(ctr)
     }
 }
