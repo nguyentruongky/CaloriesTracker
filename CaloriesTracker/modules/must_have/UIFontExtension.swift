@@ -10,7 +10,6 @@ import UIKit
 
 extension UIFont {
     enum knWeight: String {
-        case black = "Muli-Black"
         case bold = "Muli-Bold"
         case medium = "Muli-SemiBold"
         case regular = "Muli-Regular"

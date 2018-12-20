@@ -17,7 +17,6 @@ class knController : UIViewController {
     func fetchData() { }
     deinit {
         print("Deinit \(NSStringFromClass(type(of: self)))")
-        removeKeyboardNotificationListeners()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return statusBarStyle }
@@ -36,7 +35,6 @@ class knTableController: UITableViewController {
     func fetchData() { }
     deinit {
         print("Deinit \(NSStringFromClass(type(of: self)))")
-        removeKeyboardNotificationListeners()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return 0 }
@@ -64,7 +62,6 @@ class knCustomTableController: knController {
     
     deinit {
         print("Deinit \(NSStringFromClass(type(of: self)))")
-        removeKeyboardNotificationListeners()
     }
 }
 

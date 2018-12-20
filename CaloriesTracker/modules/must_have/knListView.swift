@@ -103,7 +103,6 @@ class knListController<C: knListCell<U>, U>: knController, UITableViewDataSource
         super.viewDidLoad()
         setupView()
         view.backgroundColor = .white
-        setupKeyboardNotifcationListenerForScrollView(scrollView: tableView)
     }
     
     override func setupView() {
@@ -147,7 +146,6 @@ class knStaticListController: knController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         view.backgroundColor = .white
         setupView()
-        setupKeyboardNotifcationListenerForScrollView(scrollView: tableView)
     }
     
     func fillList(space: UIEdgeInsets = .zero) {
@@ -175,7 +173,6 @@ class knStaticListController: knController, UITableViewDelegate, UITableViewData
     
     deinit {
         print("Deinit \(NSStringFromClass(type(of: self)))")
-        removeKeyboardNotificationListeners()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

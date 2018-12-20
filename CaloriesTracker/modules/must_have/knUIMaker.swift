@@ -114,7 +114,7 @@ class UIMaker {
                                bgColor: UIColor = UIColor.gray,
                                titleColor: UIColor = UIColor.white,
                                font: UIFont = UIFont.main(.bold, size: 18)) -> UIButton {
-        let button = ZFRippleButton()
+        let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle(title, for: .normal)
         button.titleLabel?.font = font
@@ -122,8 +122,6 @@ class UIMaker {
         button.setTitleColor(UIColor.white.alpha(0.5), for: .disabled)
         button.setBackground(color: bgColor, forState: .normal)
         button.setBackground(color: bgColor.alpha(0.5), forState: .disabled)
-        button.rippleBackgroundColor = bgColor.adjustBrightness(1.5)
-        button.rippleColor = bgColor.adjustBrightness(0.9)
         button.setCorner(radius: 7)
         
         button.height(56)
@@ -153,6 +151,22 @@ class UIMaker {
     @objc private static func hideKeyboard(){
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
                                         to: nil, from: nil, for: nil)
+    }
+    
+    static func makeTextField(placeholder: String, icon: UIImage? = nil) -> UITextField {
+        let tf = UIMaker.makeTextField(placeholder: placeholder,
+                                       font: UIFont.main(size: 14),
+                                       color: .CT_25)
+        tf.setPlaceholderColor(UIColor.CT_163_169_175)
+        tf.setCorner(radius: 7.5)
+        tf.setBorder(1, color: UIColor.CT_230_232_234)
+        
+        if let icon = icon {
+            tf.setView(.left, image: icon)
+        } else {
+            tf.setView(.left, space: 20)
+        }
+        return tf
     }
 }
 

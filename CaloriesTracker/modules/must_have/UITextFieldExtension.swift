@@ -41,7 +41,7 @@ extension UITextField {
     }
     
     @discardableResult
-    func setView(_ view: ViewType, image: UIImage) -> UIButton {
+    func setView(_ view: ViewType, image: UIImage?) -> UIButton {
         let button = UIButton()
         button.frame = CGRect(x: 0, y: 0, width: 50, height: 100)
         button.setImage(image, for: UIControl.State())

@@ -16,9 +16,7 @@ extension UINavigationBar {
 
 extension UINavigationController {
     func hideBar(_ hide: Bool) {
-        UIView.animate(withDuration: 0.35,
-                       animations: { [weak self] in
-                        self?.isNavigationBarHidden = hide })
+        setNavigationBarHidden(hide, animated: true)
     }
     
     func hideBarWhenScrolling(inScrollView scrollView: UIScrollView) {
@@ -40,6 +38,10 @@ extension UINavigationController {
         navigationBar.setBackgroundImage(UIImage.createImage(from: color), for: .default)
         navigationBar.shadowImage = UIImage()
         navigationBar.tintColor = titleColor
+    }
+    
+    func setControllers(_ ctrs: [UIViewController]) {
+        setViewControllers(ctrs, animated: true)
     }
     
     func fillNavigationBar(withColors colors: [CGColor],

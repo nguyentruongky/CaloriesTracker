@@ -46,6 +46,10 @@ extension UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    func dismiss() {
+        dismiss(animated: true, completion: nil)
+    }
+    
     @discardableResult
     func addBackButton(tintColor: UIColor = .black) -> UIBarButtonItem {
         let backArrowImageView = UIImageView(image: UIImage(named: "back_arrow")?.changeColor())

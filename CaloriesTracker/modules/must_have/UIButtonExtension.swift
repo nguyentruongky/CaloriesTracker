@@ -62,7 +62,7 @@ extension UIButton {
         CATransaction.commit()
     }
 
-    func setProcessIndicator(visible: Bool,
+    func setProcess(visible: Bool,
                              style: UIActivityIndicatorView.Style = .white) {
         if visible {
             titleLabel?.layer.opacity = 0
