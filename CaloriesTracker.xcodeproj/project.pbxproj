@@ -35,9 +35,12 @@
 		C120CD5921CB80FB0080EC15 /* knConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD4021CB80FB0080EC15 /* knConstraints.swift */; };
 		C120CD5A21CB80FB0080EC15 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD4121CB80FB0080EC15 /* UIImageExtension.swift */; };
 		C120CD5B21CB80FB0080EC15 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD4221CB80FB0080EC15 /* DateExtension.swift */; };
+		C2F0A07394AADE51D770740B /* Pods_CaloriesTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B86763ED8DC2891F52136858 /* Pods_CaloriesTracker.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7FE98514BB423E26AFA8FB5A /* Pods-CaloriesTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaloriesTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-CaloriesTracker/Pods-CaloriesTracker.release.xcconfig"; sourceTree = "<group>"; };
+		B86763ED8DC2891F52136858 /* Pods_CaloriesTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CaloriesTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C120CD1221CB3D230080EC15 /* CaloriesTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaloriesTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C120CD1521CB3D230080EC15 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C120CD1C21CB3D240080EC15 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -68,6 +71,7 @@
 		C120CD4021CB80FB0080EC15 /* knConstraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = knConstraints.swift; sourceTree = "<group>"; };
 		C120CD4121CB80FB0080EC15 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		C120CD4221CB80FB0080EC15 /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		EE7D234AAD8C0C68B809DD8C /* Pods-CaloriesTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaloriesTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CaloriesTracker/Pods-CaloriesTracker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,17 +79,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2F0A07394AADE51D770740B /* Pods_CaloriesTracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		60DE173E4146DD58E6E69115 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B86763ED8DC2891F52136858 /* Pods_CaloriesTracker.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C120CD0921CB3D230080EC15 = {
 			isa = PBXGroup;
 			children = (
 				C120CD1421CB3D230080EC15 /* CaloriesTracker */,
 				C120CD1321CB3D230080EC15 /* Products */,
+				DDA226BB38BE9112A6EEAD1D /* Pods */,
+				60DE173E4146DD58E6E69115 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -173,6 +188,15 @@
 			path = features;
 			sourceTree = "<group>";
 		};
+		DDA226BB38BE9112A6EEAD1D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EE7D234AAD8C0C68B809DD8C /* Pods-CaloriesTracker.debug.xcconfig */,
+				7FE98514BB423E26AFA8FB5A /* Pods-CaloriesTracker.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -180,9 +204,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C120CD2421CB3D240080EC15 /* Build configuration list for PBXNativeTarget "CaloriesTracker" */;
 			buildPhases = (
+				4F406BE7DAF3ED217F1928E8 /* [CP] Check Pods Manifest.lock */,
 				C120CD0E21CB3D230080EC15 /* Sources */,
 				C120CD0F21CB3D230080EC15 /* Frameworks */,
 				C120CD1021CB3D230080EC15 /* Resources */,
+				954F4C07103F501CC196E84B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -237,6 +263,47 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4F406BE7DAF3ED217F1928E8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CaloriesTracker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		954F4C07103F501CC196E84B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CaloriesTracker/Pods-CaloriesTracker-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CaloriesTracker/Pods-CaloriesTracker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C120CD0E21CB3D230080EC15 /* Sources */ = {
@@ -404,6 +471,7 @@
 		};
 		C120CD2521CB3D240080EC15 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EE7D234AAD8C0C68B809DD8C /* Pods-CaloriesTracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -422,6 +490,7 @@
 		};
 		C120CD2621CB3D240080EC15 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7FE98514BB423E26AFA8FB5A /* Pods-CaloriesTracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
