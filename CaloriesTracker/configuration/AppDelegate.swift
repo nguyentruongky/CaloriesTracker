@@ -12,7 +12,8 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-
+        setupApp()
+        setupNavigationBar()
         return true
     }
     
@@ -21,6 +22,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.rootViewController = StartPoint.startingController
         window!.backgroundColor = UIColor.white
         window?.makeKeyAndVisible()
+    }
+    
+    func setupNavigationBar() {
+        let bar = UINavigationBar.appearance()
+        bar.titleTextAttributes = [
+            NSAttributedString.Key.foregroundColor: UIColor.CT_25,
+            NSAttributedString.Key.font: UIFont.main(.bold, size: 17),
+        ]
+        
+        bar.barTintColor = UIColor.white
+        bar.tintColor = UIColor.CT_25
+        bar.setBackgroundImage(UIImage.createImage(from: .white), for: .default)
     }
 }
 
