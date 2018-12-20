@@ -35,6 +35,22 @@
 		C120CD5921CB80FB0080EC15 /* knConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD4021CB80FB0080EC15 /* knConstraints.swift */; };
 		C120CD5A21CB80FB0080EC15 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD4121CB80FB0080EC15 /* UIImageExtension.swift */; };
 		C120CD5B21CB80FB0080EC15 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD4221CB80FB0080EC15 /* DateExtension.swift */; };
+		C120CD7721CB83F30080EC15 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD7321CB83F30080EC15 /* Login.swift */; };
+		C120CD7821CB83F30080EC15 /* Login.UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD7421CB83F30080EC15 /* Login.UI.swift */; };
+		C120CD7921CB83F30080EC15 /* Login.Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD7521CB83F30080EC15 /* Login.Interactor.swift */; };
+		C120CD7A21CB83F30080EC15 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD7621CB83F30080EC15 /* LoginWorker.swift */; };
+		C120CD7C21CB84990080EC15 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD7B21CB84990080EC15 /* Colors.swift */; };
+		C120CD8321CB87200080EC15 /* CTMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD8221CB87200080EC15 /* CTMessage.swift */; };
+		C120CD8C21CB874A0080EC15 /* WhisperFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD8521CB874A0080EC15 /* WhisperFactory.swift */; };
+		C120CD8D21CB874A0080EC15 /* WhisperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD8621CB874A0080EC15 /* WhisperView.swift */; };
+		C120CD8E21CB874A0080EC15 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD8721CB874A0080EC15 /* Message.swift */; };
+		C120CD8F21CB874A0080EC15 /* Showing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD8821CB874A0080EC15 /* Showing.swift */; };
+		C120CD9021CB874A0080EC15 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD8921CB874A0080EC15 /* Config.swift */; };
+		C120CD9121CB874A0080EC15 /* WhistleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD8A21CB874A0080EC15 /* WhistleFactory.swift */; };
+		C120CD9221CB874A0080EC15 /* ShoutFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD8B21CB874A0080EC15 /* ShoutFactory.swift */; };
+		C120CD9321CB8A8D0080EC15 /* Muli-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C120CD8021CB85A80080EC15 /* Muli-Bold.ttf */; };
+		C120CD9421CB8A8D0080EC15 /* Muli-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C120CD7E21CB85A80080EC15 /* Muli-Regular.ttf */; };
+		C120CD9521CB8A8D0080EC15 /* Muli-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C120CD7F21CB85A80080EC15 /* Muli-SemiBold.ttf */; };
 		C2F0A07394AADE51D770740B /* Pods_CaloriesTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B86763ED8DC2891F52136858 /* Pods_CaloriesTracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +87,22 @@
 		C120CD4021CB80FB0080EC15 /* knConstraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = knConstraints.swift; sourceTree = "<group>"; };
 		C120CD4121CB80FB0080EC15 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		C120CD4221CB80FB0080EC15 /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		C120CD7321CB83F30080EC15 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		C120CD7421CB83F30080EC15 /* Login.UI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.UI.swift; sourceTree = "<group>"; };
+		C120CD7521CB83F30080EC15 /* Login.Interactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.Interactor.swift; sourceTree = "<group>"; };
+		C120CD7621CB83F30080EC15 /* LoginWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
+		C120CD7B21CB84990080EC15 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		C120CD7E21CB85A80080EC15 /* Muli-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-Regular.ttf"; sourceTree = "<group>"; };
+		C120CD7F21CB85A80080EC15 /* Muli-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-SemiBold.ttf"; sourceTree = "<group>"; };
+		C120CD8021CB85A80080EC15 /* Muli-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-Bold.ttf"; sourceTree = "<group>"; };
+		C120CD8221CB87200080EC15 /* CTMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTMessage.swift; sourceTree = "<group>"; };
+		C120CD8521CB874A0080EC15 /* WhisperFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhisperFactory.swift; sourceTree = "<group>"; };
+		C120CD8621CB874A0080EC15 /* WhisperView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhisperView.swift; sourceTree = "<group>"; };
+		C120CD8721CB874A0080EC15 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		C120CD8821CB874A0080EC15 /* Showing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Showing.swift; sourceTree = "<group>"; };
+		C120CD8921CB874A0080EC15 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		C120CD8A21CB874A0080EC15 /* WhistleFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhistleFactory.swift; sourceTree = "<group>"; };
+		C120CD8B21CB874A0080EC15 /* ShoutFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoutFactory.swift; sourceTree = "<group>"; };
 		EE7D234AAD8C0C68B809DD8C /* Pods-CaloriesTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaloriesTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CaloriesTracker/Pods-CaloriesTracker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,6 +169,8 @@
 		C120CD2821CB80E40080EC15 /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				C120CD8121CB87180080EC15 /* common */,
+				C120CD7D21CB858A0080EC15 /* fonts */,
 				C120CD1C21CB3D240080EC15 /* Assets.xcassets */,
 				C120CD1E21CB3D240080EC15 /* LaunchScreen.storyboard */,
 			);
@@ -176,6 +210,7 @@
 		C120CD5C21CB81000080EC15 /* modules */ = {
 			isa = PBXGroup;
 			children = (
+				C120CD8421CB874A0080EC15 /* Whisper */,
 				C120CD2921CB80FB0080EC15 /* must_have */,
 			);
 			path = modules;
@@ -184,8 +219,53 @@
 		C120CD5D21CB810B0080EC15 /* features */ = {
 			isa = PBXGroup;
 			children = (
+				C120CD7221CB83F30080EC15 /* login */,
 			);
 			path = features;
+			sourceTree = "<group>";
+		};
+		C120CD7221CB83F30080EC15 /* login */ = {
+			isa = PBXGroup;
+			children = (
+				C120CD7321CB83F30080EC15 /* Login.swift */,
+				C120CD7421CB83F30080EC15 /* Login.UI.swift */,
+				C120CD7521CB83F30080EC15 /* Login.Interactor.swift */,
+				C120CD7621CB83F30080EC15 /* LoginWorker.swift */,
+			);
+			path = login;
+			sourceTree = "<group>";
+		};
+		C120CD7D21CB858A0080EC15 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				C120CD8021CB85A80080EC15 /* Muli-Bold.ttf */,
+				C120CD7E21CB85A80080EC15 /* Muli-Regular.ttf */,
+				C120CD7F21CB85A80080EC15 /* Muli-SemiBold.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
+		C120CD8121CB87180080EC15 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				C120CD7B21CB84990080EC15 /* Colors.swift */,
+				C120CD8221CB87200080EC15 /* CTMessage.swift */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		C120CD8421CB874A0080EC15 /* Whisper */ = {
+			isa = PBXGroup;
+			children = (
+				C120CD8521CB874A0080EC15 /* WhisperFactory.swift */,
+				C120CD8621CB874A0080EC15 /* WhisperView.swift */,
+				C120CD8721CB874A0080EC15 /* Message.swift */,
+				C120CD8821CB874A0080EC15 /* Showing.swift */,
+				C120CD8921CB874A0080EC15 /* Config.swift */,
+				C120CD8A21CB874A0080EC15 /* WhistleFactory.swift */,
+				C120CD8B21CB874A0080EC15 /* ShoutFactory.swift */,
+			);
+			path = Whisper;
 			sourceTree = "<group>";
 		};
 		DDA226BB38BE9112A6EEAD1D /* Pods */ = {
@@ -257,8 +337,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C120CD9321CB8A8D0080EC15 /* Muli-Bold.ttf in Resources */,
 				C120CD2021CB3D240080EC15 /* LaunchScreen.storyboard in Resources */,
+				C120CD9421CB8A8D0080EC15 /* Muli-Regular.ttf in Resources */,
 				C120CD1D21CB3D240080EC15 /* Assets.xcassets in Resources */,
+				C120CD9521CB8A8D0080EC15 /* Muli-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,30 +395,43 @@
 			files = (
 				C120CD5921CB80FB0080EC15 /* knConstraints.swift in Sources */,
 				C120CD4F21CB80FB0080EC15 /* UIViewExtension.swift in Sources */,
+				C120CD7821CB83F30080EC15 /* Login.UI.swift in Sources */,
+				C120CD8D21CB874A0080EC15 /* WhisperView.swift in Sources */,
 				C120CD4821CB80FB0080EC15 /* UITextFieldExtension.swift in Sources */,
 				C120CD4621CB80FB0080EC15 /* UISearchBarExtension.swift in Sources */,
+				C120CD7C21CB84990080EC15 /* Colors.swift in Sources */,
+				C120CD7A21CB83F30080EC15 /* LoginWorker.swift in Sources */,
 				C120CD4A21CB80FB0080EC15 /* IntExtension.swift in Sources */,
 				C120CD4421CB80FB0080EC15 /* knGridView.swift in Sources */,
 				C120CD4521CB80FB0080EC15 /* UIColorExtension.swift in Sources */,
 				C120CD1621CB3D230080EC15 /* AppDelegate.swift in Sources */,
+				C120CD7921CB83F30080EC15 /* Login.Interactor.swift in Sources */,
 				C120CD5A21CB80FB0080EC15 /* UIImageExtension.swift in Sources */,
 				C120CD5721CB80FB0080EC15 /* DeviceType.swift in Sources */,
 				C120CD4D21CB80FB0080EC15 /* Setting.swift in Sources */,
 				C120CD4921CB80FB0080EC15 /* UIApplicationExtension.swift in Sources */,
+				C120CD8C21CB874A0080EC15 /* WhisperFactory.swift in Sources */,
+				C120CD8321CB87200080EC15 /* CTMessage.swift in Sources */,
 				C120CD5521CB80FB0080EC15 /* UIFontExtension.swift in Sources */,
 				C120CD5021CB80FB0080EC15 /* knController.swift in Sources */,
 				C120CD4C21CB80FB0080EC15 /* UIViewControllerExtension.swift in Sources */,
+				C120CD7721CB83F30080EC15 /* Login.swift in Sources */,
 				C120CD4721CB80FB0080EC15 /* General.swift in Sources */,
 				C120CD5121CB80FB0080EC15 /* OtherExtensions.swift in Sources */,
 				C120CD4E21CB80FB0080EC15 /* knView.swift in Sources */,
 				C120CD4B21CB80FB0080EC15 /* StartPoint.swift in Sources */,
+				C120CD8E21CB874A0080EC15 /* Message.swift in Sources */,
 				C120CD4321CB80FB0080EC15 /* UIButtonExtension.swift in Sources */,
 				C120CD5421CB80FB0080EC15 /* NavigationExtension.swift in Sources */,
 				C120CD5B21CB80FB0080EC15 /* DateExtension.swift in Sources */,
+				C120CD9121CB874A0080EC15 /* WhistleFactory.swift in Sources */,
 				C120CD5221CB80FB0080EC15 /* knUIMaker.swift in Sources */,
+				C120CD9021CB874A0080EC15 /* Config.swift in Sources */,
+				C120CD9221CB874A0080EC15 /* ShoutFactory.swift in Sources */,
 				C120CD5821CB80FB0080EC15 /* ServiceConnector.swift in Sources */,
 				C120CD5621CB80FB0080EC15 /* StringExtension.swift in Sources */,
 				C120CD5321CB80FB0080EC15 /* knListView.swift in Sources */,
+				C120CD8F21CB874A0080EC15 /* Showing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,7 +572,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YM62LBZ4XN;
-				INFOPLIST_FILE = CaloriesTracker/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/CaloriesTracker/configuration/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -495,7 +591,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YM62LBZ4XN;
-				INFOPLIST_FILE = CaloriesTracker/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/CaloriesTracker/configuration/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
