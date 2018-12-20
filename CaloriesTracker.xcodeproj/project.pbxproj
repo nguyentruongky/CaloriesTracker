@@ -8,20 +8,66 @@
 
 /* Begin PBXBuildFile section */
 		C120CD1621CB3D230080EC15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD1521CB3D230080EC15 /* AppDelegate.swift */; };
-		C120CD1821CB3D230080EC15 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD1721CB3D230080EC15 /* ViewController.swift */; };
-		C120CD1B21CB3D230080EC15 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C120CD1921CB3D230080EC15 /* Main.storyboard */; };
 		C120CD1D21CB3D240080EC15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C120CD1C21CB3D240080EC15 /* Assets.xcassets */; };
 		C120CD2021CB3D240080EC15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C120CD1E21CB3D240080EC15 /* LaunchScreen.storyboard */; };
+		C120CD4321CB80FB0080EC15 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD2A21CB80FB0080EC15 /* UIButtonExtension.swift */; };
+		C120CD4421CB80FB0080EC15 /* knGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD2B21CB80FB0080EC15 /* knGridView.swift */; };
+		C120CD4521CB80FB0080EC15 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD2C21CB80FB0080EC15 /* UIColorExtension.swift */; };
+		C120CD4621CB80FB0080EC15 /* UISearchBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD2D21CB80FB0080EC15 /* UISearchBarExtension.swift */; };
+		C120CD4721CB80FB0080EC15 /* General.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD2E21CB80FB0080EC15 /* General.swift */; };
+		C120CD4821CB80FB0080EC15 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD2F21CB80FB0080EC15 /* UITextFieldExtension.swift */; };
+		C120CD4921CB80FB0080EC15 /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD3021CB80FB0080EC15 /* UIApplicationExtension.swift */; };
+		C120CD4A21CB80FB0080EC15 /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD3121CB80FB0080EC15 /* IntExtension.swift */; };
+		C120CD4B21CB80FB0080EC15 /* StartPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD3221CB80FB0080EC15 /* StartPoint.swift */; };
+		C120CD4C21CB80FB0080EC15 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD3321CB80FB0080EC15 /* UIViewControllerExtension.swift */; };
+		C120CD4D21CB80FB0080EC15 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD3421CB80FB0080EC15 /* Setting.swift */; };
+		C120CD4E21CB80FB0080EC15 /* knView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD3521CB80FB0080EC15 /* knView.swift */; };
+		C120CD4F21CB80FB0080EC15 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD3621CB80FB0080EC15 /* UIViewExtension.swift */; };
+		C120CD5021CB80FB0080EC15 /* knController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD3721CB80FB0080EC15 /* knController.swift */; };
+		C120CD5121CB80FB0080EC15 /* OtherExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD3821CB80FB0080EC15 /* OtherExtensions.swift */; };
+		C120CD5221CB80FB0080EC15 /* knUIMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD3921CB80FB0080EC15 /* knUIMaker.swift */; };
+		C120CD5321CB80FB0080EC15 /* knListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD3A21CB80FB0080EC15 /* knListView.swift */; };
+		C120CD5421CB80FB0080EC15 /* NavigationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD3B21CB80FB0080EC15 /* NavigationExtension.swift */; };
+		C120CD5521CB80FB0080EC15 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD3C21CB80FB0080EC15 /* UIFontExtension.swift */; };
+		C120CD5621CB80FB0080EC15 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD3D21CB80FB0080EC15 /* StringExtension.swift */; };
+		C120CD5721CB80FB0080EC15 /* DeviceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD3E21CB80FB0080EC15 /* DeviceType.swift */; };
+		C120CD5821CB80FB0080EC15 /* ServiceConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD3F21CB80FB0080EC15 /* ServiceConnector.swift */; };
+		C120CD5921CB80FB0080EC15 /* knConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD4021CB80FB0080EC15 /* knConstraints.swift */; };
+		C120CD5A21CB80FB0080EC15 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD4121CB80FB0080EC15 /* UIImageExtension.swift */; };
+		C120CD5B21CB80FB0080EC15 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD4221CB80FB0080EC15 /* DateExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C120CD1221CB3D230080EC15 /* CaloriesTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaloriesTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C120CD1521CB3D230080EC15 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C120CD1721CB3D230080EC15 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C120CD1A21CB3D230080EC15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C120CD1C21CB3D240080EC15 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C120CD1F21CB3D240080EC15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C120CD2121CB3D240080EC15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C120CD2A21CB80FB0080EC15 /* UIButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
+		C120CD2B21CB80FB0080EC15 /* knGridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = knGridView.swift; sourceTree = "<group>"; };
+		C120CD2C21CB80FB0080EC15 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		C120CD2D21CB80FB0080EC15 /* UISearchBarExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISearchBarExtension.swift; sourceTree = "<group>"; };
+		C120CD2E21CB80FB0080EC15 /* General.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = General.swift; sourceTree = "<group>"; };
+		C120CD2F21CB80FB0080EC15 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
+		C120CD3021CB80FB0080EC15 /* UIApplicationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
+		C120CD3121CB80FB0080EC15 /* IntExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
+		C120CD3221CB80FB0080EC15 /* StartPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartPoint.swift; sourceTree = "<group>"; };
+		C120CD3321CB80FB0080EC15 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		C120CD3421CB80FB0080EC15 /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		C120CD3521CB80FB0080EC15 /* knView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = knView.swift; sourceTree = "<group>"; };
+		C120CD3621CB80FB0080EC15 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		C120CD3721CB80FB0080EC15 /* knController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = knController.swift; sourceTree = "<group>"; };
+		C120CD3821CB80FB0080EC15 /* OtherExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherExtensions.swift; sourceTree = "<group>"; };
+		C120CD3921CB80FB0080EC15 /* knUIMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = knUIMaker.swift; sourceTree = "<group>"; };
+		C120CD3A21CB80FB0080EC15 /* knListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = knListView.swift; sourceTree = "<group>"; };
+		C120CD3B21CB80FB0080EC15 /* NavigationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationExtension.swift; sourceTree = "<group>"; };
+		C120CD3C21CB80FB0080EC15 /* UIFontExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
+		C120CD3D21CB80FB0080EC15 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		C120CD3E21CB80FB0080EC15 /* DeviceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceType.swift; sourceTree = "<group>"; };
+		C120CD3F21CB80FB0080EC15 /* ServiceConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceConnector.swift; sourceTree = "<group>"; };
+		C120CD4021CB80FB0080EC15 /* knConstraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = knConstraints.swift; sourceTree = "<group>"; };
+		C120CD4121CB80FB0080EC15 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		C120CD4221CB80FB0080EC15 /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +100,77 @@
 		C120CD1421CB3D230080EC15 /* CaloriesTracker */ = {
 			isa = PBXGroup;
 			children = (
-				C120CD1521CB3D230080EC15 /* AppDelegate.swift */,
-				C120CD1721CB3D230080EC15 /* ViewController.swift */,
-				C120CD1921CB3D230080EC15 /* Main.storyboard */,
-				C120CD1C21CB3D240080EC15 /* Assets.xcassets */,
-				C120CD1E21CB3D240080EC15 /* LaunchScreen.storyboard */,
-				C120CD2121CB3D240080EC15 /* Info.plist */,
+				C120CD2821CB80E40080EC15 /* assets */,
+				C120CD2721CB80D90080EC15 /* configuration */,
+				C120CD5D21CB810B0080EC15 /* features */,
+				C120CD5C21CB81000080EC15 /* modules */,
 			);
 			path = CaloriesTracker;
+			sourceTree = "<group>";
+		};
+		C120CD2721CB80D90080EC15 /* configuration */ = {
+			isa = PBXGroup;
+			children = (
+				C120CD1521CB3D230080EC15 /* AppDelegate.swift */,
+				C120CD2121CB3D240080EC15 /* Info.plist */,
+				C120CD3221CB80FB0080EC15 /* StartPoint.swift */,
+				C120CD3421CB80FB0080EC15 /* Setting.swift */,
+			);
+			path = configuration;
+			sourceTree = "<group>";
+		};
+		C120CD2821CB80E40080EC15 /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				C120CD1C21CB3D240080EC15 /* Assets.xcassets */,
+				C120CD1E21CB3D240080EC15 /* LaunchScreen.storyboard */,
+			);
+			path = assets;
+			sourceTree = "<group>";
+		};
+		C120CD2921CB80FB0080EC15 /* must_have */ = {
+			isa = PBXGroup;
+			children = (
+				C120CD4221CB80FB0080EC15 /* DateExtension.swift */,
+				C120CD3E21CB80FB0080EC15 /* DeviceType.swift */,
+				C120CD2E21CB80FB0080EC15 /* General.swift */,
+				C120CD3121CB80FB0080EC15 /* IntExtension.swift */,
+				C120CD4021CB80FB0080EC15 /* knConstraints.swift */,
+				C120CD3721CB80FB0080EC15 /* knController.swift */,
+				C120CD2B21CB80FB0080EC15 /* knGridView.swift */,
+				C120CD3A21CB80FB0080EC15 /* knListView.swift */,
+				C120CD3921CB80FB0080EC15 /* knUIMaker.swift */,
+				C120CD3521CB80FB0080EC15 /* knView.swift */,
+				C120CD3B21CB80FB0080EC15 /* NavigationExtension.swift */,
+				C120CD3821CB80FB0080EC15 /* OtherExtensions.swift */,
+				C120CD3F21CB80FB0080EC15 /* ServiceConnector.swift */,
+				C120CD3D21CB80FB0080EC15 /* StringExtension.swift */,
+				C120CD3021CB80FB0080EC15 /* UIApplicationExtension.swift */,
+				C120CD2A21CB80FB0080EC15 /* UIButtonExtension.swift */,
+				C120CD2C21CB80FB0080EC15 /* UIColorExtension.swift */,
+				C120CD3C21CB80FB0080EC15 /* UIFontExtension.swift */,
+				C120CD4121CB80FB0080EC15 /* UIImageExtension.swift */,
+				C120CD2D21CB80FB0080EC15 /* UISearchBarExtension.swift */,
+				C120CD2F21CB80FB0080EC15 /* UITextFieldExtension.swift */,
+				C120CD3321CB80FB0080EC15 /* UIViewControllerExtension.swift */,
+				C120CD3621CB80FB0080EC15 /* UIViewExtension.swift */,
+			);
+			path = must_have;
+			sourceTree = "<group>";
+		};
+		C120CD5C21CB81000080EC15 /* modules */ = {
+			isa = PBXGroup;
+			children = (
+				C120CD2921CB80FB0080EC15 /* must_have */,
+			);
+			path = modules;
+			sourceTree = "<group>";
+		};
+		C120CD5D21CB810B0080EC15 /* features */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = features;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,7 +233,6 @@
 			files = (
 				C120CD2021CB3D240080EC15 /* LaunchScreen.storyboard in Resources */,
 				C120CD1D21CB3D240080EC15 /* Assets.xcassets in Resources */,
-				C120CD1B21CB3D230080EC15 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,22 +243,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C120CD1821CB3D230080EC15 /* ViewController.swift in Sources */,
+				C120CD5921CB80FB0080EC15 /* knConstraints.swift in Sources */,
+				C120CD4F21CB80FB0080EC15 /* UIViewExtension.swift in Sources */,
+				C120CD4821CB80FB0080EC15 /* UITextFieldExtension.swift in Sources */,
+				C120CD4621CB80FB0080EC15 /* UISearchBarExtension.swift in Sources */,
+				C120CD4A21CB80FB0080EC15 /* IntExtension.swift in Sources */,
+				C120CD4421CB80FB0080EC15 /* knGridView.swift in Sources */,
+				C120CD4521CB80FB0080EC15 /* UIColorExtension.swift in Sources */,
 				C120CD1621CB3D230080EC15 /* AppDelegate.swift in Sources */,
+				C120CD5A21CB80FB0080EC15 /* UIImageExtension.swift in Sources */,
+				C120CD5721CB80FB0080EC15 /* DeviceType.swift in Sources */,
+				C120CD4D21CB80FB0080EC15 /* Setting.swift in Sources */,
+				C120CD4921CB80FB0080EC15 /* UIApplicationExtension.swift in Sources */,
+				C120CD5521CB80FB0080EC15 /* UIFontExtension.swift in Sources */,
+				C120CD5021CB80FB0080EC15 /* knController.swift in Sources */,
+				C120CD4C21CB80FB0080EC15 /* UIViewControllerExtension.swift in Sources */,
+				C120CD4721CB80FB0080EC15 /* General.swift in Sources */,
+				C120CD5121CB80FB0080EC15 /* OtherExtensions.swift in Sources */,
+				C120CD4E21CB80FB0080EC15 /* knView.swift in Sources */,
+				C120CD4B21CB80FB0080EC15 /* StartPoint.swift in Sources */,
+				C120CD4321CB80FB0080EC15 /* UIButtonExtension.swift in Sources */,
+				C120CD5421CB80FB0080EC15 /* NavigationExtension.swift in Sources */,
+				C120CD5B21CB80FB0080EC15 /* DateExtension.swift in Sources */,
+				C120CD5221CB80FB0080EC15 /* knUIMaker.swift in Sources */,
+				C120CD5821CB80FB0080EC15 /* ServiceConnector.swift in Sources */,
+				C120CD5621CB80FB0080EC15 /* StringExtension.swift in Sources */,
+				C120CD5321CB80FB0080EC15 /* knListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C120CD1921CB3D230080EC15 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C120CD1A21CB3D230080EC15 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C120CD1E21CB3D240080EC15 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
