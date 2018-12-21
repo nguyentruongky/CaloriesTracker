@@ -15,15 +15,6 @@ extension UIImageView {
         kf.setImage(with: ImageResource(downloadURL: nsurl), placeholder: placeholder)
     }
     
-    func blur() {
-        layoutIfNeeded()
-        let darkBlur = UIBlurEffect(style: UIBlurEffect.Style.dark)
-        let blurView = UIVisualEffectView(effect: darkBlur)
-        blurView.frame = frame
-        blurView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        addSubview(blurView)
-    }
-    
     func changeColor(to color: UIColor) {
         guard let image = image else { return }
         self.image = image.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)

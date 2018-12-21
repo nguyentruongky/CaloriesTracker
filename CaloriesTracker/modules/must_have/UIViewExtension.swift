@@ -33,6 +33,16 @@ extension UIView {
         }
     }
     
+    func dropShadow(color: UIColor, offset: CGSize = .zero, opacity: Float = 0.5, radius: CGFloat = 1, scale: Bool = true) {
+        layer.masksToBounds = false
+        layer.shadowColor = color.cgColor
+        layer.shadowOpacity = opacity
+        layer.shadowOffset = offset
+        layer.shadowRadius = radius
+        layer.shouldRasterize = true
+        layer.rasterizationScale = scale ? UIScreen.main.scale : 1
+    }
+    
     func setGradientBackground(colors: [UIColor],
                                size: CGSize = .zero,
                                startPoint: CGPoint = CGPoint(x: 0, y: 0),

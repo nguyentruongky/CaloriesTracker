@@ -66,6 +66,8 @@
 		C193048521CC3ECE00315ED3 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193048421CC3ECE00315ED3 /* Meal.swift */; };
 		C193048721CC3EF100315ED3 /* Meals.UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193048621CC3EF100315ED3 /* Meals.UI.swift */; };
 		C193048B21CCD4B100315ED3 /* MealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193048A21CCD4B100315ED3 /* MealCell.swift */; };
+		C193048E21CCE86C00315ED3 /* AddMeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193048D21CCE86C00315ED3 /* AddMeal.swift */; };
+		C193049021CCEC5700315ED3 /* FoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193048F21CCEC5700315ED3 /* FoodCell.swift */; };
 		C2F0A07394AADE51D770740B /* Pods_CaloriesTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B86763ED8DC2891F52136858 /* Pods_CaloriesTracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -133,6 +135,8 @@
 		C193048421CC3ECE00315ED3 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		C193048621CC3EF100315ED3 /* Meals.UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meals.UI.swift; sourceTree = "<group>"; };
 		C193048A21CCD4B100315ED3 /* MealCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCell.swift; sourceTree = "<group>"; };
+		C193048D21CCE86C00315ED3 /* AddMeal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMeal.swift; sourceTree = "<group>"; };
+		C193048F21CCEC5700315ED3 /* FoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCell.swift; sourceTree = "<group>"; };
 		EE7D234AAD8C0C68B809DD8C /* Pods-CaloriesTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaloriesTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CaloriesTracker/Pods-CaloriesTracker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -252,6 +256,7 @@
 		C120CD5D21CB810B0080EC15 /* features */ = {
 			isa = PBXGroup;
 			children = (
+				C193048C21CCE81900315ED3 /* addMeal */,
 				C193047B21CC226300315ED3 /* meals */,
 				C193047821CB9B2900315ED3 /* boss */,
 				C120CD7221CB83F30080EC15 /* login */,
@@ -335,6 +340,15 @@
 				C193048A21CCD4B100315ED3 /* MealCell.swift */,
 			);
 			path = meals;
+			sourceTree = "<group>";
+		};
+		C193048C21CCE81900315ED3 /* addMeal */ = {
+			isa = PBXGroup;
+			children = (
+				C193048D21CCE86C00315ED3 /* AddMeal.swift */,
+				C193048F21CCEC5700315ED3 /* FoodCell.swift */,
+			);
+			path = addMeal;
 			sourceTree = "<group>";
 		};
 		DDA226BB38BE9112A6EEAD1D /* Pods */ = {
@@ -475,12 +489,14 @@
 				C193048721CC3EF100315ED3 /* Meals.UI.swift in Sources */,
 				C120CD8D21CB874A0080EC15 /* WhisperView.swift in Sources */,
 				C120CD4821CB80FB0080EC15 /* UITextFieldExtension.swift in Sources */,
+				C193049021CCEC5700315ED3 /* FoodCell.swift in Sources */,
 				C120CD4621CB80FB0080EC15 /* UISearchBarExtension.swift in Sources */,
 				C120CD7C21CB84990080EC15 /* Colors.swift in Sources */,
 				C120CD7A21CB83F30080EC15 /* LoginWorker.swift in Sources */,
 				C120CD4A21CB80FB0080EC15 /* IntExtension.swift in Sources */,
 				C120CD4421CB80FB0080EC15 /* knGridView.swift in Sources */,
 				C120CD4521CB80FB0080EC15 /* UIColorExtension.swift in Sources */,
+				C193048E21CCE86C00315ED3 /* AddMeal.swift in Sources */,
 				C120CD1621CB3D230080EC15 /* AppDelegate.swift in Sources */,
 				C120CD7921CB83F30080EC15 /* Login.Interactor.swift in Sources */,
 				C120CD5A21CB80FB0080EC15 /* UIImageExtension.swift in Sources */,

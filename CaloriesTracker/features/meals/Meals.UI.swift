@@ -27,8 +27,8 @@ extension CTMealsDashboard {
             view.addSubviews(views: bg, greetingLabel, addButton, thisWeekLabel, thisWeekView, mealLabel)
             
             bg.centerX(toView: view)
-            bg.centerY(toAnchor: view.topAnchor, space: -220)
-            let edge: CGFloat = 800
+            bg.centerY(toAnchor: view.topAnchor, space: -320)
+            let edge: CGFloat = 1000
             bg.square(edge: edge)
             bg.setCorner(radius: edge / 2)
             
