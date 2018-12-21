@@ -133,7 +133,7 @@ class knListController<C: knListCell<U>, U>: knController, UITableViewDataSource
         didSelectRow(at: indexPath)
     }
     func didSelectRow(at indexPath: IndexPath) { }
-    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {}
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat { return 0 }
 }
 

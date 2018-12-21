@@ -59,6 +59,13 @@
 		C193047321CB91D500315ED3 /* PasswordValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193047221CB91D500315ED3 /* PasswordValidation.swift */; };
 		C193047521CB927500315ED3 /* TermLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193047421CB927500315ED3 /* TermLabel.swift */; };
 		C193047721CB95E500315ED3 /* DataBucket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193047621CB95E500315ED3 /* DataBucket.swift */; };
+		C193047A21CB9B2F00315ED3 /* Boss.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193047921CB9B2F00315ED3 /* Boss.swift */; };
+		C193047D21CC226800315ED3 /* Meals.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193047C21CC226800315ED3 /* Meals.swift */; };
+		C193048121CC23CE00315ED3 /* ThisWeekMealsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193048021CC23CE00315ED3 /* ThisWeekMealsView.swift */; };
+		C193048321CC246B00315ED3 /* FAPaginationLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193048221CC246B00315ED3 /* FAPaginationLayout.swift */; };
+		C193048521CC3ECE00315ED3 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193048421CC3ECE00315ED3 /* Meal.swift */; };
+		C193048721CC3EF100315ED3 /* Meals.UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193048621CC3EF100315ED3 /* Meals.UI.swift */; };
+		C193048B21CCD4B100315ED3 /* MealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193048A21CCD4B100315ED3 /* MealCell.swift */; };
 		C2F0A07394AADE51D770740B /* Pods_CaloriesTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B86763ED8DC2891F52136858 /* Pods_CaloriesTracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -119,6 +126,13 @@
 		C193047221CB91D500315ED3 /* PasswordValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordValidation.swift; sourceTree = "<group>"; };
 		C193047421CB927500315ED3 /* TermLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermLabel.swift; sourceTree = "<group>"; };
 		C193047621CB95E500315ED3 /* DataBucket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBucket.swift; sourceTree = "<group>"; };
+		C193047921CB9B2F00315ED3 /* Boss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boss.swift; sourceTree = "<group>"; };
+		C193047C21CC226800315ED3 /* Meals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meals.swift; sourceTree = "<group>"; };
+		C193048021CC23CE00315ED3 /* ThisWeekMealsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThisWeekMealsView.swift; sourceTree = "<group>"; };
+		C193048221CC246B00315ED3 /* FAPaginationLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAPaginationLayout.swift; sourceTree = "<group>"; };
+		C193048421CC3ECE00315ED3 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
+		C193048621CC3EF100315ED3 /* Meals.UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meals.UI.swift; sourceTree = "<group>"; };
+		C193048A21CCD4B100315ED3 /* MealCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCell.swift; sourceTree = "<group>"; };
 		EE7D234AAD8C0C68B809DD8C /* Pods-CaloriesTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaloriesTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CaloriesTracker/Pods-CaloriesTracker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -227,6 +241,7 @@
 		C120CD5C21CB81000080EC15 /* modules */ = {
 			isa = PBXGroup;
 			children = (
+				C193048221CC246B00315ED3 /* FAPaginationLayout.swift */,
 				C193047421CB927500315ED3 /* TermLabel.swift */,
 				C120CD8421CB874A0080EC15 /* Whisper */,
 				C120CD2921CB80FB0080EC15 /* must_have */,
@@ -237,6 +252,8 @@
 		C120CD5D21CB810B0080EC15 /* features */ = {
 			isa = PBXGroup;
 			children = (
+				C193047B21CC226300315ED3 /* meals */,
+				C193047821CB9B2900315ED3 /* boss */,
 				C120CD7221CB83F30080EC15 /* login */,
 				C193046921CB913D00315ED3 /* register */,
 			);
@@ -298,6 +315,26 @@
 				C193046D21CB913D00315ED3 /* Register.Interactor.swift */,
 			);
 			path = register;
+			sourceTree = "<group>";
+		};
+		C193047821CB9B2900315ED3 /* boss */ = {
+			isa = PBXGroup;
+			children = (
+				C193047921CB9B2F00315ED3 /* Boss.swift */,
+			);
+			path = boss;
+			sourceTree = "<group>";
+		};
+		C193047B21CC226300315ED3 /* meals */ = {
+			isa = PBXGroup;
+			children = (
+				C193047C21CC226800315ED3 /* Meals.swift */,
+				C193048621CC3EF100315ED3 /* Meals.UI.swift */,
+				C193048021CC23CE00315ED3 /* ThisWeekMealsView.swift */,
+				C193048421CC3ECE00315ED3 /* Meal.swift */,
+				C193048A21CCD4B100315ED3 /* MealCell.swift */,
+			);
+			path = meals;
 			sourceTree = "<group>";
 		};
 		DDA226BB38BE9112A6EEAD1D /* Pods */ = {
@@ -435,6 +472,7 @@
 				C120CD5921CB80FB0080EC15 /* knConstraints.swift in Sources */,
 				C120CD4F21CB80FB0080EC15 /* UIViewExtension.swift in Sources */,
 				C120CD7821CB83F30080EC15 /* Login.UI.swift in Sources */,
+				C193048721CC3EF100315ED3 /* Meals.UI.swift in Sources */,
 				C120CD8D21CB874A0080EC15 /* WhisperView.swift in Sources */,
 				C120CD4821CB80FB0080EC15 /* UITextFieldExtension.swift in Sources */,
 				C120CD4621CB80FB0080EC15 /* UISearchBarExtension.swift in Sources */,
@@ -456,19 +494,25 @@
 				C120CD8C21CB874A0080EC15 /* WhisperFactory.swift in Sources */,
 				C120CD8321CB87200080EC15 /* CTMessage.swift in Sources */,
 				C120CD5521CB80FB0080EC15 /* UIFontExtension.swift in Sources */,
+				C193047D21CC226800315ED3 /* Meals.swift in Sources */,
 				C193047521CB927500315ED3 /* TermLabel.swift in Sources */,
 				C120CD5021CB80FB0080EC15 /* knController.swift in Sources */,
 				C120CD4C21CB80FB0080EC15 /* UIViewControllerExtension.swift in Sources */,
 				C120CD7721CB83F30080EC15 /* Login.swift in Sources */,
+				C193048B21CCD4B100315ED3 /* MealCell.swift in Sources */,
 				C120CD4721CB80FB0080EC15 /* General.swift in Sources */,
 				C120CD5121CB80FB0080EC15 /* OtherExtensions.swift in Sources */,
 				C193047321CB91D500315ED3 /* PasswordValidation.swift in Sources */,
 				C120CD4E21CB80FB0080EC15 /* knView.swift in Sources */,
 				C120CD4B21CB80FB0080EC15 /* StartPoint.swift in Sources */,
+				C193048121CC23CE00315ED3 /* ThisWeekMealsView.swift in Sources */,
 				C120CD8E21CB874A0080EC15 /* Message.swift in Sources */,
+				C193047A21CB9B2F00315ED3 /* Boss.swift in Sources */,
+				C193048521CC3ECE00315ED3 /* Meal.swift in Sources */,
 				C120CD4321CB80FB0080EC15 /* UIButtonExtension.swift in Sources */,
 				C120CD5421CB80FB0080EC15 /* NavigationExtension.swift in Sources */,
 				C120CD5B21CB80FB0080EC15 /* DateExtension.swift in Sources */,
+				C193048321CC246B00315ED3 /* FAPaginationLayout.swift in Sources */,
 				C120CD9121CB874A0080EC15 /* WhistleFactory.swift in Sources */,
 				C120CD5221CB80FB0080EC15 /* knUIMaker.swift in Sources */,
 				C120CD9021CB874A0080EC15 /* Config.swift in Sources */,

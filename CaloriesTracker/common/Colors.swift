@@ -14,6 +14,6 @@ extension UIColor {
     static let CT_230_232_234 = UIColor(r: 230, g: 232, b: 234)
     static let CT_254_196_68 = UIColor(r: 254, g: 196, b: 68)
     static let error = UIColor(hex: "FF647D").or(UIColor.red)
-
+    static let bg = UIColor(value: 245)
     
 }

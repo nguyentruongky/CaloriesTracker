@@ -125,7 +125,7 @@ class UIMaker {
         button.setBackground(color: bgColor.alpha(0.5), forState: .disabled)
         button.setCorner(radius: 7)
         
-        button.height(56)
+        button.height(48)
         return button
     }
     
