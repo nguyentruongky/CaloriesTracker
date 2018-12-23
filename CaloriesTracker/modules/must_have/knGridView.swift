@@ -17,14 +17,14 @@ class knGridView<C: knGridCell<U>, U>: knView, UICollectionViewDelegate, UIColle
     fileprivate let cellId = "cellId"
     var collectionView: UICollectionView!
     var contentInset = UIEdgeInsets.zero
-    var layout: UICollectionViewLayout!
+    var layout: UICollectionViewFlowLayout!
     var itemSize: CGSize!
     var lineSpacing: CGFloat = 0
     var columnSpacing: CGFloat = 0
     
     override func setupView() {
-        guard let layout = layout else { fatalError() }
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        layout = layout ?? UICollectionViewFlowLayout()
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout!)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .white
         collectionView.showsHorizontalScrollIndicator = false
