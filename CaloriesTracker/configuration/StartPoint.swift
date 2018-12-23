@@ -10,8 +10,8 @@ import UIKit
 
 class StartPoint {
     static var startingController: UIViewController {
-//        return CTBigBoss()
-        let ctr = CTAddMealCtr()
+        return CTBigBoss()
+        let ctr = CTFoodDetailCtr()
         return wrap(ctr)
     }
 }

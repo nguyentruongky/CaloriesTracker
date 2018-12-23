@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         bar.setBackgroundImage(UIImage.createImage(from: .white), for: .default)
     }
     
-    @objc private static func hideKeyboard(){
+    @objc func hideKeyboard(){
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
                                         to: nil, from: nil, for: nil)
     }

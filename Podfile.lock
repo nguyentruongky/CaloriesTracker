@@ -29,6 +29,8 @@ PODS:
     - FirebaseCore (~> 5.1)
     - GoogleUtilities/Environment (~> 5.3)
     - GoogleUtilities/UserDefaults (~> 5.3)
+  - fluid-slider (1.0.0):
+    - pop
   - GoogleAppMeasurement (5.3.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
     - GoogleUtilities/MethodSwizzler (~> 5.2)
@@ -60,11 +62,13 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - pop (1.0.12)
 
 DEPENDENCIES:
   - Alamofire (~> 4.5.0)
   - Firebase/Auth
   - Firebase/Core
+  - fluid-slider
   - Kingfisher
 
 SPEC REPOS:
@@ -76,11 +80,13 @@ SPEC REPOS:
     - FirebaseAuthInterop
     - FirebaseCore
     - FirebaseInstanceID
+    - fluid-slider
     - GoogleAppMeasurement
     - GoogleUtilities
     - GTMSessionFetcher
     - Kingfisher
     - nanopb
+    - pop
 
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
@@ -90,12 +96,14 @@ SPEC CHECKSUMS:
   FirebaseAuthInterop: 0ffa57668be100582bb7643d4fcb7615496c41fc
   FirebaseCore: fba2bfaa691c49028309b92e4dd37cc4b5512fbe
   FirebaseInstanceID: e2fa4cb35ef5558c200f7f0ad8a53e212215f93e
+  fluid-slider: a19a991606a34a545cba9341e7422073b4ec3a66
   GoogleAppMeasurement: 5029d78f2b438bd30ffb44e6c558b57c21622727
   GoogleUtilities: 95996bea7c7d9b8fb811b7507669a4a8762f80c7
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
 
-PODFILE CHECKSUM: 581e619c17349947206913a720968a70073fb63f
+PODFILE CHECKSUM: f5a036625fbfb6beb5f98f691b41d325054bf26b
 
 COCOAPODS: 1.5.3
