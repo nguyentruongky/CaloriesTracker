@@ -11,6 +11,9 @@ import UIKit
 class CTFood {
     var image: String?
     var name: String?
+    var calorie = 0
+    var description: String?
+    var ingredient: String?
     
     init(image: String, name: String) {
         self.image = image
