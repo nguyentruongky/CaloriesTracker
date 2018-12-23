@@ -18,6 +18,10 @@ class CTUser {
     var phone: String?
     
     init() { }
+    init(name: String, avatar: String) {
+        self.name = name
+        self.avatar = avatar
+    }
 }
 
 struct snLoginWorker {
