@@ -279,7 +279,7 @@
 			children = (
 				C19304D421CED9C700315ED3 /* food */,
 				C193048C21CCE81900315ED3 /* addMeal */,
-				C193047B21CC226300315ED3 /* meals */,
+				C193047B21CC226300315ED3 /* mealsList */,
 				C193047821CB9B2900315ED3 /* boss */,
 				C120CD7221CB83F30080EC15 /* login */,
 				C193046921CB913D00315ED3 /* register */,
@@ -352,7 +352,7 @@
 			path = boss;
 			sourceTree = "<group>";
 		};
-		C193047B21CC226300315ED3 /* meals */ = {
+		C193047B21CC226300315ED3 /* mealsList */ = {
 			isa = PBXGroup;
 			children = (
 				C193047C21CC226800315ED3 /* Meals.swift */,
@@ -361,7 +361,7 @@
 				C193048421CC3ECE00315ED3 /* Meal.swift */,
 				C193048A21CCD4B100315ED3 /* MealCell.swift */,
 			);
-			path = meals;
+			path = mealsList;
 			sourceTree = "<group>";
 		};
 		C193048C21CCE81900315ED3 /* addMeal */ = {
