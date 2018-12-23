@@ -56,6 +56,12 @@ class CTMealsDashboard: knListController<CTMealCell, CTMeal> {
         ]
     }
     
+    override func didSelectRow(at indexPath: IndexPath) {
+        let ctr = CTMealDetailCtr()
+        ctr.data = datasource[indexPath.row]
+        push(ctr)
+    }
+    
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         isStatusBarHidden = scrollView.contentOffset.y > 0
         setNeedsStatusBarAppearanceUpdate()

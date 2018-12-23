@@ -34,7 +34,6 @@ class CTFoodDetailCtr: knStaticListController {
         
         ui.addSelectButton(to: view)
         
-        
         tableView.backgroundColor = .clear
         ui.backButton = addFakeBackButton()
     }

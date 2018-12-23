@@ -8,11 +8,6 @@
 
 import Foundation
 
-enum CTMealType: String {
-    case breakfast, lunch, dinner
-}
-
-
 struct CTMeal {
     var image: String?
     var name: String?

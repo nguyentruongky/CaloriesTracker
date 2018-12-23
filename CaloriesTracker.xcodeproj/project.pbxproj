@@ -77,6 +77,10 @@
 		C19304D321CECE8700315ED3 /* KMPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19304D221CECE8700315ED3 /* KMPlaceholderTextView.swift */; };
 		C19304D621CED9CD00315ED3 /* FoodDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19304D521CED9CD00315ED3 /* FoodDetail.swift */; };
 		C19304D821CED9E700315ED3 /* FoodDetail.UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19304D721CED9E700315ED3 /* FoodDetail.UI.swift */; };
+		C19304DB21CF4C3B00315ED3 /* MealDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19304DA21CF4C3B00315ED3 /* MealDetail.swift */; };
+		C19304DD21CF4C7000315ED3 /* MealDetail.UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19304DC21CF4C7000315ED3 /* MealDetail.UI.swift */; };
+		C19304DF21CF501D00315ED3 /* AteFoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19304DE21CF501D00315ED3 /* AteFoodCell.swift */; };
+		C19304E121CF54CF00315ED3 /* MealEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19304E021CF54CF00315ED3 /* MealEnums.swift */; };
 		C2F0A07394AADE51D770740B /* Pods_CaloriesTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B86763ED8DC2891F52136858 /* Pods_CaloriesTracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -155,6 +159,10 @@
 		C19304D221CECE8700315ED3 /* KMPlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMPlaceholderTextView.swift; sourceTree = "<group>"; };
 		C19304D521CED9CD00315ED3 /* FoodDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetail.swift; sourceTree = "<group>"; };
 		C19304D721CED9E700315ED3 /* FoodDetail.UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetail.UI.swift; sourceTree = "<group>"; };
+		C19304DA21CF4C3B00315ED3 /* MealDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetail.swift; sourceTree = "<group>"; };
+		C19304DC21CF4C7000315ED3 /* MealDetail.UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetail.UI.swift; sourceTree = "<group>"; };
+		C19304DE21CF501D00315ED3 /* AteFoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AteFoodCell.swift; sourceTree = "<group>"; };
+		C19304E021CF54CF00315ED3 /* MealEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealEnums.swift; sourceTree = "<group>"; };
 		EE7D234AAD8C0C68B809DD8C /* Pods-CaloriesTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaloriesTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CaloriesTracker/Pods-CaloriesTracker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -277,6 +285,7 @@
 		C120CD5D21CB810B0080EC15 /* features */ = {
 			isa = PBXGroup;
 			children = (
+				C19304D921CF4C3400315ED3 /* mealDetail */,
 				C19304D421CED9C700315ED3 /* food */,
 				C193048C21CCE81900315ED3 /* addMeal */,
 				C193047B21CC226300315ED3 /* mealsList */,
@@ -315,6 +324,7 @@
 				C120CD7B21CB84990080EC15 /* Colors.swift */,
 				C120CD8221CB87200080EC15 /* CTMessage.swift */,
 				C193047621CB95E500315ED3 /* DataBucket.swift */,
+				C19304E021CF54CF00315ED3 /* MealEnums.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -384,6 +394,16 @@
 				C19304D721CED9E700315ED3 /* FoodDetail.UI.swift */,
 			);
 			path = food;
+			sourceTree = "<group>";
+		};
+		C19304D921CF4C3400315ED3 /* mealDetail */ = {
+			isa = PBXGroup;
+			children = (
+				C19304DA21CF4C3B00315ED3 /* MealDetail.swift */,
+				C19304DC21CF4C7000315ED3 /* MealDetail.UI.swift */,
+				C19304DE21CF501D00315ED3 /* AteFoodCell.swift */,
+			);
+			path = mealDetail;
 			sourceTree = "<group>";
 		};
 		DDA226BB38BE9112A6EEAD1D /* Pods */ = {
@@ -535,6 +555,7 @@
 				C120CD7A21CB83F30080EC15 /* LoginWorker.swift in Sources */,
 				C120CD4A21CB80FB0080EC15 /* IntExtension.swift in Sources */,
 				C120CD4421CB80FB0080EC15 /* knGridView.swift in Sources */,
+				C19304E121CF54CF00315ED3 /* MealEnums.swift in Sources */,
 				C19304D321CECE8700315ED3 /* KMPlaceholderTextView.swift in Sources */,
 				C120CD4521CB80FB0080EC15 /* UIColorExtension.swift in Sources */,
 				C193048E21CCE86C00315ED3 /* AddMeal.swift in Sources */,
@@ -559,6 +580,7 @@
 				C193047521CB927500315ED3 /* TermLabel.swift in Sources */,
 				C120CD5021CB80FB0080EC15 /* knController.swift in Sources */,
 				C19304CA21CE23BF00315ED3 /* ShowTimePicker.swift in Sources */,
+				C19304DB21CF4C3B00315ED3 /* MealDetail.swift in Sources */,
 				C120CD4C21CB80FB0080EC15 /* UIViewControllerExtension.swift in Sources */,
 				C120CD7721CB83F30080EC15 /* Login.swift in Sources */,
 				C193048B21CCD4B100315ED3 /* MealCell.swift in Sources */,
@@ -567,6 +589,7 @@
 				C193047321CB91D500315ED3 /* PasswordValidation.swift in Sources */,
 				C120CD4E21CB80FB0080EC15 /* knView.swift in Sources */,
 				C19304C721CE235C00315ED3 /* TimeView.swift in Sources */,
+				C19304DD21CF4C7000315ED3 /* MealDetail.UI.swift in Sources */,
 				C19304D621CED9CD00315ED3 /* FoodDetail.swift in Sources */,
 				C120CD4B21CB80FB0080EC15 /* StartPoint.swift in Sources */,
 				C193048121CC23CE00315ED3 /* ThisWeekMealsView.swift in Sources */,
@@ -576,6 +599,7 @@
 				C120CD4321CB80FB0080EC15 /* UIButtonExtension.swift in Sources */,
 				C120CD5421CB80FB0080EC15 /* NavigationExtension.swift in Sources */,
 				C120CD5B21CB80FB0080EC15 /* DateExtension.swift in Sources */,
+				C19304DF21CF501D00315ED3 /* AteFoodCell.swift in Sources */,
 				C193048321CC246B00315ED3 /* FAPaginationLayout.swift in Sources */,
 				C120CD9121CB874A0080EC15 /* WhistleFactory.swift in Sources */,
 				C120CD5221CB80FB0080EC15 /* knUIMaker.swift in Sources */,

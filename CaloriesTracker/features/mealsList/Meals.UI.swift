@@ -18,7 +18,7 @@ extension CTMealsDashboard {
         func makeHeaderView() -> UIView {
             let bg = UIMaker.makeImageView()
             bg.backgroundColor = UIColor(r: 252, g: 61, b: 86)
-            let greetingLabel = UIMaker.makeLabel(text: "What do you want to eat?",
+            let greetingLabel = UIMaker.makeLabel(text: "What would you like to eat?",
                                                   font: UIFont.main(.medium, size: 15),
                                                   color: .white, alignment: .center)
             let thisWeekLabel = UIMaker.makeLabel(text: "THIS WEEK",
