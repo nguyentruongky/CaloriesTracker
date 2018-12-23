@@ -83,6 +83,8 @@
 		C19304E121CF54CF00315ED3 /* MealEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19304E021CF54CF00315ED3 /* MealEnums.swift */; };
 		C19304E321D02D2900315ED3 /* UserList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19304E221D02D2900315ED3 /* UserList.swift */; };
 		C19304E621D02D5800315ED3 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19304E521D02D5800315ED3 /* UserCell.swift */; };
+		C19304E921D0321D00315ED3 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19304E821D0321D00315ED3 /* UserProfile.swift */; };
+		C19304EB21D0326A00315ED3 /* UserProfile.UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19304EA21D0326A00315ED3 /* UserProfile.UI.swift */; };
 		C2F0A07394AADE51D770740B /* Pods_CaloriesTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B86763ED8DC2891F52136858 /* Pods_CaloriesTracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -167,6 +169,8 @@
 		C19304E021CF54CF00315ED3 /* MealEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealEnums.swift; sourceTree = "<group>"; };
 		C19304E221D02D2900315ED3 /* UserList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserList.swift; sourceTree = "<group>"; };
 		C19304E521D02D5800315ED3 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		C19304E821D0321D00315ED3 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		C19304EA21D0326A00315ED3 /* UserProfile.UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.UI.swift; sourceTree = "<group>"; };
 		EE7D234AAD8C0C68B809DD8C /* Pods-CaloriesTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaloriesTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CaloriesTracker/Pods-CaloriesTracker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -289,6 +293,7 @@
 		C120CD5D21CB810B0080EC15 /* features */ = {
 			isa = PBXGroup;
 			children = (
+				C19304E721D0321400315ED3 /* userProfile */,
 				C19304D921CF4C3400315ED3 /* mealDetail */,
 				C19304D421CED9C700315ED3 /* food */,
 				C193048C21CCE81900315ED3 /* addMeal */,
@@ -418,6 +423,15 @@
 				C19304E521D02D5800315ED3 /* UserCell.swift */,
 			);
 			path = userList;
+			sourceTree = "<group>";
+		};
+		C19304E721D0321400315ED3 /* userProfile */ = {
+			isa = PBXGroup;
+			children = (
+				C19304E821D0321D00315ED3 /* UserProfile.swift */,
+				C19304EA21D0326A00315ED3 /* UserProfile.UI.swift */,
+			);
+			path = userProfile;
 			sourceTree = "<group>";
 		};
 		DDA226BB38BE9112A6EEAD1D /* Pods */ = {
@@ -599,6 +613,7 @@
 				C120CD7721CB83F30080EC15 /* Login.swift in Sources */,
 				C193048B21CCD4B100315ED3 /* MealCell.swift in Sources */,
 				C120CD4721CB80FB0080EC15 /* General.swift in Sources */,
+				C19304EB21D0326A00315ED3 /* UserProfile.UI.swift in Sources */,
 				C120CD5121CB80FB0080EC15 /* OtherExtensions.swift in Sources */,
 				C193047321CB91D500315ED3 /* PasswordValidation.swift in Sources */,
 				C120CD4E21CB80FB0080EC15 /* knView.swift in Sources */,
@@ -620,6 +635,7 @@
 				C120CD9121CB874A0080EC15 /* WhistleFactory.swift in Sources */,
 				C120CD5221CB80FB0080EC15 /* knUIMaker.swift in Sources */,
 				C120CD9021CB874A0080EC15 /* Config.swift in Sources */,
+				C19304E921D0321D00315ED3 /* UserProfile.swift in Sources */,
 				C120CD9221CB874A0080EC15 /* ShoutFactory.swift in Sources */,
 				C193047721CB95E500315ED3 /* DataBucket.swift in Sources */,
 				C120CD5821CB80FB0080EC15 /* ServiceConnector.swift in Sources */,

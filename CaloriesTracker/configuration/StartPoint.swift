@@ -11,7 +11,7 @@ import UIKit
 class StartPoint {
     static var startingController: UIViewController {
 //        return CTBigBoss()
-        let ctr = CTUserList()
+        let ctr = CTUserProfileCtr()
         return wrap(ctr)
     }
 }

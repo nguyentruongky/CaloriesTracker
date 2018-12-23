@@ -46,14 +46,15 @@ final class CTMealCell: knListCell<CTMeal> {
         let view = UIMaker.makeView(background: UIColor.white)
         view.setCorner(radius: 7)
         view.addSubviews(views: imgView, nameLabel, ingredientLabel, calorieLabel, attentionView)
-        view.addConstraints(withFormat: "V:|-\(padding)-[v0]-8-[v1]-8-[v2]-\(padding)-[v3]|",
-                            views: nameLabel, ingredientLabel, calorieLabel, imgView)
+        view.addConstraints(withFormat: "V:|-\(padding)-[v0]-8-[v1]-8-[v2]",
+                            views: nameLabel, ingredientLabel, calorieLabel)
         nameLabel.horizontal(toView: view, space: padding)
         ingredientLabel.horizontal(toView: nameLabel)
         calorieLabel.left(toView: nameLabel)
         
         imgView.horizontal(toView: view)
-        imgView.height(200)
+        imgView.bottom(toView: view)
+        imgView.height(140)
         
         view.addSubview(attentionView)
         attentionView.leftHorizontalSpacing(toView: calorieLabel, space: -4)

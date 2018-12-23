@@ -9,7 +9,6 @@
 import UIKit
 
 class CTMealsDashboard: knListController<CTMealCell, CTMeal> {
-    override var datasource: [CTMeal] { didSet { tableView.reloadData() }}
     let ui = UI()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +18,7 @@ class CTMealsDashboard: knListController<CTMealCell, CTMeal> {
     
     override func setupView() {
         navigationController?.hideBar(true)
-        tableView.estimatedRowHeight = 300
+        rowHeight = 275
         super.setupView()
         tableView.backgroundColor = UIColor.bg
         tableView.setHeader(ui.makeHeaderView(), height: 695)

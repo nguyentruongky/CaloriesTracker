@@ -112,6 +112,7 @@ class UIMaker {
                               alignment: UIStackView.Alignment = .center,
                               space: CGFloat = 16) -> UIStackView {
         let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = axis
         stackView.distribution = distributon
         stackView.alignment = alignment
