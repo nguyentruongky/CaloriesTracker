@@ -24,6 +24,14 @@ class CTMealsDashboard: knListController<CTMealCell, CTMeal> {
         tableView.backgroundColor = UIColor.bg
         tableView.setHeader(ui.makeHeaderView(), height: 695)
         view.addFill(tableView)
+        
+        ui.addButton.addTarget(self, action: #selector(showAddMeal))
+    }
+    
+    @objc func showAddMeal() {
+        let ctr = CTAddMealCtr()
+        ctr.hidesBottomBarWhenPushed = true
+        push(ctr)
     }
     
     override func fetchData() {

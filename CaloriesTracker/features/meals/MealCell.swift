@@ -14,7 +14,7 @@ final class CTMealCell: knListCell<CTMeal> {
         ingredientLabel.text = data?.ingredient
         let mealType = data?.mealType.rawValue.uppercased() ?? ""
         if let calorie = data?.calorie {
-            caloryLabel.text = "\(mealType) - \(calorie) KCAL"
+            calorieLabel.text = "\(mealType) - \(calorie) KCAL"
             if calorie > appSetting.standardCalory {
                 attentionView.backgroundColor = .red
                 messageLabel.text = "High calories"
@@ -31,33 +31,37 @@ final class CTMealCell: knListCell<CTMeal> {
                                       color: UIColor.CT_25)
     let ingredientLabel = UIMaker.makeLabel(font: UIFont.main(size: 12),
                                             color: UIColor.lightGray)
-    let caloryLabel = UIMaker.makeLabel(font: UIFont.main(.bold, size: 12),
+    let calorieLabel = UIMaker.makeLabel(font: UIFont.main(.bold, size: 12),
                                         color: UIColor.lightGray)
-    let messageLabel = UIMaker.makeLabel(font: UIFont.main(),
+    let messageLabel = UIMaker.makeLabel(font: UIFont.main(.bold, size: 12),
                                          color: UIColor.lightGray)
     let attentionView = UIMaker.makeView()
     
     override func setupView() {
         attentionView.addSubviews(views: messageLabel)
-        messageLabel.fill(toView: attentionView, space: UIEdgeInsets(space: padding / 2))
+        messageLabel.horizontal(toView: attentionView, space: 8)
+        messageLabel.centerY(toView: attentionView)
+        
         backgroundColor = UIColor.bg
         let view = UIMaker.makeView(background: UIColor.white)
         view.setCorner(radius: 7)
-        view.addSubviews(views: imgView, nameLabel, ingredientLabel, caloryLabel, attentionView)
+        view.addSubviews(views: imgView, nameLabel, ingredientLabel, calorieLabel, attentionView)
         view.addConstraints(withFormat: "V:|-\(padding)-[v0]-8-[v1]-8-[v2]-\(padding)-[v3]|",
-                            views: nameLabel, ingredientLabel, caloryLabel, imgView)
+                            views: nameLabel, ingredientLabel, calorieLabel, imgView)
         nameLabel.horizontal(toView: view, space: padding)
         ingredientLabel.horizontal(toView: nameLabel)
-        caloryLabel.horizontal(toView: nameLabel)
+        calorieLabel.left(toView: nameLabel)
         
         imgView.horizontal(toView: view)
         imgView.height(200)
-        imgView.setCorner(radius: 7)
         
         view.addSubview(attentionView)
-        attentionView.setCorner(radius: 7)
-        attentionView.topRight(toView: imgView)
-        
+        attentionView.leftHorizontalSpacing(toView: calorieLabel, space: -4)
+        attentionView.centerY(toView: calorieLabel)
+        let attentionHeight: CGFloat = 20
+        attentionView.height(attentionHeight)
+        attentionView.setCorner(radius: attentionHeight / 2)
+
         addSubview(view)
         view.fill(toView: self, space: UIEdgeInsets(left: padding, bottom: padding, right: padding))
     }
