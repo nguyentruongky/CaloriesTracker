@@ -13,8 +13,8 @@ extension CTFoodDetailCtr {
         let headerHeight: CGFloat = 250
         let fixedImgView = UIMaker.makeImageView(contentMode: .scaleAspectFill)
         let imgView = UIMaker.makeImageView(contentMode: .scaleAspectFill)
-        let titleLabel = UIMaker.makeLabel(font: UIFont.main(.bold, size: 17),
-                                           color: UIColor.CT_25)
+        let titleLabel = UIMaker.makeLabel(font: UIFont.main(.bold, size: 20),
+                                           color: UIColor.CT_25, numberOfLines: 0)
         let caloriesLabel = UIMaker.makeLabel(font: UIFont.main(.bold, size: 15),
                                               color: UIColor(r: 252, g: 61, b: 86))
         
@@ -39,7 +39,7 @@ extension CTFoodDetailCtr {
         func makeTitleCell() -> knTableCell {
             let cell = knTableCell()
             cell.addSubviews(views: titleLabel, caloriesLabel)
-            cell.addConstraints(withFormat: "V:|-\(padding / 3)-[v0]-\(padding / 3)-[v1]|", views: titleLabel, caloriesLabel)
+            cell.addConstraints(withFormat: "V:|-\(padding / 2)-[v0]-\(padding / 3)-[v1]|", views: titleLabel, caloriesLabel)
             titleLabel.horizontal(toView: cell, space: padding)
             caloriesLabel.horizontal(toView: titleLabel)
             return cell

@@ -9,17 +9,7 @@
 import UIKit
 class CTFoodDetailCtr: knStaticListController {
     let ui = UI()
-    var data: CTFood? { didSet {
-        guard let data = data else { return }
-        let image = data.image
-        ui.imgView.downloadImage(from: image)
-        ui.fixedImgView.downloadImage(from: image)
-        ui.titleLabel.text = data.name
-        ui.caloriesLabel.text = String(data.calorie)
-        let descriptionCell = ui.makeTextCell(title: "Description", content: data.description)
-        let ingredientCell = ui.makeTextCell(title: "INGREDIENT", content: data.ingredient)
-        datasource.append(contentsOf: [descriptionCell, ingredientCell])
-    }}
+    var data: CTFood?
     
     override func setupView() {
         navigationController?.hideBar(true)
@@ -36,6 +26,22 @@ class CTFoodDetailCtr: knStaticListController {
         
         tableView.backgroundColor = .clear
         ui.backButton = addFakeBackButton()
+        
+        fetchData()
+    }
+    
+    override func fetchData() {
+        guard let data = data else { return }
+        let image = data.image
+        ui.imgView.downloadImage(from: image)
+        ui.fixedImgView.downloadImage(from: image)
+        ui.titleLabel.text = data.name
+        ui.caloriesLabel.text = "Energy: \(data.calories) KCAL"
+        let descriptionCell = ui.makeTextCell(title: "Description", content: data.description)
+        var cells = datasource
+        cells.append(contentsOf: [descriptionCell])
+        datasource = cells
+        view.layoutIfNeeded()
     }
     
     func addFakeBackButton() -> UIButton {

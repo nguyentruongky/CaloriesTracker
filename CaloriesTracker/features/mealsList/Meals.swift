@@ -10,14 +10,13 @@ import UIKit
 
 class CTMealsDashboard: knListController<CTMealCell, CTMeal> {
     let ui = UI()
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupView()
-        fetchData()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.hideBar(true)
     }
     
     override func setupView() {
-        navigationController?.hideBar(true)
         rowHeight = 275
         super.setupView()
         tableView.backgroundColor = UIColor.bg
@@ -25,6 +24,8 @@ class CTMealsDashboard: knListController<CTMealCell, CTMeal> {
         view.addFill(tableView)
         
         ui.addButton.addTarget(self, action: #selector(showAddMeal))
+        
+        fetchData()
     }
     
     @objc func showAddMeal() {

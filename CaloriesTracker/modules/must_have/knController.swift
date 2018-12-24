@@ -13,10 +13,21 @@ class knController : UIViewController {
         view.backgroundColor = .white
     }
     
+    var stateView: knStateView?
+    
     func setupView() { }
     func fetchData() { }
     deinit {
         print("Deinit \(NSStringFromClass(type(of: self)))")
+    }
+    
+    func addState() {
+        if stateView == nil {
+            stateView = knStateView()
+        }
+        if view.subviews.contains(stateView!) { return }
+        view.addSubview(stateView!)
+        stateView!.fill(toView: view)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return statusBarStyle }

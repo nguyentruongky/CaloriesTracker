@@ -12,6 +12,7 @@ extension CTLoginCtr {
     func didLogin(user: CTUser) {
         ui.loginButton.setProcess(visible: false)
         appSetting.user = user
+        appSetting.didLogin = true
         present(CTBigBoss())
     }
     

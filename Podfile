@@ -9,5 +9,6 @@ target 'CaloriesTracker' do
   pod 'Kingfisher'
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
-  pod 'fluid-slider'
+  pod 'Firebase/Database'
+#  pod 'fluid-slider'
 end

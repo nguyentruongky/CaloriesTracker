@@ -9,15 +9,27 @@
 import UIKit
 
 class CTFood {
+    var id: Int?
     var image: String?
     var name: String?
-    var calorie = 0
+    var calories = 0
     var description: String?
     var ingredient: String?
     
     init(image: String, name: String) {
         self.image = image
         self.name = name
+    }
+    
+    init(raw: AnyObject) {
+        id = raw["id"] as? Int
+        name = raw["title"] as? String
+        description = raw["description"] as? String
+        ingredient = raw["ingredient"] as? String
+        calories = raw["calories"] as? Int ?? 0
+        if let images = raw["images"] as? [String] {
+            image = images.first
+        }
     }
 }
 
@@ -36,9 +48,10 @@ class CTFoodCell: knGridCell<CTFood> {
         let view = UIMaker.makeView(background: .white)
         let line = UIMaker.makeHorizontalLine(color: UIColor.CT_222, height: 0.75)
         view.addSubviews(views: imgView, nameLabel, line, selectButton)
-        view.addConstraints(withFormat: "V:|-16-[v0]-16-[v1]-8-[v2][v3]|", views: imgView, nameLabel, line, selectButton)
+        view.addConstraints(withFormat: "V:|[v0]-16-[v1]-8-[v2][v3]|", views: imgView, nameLabel, line, selectButton)
         imgView.horizontal(toView: view)
-        nameLabel.horizontal(toView: view, space: padding)
+        nameLabel.height(24)
+        nameLabel.horizontal(toView: view, space: 8)
         line.horizontal(toView: view)
         selectButton.horizontal(toView: view)
         selectButton.height(36)

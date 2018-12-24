@@ -131,4 +131,6 @@ class knGridController<C: knGridCell<U>, U>: knController, UICollectionViewDeleg
     }
     
     @objc func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize { return headerSize }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {}
 }

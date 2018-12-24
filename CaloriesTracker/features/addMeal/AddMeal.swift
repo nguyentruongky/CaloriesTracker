@@ -10,12 +10,14 @@ import UIKit
 import UIKit.UIGestureRecognizerSubclass
 
 class CTAddMealCtr: knGridController<CTFoodCell, CTFood> {
+    lazy var output = Interactor(controller: self)
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.hideBar(false)
     }
     
     override func setupView() {
+        title = "NEW MEAL"
         hidesBottomBarWhenPushed = true
         navigationController?.hideBar(false)
         addBackButton(tintColor: .CT_25)
@@ -37,20 +39,13 @@ class CTAddMealCtr: knGridController<CTFoodCell, CTFood> {
     }
     
     override func fetchData() {
-        datasource = [
-            CTFood(image: "https://choosemyplate-prod.azureedge.net/sites/default/files/styles/food_gallery_colorbox__800x500_/public/myplate/Arugula%20%28Rocket%29_0.jpeg?itok=W7hPcuE6", name: "Arugula (Rocket)"),
-            CTFood(image: "https://choosemyplate-prod.azureedge.net/sites/default/files/styles/food_gallery_colorbox__800x500_/public/myplate/Bok%20Choy.jpeg?itok=OpdDc2gC", name: "Bok Choy"),
-            CTFood(image: "https://choosemyplate-prod.azureedge.net/sites/default/files/styles/food_gallery_colorbox__800x500_/public/myplate/Broccoli.jpeg?itok=aksUvoGw", name: "Broccoli"),
-            CTFood(image: "https://choosemyplate-prod.azureedge.net/sites/default/files/styles/food_gallery_colorbox__800x500_/public/myplate/Broccoli%20Rabe%20%28Rapini%29.jpeg?itok=E2_zIVDO", name: "Broccoli Rabe (Rapini)"),
-            CTFood(image: "https://choosemyplate-prod.azureedge.net/sites/default/files/styles/food_gallery_colorbox__800x500_/public/myplate/Broccolini.jpeg?itok=1cRTXcvp", name: "Broccolini"),
-            CTFood(image: "https://choosemyplate-prod.azureedge.net/sites/default/files/styles/food_gallery_colorbox__800x500_/public/myplate/Mustard%20Greens.jpeg?itok=AZS-fegE", name: "Mustard Greens"),
-            CTFood(image: "https://choosemyplate-prod.azureedge.net/sites/default/files/styles/food_gallery_colorbox__800x500_/public/myplate/Romaine%20Lettuce.jpeg?itok=9f3yq7xG", name: "Romaine Lettuce"),
-            CTFood(image: "https://choosemyplate-prod.azureedge.net/sites/default/files/styles/food_gallery_colorbox__800x500_/public/myplate/Spinach.jpeg?itok=_zpTGPI6", name: "Spinach"),
-            CTFood(image: "https://choosemyplate-prod.azureedge.net/sites/default/files/styles/food_gallery_colorbox__800x500_/public/myplate/Swiss%20Chard.jpeg?itok=1j5LbikN", name: "Swiss Chard"),
-            CTFood(image: "https://choosemyplate-prod.azureedge.net/sites/default/files/styles/food_gallery_colorbox__800x500_/public/myplate/Watercress.jpeg?itok=QqKi3Xyx", name: "Watercress"),
-        ]
-        
-        
+        addState()
+        stateView?.state = .loading
+        output.getFoods()
+    }
+    
+    func loadMore() {
+        output.getMoreFoods()
     }
     
     // MARK: BOTTOM SHEET
@@ -168,6 +163,13 @@ class CTAddMealCtr: knGridController<CTFoodCell, CTFood> {
         let ctr = CTFoodDetailCtr()
         ctr.data = datasource[indexPath.row]
         push(ctr)
+    }
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard scrollView.contentSize.height > 0 else { return }
+        if scrollView.contentOffset.y > scrollView.contentSize.height - screenHeight - 100 {
+            loadMore()
+        }
     }
 }
 

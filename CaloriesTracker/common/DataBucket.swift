@@ -8,5 +8,5 @@
 
 import Foundation
 enum CTDataBucket: String {
-    case users
+    case users, foods, meals
 }
