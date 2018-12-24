@@ -34,7 +34,8 @@ class CTUserProfileCtr: knListController<CTMealCell, CTMeal> {
         ui.avatarImgView.downloadImage(from: "https://realitybuzz.files.wordpress.com/2010/01/steve_harvey.jpeg")
         ui.nameTextField.text = "Steve Harley"
         ui.emailTextField.text = "steve.harley@gmail.com"
-        
+        ui.mealCountTextField.text = "5"
+        ui.calorieLimitTextField.text = "270"
         datasource = [
             CTMeal(image: "https://imagesvc.timeincapp.com/v3/mm/image?url=https%3A%2F%2Fimg1.cookinglight.timeinc.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2F4_3_horizontal_-_1200x900%2Fpublic%2Fimage%2F2015%2F04%2Fmain%2F1501p77-salmon-lime-hoisin-glaze-crunchy-bok-choy-slaw.jpg%3Fitok%3DXciqhRnH&w=1000&c=sc&poi=face&q=70",
                    name: "Beef Tenderloin with Horseradish Cream and Glazed Carrots",
