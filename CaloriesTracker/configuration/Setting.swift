@@ -10,14 +10,7 @@ import UIKit
 
 var appSetting = AppSetting()
 struct AppSetting {
-    var user: CTUser? 
-    var token: String? {
-        get { return UserDefaults.get(key: "token") as String? }
-        set {
-            didLogin = newValue != nil
-            UserDefaults.set(key: "token", value: newValue)
-        }
-    }
+    var user: CTUser?
     var didLogin: Bool {
         get { return UserDefaults.get(key: "didLogin") as Bool? ?? false }
         set { UserDefaults.set(key: "didLogin", value: newValue) }

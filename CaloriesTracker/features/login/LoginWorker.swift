@@ -7,15 +7,13 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 class CTUser {
     var email: String?
-    var token: String?
     var name: String?
     var userId: String?
     var avatar: String?
-    var cover: String?
-    var phone: String?
     
     init() { }
     init(name: String, avatar: String) {
@@ -24,8 +22,7 @@ class CTUser {
     }
 }
 
-struct snLoginWorker {
-    private let api = "/users/login/"
+struct CTLoginWorker {
     var email: String
     var password: String
     var success: ((CTUser) -> Void)?
@@ -41,14 +38,23 @@ struct snLoginWorker {
     }
     
     func execute() {
-        
+        Auth.auth().signIn(withEmail: email, password: password) { (result, err) in
+            if let error = err {
+                self.fail?(knError(code: "login_fail", message: error.localizedDescription))
+                return
+            }
+            if let fbUser = result?.user {
+                let user = self.mapUser(from: fbUser)
+                self.success?(user)
+            }
+        }
     }
     
-    private func successResponse(returnData: AnyObject) {
-        
-    }
-    
-    private func failResponse(err: knError) {
-        fail?(err)
+    private func mapUser(from fbUser: User) -> CTUser {
+        let user = CTUser()
+        user.name = fbUser.displayName
+        user.email = email
+        user.userId = fbUser.providerID
+        return user
     }
 }

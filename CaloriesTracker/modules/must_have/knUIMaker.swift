@@ -129,7 +129,7 @@ class UIMaker {
     }
 
     static func makeMainButton(title: String,
-                               bgColor: UIColor = UIColor.gray,
+                               bgColor: UIColor = UIColor.main,
                                titleColor: UIColor = UIColor.white,
                                font: UIFont = UIFont.main(.bold, size: 18)) -> UIButton {
         let button = UIButton()

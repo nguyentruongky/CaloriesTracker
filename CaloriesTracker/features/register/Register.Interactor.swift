@@ -12,8 +12,8 @@ extension CTRegisterCtr {
     func didRegister(user: CTUser) {
         ui.registerButton.setProcess(visible: false)
         appSetting.user = user
-        appSetting.token = user.token
-        dismiss()
+        appSetting.didLogin = true
+        present(CTBigBoss())
     }
     
     func didRegisterFail(_ err: knError) {
@@ -25,7 +25,7 @@ extension CTRegisterCtr {
 extension CTRegisterCtr {
     class Interactor {
         func register(validation: Validation) {
-            snRegisterWorker(name: validation.name!,
+            CTRegisterWorker(name: validation.name!,
                              email: validation.email!,
                              password: validation.password!,
                              success: output?.didRegister,
@@ -57,12 +57,8 @@ extension CTRegisterCtr {
             
             let passwordCheck = CTPasswordValidation()
             if passwordCheck.checkCharCount(password!) == false {
-                return (false, "Password has at least 8 characters") }
-            if passwordCheck.checkUpperCase(password!) == false {
-                return (false, "Password has at least 1 Uppercase character") }
-            if passwordCheck.checkNumberDigit(password!) == false {
-                return (false, "Password has at least 1 digit") }
-            
+                return (false, "Password has at least 6 characters")
+            }
             return (true, nil)
         }
     }

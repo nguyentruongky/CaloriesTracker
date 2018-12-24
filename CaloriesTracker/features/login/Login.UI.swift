@@ -20,7 +20,7 @@ extension CTLoginCtr {
                                               titleColor: UIColor.CT_163_169_175,
                                               font: UIFont.main(size: 13))
         let closeButton = UIMaker.makeButton(image: UIImage(named: "close"))
-        let loginButton = UIMaker.makeMainButton(title: "SIGN IN")
+        let loginButton = UIMaker.makeMainButton(title: "LOG IN")
         lazy var registerButton = makeRegisterButton()
         func makeRegisterButton() -> UIButton {
             let button = UIMaker.makeButton(title: "Don't have an account? Join Us",
@@ -35,6 +35,8 @@ extension CTLoginCtr {
         func setupView() -> [knTableCell] {
             emailTextField.keyboardType = .emailAddress
             emailTextField.autocapitalizationType = .none
+            emailTextField.autocorrectionType = .no
+            
             passwordTextField.isSecureTextEntry = true
             revealButton = passwordTextField.setView(.right,
                                                      image: UIImage(named: "show_pass_inactive"))

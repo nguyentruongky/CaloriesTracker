@@ -12,8 +12,7 @@ extension CTLoginCtr {
     func didLogin(user: CTUser) {
         ui.loginButton.setProcess(visible: false)
         appSetting.user = user
-        appSetting.token = user.token
-        dismiss()
+        present(CTBigBoss())
     }
     
     func didLoginFail(err: knError) {
@@ -26,7 +25,7 @@ extension CTLoginCtr {
 extension CTLoginCtr {
     class Interactor {
         func login(email: String, password: String) {
-            snLoginWorker(email: email, password: password,
+            CTLoginWorker(email: email, password: password,
                           success: output?.didLogin,
                           fail: output?.didLoginFail).execute()
         }

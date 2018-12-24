@@ -9,7 +9,7 @@
 import Foundation
 import FirebaseAuth
 
-struct snRegisterWorker {
+struct CTRegisterWorker {
     var name: String
     var email: String
     var password: String

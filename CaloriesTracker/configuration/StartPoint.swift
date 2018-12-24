@@ -11,7 +11,11 @@ import UIKit
 class StartPoint {
     static var startingController: UIViewController {
 //        return CTBigBoss()
-        let ctr = CTMealsDashboard()
+        if appSetting.didLogin {
+            return CTBigBoss()
+        }
+        
+        let ctr = CTLoginCtr()
         return wrap(ctr)
     }
 }

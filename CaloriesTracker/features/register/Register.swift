@@ -19,17 +19,20 @@ class CTRegisterCtr: knStaticListController {
                                           style: .done, target: self, action: #selector(close))
         navigationController?.hideBar(false)
         navigationItem.leftBarButtonItem = closeButton
+        contentInset = UIEdgeInsets(top: padding)
         super.setupView()
         datasource = ui.setupView()
         tableView.setFooter(ui.makeFooter(), height: 200)
         view.addSubviews(views: tableView)
-        tableView.fill(toView: view, space: UIEdgeInsets(top: 60))
+        tableView.fill(toView: view)
         
         ui.registerButton.addTarget(self, action: #selector(register))
         ui.signinButton.addTarget(self, action: #selector(showSignin))
         ui.nameTextField.delegate = self
         ui.emailTextField.delegate = self
         ui.passwordTextField.delegate = self
+        
+        ui.nameTextField.becomeFirstResponder()
     }
     
     @objc func register() {

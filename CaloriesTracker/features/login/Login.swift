@@ -15,7 +15,7 @@ class CTLoginCtr: knStaticListController {
 
     override func setupView() {
         super.setupView()
-        title = "Sign in"
+        title = "LOG IN"
         navigationController?.hideBar(false)
         view.addSubviews(views: tableView)
         tableView.fill(toView: view)
@@ -28,6 +28,7 @@ class CTLoginCtr: knStaticListController {
         
         ui.emailTextField.delegate = self
         ui.passwordTextField.delegate = self
+        ui.emailTextField.becomeFirstResponder()
     }
     
     @objc func dismissScreen() { dismiss() }
@@ -58,17 +59,18 @@ class CTLoginCtr: knStaticListController {
 }
 
 extension CTLoginCtr: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        tableView.isScrollEnabled = false
-        let bottomOffset = CGPoint(x: 0, y: 340)
-        tableView.setContentOffset(bottomOffset, animated: true)
-        run({ [weak self] in self?.tableView.isScrollEnabled = true }, after: 1)
-    }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let isEmailEmpty = ui.emailTextField.text?.isEmpty == true
+        let isPasswordEmpty = ui.passwordTextField.text?.isEmpty == true
+        
+        if !isEmailEmpty && !isPasswordEmpty {
+            login()
+            return true
+        }
+        
         if textField == ui.emailTextField {
             ui.passwordTextField.becomeFirstResponder()
-        } else {
+        } else if textField == ui.passwordTextField {
             login()
         }
         
@@ -76,12 +78,17 @@ extension CTLoginCtr: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        guard textField != ui.passwordTextField else { return }
+        
+        var isValid = textField.text?.isEmpty == false
         if textField == ui.emailTextField {
-            if ui.emailTextField.text?.isValidEmail() == true {
-                textField.setView(.right, image: UIImage(named: "checked") ?? UIImage())
-            } else {
-                textField.rightView = nil
-            }
+            isValid = textField.text?.isValidEmail() == true
+        }
+        
+        if isValid {
+            textField.setView(.right, image: UIImage(named: "checked") ?? UIImage())
+        } else {
+            textField.rightView = nil
         }
     }
 }

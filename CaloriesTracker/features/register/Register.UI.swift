@@ -85,7 +85,7 @@ extension CTRegisterCtr {
         
         @objc func showPassword() {
             passwordTextField.toggleSecure()
-            let image = passwordTextField.isSecureTextEntry ? UIImage(named: "show_pass_active") : UIImage(named: "show_pass_inactive")
+            let image = passwordTextField.isSecureTextEntry ? UIImage(named: "show_pass_inactive") : UIImage(named: "show_pass_active")
             revealButton.setImage(image, for: .normal)
         }
         
