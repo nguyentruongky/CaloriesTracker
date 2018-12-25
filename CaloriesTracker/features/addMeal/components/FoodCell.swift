@@ -38,6 +38,8 @@ class CTFoodCell: knGridCell<CTFood> {
         imgView.downloadImage(from: data?.image)
         nameLabel.text = data?.name
     }}
+    weak var parent: CTAddMealCtr?
+    
     let imgView = UIMaker.makeImageView(contentMode: .scaleAspectFill)
     let nameLabel = UIMaker.makeLabel(font: UIFont.main(size: 13),
                                       color: UIColor.CT_25, alignment: .center)
@@ -60,6 +62,8 @@ class CTFoodCell: knGridCell<CTFood> {
         addSubviews(views: view)
         view.fill(toView: self, space: UIEdgeInsets(space: 8))
         view.setBorder(0.5, color: UIColor.CT_222)
+        
+        selectButton.addTarget(self, action: #selector(selectThisFood))
     }
     
     func makeButton(_ text: String) -> UIButton {
@@ -69,4 +73,8 @@ class CTFoodCell: knGridCell<CTFood> {
                            borderWidth: 1, borderColor: .lightGray)
     }
     
+    @objc func selectThisFood() {
+        guard let data = data else { return }
+        parent?.selectFood(data: data)
+    }
 }

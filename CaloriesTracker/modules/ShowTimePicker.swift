@@ -32,6 +32,8 @@ class knTimeSlot: knGridCell<String> {
 }
 
 class knTimePicker: knGridView<knTimeSlot, String> {
+    var selectedIndex: IndexPath?
+    
     override func setupView() {
         lineSpacing = padding
         layout = UICollectionViewFlowLayout()
@@ -48,6 +50,7 @@ class knTimePicker: knGridView<knTimeSlot, String> {
     override func didSelectItem(at indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
         cell?.isSelected = true
+        selectedIndex = indexPath
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {

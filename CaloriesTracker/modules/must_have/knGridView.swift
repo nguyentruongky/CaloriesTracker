@@ -37,6 +37,9 @@ class knGridView<C: knGridCell<U>, U>: knView, UICollectionViewDelegate, UIColle
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { return datasource.count }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return getCell(at: indexPath)
+    }
+    func getCell(at indexPath: IndexPath) -> C {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! C
         cell.data = datasource[indexPath.row]
         return cell
@@ -102,6 +105,9 @@ class knGridController<C: knGridCell<U>, U>: knController, UICollectionViewDeleg
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { return datasource.count }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return getCell(at: indexPath)
+    }
+    func getCell(at indexPath: IndexPath) -> C {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! C
         cell.data = datasource[indexPath.row]
         return cell

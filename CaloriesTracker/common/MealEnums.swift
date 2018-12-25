@@ -8,7 +8,7 @@
 
 import UIKit
 enum CTMealType: String {
-    case breakfast, lunch, dinner
+    case breakfast, lunch, dinner, midnight_snack 
 }
 
 enum CTMealTypeColor: String {

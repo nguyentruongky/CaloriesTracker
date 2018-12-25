@@ -90,6 +90,8 @@
 		C19304F321D0ABE700315ED3 /* StateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19304F221D0ABE700315ED3 /* StateView.swift */; };
 		C19304F521D0AD0C00315ED3 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = C19304F421D0AD0C00315ED3 /* loading.gif */; };
 		C19304F821D0ADDD00315ED3 /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19304F721D0ADDD00315ED3 /* UIImage+Gif.swift */; };
+		C19304FA21D0CECF00315ED3 /* SelectedOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19304F921D0CECF00315ED3 /* SelectedOptionsView.swift */; };
+		C19304FC21D17AA300315ED3 /* AddMealWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19304FB21D17AA300315ED3 /* AddMealWorker.swift */; };
 		C2F0A07394AADE51D770740B /* Pods_CaloriesTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B86763ED8DC2891F52136858 /* Pods_CaloriesTracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -181,6 +183,8 @@
 		C19304F221D0ABE700315ED3 /* StateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateView.swift; sourceTree = "<group>"; };
 		C19304F421D0AD0C00315ED3 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
 		C19304F721D0ADDD00315ED3 /* UIImage+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
+		C19304F921D0CECF00315ED3 /* SelectedOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedOptionsView.swift; sourceTree = "<group>"; };
+		C19304FB21D17AA300315ED3 /* AddMealWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMealWorker.swift; sourceTree = "<group>"; };
 		EE7D234AAD8C0C68B809DD8C /* Pods-CaloriesTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaloriesTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CaloriesTracker/Pods-CaloriesTracker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -403,6 +407,7 @@
 				C19304F621D0AD7E00315ED3 /* components */,
 				C19304F021D0988C00315ED3 /* AddMeal.Interactor.swift */,
 				C193048D21CCE86C00315ED3 /* AddMeal.swift */,
+				C19304FB21D17AA300315ED3 /* AddMealWorker.swift */,
 				C19304EE21D093BA00315ED3 /* GetFoodsWorker.swift */,
 			);
 			path = addMeal;
@@ -448,11 +453,12 @@
 		C19304F621D0AD7E00315ED3 /* components */ = {
 			isa = PBXGroup;
 			children = (
-				C19304C421CE1DEE00315ED3 /* MealOptionView.swift */,
-				C193048F21CCEC5700315ED3 /* FoodCell.swift */,
-				C19304C621CE235C00315ED3 /* TimeView.swift */,
 				C19304CE21CEC96700315ED3 /* CalorieLimitView.swift */,
+				C193048F21CCEC5700315ED3 /* FoodCell.swift */,
+				C19304C421CE1DEE00315ED3 /* MealOptionView.swift */,
 				C19304D021CECE1600315ED3 /* NoteView.swift */,
+				C19304C621CE235C00315ED3 /* TimeView.swift */,
+				C19304F921D0CECF00315ED3 /* SelectedOptionsView.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -600,6 +606,7 @@
 				C120CD8D21CB874A0080EC15 /* WhisperView.swift in Sources */,
 				C120CD4821CB80FB0080EC15 /* UITextFieldExtension.swift in Sources */,
 				C193049021CCEC5700315ED3 /* FoodCell.swift in Sources */,
+				C19304FA21D0CECF00315ED3 /* SelectedOptionsView.swift in Sources */,
 				C120CD4621CB80FB0080EC15 /* UISearchBarExtension.swift in Sources */,
 				C120CD7C21CB84990080EC15 /* Colors.swift in Sources */,
 				C120CD7A21CB83F30080EC15 /* LoginWorker.swift in Sources */,
@@ -625,6 +632,7 @@
 				C19304EF21D093BA00315ED3 /* GetFoodsWorker.swift in Sources */,
 				C120CD4921CB80FB0080EC15 /* UIApplicationExtension.swift in Sources */,
 				C120CD8C21CB874A0080EC15 /* WhisperFactory.swift in Sources */,
+				C19304FC21D17AA300315ED3 /* AddMealWorker.swift in Sources */,
 				C120CD8321CB87200080EC15 /* CTMessage.swift in Sources */,
 				C120CD5521CB80FB0080EC15 /* UIFontExtension.swift in Sources */,
 				C193047D21CC226800315ED3 /* Meals.swift in Sources */,

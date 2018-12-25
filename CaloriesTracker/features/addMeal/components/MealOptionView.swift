@@ -17,9 +17,15 @@ class CTStepCell: knGridCell<UIView> {
 }
 
 class CTMealOptionView: knGridView<CTStepCell, UIView> {
+    var meal = CTMeal()
+    
     let panView = UIMaker.makeView(background: UIColor(value: 200))
     weak var delegate: CTBottomSheetDelegate?
-    
+    let mealTime = CTMealTimeView()
+    let calorieLimit = CTCalorieLimitView()
+    let noteView = CTNoteView()
+    let finalView = CTSelectedOptionsView()
+
     override func setupView() {
         layout = UICollectionViewFlowLayout()
         layout!.scrollDirection = .horizontal
@@ -44,33 +50,47 @@ class CTMealOptionView: knGridView<CTStepCell, UIView> {
         clipsToBounds = true
         collectionView.isScrollEnabled = false
         
-        let mealTime = CTMealTimeView()
         mealTime.saveButton.addTarget(self, action: #selector(showCalorieLimit))
         
-        let calorieLimit = CTCalorieLimitView()
+        calorieLimit.parent = self
         calorieLimit.saveButton.addTarget(self, action: #selector(showNote))
         
-        let noteView = CTNoteView()
         noteView.saveButton.addTarget(self, action: #selector(hideBottomSheet))
+        noteView.parent = self
+        
+        finalView.parent = self
         
         datasource = [
-            mealTime, calorieLimit, noteView
+            mealTime, calorieLimit, noteView, finalView
         ]
     }
     
     @objc func showCalorieLimit() {
         collectionView.scrollToItem(at: IndexPath(row: 1, section: 0), at: .left, animated: true)
+        meal.date = mealTime.date
+        meal.time = mealTime.time
     }
     
     @objc func showNote() {
         collectionView.scrollToItem(at: IndexPath(row: 2, section: 0), at: .left, animated: true)
+        meal.calorie = Int(calorieLimit.slider.value)
     }
     
     @objc func hideBottomSheet() {
+        meal.note = noteView.noteTextView.text
         delegate?.hideSheet()
+        finalView.format(meal: meal)
+        collectionView.scrollToItem(at: IndexPath(row: 3, section: 0), at: .left, animated: true)
+        hideKeyboard()
+    }
+    
+    func saveMeal() {
+        delegate?.saveMeal()
     }
 }
 
 protocol CTBottomSheetDelegate: class {
     func hideSheet()
+    
+    func saveMeal()
 }

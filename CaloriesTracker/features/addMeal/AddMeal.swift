@@ -9,7 +9,7 @@
 import UIKit
 import UIKit.UIGestureRecognizerSubclass
 
-class CTAddMealCtr: knGridController<CTFoodCell, CTFood> {
+class CTAddMealCtr: knGridController<CTFoodCell, CTFood>, CTBottomSheetDelegate {
     lazy var output = Interactor(controller: self)
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -32,10 +32,12 @@ class CTAddMealCtr: knGridController<CTFoodCell, CTFood> {
         collectionView.backgroundColor = UIColor.bg
         view.addSubviews(views: collectionView)
         collectionView.fill(toView: view)
-        collectionView.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 76, right: 8)
+        collectionView.contentInset = UIEdgeInsets(top: 8, left: 8,
+                                                   bottom: sheetHeight - fitBottomHeight,
+                                                   right: 8)
         setupBottomView()
-        
         fetchData()
+        animateTransitionIfNeeded(to: .open, duration: 0.35)
     }
     
     override func fetchData() {
@@ -50,15 +52,15 @@ class CTAddMealCtr: knGridController<CTFoodCell, CTFood> {
     
     // MARK: BOTTOM SHEET
     
-    let blackView = UIMaker.makeView(background: UIColor.black.alpha(0.5))
-    let bottomView = CTMealOptionView()
-    var popupOffset: CGFloat { return bottomView.frame.origin.y }
+    let blackView = UIMaker.makeButton(background: UIColor.black.alpha(0.5))
+    let mealOptionView = CTMealOptionView()
+    var popupOffset: CGFloat { return mealOptionView.frame.origin.y }
     private var animationProgress: CGFloat = 0
     private var bottomConstraint = NSLayoutConstraint()
     var transitionAnimator = UIViewPropertyAnimator()
     private var currentState: State = .closed
-    let fitBottomHeight: CGFloat = 400
-    let sheetHeight: CGFloat = 500
+    let fitBottomHeight: CGFloat = 200
+    let sheetHeight: CGFloat = 380
     
     private lazy var tapRecognizer: UITapGestureRecognizer = {
         let recognizer = UITapGestureRecognizer()
@@ -67,20 +69,21 @@ class CTAddMealCtr: knGridController<CTFoodCell, CTFood> {
     }()
     
     private func setupBottomView() {
-        bottomView.delegate = self
-        view.addSubview(bottomView)
-        bottomView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        bottomView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        bottomConstraint = bottomView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: fitBottomHeight)
+        mealOptionView.delegate = self
+        view.addSubview(mealOptionView)
+        mealOptionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        mealOptionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        bottomConstraint = mealOptionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: fitBottomHeight)
         bottomConstraint.isActive = true
-        bottomView.heightAnchor.constraint(equalToConstant: sheetHeight).isActive = true
+        mealOptionView.heightAnchor.constraint(equalToConstant: sheetHeight).isActive = true
         
-        bottomView.panView.addGestureRecognizer(InstantPanGestureRecognizer(target: self, action: #selector(popupViewPanned)))
-        bottomView.panView.addGestureRecognizer(tapRecognizer)
+        mealOptionView.panView.addGestureRecognizer(InstantPanGestureRecognizer(target: self, action: #selector(popupViewPanned)))
+        mealOptionView.panView.addGestureRecognizer(tapRecognizer)
         
-        view.insertSubview(blackView, belowSubview: bottomView)
+        view.insertSubview(blackView, belowSubview: mealOptionView)
         blackView.fill(toView: view)
         blackView.alpha = 0
+        blackView.addTarget(self, action: #selector(hideSheet))
     }
     
     @objc private func popupViewTapped(recognizer: UITapGestureRecognizer) {
@@ -93,13 +96,13 @@ class CTAddMealCtr: knGridController<CTFoodCell, CTFood> {
             guard let `self` = self else { return }
             switch state {
             case .open:
-                self.bottomView.layer.cornerRadius = 20
-                self.bottomView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+                self.mealOptionView.layer.cornerRadius = 20
+                self.mealOptionView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
                 self.bottomConstraint.constant = 0
                 self.blackView.alpha = 1
                 
             case .closed:
-                self.bottomView.layer.cornerRadius = 0
+                self.mealOptionView.layer.cornerRadius = 0
                 self.bottomConstraint.constant = self.fitBottomHeight
                 self.blackView.alpha = 0
             }
@@ -133,13 +136,13 @@ class CTAddMealCtr: knGridController<CTFoodCell, CTFood> {
             animateTransitionIfNeeded(to: currentState.opposite, duration: 0.35)
             transitionAnimator.pauseAnimation()
         case .changed:
-            let translation = recognizer.translation(in: bottomView)
+            let translation = recognizer.translation(in: mealOptionView)
             var fraction = -translation.y / popupOffset
             if currentState == .open { fraction *= -1 }
             if transitionAnimator.isReversed { fraction *= -1 }
             transitionAnimator.fractionComplete = fraction + animationProgress
         case .ended:
-            let yVelocity = recognizer.velocity(in: bottomView).y
+            let yVelocity = recognizer.velocity(in: mealOptionView).y
             let shouldClose = yVelocity > 0
             if yVelocity == 0 {
                 transitionAnimator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
@@ -165,17 +168,29 @@ class CTAddMealCtr: knGridController<CTFoodCell, CTFood> {
         push(ctr)
     }
     
+    override func getCell(at indexPath: IndexPath) -> CTFoodCell {
+        let cell = super.getCell(at: indexPath)
+        cell.parent = self
+        return cell
+    }
+    
+    func selectFood(data: CTFood) {
+        mealOptionView.meal.foods.append(data)
+    }
+    
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard scrollView.contentSize.height > 0 else { return }
         if scrollView.contentOffset.y > scrollView.contentSize.height - screenHeight - 100 {
             loadMore()
         }
     }
-}
-
-extension CTAddMealCtr: CTBottomSheetDelegate {
-    func hideSheet() {
+    
+    @objc func hideSheet() {
         animateTransitionIfNeeded(to: currentState.opposite, duration: 0.35)
+    }
+    
+    func saveMeal() {
+        
     }
 }
 

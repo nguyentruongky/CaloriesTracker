@@ -53,6 +53,7 @@ class knDateCell: knGridCell<knDate> {
 
 class knDateView: knGridView<knDateCell, knDate> {
     var selectedIndex: IndexPath?
+    var selectAction: (() -> Void)?
     
     override func setupView() {
         lineSpacing = padding
@@ -82,6 +83,7 @@ class knDateView: knGridView<knDateCell, knDate> {
         cell?.isSelected = true
         
         selectedIndex = indexPath
+        selectAction?()
     }
 }
 

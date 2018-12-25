@@ -67,39 +67,47 @@ extension CTUserProfileCtr {
             detailView.right(toView: view, space: -padding)
             detailView.centerY(toView: avatarImgView)
 
-            figureView.verticalSpacing(toView: avatarImgView, space: padding / 1.7)
-            figureView.horizontal(toView: view, space: padding)
+            figureView.horizontal(toView: view)
+            figureView.verticalSpacing(toView: avatarImgView, space: padding)
+            figureView.verticalSpacingDown(toView: mealView)
             
             mealView.horizontal(toView: view)
             mealView.bottom(toView: view)
             
-            view.height(370)
+            view.height(350)
             return view
         }
         
         private func makeFigureView() -> UIView {
             func makeView(contentView: UIView, title: String) -> UIView {
-                let titleView = UIMaker.makeLabel(text: title, font: UIFont.main(),
+                let titleView = UIMaker.makeLabel(text: title, font: UIFont.main(size: 12),
                                                   color: .CT_170, alignment: .center)
 
                 let view = UIMaker.makeView()
                 view.addSubviews(views: contentView, titleView)
-                view.addConstraints(withFormat: "V:|[v0]-8-[v1]|", views: contentView, titleView)
+                view.addConstraints(withFormat: "V:|[v0]-2-[v1]|", views: contentView, titleView)
                 contentView.horizontal(toView: view)
                 titleView.horizontal(toView: view)
                 return view
             }
-            let view = UIMaker.makeView(background: UIColor(value: 250))
+            let verticalLine = UIMaker.makeVerticalLine(color: UIColor.CT_222, width: 1)
+            let line = UIMaker.makeHorizontalLine(color: UIColor.CT_222, height: 1)
+            let view = UIMaker.makeView(background: UIColor.white)
             let mealView = makeView(contentView: mealCountTextField, title: "meals")
             let caloriesView = makeView(contentView: calorieLimitTextField, title: "KCAL/meal")
 
-            view.addSubviews(views: mealView, caloriesView)
+            view.addSubviews(views: mealView, caloriesView, line, verticalLine)
             view.addConstraints(withFormat: "H:|[v0][v1]|", views: mealView, caloriesView)
             mealView.vertical(toView: view, space: padding / 3)
             caloriesView.vertical(toView: mealView)
             caloriesView.width(toView: mealView)
             
-            view.setCorner(radius: 15)
+            verticalLine.left(toView: caloriesView)
+            verticalLine.vertical(toView: view)
+            
+            line.horizontal(toView: view)
+            line.top(toView: view)
+            
             return view
         }
     }
