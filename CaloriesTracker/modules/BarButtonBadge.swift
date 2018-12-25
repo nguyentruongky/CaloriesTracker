@@ -20,6 +20,12 @@ class knBarButtonNumber: UIBarButtonItem {
         }
     }
     
+    convenience init(view: UIView) {
+        self.init()
+        customView = view
+        setupView()
+    }
+    
     func setupView() {
         badgeLabel.frame = CGRect(x: badgeOriX, y: badgeOriY, width: 20, height: 20)
         badgeLabel.textColor = badgeTextColor
@@ -28,13 +34,10 @@ class knBarButtonNumber: UIBarButtonItem {
         badgeLabel.textAlignment = .center
         badgeLabel.isHidden = true
         
-        customView = UIImageView(image: image)
-        customView?.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
-        customView?.backgroundColor = .clear
         customView?.addSubview(badgeLabel)
     }
     
-    var badgeColor = UIColor.red { didSet { refreshBadge()}}
+    var badgeColor = UIColor.red { didSet { refreshBadge() }}
     var badgeTextColor = UIColor.white { didSet { refreshBadge() }}
     var badgeFont = UIFont.systemFont(ofSize: 12) { didSet { refreshBadge() }}
     var badgePadding: CGFloat = 3 { didSet { refreshBadge() }}
