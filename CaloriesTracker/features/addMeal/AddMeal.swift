@@ -11,6 +11,8 @@ import UIKit.UIGestureRecognizerSubclass
 
 class CTAddMealCtr: knGridController<CTFoodCell, CTFood>, CTBottomSheetDelegate {
     lazy var output = Interactor(controller: self)
+    lazy var cartButton = knBarButtonNumber(image: UIImage(named: "cart"), style: .done, target: self, action: #selector(showCheckout))
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.hideBar(false)
@@ -20,6 +22,9 @@ class CTAddMealCtr: knGridController<CTFoodCell, CTFood>, CTBottomSheetDelegate 
         title = "NEW MEAL"
         hidesBottomBarWhenPushed = true
         navigationController?.hideBar(false)
+        navigationItem.rightBarButtonItem = cartButton
+        cartButton.setupView()
+        
         addBackButton(tintColor: .CT_25)
 
         layout = UICollectionViewFlowLayout()
@@ -50,6 +55,10 @@ class CTAddMealCtr: knGridController<CTFoodCell, CTFood>, CTBottomSheetDelegate 
         output.getMoreFoods()
     }
     
+    @objc func showCheckout() {
+        
+    }
+    
     // MARK: BOTTOM SHEET
     
     let blackView = UIMaker.makeButton(background: UIColor.black.alpha(0.5))
@@ -59,14 +68,9 @@ class CTAddMealCtr: knGridController<CTFoodCell, CTFood>, CTBottomSheetDelegate 
     private var bottomConstraint = NSLayoutConstraint()
     var transitionAnimator = UIViewPropertyAnimator()
     private var currentState: State = .closed
-    let fitBottomHeight: CGFloat = 200
-    let sheetHeight: CGFloat = 380
-    
-    private lazy var tapRecognizer: UITapGestureRecognizer = {
-        let recognizer = UITapGestureRecognizer()
-        recognizer.addTarget(self, action: #selector(popupViewTapped))
-        return recognizer
-    }()
+    let fitBottomHeight: CGFloat = screenHeight * 0.75 - 100
+    let sheetHeight: CGFloat = screenHeight * 0.75
+    lazy var tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(popupViewTapped))
     
     private func setupBottomView() {
         mealOptionView.delegate = self
@@ -79,6 +83,7 @@ class CTAddMealCtr: knGridController<CTFoodCell, CTFood>, CTBottomSheetDelegate 
         
         mealOptionView.panView.addGestureRecognizer(InstantPanGestureRecognizer(target: self, action: #selector(popupViewPanned)))
         mealOptionView.panView.addGestureRecognizer(tapRecognizer)
+        
         
         view.insertSubview(blackView, belowSubview: mealOptionView)
         blackView.fill(toView: view)
@@ -176,6 +181,7 @@ class CTAddMealCtr: knGridController<CTFoodCell, CTFood>, CTBottomSheetDelegate 
     
     func selectFood(data: CTFood) {
         mealOptionView.meal.foods.append(data)
+        cartButton.increase(amount: 1)
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {

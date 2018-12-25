@@ -13,7 +13,7 @@ extension CTMealsDashboard {
         let thisWeekView = ThisWeekView()
         let mealLabel = UIMaker.makeLabel(text: "PREVIOUS MEALS",
                                               font: UIFont.main(.bold, size: 15), color: .CT_25)
-        let addButton = UIMaker.makeMainButton(title: "Add meal", bgColor: UIColor.green)
+        let addButton = UIMaker.makeMainButton(title: "Add meals", bgColor: .white, titleColor: .main)
 
         func makeHeaderView() -> UIView {
             let bg = UIMaker.makeImageView()
