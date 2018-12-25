@@ -12,13 +12,28 @@ enum knState: String {
     case success
     case noInternet
     case error, empty, loading
+    case unknown
 }
 
 class knOffineView: knView {
     var retry: (() -> Void)?
 }
 
+
+
 class knStateView: knView {
+    struct StateContent {
+        var icon: UIImage?
+        var title: String?
+        var content: String?
+        init(iconName: String?, title: String?, content: String?) {
+            if let name = iconName {
+                icon = UIImage(named: name)
+            }
+            self.title = title
+            self.content = content
+        }
+    }
     private var currentView: UIView?
     var retry: (() -> Void)?
     private var customViews = [knState: UIView]()
@@ -27,10 +42,25 @@ class knStateView: knView {
         super.init(coder: aDecoder)
         setupView()
     }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
+    }
+    
+    private var stateContents: [knState: StateContent] = [
+        knState.noInternet: StateContent(iconName: "no_internet",
+                                         title: "Oops, no connection",
+                                         content: "The internet connection appears to be offline."),
+        knState.error: StateContent(iconName: "generic_error",
+                                         title: "There's an error",
+                                         content: "There was an error. Please try again later."),
+        knState.empty: StateContent(iconName: "empty",
+                                         title: "No content",
+                                         content: "I am lonly here"),
+    ]
+    
+    func setStateContent(state: knState, imageName: String?, title: String?, content: String?) {
+        stateContents[state] = StateContent(iconName: imageName, title: title, content: content)
     }
     
     private func set(icon: UIImage?, title: String?, content: String?) {
@@ -54,7 +84,7 @@ class knStateView: knView {
         customViews[state] = view
     }
     
-    func getView(for state: knState) -> UIView? {
+    private func getView(for state: knState) -> UIView? {
         return customViews[state]
     }
     
@@ -65,7 +95,7 @@ class knStateView: knView {
         self.state = state
     }
     
-    var state = knState.success {
+    var state = knState.unknown {
         didSet {
             guard state != oldValue else { return }
             currentView?.removeFromSuperview()
@@ -76,27 +106,19 @@ class knStateView: knView {
                 return
             }
             
+            if let stateData = stateContents[state] {
+                set(icon: stateData.icon, title: stateData.title, content: stateData.content)
+                return
+            }
+            
             switch state {
             case .success:
                 removeFromSuperview()
                 
-            case .noInternet:
-                set(icon: UIImage(named: "empty"),
-                    title: "Oops, no connection",
-                    content: "The internet connection appears to be offline.")
-                
-            case .error:
-                set(icon: UIImage(named: "generic_error"),
-                    title: "There's an error",
-                    content: "There was an error. Please try again later.")
-                
-            case .empty:
-                set(icon: UIImage(named: "empty"),
-                    title: "No content",
-                    content: "I am lonly here")
-                
             case .loading:
                 imgView.loadGif(name: "loading")
+                
+            default: break
             }
         }
     }
