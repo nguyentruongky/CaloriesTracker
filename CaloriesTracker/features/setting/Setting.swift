@@ -6,4 +6,16 @@
 //  Copyright © 2018 Ky Nguyen. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class CTSettingCtr: knStaticListController {
+    let ui = UI()
+    override func setupView() {
+        title = "SETTINGS"
+        rowHeight = 66
+        super.setupView()
+        view.addFill(tableView)
+        contentInset = UIEdgeInsets(top: 16)
+        datasource = ui.setupView()
+    }
+}

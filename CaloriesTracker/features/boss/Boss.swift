@@ -11,7 +11,7 @@ import UIKit
 var boss: CTBigBoss?
 class CTBigBoss: UITabBarController, UITabBarControllerDelegate {
     let mealsCtr = CTMealsDashboard()
-    let settingCtr = UIViewController()
+    let settingCtr = CTSettingCtr()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +36,6 @@ class CTBigBoss: UITabBarController, UITabBarControllerDelegate {
         
         tabBar.barTintColor = UIColor(r: 252, g: 61, b: 86)
         tabBar.tintColor = .white
-        tabBar.unselectedItemTintColor = UIColor.lightGray
         
         UITabBarItem.appearance().setTitleTextAttributes([
             NSAttributedString.Key.font: UIFont.main(size: 12)], for: .normal)
