@@ -9,7 +9,7 @@
 import UIKit
 final class CTMealCell: knListCell<CTMeal> {
     override var data: CTMeal? { didSet {
-        imgView.downloadImage(from: data?.image)
+        imgView.downloadImage(from: data?.images.first)
         nameLabel.text = data?.name
         ingredientLabel.text = data?.ingredient
         let mealType = data?.mealType.rawValue.uppercased() ?? ""

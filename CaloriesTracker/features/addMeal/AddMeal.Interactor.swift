@@ -56,7 +56,6 @@ extension CTAddMealCtr {
             output?.didGetMoreFoods(foods)
         }
         
-        
         private weak var output: Controller?
         init(controller: Controller) { output = controller }
     }

@@ -16,6 +16,10 @@ class CTFood {
     var description: String?
     var ingredient: String?
     
+    init(id: Int) {
+        self.id = id
+    }
+    
     init(image: String, name: String) {
         self.image = image
         self.name = name
@@ -30,6 +34,20 @@ class CTFood {
         if let images = raw["images"] as? [String] {
             image = images.first
         }
+    }
+    
+    func toDict() -> [String: Any?] {
+        var dict = [String: Any?]()
+        dict["id"] = id
+        dict["title"] = name
+        dict["description"] = description
+        dict["ingredient"] = ingredient
+        dict["calories"] = calories
+        if let imageUrl = image {
+            dict["images"] = [imageUrl]
+        }
+        
+        return dict
     }
 }
 

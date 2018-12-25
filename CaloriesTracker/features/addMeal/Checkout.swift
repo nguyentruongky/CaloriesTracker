@@ -8,11 +8,69 @@
 
 import UIKit
 
+class CTCheckoutCtr: knListController<CTCheckoutItemCell, CTFood> {
+    var meal: CTMeal?
+    weak var addMealCtr: CTAddMealCtr?
+    
+    let confirmButton = UIMaker.makeMainButton(title: "Confirm")
+    override func setupView() {
+        title = "CHOSEN FOODS"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "close"), style: .done, target: self, action: #selector(dismissBack))
+        rowHeight = 72
+        contentInset = UIEdgeInsets(top: 16)
+        super.setupView()
+        view.addSubviews(views: tableView, confirmButton)
+        view.addConstraints(withFormat: "V:|[v0]-24-[v1]-32-|", views: tableView, confirmButton)
+        tableView.horizontal(toView: view)
+        confirmButton.horizontal(toView: view, space: padding)
+        
+        addState()
+        stateView?.setStateContent(state: .empty, imageName: nil, title: nil, content: "You didn't choose any foods")
+        
+        confirmButton.addTarget(self, action: #selector(confirmAddingMeal))
+        
+        fetchData()
+    }
+    
+    @objc func confirmAddingMeal() {
+        guard let meal = meal else { return }
+        confirmButton.setProcess(visible: true)
+        CTAddMealWorker(meal: meal, successAction: didAddMeal,
+                        failAction: didAddMealFail).execute()
+    }
+    
+    func didAddMeal() {
+        CTMessage.showMessage("Recorded new meal")
+        dismiss()
+        addMealCtr?.pop()
+    }
+    
+    func didAddMealFail(_ err: knError) {
+        CTMessage.showError(err.message ?? "Can't add meal at this time. It's not your fault, it's ours")
+    }
+    
+    override func fetchData() {
+        guard let foods = meal?.foods else { return }
+        datasource = foods
+        stateView?.state = foods.isEmpty ? .empty : .success
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let index = indexPath.row
+            datasource.remove(at: index)
+            meal?.foods.remove(at: index)
+        }
+    }
+    
+    
+}
+
 class CTCheckoutItemCell: knListCell<CTFood> {
     override var data: CTFood? { didSet {
         imgView.downloadImage(from: data?.image)
         nameLabel.text = data?.name
-    }}
+        }}
     
     let imgView = UIMaker.makeImageView(contentMode: .scaleAspectFill)
     let nameLabel = UIMaker.makeLabel(font: UIFont.main(size: 13),
@@ -32,39 +90,5 @@ class CTCheckoutItemCell: knListCell<CTFood> {
         addSubviews(views: view)
         view.horizontal(toView: self)
         view.centerY(toView: self)
-    }
-}
-
-class CTCheckoutCtr: knListController<CTCheckoutItemCell, CTFood> {
-    var meal: CTMeal?
-    
-    let confirmButton = UIMaker.makeMainButton(title: "Confirm")
-    override func setupView() {
-        title = "CHOSEN FOODS"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "close"), style: .done, target: self, action: #selector(dismissBack))
-        rowHeight = 72
-        contentInset = UIEdgeInsets(top: 16)
-        super.setupView()
-        view.addSubviews(views: tableView, confirmButton)
-        view.addConstraints(withFormat: "V:|[v0]-24-[v1]-32-|", views: tableView, confirmButton)
-        tableView.horizontal(toView: view)
-        confirmButton.horizontal(toView: view, space: padding)
-        
-        addState()
-        stateView?.setStateContent(state: .empty, imageName: nil, title: nil, content: "You didn't choose any foods")
-        
-        fetchData()
-    }
-    
-    override func fetchData() {
-        guard let foods = meal?.foods else { return }
-        datasource = foods
-        stateView?.state = foods.isEmpty ? .empty : .success
-    }
-    
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            datasource.remove(at: indexPath.row)
-        }
     }
 }

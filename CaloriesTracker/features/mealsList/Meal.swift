@@ -8,8 +8,9 @@
 
 import Foundation
 
-struct CTMeal {
-    var image: String?
+class CTMeal {
+    var id: String?
+    var images = [String]()
     var name: String?
     var ingredient: String?
     var calorie: Int?
@@ -17,6 +18,12 @@ struct CTMeal {
     var time: String?
     var note: String?
     var foods = [CTFood]()
+    var interval: TimeInterval? {
+        guard let date = date, let time = time else { return nil }
+        let string = date + " - " + time
+        let realDate = Date(dateString: string, format: "dd MMM yyyy - hh:mm")
+        return realDate.timeIntervalSince1970
+    }
     var mealType: CTMealType {
         guard let time = time else { return .breakfast }
         guard let hourRaw = time.splitString(":").first, let hour = Int(hourRaw)
@@ -35,12 +42,18 @@ struct CTMeal {
     
     init() { }
     
-    init(image: String, name: String, ingredient: String, calory: Int, date: String, mealType: CTMealType) {
-        self.image = image
-        self.name = name
-        self.ingredient = ingredient
-        self.calorie = calory
-        self.date = date
+    init(raw: AnyObject) {
+        id = raw["meal_id"] as? String
+        calorie = raw["calories"] as? Int ?? 0
+        date = raw["date"] as? String
+        time = raw["time"] as? String
+        
+        if let foodsRaw = raw["foods"] as? [AnyObject] {
+            foods = foodsRaw.map({ return CTFood(raw: $0) })
+            self.images = foods.compactMap({ return $0.image })
+        }
+        name = foods.first?.name
+        note = raw["note"] as? String
     }
     
 }

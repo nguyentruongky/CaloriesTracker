@@ -26,8 +26,7 @@ struct CTGetFoodsWorker {
     func execute() {
         let bucket = CTDataBucket.foods.rawValue
         let ref = Database.database().reference().child(bucket)
-        var query: DatabaseQuery
-        query = ref.queryLimited(toFirst: UInt(page) * MAX_ITEM)
+        let query = ref.queryLimited(toFirst: UInt(page) * MAX_ITEM)
         
         query.observeSingleEvent(of: .value, with: { (snapshot) in
             guard let raws = snapshot.value as? [String: AnyObject] else {

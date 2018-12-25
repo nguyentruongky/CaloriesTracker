@@ -37,15 +37,16 @@ class CTMealOptionView: knStaticListView {
         
         datasource = ui.setupView()
         ui.noteTextView.delegate = self
-        ui.saveButton.addTarget(self, action: #selector(pickFoods))
+        ui.saveButton.addTarget(self, action: #selector(saveMeal))
     }
     
-    @objc func pickFoods() {
-        delegate?.hideSheet()
-    }
-    
-    func saveMeal() {
+    @objc func saveMeal() {
+        meal.date = ui.date
+        meal.time = ui.time
+        meal.calorie = Int(ui.caloriesSlider.value)
+        meal.note = ui.noteTextView.text
         delegate?.saveMeal()
+        delegate?.hideSheet()
     }
 }
 

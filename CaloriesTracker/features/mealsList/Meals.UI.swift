@@ -14,14 +14,15 @@ extension CTMealsDashboard {
         let mealLabel = UIMaker.makeLabel(text: "PREVIOUS MEALS",
                                               font: UIFont.main(.bold, size: 15), color: .CT_25)
         let addButton = UIMaker.makeMainButton(title: "Add meals", bgColor: .white, titleColor: .main)
-        
+        let emptyView = knStateView()
+
         func makeHeaderView() -> UIView {
             let bg = UIMaker.makeImageView()
             bg.backgroundColor = UIColor.main
             let greetingLabel = UIMaker.makeLabel(text: "What would you like to eat?",
                                                   font: UIFont.main(.medium, size: 15),
                                                   color: .white, alignment: .center)
-            let thisWeekLabel = UIMaker.makeLabel(text: "THIS WEEK",
+            let thisWeekLabel = UIMaker.makeLabel(text: "UPCOMING MEALS",
                                                   font: UIFont.main(.bold, size: 15), color: .CT_25)
             let view = UIMaker.makeView()
             view.addSubviews(views: bg, greetingLabel, addButton, thisWeekLabel, thisWeekView, mealLabel)
@@ -48,8 +49,7 @@ extension CTMealsDashboard {
             return view
         }
         
-        func makeEmptyView() -> UIView {
-            let emptyView = knStateView()
+        func makeStateHeaderView() -> UIView {
             emptyView.setStateContent(state: .empty, imageName: "no_meal", title: "You have no meal", content: "Start tracking your eating calories by adding meals")
             emptyView.state = .empty
             

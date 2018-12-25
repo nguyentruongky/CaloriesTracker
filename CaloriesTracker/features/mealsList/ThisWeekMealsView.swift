@@ -14,8 +14,8 @@ final class ThisWeekView: knGridView<ThisWeekMealCell, CTMeal> {
             if datasource.count == 1 {
                 let edge: CGFloat = screenWidth - padding * 2
                 itemSize = CGSize(width: edge, height: 0)
-                collectionView.reloadData()
             }
+            collectionView.reloadData()
         }
     }
     override func setupView() {
@@ -36,7 +36,7 @@ final class ThisWeekView: knGridView<ThisWeekMealCell, CTMeal> {
 
 final class ThisWeekMealCell: knGridCell<CTMeal> {
     override var data: CTMeal? { didSet {
-        imgView.downloadImage(from: data?.image)
+        imgView.downloadImage(from: data?.images.first)
         nameLabel.text = data?.name
         ingredientLabel.text = data?.ingredient
         let mealType = data?.mealType.rawValue.uppercased() ?? ""
