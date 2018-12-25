@@ -14,7 +14,7 @@ extension CTMealsDashboard {
         let mealLabel = UIMaker.makeLabel(text: "PREVIOUS MEALS",
                                               font: UIFont.main(.bold, size: 15), color: .CT_25)
         let addButton = UIMaker.makeMainButton(title: "Add meals", bgColor: .white, titleColor: .main)
-
+        
         func makeHeaderView() -> UIView {
             let bg = UIMaker.makeImageView()
             bg.backgroundColor = UIColor.main
@@ -44,6 +44,39 @@ extension CTMealsDashboard {
             
             thisWeekView.horizontal(toView: view)
             thisWeekView.height(400)
+            
+            return view
+        }
+        
+        func makeEmptyView() -> UIView {
+            let emptyView = knStateView()
+            emptyView.setStateContent(state: .empty, imageName: "no_meal", title: "You have no meal", content: "Start tracking your eating calories by adding meals")
+            emptyView.state = .empty
+            
+            let bg = UIMaker.makeImageView()
+            bg.backgroundColor = UIColor.main
+            let greetingLabel = UIMaker.makeLabel(text: "What would you like to eat?",
+                                                  font: UIFont.main(.medium, size: 15),
+                                                  color: .white, alignment: .center)
+            
+            let view = UIMaker.makeView(background: .white)
+            view.addSubviews(views: bg, greetingLabel, addButton, emptyView)
+            
+            bg.centerX(toView: view)
+            bg.centerY(toAnchor: view.topAnchor, space: -320)
+            let edge: CGFloat = 1000
+            bg.square(edge: edge)
+            bg.setCorner(radius: edge / 2)
+            
+            greetingLabel.horizontal(toView: view, space: padding)
+            greetingLabel.top(toView: view, space: padding)
+            
+            addButton.horizontal(toView: view, space: padding)
+            addButton.verticalSpacing(toView: greetingLabel, space: padding)
+            
+            emptyView.horizontal(toView: view)
+            emptyView.verticalSpacing(toView: bg, space: padding)
+            emptyView.bottom(toView: view)
             
             return view
         }
