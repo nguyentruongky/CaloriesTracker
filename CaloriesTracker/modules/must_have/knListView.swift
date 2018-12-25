@@ -135,6 +135,8 @@ class knListController<C: knListCell<U>, U>: knController, UITableViewDataSource
     func didSelectRow(at indexPath: IndexPath) { }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {}
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat { return 0 }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) { }
 }
 
 class knStaticListController: knController, UITableViewDelegate, UITableViewDataSource {
