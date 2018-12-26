@@ -45,7 +45,6 @@ class CTMealOptionView: knStaticListView {
         meal.time = ui.time
         meal.calories = Int(ui.caloriesSlider.value)
         meal.note = ui.noteTextView.text
-        delegate?.saveMeal()
         delegate?.hideSheet()
     }
 }
@@ -65,7 +64,5 @@ extension CTMealOptionView: UITextViewDelegate {
 
 
 protocol CTBottomSheetDelegate: class {
-    func hideSheet()
-    
-    func saveMeal()
+    func hideSheet()    
 }

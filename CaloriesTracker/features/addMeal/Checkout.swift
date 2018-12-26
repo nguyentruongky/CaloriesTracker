@@ -26,7 +26,6 @@ class CTCheckoutCtr: knListController<CTCheckoutItemCell, CTFood> {
         
         addState()
         stateView?.setStateContent(state: .empty, imageName: nil, title: nil, content: "You didn't choose any foods")
-        
         confirmButton.addTarget(self, action: #selector(confirmAddingMeal))
         
         fetchData()
@@ -43,6 +42,7 @@ class CTCheckoutCtr: knListController<CTCheckoutItemCell, CTFood> {
         CTMessage.showMessage("Recorded new meal")
         dismiss()
         addMealCtr?.pop()
+        CTMealsDashboard.shouldReload = true
     }
     
     func didAddMealFail(_ err: knError) {

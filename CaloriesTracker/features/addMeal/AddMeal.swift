@@ -62,6 +62,7 @@ class CTAddMealCtr: knGridController<CTFoodCell, CTFood>, CTBottomSheetDelegate 
     }
     
     @objc func showCheckout() {
+        mealOptionView.saveMeal()
         let ctr = CTCheckoutCtr()
         ctr.meal = mealOptionView.meal
         ctr.addMealCtr = self
@@ -188,9 +189,15 @@ class CTAddMealCtr: knGridController<CTFoodCell, CTFood>, CTBottomSheetDelegate 
         return cell
     }
     
-    func selectFood(data: CTFood) {
-        mealOptionView.meal.foods.append(data)
+    func selectFood(_ food: CTFood) {
+        mealOptionView.meal.foods.append(food)
         checkoutButton.increase(amount: 1)
+    }
+    
+    func removeFood(_ food: CTFood) {
+        guard let index = mealOptionView.meal.foods.firstIndex(where: { return $0.id == food.id }) else { return }
+        mealOptionView.meal.foods.remove(at: index)
+        checkoutButton.descrease(amount: 1)
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -202,10 +209,6 @@ class CTAddMealCtr: knGridController<CTFoodCell, CTFood>, CTBottomSheetDelegate 
     
     @objc func hideSheet() {
         animateTransitionIfNeeded(to: currentState.opposite, duration: 0.35)
-    }
-    
-    func saveMeal() {
-        
     }
 }
 
