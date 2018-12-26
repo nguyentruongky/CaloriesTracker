@@ -34,7 +34,8 @@ struct CTGetPreviousMealsWorker {
         let values = Array(rawData.values)
         let meals = values.map({ return CTMeal(raw: $0) })
         let now = Date().timeIntervalSince1970
-        let previousMeals = meals.filter({ return ($0.interval) ?? 0 < now })
+        var previousMeals = meals.filter({ return ($0.interval) ?? 0 < now })
+        previousMeals.sort(by: { return ($0.interval ?? 0) < ($1.interval ?? 0) })
         successAction?(previousMeals)
     }
     
