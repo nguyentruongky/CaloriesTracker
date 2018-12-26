@@ -22,7 +22,9 @@ extension CTMealsDashboard {
         func makeGreetingView() -> UIView {
             let bg = UIMaker.makeImageView()
             bg.backgroundColor = UIColor.main
-            let greetingLabel = UIMaker.makeLabel(text: "What would you like to eat?",
+            let name = appSetting.user?.name ?? ""
+            let hello = "Hello" + (name == "" ? "" : " " + name)
+            let greetingLabel = UIMaker.makeLabel(text: "\(hello), what would you like to eat?",
                                                   font: UIFont.main(.medium, size: 15),
                                                   color: .white, alignment: .center)
             let addButton = UIMaker.makeMainButton(title: "Add meals",

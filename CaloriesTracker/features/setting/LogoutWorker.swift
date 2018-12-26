@@ -10,20 +10,9 @@ import Foundation
 import FirebaseAuth
 
 struct CTLogoutWorker {
-    private var successAction: (() -> Void)?
-    private var failAction: ((knError) -> Void)?
-    init(successAction: (() -> Void)?, failAction: ((knError) -> Void)?) {
-        self.successAction = successAction
-        self.failAction = failAction
-    }
+    init() { }
     
     func execute() {
-        do {
-            try Auth.auth().signOut()
-            successAction?()
-        } catch {
-            let err = knError(code: "logout_fail", message: error.localizedDescription)
-            failAction?(err)
-        }
+        try? Auth.auth().signOut()
     }
 }

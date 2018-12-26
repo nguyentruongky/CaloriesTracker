@@ -16,6 +16,11 @@ class CTUser {
     var avatar: String?
     
     init() { }
+    init(fbUser: User) {
+        email = fbUser.email
+        name = fbUser.displayName
+        userId = fbUser.uid
+    }
     init(name: String, avatar: String) {
         self.name = name
         self.avatar = avatar

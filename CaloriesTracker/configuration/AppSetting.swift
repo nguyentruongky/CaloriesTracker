@@ -16,7 +16,7 @@ struct AppSetting {
         set { UserDefaults.set(key: "didLogin", value: newValue) }
     }
     var standardCalories: Int {
-        get { return UserDefaults.get(key: "standardCalories") as Int? ?? 200 }
+        get { return UserDefaults.get(key: "standardCalories") as Int? ?? 2000 }
         set { UserDefaults.set(key: "standardCalories", value: newValue) }
     }
 }
