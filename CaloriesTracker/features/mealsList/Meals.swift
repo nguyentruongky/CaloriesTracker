@@ -10,23 +10,34 @@ import UIKit
 
 class CTMealsDashboard: knListController<CTMealCell, CTMeal> {
     let ui = UI()
+    var didLoadUpcomingMeals = false
+    var didLoadPreviousMeals = false
+    
+    override var datasource: [CTMeal] { didSet {
+        ui.setPreviousMealLabel(visible: !datasource.isEmpty)
+    }}
+    var upcomingMeals = [CTMeal]() { didSet {
+        ui.setUpcomingView(visible: !upcomingMeals.isEmpty)
+        ui.upcomingMealsView.datasource = upcomingMeals
+    }}
+    
     lazy var output = Interactor(controller: self)
-    let headerHeight: CGFloat = 695
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.hideBar(true)
+        fetchData()
     }
     
     override func setupView() {
-        rowHeight = 275
         super.setupView()
         tableView.backgroundColor = UIColor.bg
-        tableView.setHeader(ui.makeStateHeaderView(), height: screenHeight)
         view.addFill(tableView)
+        tableView.setHeader(ui.greetingView, height: 170)
         
-        ui.addButton.addTarget(self, action: #selector(showAddMeal))
-        fetchData()
+        view.addFill(ui.stateWrapper)
+        
+        (ui.greetingView.viewWithTag(1001) as? UIButton)?.addTarget(self, action: #selector(showAddMeal))
     }
     
     @objc func showAddMeal() {
@@ -35,13 +46,8 @@ class CTMealsDashboard: knListController<CTMealCell, CTMeal> {
         push(ctr)
     }
     
-    func showEmpty() {
-        tableView.setHeader(ui.makeStateHeaderView(), height: screenHeight)
-        tableView.isScrollEnabled = false
-    }
-    
     override func fetchData() {
-        ui.emptyView.state = .loading
+        ui.stateView.state = .loading
         output.getPreviousMeals()
         output.getUpcomingMeals()
     }
@@ -56,6 +62,20 @@ class CTMealsDashboard: knListController<CTMealCell, CTMeal> {
         isStatusBarHidden = scrollView.contentOffset.y > 0
         setNeedsStatusBarAppearanceUpdate()
     }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return datasource.count + 1
+    }
+    
+    override func getCell(at index: IndexPath) -> UITableViewCell {
+        if index.row == 0 { return ui.upcomingCell }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CTMealCell", for: index) as! CTMealCell
+        cell.data = datasource[index.row - 1]
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0 { return UITableView.automaticDimension }
+        return 244
+    }
 }
-
-

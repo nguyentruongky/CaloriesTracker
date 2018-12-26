@@ -14,7 +14,8 @@ class knListCell<U>: knTableCell {
 
 class knListView<C: knListCell<U>, U>: knView, UITableViewDataSource, UITableViewDelegate {
     var datasource = [U]() { didSet { tableView.reloadData() }}
-    fileprivate let cellId = "cellId"
+    fileprivate let cellId = String(describing: C.self)
+
     var rowHeight: CGFloat = UITableView.automaticDimension
     
     lazy var tableView: UITableView = { [weak self] in
@@ -32,7 +33,7 @@ class knListView<C: knListCell<U>, U>: knView, UITableViewDataSource, UITableVie
         tableView.fill(toView: self)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100
-        tableView.register(C.self, forCellReuseIdentifier: cellId)
+        tableView.register(C.self, forCellReuseIdentifier: String(describing: C.self))
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -84,7 +85,7 @@ class knStaticListView: knView, UITableViewDataSource, UITableViewDelegate {
 
 class knListController<C: knListCell<U>, U>: knController, UITableViewDataSource, UITableViewDelegate {
     var datasource = [U]() { didSet { tableView.reloadData() }}
-    fileprivate let cellId = "cellId"
+    fileprivate let cellId = String(describing: C.self)
     var rowHeight = UITableView.automaticDimension
     var contentInset: UIEdgeInsets?
     
@@ -106,7 +107,7 @@ class knListController<C: knListCell<U>, U>: knController, UITableViewDataSource
     }
     
     override func setupView() {
-        tableView.register(C.self, forCellReuseIdentifier: cellId)
+        tableView.register(C.self, forCellReuseIdentifier: String(describing: C.self))
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100
         if let inset = contentInset {
@@ -135,8 +136,7 @@ class knListController<C: knListCell<U>, U>: knController, UITableViewDataSource
     func didSelectRow(at indexPath: IndexPath) { }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {}
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat { return 0 }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) { }
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) { }
 }
 
 class knStaticListController: knController, UITableViewDelegate, UITableViewDataSource {

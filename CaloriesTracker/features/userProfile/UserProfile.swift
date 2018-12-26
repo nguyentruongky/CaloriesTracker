@@ -15,7 +15,7 @@ class CTUserProfileCtr: knListController<CTMealCell, CTMeal> {
     }
     
     override func setupView() {
-        rowHeight = 275
+        rowHeight = 244
         super.setupView()
         tableView.backgroundColor = .bg
         let headerView = ui.makeHeaderView()

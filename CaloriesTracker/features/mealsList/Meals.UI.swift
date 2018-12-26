@@ -10,22 +10,26 @@ import UIKit
 
 extension CTMealsDashboard {
     class UI {
-        let thisWeekView = ThisWeekView()
-        let mealLabel = UIMaker.makeLabel(text: "PREVIOUS MEALS",
+        let upcomingMealsView = CTUpcomingMealsView()
+        let upcomingContainer = UIMaker.makeStackView(space: 32)
+        let previousLabel = UIMaker.makeLabel(text: "PREVIOUS MEALS",
                                               font: UIFont.main(.bold, size: 15), color: .CT_25)
-        let addButton = UIMaker.makeMainButton(title: "Add meals", bgColor: .white, titleColor: .main)
-        let emptyView = knStateView()
-
-        func makeHeaderView() -> UIView {
+        let stateView = knStateView()
+        lazy var stateWrapper = makeStateView()
+        lazy var greetingView = makeGreetingView()
+        lazy var upcomingCell = makeUpcomingCell()
+        
+        func makeGreetingView() -> UIView {
             let bg = UIMaker.makeImageView()
             bg.backgroundColor = UIColor.main
             let greetingLabel = UIMaker.makeLabel(text: "What would you like to eat?",
                                                   font: UIFont.main(.medium, size: 15),
                                                   color: .white, alignment: .center)
-            let thisWeekLabel = UIMaker.makeLabel(text: "UPCOMING MEALS",
-                                                  font: UIFont.main(.bold, size: 15), color: .CT_25)
+            let addButton = UIMaker.makeMainButton(title: "Add meals",
+                                                   bgColor: .white, titleColor: .main)
+            addButton.tag = 1001
             let view = UIMaker.makeView()
-            view.addSubviews(views: bg, greetingLabel, addButton, thisWeekLabel, thisWeekView, mealLabel)
+            view.addSubviews(views: bg, greetingLabel, addButton)
             
             bg.centerX(toView: view)
             bg.centerY(toAnchor: view.topAnchor, space: -320)
@@ -35,51 +39,61 @@ extension CTMealsDashboard {
             
             greetingLabel.horizontal(toView: view, space: padding)
             greetingLabel.top(toView: view, space: padding)
-
+            
             addButton.horizontal(toView: view, space: padding)
-            addButton.verticalSpacing(toView: greetingLabel, space: padding)
-            
-            view.addConstraints(withFormat: "V:|-\(padding * 8)-[v0]-16-[v1]-32-[v2]", views: thisWeekLabel, thisWeekView, mealLabel)
-            thisWeekLabel.left(toView: view, space: padding)
-            mealLabel.left(toView: thisWeekLabel)
-            
-            thisWeekView.horizontal(toView: view)
-            thisWeekView.height(400)
-            
+            addButton.verticalSpacing(toView: greetingLabel, space: padding)            
             return view
         }
         
-        func makeStateHeaderView() -> UIView {
-            emptyView.setStateContent(state: .empty, imageName: "no_meal", title: "You have no meal", content: "Start tracking your eating calories by adding meals")
-            emptyView.state = .empty
+        func makeUpcomingCell() -> knTableCell {
+            let cell = knTableCell()
+            cell.backgroundColor = .bg
+            cell.addSubviews(views: upcomingContainer)
+            upcomingContainer.horizontal(toView: cell)
+            upcomingContainer.top(toView: cell, space: padding)
+            let topViewBottom = upcomingContainer.bottom(toView: cell, space: -12, isActive: false)
+            topViewBottom.priority = UILayoutPriority(rawValue: 999)
+            topViewBottom.isActive = true 
+            return cell
+        }
+        
+        func setUpcomingView(visible: Bool) {
+            if visible {
+                upcomingContainer.insertArrangedSubview(upcomingMealsView, at: 0)
+                upcomingMealsView.height(400)
+                upcomingMealsView.horizontal(toView: upcomingContainer)
+            } else {
+                upcomingMealsView.removeFromSuperview()
+                upcomingMealsView.removeAllConstraints()
+            }
+        }
+        
+        func setPreviousMealLabel(visible: Bool) {
+            if visible {
+                upcomingContainer.insertArrangedSubview(previousLabel, at: upcomingContainer.subviews.count)
+                previousLabel.left(toView: upcomingContainer, space: padding)
+            } else {
+                upcomingMealsView.removeFromSuperview()
+            }
+        }
+        
+        func setupView(_ view: UIView) {
+            view.addSubviews(views: greetingView)
+            greetingView.horizontal(toView: view)
+            greetingView.top(toView: view)
+            greetingView.height(170)
+        }
+        
+        func makeStateView() -> UIView {
+            let view = UIMaker.makeView()
+            let greetingView = makeGreetingView()
+            view.addSubviews(views: stateView, greetingView)
+            view.addConstraints(withFormat: "V:|-44-[v0]-(-24)-[v1]|", views: greetingView, stateView)
+            greetingView.horizontal(toView: view)
+            greetingView.height(170)
             
-            let bg = UIMaker.makeImageView()
-            bg.backgroundColor = UIColor.main
-            let greetingLabel = UIMaker.makeLabel(text: "What would you like to eat?",
-                                                  font: UIFont.main(.medium, size: 15),
-                                                  color: .white, alignment: .center)
-            
-            let view = UIMaker.makeView(background: .white)
-            view.addSubviews(views: bg, greetingLabel, addButton, emptyView)
-            
-            bg.centerX(toView: view)
-            bg.centerY(toAnchor: view.topAnchor, space: -320)
-            let edge: CGFloat = 1000
-            bg.square(edge: edge)
-            bg.setCorner(radius: edge / 2)
-            
-            greetingLabel.horizontal(toView: view, space: padding)
-            greetingLabel.top(toView: view, space: padding)
-            
-            addButton.horizontal(toView: view, space: padding)
-            addButton.verticalSpacing(toView: greetingLabel, space: padding)
-            
-            emptyView.horizontal(toView: view)
-            emptyView.verticalSpacing(toView: bg, space: padding)
-            emptyView.bottom(toView: view)
-            
+            stateView.horizontal(toView: view)
             return view
         }
     }
 }
-

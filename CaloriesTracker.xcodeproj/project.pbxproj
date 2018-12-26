@@ -61,7 +61,6 @@
 		C193047721CB95E500315ED3 /* DataBucket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193047621CB95E500315ED3 /* DataBucket.swift */; };
 		C193047A21CB9B2F00315ED3 /* Boss.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193047921CB9B2F00315ED3 /* Boss.swift */; };
 		C193047D21CC226800315ED3 /* Meals.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193047C21CC226800315ED3 /* Meals.swift */; };
-		C193048121CC23CE00315ED3 /* ThisWeekMealsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193048021CC23CE00315ED3 /* ThisWeekMealsView.swift */; };
 		C193048321CC246B00315ED3 /* FAPaginationLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193048221CC246B00315ED3 /* FAPaginationLayout.swift */; };
 		C193048521CC3ECE00315ED3 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193048421CC3ECE00315ED3 /* Meal.swift */; };
 		C193048721CC3EF100315ED3 /* Meals.UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193048621CC3EF100315ED3 /* Meals.UI.swift */; };
@@ -97,6 +96,7 @@
 		C193050B21D2CD2600315ED3 /* Meals.Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193050A21D2CD2600315ED3 /* Meals.Interactor.swift */; };
 		C193050D21D2D00200315ED3 /* GetFoodDetailWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193050C21D2D00200315ED3 /* GetFoodDetailWorker.swift */; };
 		C193050F21D2D69500315ED3 /* GetUpcomingMealsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193050E21D2D69500315ED3 /* GetUpcomingMealsWorker.swift */; };
+		C193051121D3171000315ED3 /* UpcomingMealsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193051021D3171000315ED3 /* UpcomingMealsView.swift */; };
 		C2F0A07394AADE51D770740B /* Pods_CaloriesTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B86763ED8DC2891F52136858 /* Pods_CaloriesTracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -159,7 +159,6 @@
 		C193047621CB95E500315ED3 /* DataBucket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBucket.swift; sourceTree = "<group>"; };
 		C193047921CB9B2F00315ED3 /* Boss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boss.swift; sourceTree = "<group>"; };
 		C193047C21CC226800315ED3 /* Meals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meals.swift; sourceTree = "<group>"; };
-		C193048021CC23CE00315ED3 /* ThisWeekMealsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThisWeekMealsView.swift; sourceTree = "<group>"; };
 		C193048221CC246B00315ED3 /* FAPaginationLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAPaginationLayout.swift; sourceTree = "<group>"; };
 		C193048421CC3ECE00315ED3 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		C193048621CC3EF100315ED3 /* Meals.UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meals.UI.swift; sourceTree = "<group>"; };
@@ -195,6 +194,7 @@
 		C193050A21D2CD2600315ED3 /* Meals.Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meals.Interactor.swift; sourceTree = "<group>"; };
 		C193050C21D2D00200315ED3 /* GetFoodDetailWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFoodDetailWorker.swift; sourceTree = "<group>"; };
 		C193050E21D2D69500315ED3 /* GetUpcomingMealsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUpcomingMealsWorker.swift; sourceTree = "<group>"; };
+		C193051021D3171000315ED3 /* UpcomingMealsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingMealsView.swift; sourceTree = "<group>"; };
 		EE7D234AAD8C0C68B809DD8C /* Pods-CaloriesTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaloriesTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CaloriesTracker/Pods-CaloriesTracker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -410,7 +410,7 @@
 				C193050A21D2CD2600315ED3 /* Meals.Interactor.swift */,
 				C193047C21CC226800315ED3 /* Meals.swift */,
 				C193048621CC3EF100315ED3 /* Meals.UI.swift */,
-				C193048021CC23CE00315ED3 /* ThisWeekMealsView.swift */,
+				C193051021D3171000315ED3 /* UpcomingMealsView.swift */,
 				C193050E21D2D69500315ED3 /* GetUpcomingMealsWorker.swift */,
 			);
 			path = mealsList;
@@ -658,6 +658,7 @@
 				C120CD4921CB80FB0080EC15 /* UIApplicationExtension.swift in Sources */,
 				C120CD8C21CB874A0080EC15 /* WhisperFactory.swift in Sources */,
 				C19304FC21D17AA300315ED3 /* AddMealWorker.swift in Sources */,
+				C193051121D3171000315ED3 /* UpcomingMealsView.swift in Sources */,
 				C120CD8321CB87200080EC15 /* CTMessage.swift in Sources */,
 				C120CD5521CB80FB0080EC15 /* UIFontExtension.swift in Sources */,
 				C193047D21CC226800315ED3 /* Meals.swift in Sources */,
@@ -683,7 +684,6 @@
 				C19304D621CED9CD00315ED3 /* FoodDetail.swift in Sources */,
 				C193050521D23FF900315ED3 /* Setting.swift in Sources */,
 				C120CD4B21CB80FB0080EC15 /* StartPoint.swift in Sources */,
-				C193048121CC23CE00315ED3 /* ThisWeekMealsView.swift in Sources */,
 				C120CD8E21CB874A0080EC15 /* Message.swift in Sources */,
 				C19304E321D02D2900315ED3 /* UserList.swift in Sources */,
 				C193047A21CB9B2F00315ED3 /* Boss.swift in Sources */,

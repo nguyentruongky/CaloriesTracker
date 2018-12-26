@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class ThisWeekView: knGridView<ThisWeekMealCell, CTMeal> {
+final class CTUpcomingMealsView: knGridView<CTUpcomingMealCell, CTMeal> {
     override var datasource: [CTMeal] {
         didSet {
             if datasource.count == 1 {
@@ -19,6 +19,8 @@ final class ThisWeekView: knGridView<ThisWeekMealCell, CTMeal> {
         }
     }
     override func setupView() {
+        let label = UIMaker.makeLabel(text: "UPCOMING MEALS",
+                                              font: UIFont.main(.bold, size: 15), color: .CT_25)
         backgroundColor = UIColor.bg
         let edge: CGFloat = screenWidth - padding * 3
         lineSpacing = padding / 1.5
@@ -29,12 +31,14 @@ final class ThisWeekView: knGridView<ThisWeekMealCell, CTMeal> {
         contentInset = UIEdgeInsets(left: leftSpacing, right: leftSpacing)
         super.setupView()
         collectionView.backgroundColor = UIColor.bg
-        addSubviews(views: collectionView)
-        collectionView.fill(toView: self)
+        addSubviews(views: label, collectionView)
+        addConstraints(withFormat: "V:|[v0]-12-[v1]|", views: label, collectionView)
+        label.left(toView: self, space: padding)
+        collectionView.horizontal(toView: self)
     }
 }
 
-final class ThisWeekMealCell: knGridCell<CTMeal> {
+final class CTUpcomingMealCell: knGridCell<CTMeal> {
     override var data: CTMeal? { didSet {
         imgView.downloadImage(from: data?.images.first)
         nameLabel.text = data?.name
@@ -60,7 +64,7 @@ final class ThisWeekMealCell: knGridCell<CTMeal> {
                                             color: UIColor.lightGray)
     let caloryLabel = UIMaker.makeLabel(font: UIFont.main(.bold, size: 12),
                                         color: UIColor.lightGray)
-    let messageLabel = UIMaker.makeLabel(font: UIFont.main(),
+    let messageLabel = UIMaker.makeLabel(font: UIFont.main(.bold),
                                          color: UIColor.lightGray)
     let attentionView = UIMaker.makeView()
     override func setupView() {

@@ -55,7 +55,7 @@ class CTCheckoutCtr: knListController<CTCheckoutItemCell, CTFood> {
         stateView?.state = foods.isEmpty ? .empty : .success
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let index = indexPath.row
             datasource.remove(at: index)

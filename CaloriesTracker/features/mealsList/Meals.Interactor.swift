@@ -10,8 +10,19 @@ import UIKit
 
 extension CTMealsDashboard {
     func didGetUpcomingMeals(_ meals: [CTMeal]) {
-        ui.thisWeekView.datasource = meals
-        tableView.setHeader(ui.makeHeaderView(), height: headerHeight)
+        upcomingMeals = meals
+        didLoadUpcomingMeals = true
+        checkData()
+    }
+    
+    func checkData() {
+        guard didLoadPreviousMeals && didLoadUpcomingMeals else { return }
+        let isEmpty = upcomingMeals.isEmpty && datasource.isEmpty
+        if isEmpty == false {
+            ui.stateWrapper.removeFromSuperview()
+        } else {
+            ui.stateView.state = .empty
+        }
     }
     
     func didGetUpcomingMealsFail(_ err: knError) {
@@ -20,6 +31,8 @@ extension CTMealsDashboard {
     
     func didGetPreviousMeals(_ meals: [CTMeal]) {
         datasource = meals
+        didLoadPreviousMeals = true
+        checkData()
     }
     
     func didGetPreviousMealsFail(_ err: knError) {
@@ -35,7 +48,7 @@ extension CTMealsDashboard {
         }
         
         func getPreviousMeals() {
-            CTGetUpcomingMealsWorker(successAction: output?.didGetPreviousMeals,
+            CTGetPreviousMealsWorker(successAction: output?.didGetPreviousMeals,
                                      failAction: output?.didGetPreviousMealsFail).execute()
         }
         
