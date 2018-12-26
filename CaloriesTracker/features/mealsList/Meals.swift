@@ -26,6 +26,8 @@ class CTMealsDashboard: knListController<CTMealCell, CTMeal> {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        statusBarStyle = .lightContent
+        
         navigationController?.hideBar(true)
         if CTMealsDashboard.shouldReload {
             fetchData()
@@ -65,8 +67,7 @@ class CTMealsDashboard: knListController<CTMealCell, CTMeal> {
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        isStatusBarHidden = scrollView.contentOffset.y > 0
-        setNeedsStatusBarAppearanceUpdate()
+        statusBarHidden = scrollView.contentOffset.y > 0
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

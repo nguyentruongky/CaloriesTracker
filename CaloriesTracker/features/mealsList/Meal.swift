@@ -17,6 +17,7 @@ class CTMeal {
     var date: String?
     var time: String?
     var note: String?
+    var isStandard = true
     var foods = [CTFood]()
     var interval: TimeInterval? {
         guard let date = date, let time = time else { return nil }

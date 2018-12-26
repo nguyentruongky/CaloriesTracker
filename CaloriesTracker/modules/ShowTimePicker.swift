@@ -8,9 +8,19 @@
 
 import UIKit
 
-class knTimeSlot: knGridCell<String> {
-    override var data: String? { didSet {
-        timeLabel.text = data
+struct knTime {
+    var time: String
+    var selected = false
+    init(time: String) {
+        self.time = time
+    }
+}
+
+class knTimeSlot: knGridCell<knTime> {
+    override var data: knTime? { didSet {
+        guard let data = data else { return }
+        timeLabel.text = data.time
+        isSelected = data.selected
     }}
     let timeLabel = UIMaker.makeLabel(font: UIFont.main(.regular, size: 14),
                                       color: UIColor.CT_170,
@@ -31,9 +41,10 @@ class knTimeSlot: knGridCell<String> {
     }}
 }
 
-class knTimePicker: knGridView<knTimeSlot, String> {
-    var selectedIndex: IndexPath?
-    
+class knTimePicker: knGridView<knTimeSlot, knTime> {
+    override var datasource: [knTime] { didSet {
+        collectionView.reloadData()
+        }}
     override func setupView() {
         lineSpacing = padding
         layout = UICollectionViewFlowLayout()
@@ -48,13 +59,8 @@ class knTimePicker: knGridView<knTimeSlot, String> {
     }
     
     override func didSelectItem(at indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath)
-        cell?.isSelected = true
+        let cell = getCell(at: indexPath)
+        cell.isSelected = true
         selectedIndex = indexPath
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath)
-        cell?.isSelected = false
     }
 }

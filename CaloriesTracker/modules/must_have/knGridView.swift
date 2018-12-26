@@ -14,6 +14,7 @@ class knGridCell<U>: knCollectionCell {
 
 class knGridView<C: knGridCell<U>, U>: knView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     var datasource = [U]() { didSet { collectionView.reloadData() }}
+    var selectedIndex: IndexPath?
     fileprivate let cellId = "cellId"
     var collectionView: UICollectionView!
     var contentInset = UIEdgeInsets.zero

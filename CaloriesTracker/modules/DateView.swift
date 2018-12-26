@@ -25,6 +25,7 @@ class knDateCell: knGridCell<knDate> {
         guard let data = data else { return }
         dayOfWeekLabel.text = data.dayOfWeek
         dayLabel.text = String(data.day)
+        selectedBar.isHidden = !data.selected
     }}
     let dayOfWeekLabel = UIMaker.makeLabel(font: UIFont.main(.regular, size: 14),
                                       color: UIColor.CT_170,
@@ -52,7 +53,6 @@ class knDateCell: knGridCell<knDate> {
 }
 
 class knDateView: knGridView<knDateCell, knDate> {
-    var selectedIndex: IndexPath?
     var selectAction: (() -> Void)?
     
     override func setupView() {

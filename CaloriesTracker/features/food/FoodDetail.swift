@@ -114,6 +114,6 @@ class CTFoodDetailCtr: knStaticListController {
             animatedView.layer.transform = headerTransform
         }
         ui.backButton.isHidden = yOffset > 20
-        isStatusBarHidden = yOffset > 20
+        statusBarHidden = yOffset > 20
     }
 }

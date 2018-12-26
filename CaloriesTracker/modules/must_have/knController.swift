@@ -30,8 +30,12 @@ class knController : UIViewController {
         stateView!.fill(toView: view)
     }
     
+    var statusBarStyle = UIStatusBarStyle.lightContent
+        { didSet { setNeedsStatusBarAppearanceUpdate() } }
+    var statusBarHidden = false { didSet { setNeedsStatusBarAppearanceUpdate() }}
+
     override var preferredStatusBarStyle: UIStatusBarStyle { return statusBarStyle }
-    override var prefersStatusBarHidden: Bool { return isStatusBarHidden }
+    override var prefersStatusBarHidden: Bool { return statusBarHidden }
 }
 
 class knTableController: UITableViewController {

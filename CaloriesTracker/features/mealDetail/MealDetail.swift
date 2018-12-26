@@ -19,12 +19,10 @@ class CTMealDetailCtr: knStaticListController {
         ui.caloriesLabel.text = "\(calories) KCAL"
         title = data.getMealTypeString().uppercased()
         
-        if let calories = data.calories {
-            let caloriesSet = CaloriesTracker().check(calories: calories)
-            ui.attentionView.backgroundColor = caloriesSet.bgColor
-            ui.messageLabel.text = caloriesSet.message
-            ui.messageLabel.textColor = caloriesSet.textColor
-        }
+        let caloriesSet = CaloriesTracker().getFormat(isStandard: data.isStandard)
+        ui.attentionView.backgroundColor = caloriesSet.bgColor
+        ui.messageLabel.text = caloriesSet.message
+        ui.messageLabel.textColor = caloriesSet.textColor
         
         if let date = data.date, let time = data.time {
             ui.timeLabel.text = time + " - " + date
@@ -82,6 +80,6 @@ class CTMealDetailCtr: knStaticListController {
             headerTransform = CATransform3DScale(headerTransform, 1.0 + headerScaleFactor, 1.0 + headerScaleFactor, 0)
             animatedView.layer.transform = headerTransform
         }
-        isStatusBarHidden = yOffset > 20
+        statusBarHidden = yOffset > 20
     }
 }

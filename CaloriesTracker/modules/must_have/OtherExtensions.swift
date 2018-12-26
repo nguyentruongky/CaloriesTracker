@@ -286,3 +286,7 @@ extension UIStackView {
         }
     }
 }
+
+extension IndexPath {
+    static let zero: IndexPath = { return IndexPath(row: 0, section: 0) }()
+}

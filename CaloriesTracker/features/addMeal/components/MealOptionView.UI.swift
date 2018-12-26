@@ -15,14 +15,14 @@ extension CTMealOptionView {
         let caloriesSlider: UISlider = {
             let view = UISlider()
             view.translatesAutoresizingMaskIntoConstraints = false
-            let currentValue = Float(appSetting.standardCalories)
-            view.minimumValue = currentValue / 2
-            view.maximumValue = currentValue * 1.5
+            let currentValue = Float(appSetting.standardCalories / 2)
+            view.minimumValue = 100
+            view.maximumValue = currentValue * 2
             view.value = currentValue
             
             return view
         }()
-        let caloriesAmountLabel = UIMaker.makeLabel(text: String(appSetting.standardCalories),
+        lazy var caloriesAmountLabel = UIMaker.makeLabel(text: String(Int(caloriesSlider.value)),
                                             font: UIFont.main(.bold, size: 45),
                                             color: .CT_25)
         let noteTextView = UIMaker.makeTextView(placeholder: "Your note goes here",
@@ -39,7 +39,7 @@ extension CTMealOptionView {
         var time: String? {
             let index = timeView.selectedIndex?.row ?? 0
             let selectedTime = timeView.datasource[index]
-            return selectedTime
+            return selectedTime.time
         }
         
         func setupView() -> [knTableCell] {
@@ -70,14 +70,20 @@ extension CTMealOptionView {
             cell.addSubviews(views: view)
             view.fill(toView: cell)
             
-            dateView.datasource = getDates()
-            run({ [weak self] in
-                self?.dateView.didSelectItem(at: IndexPath(row: 0, section: 0))
-                }, after: 0.1)
+            var dates = getDates()
+            dates[0].selected = true
+            dateView.selectedIndex = IndexPath.zero
+            dateView.datasource = dates
+            
+            var times = getTodaySlots().map({ return knTime(time: $0) })
+            times[0].selected = true
+            timeView.datasource = times
             
             dateView.selectAction = { [weak self] in
                 guard let `self` = self else { return }
-                self.timeView.datasource = self.getTimeSlots()
+                var times = self.getTimeSlots().map({ return knTime(time: $0) })
+                times[0].selected = true
+                self.timeView.datasource = times
             }
             
             return cell

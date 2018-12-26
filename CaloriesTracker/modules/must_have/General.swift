@@ -11,8 +11,6 @@ import UIKit
 var screenWidth: CGFloat { return UIScreen.main.bounds.width }
 var screenHeight: CGFloat { return UIScreen.main.bounds.height }
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
-var statusBarStyle = UIStatusBarStyle.lightContent
-var isStatusBarHidden = false
 
 func run(_ action: @escaping () -> Void, after second: Double) {
     let triggerTime = DispatchTime.now() + .milliseconds(Int(second * 1000))

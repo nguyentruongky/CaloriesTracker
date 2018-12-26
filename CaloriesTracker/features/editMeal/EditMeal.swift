@@ -16,32 +16,62 @@ class CTEditMealCtr: CTAddMealCtr {
         mealOptionView.ui.caloriesAmountLabel.text = String(calories)
         mealOptionView.ui.caloriesSlider.value = Float(calories)
         
-        let dates = mealOptionView.ui.dateView.datasource
-        var dateIndexPath = IndexPath(row: 0, section: 0)
-
-        for i in 0 ..< dates.count {
-            let dateString = dates[i].date.toString("dd MMM yyyy")
-            if dateString == meal.date {
-                dateIndexPath.row = i
-                break
-            }
-        }
+        setDateSelected(meal.date)
+        setTimeSelected(meal.time)
         
-        mealOptionView.ui.dateView.selectedIndex = dateIndexPath
-        mealOptionView.ui.dateView.didSelectItem(at: dateIndexPath)
-        
-        let times = mealOptionView.ui.getTimeSlots()
-        var timeIndexPath = IndexPath(row: 0, section: 0)
-        for i in 0 ..< times.count {
-            if times[i] == meal.time {
-                timeIndexPath.row = i
-                break
-            }
-        }
-        
-        mealOptionView.ui.timeView.didSelectItem(at: timeIndexPath)
         mealOptionView.ui.noteTextView.text = meal.note
     }}
+    
+    func setDateSelected(_ date: String?) {
+        let dateView = mealOptionView.ui.dateView
+        var dates = dateView.datasource
+        var idxPath = IndexPath(row: 0, section: 0)
+        
+        for i in 0 ..< dates.count {
+            let dateString = dates[i].date.toString("dd MMM yyyy")
+            if dateString == date {
+                dates[i].selected = true
+                idxPath.row = i
+                break
+            }
+        }
+        if let index = dateView.selectedIndex, index != idxPath {
+            dates[index.row].selected = false
+        }
+        run({
+            if idxPath.row - 2 >= 0 {
+                var newIp = idxPath
+                newIp.row -= 2
+                dateView.collectionView.scrollToItem(at: newIp, at: .left, animated: false)
+            }
+        }, after: 0.1)
+        
+        dateView.selectedIndex = idxPath
+        dateView.datasource = dates
+    }
+    
+    func setTimeSelected(_ time: String?) {
+        let timeView = mealOptionView.ui.timeView
+        var times = mealOptionView.ui.getTimeSlots().map({ return knTime(time: $0) })
+        var idxPath = IndexPath.zero
+        for i in 0 ..< times.count {
+            if times[i].time == time {
+                idxPath.row = i
+                times[i].selected = true
+                break
+            }
+        }
+        timeView.datasource = times
+        timeView.selectedIndex = idxPath
+        run({
+            if idxPath.row - 2 >= 0 {
+                var newIp = idxPath
+                newIp.row -= 2
+                timeView.collectionView.scrollToItem(at: newIp, at: .left, animated: false)
+            }
+            timeView.didSelectItem(at: idxPath)
+        }, after: 0.1)
+    }
     
     override func setupView() {
         super.setupView()
