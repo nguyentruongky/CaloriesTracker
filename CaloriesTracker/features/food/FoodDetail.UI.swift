@@ -20,7 +20,8 @@ extension CTFoodDetailCtr {
         
         let ingredientLabel = UIMaker.makeLabel(font: UIFont.main(size: 15),
                                                  color: UIColor.CT_25)
-        let selectButton = UIMaker.makeMainButton(title: "Select")
+        let selectButton = UIMaker.makeMainButton(title: "Select this food")
+        let removeButton = UIMaker.makeMainButton(title: "Unselect", bgColor: .white, titleColor: .main)
         var backButton: UIButton!
         
         func setupView() -> [knTableCell] {
@@ -31,9 +32,13 @@ extension CTFoodDetailCtr {
         }
         
         func addSelectButton(to view: UIView) {
-            view.addSubviews(views: selectButton)
+            view.addSubviews(views: selectButton, removeButton)
             selectButton.horizontal(toView: view, space: padding)
-            selectButton.bottom(toView: view, space: -(view.safeAreaInsets.bottom + padding))
+            selectButton.bottom(toView: view, space: -(view.safeAreaInsets.bottom + padding * 1.5))
+            
+            removeButton.fill(toView: selectButton)
+            removeButton.setBorder(1, color: UIColor.main)
+            removeButton.isHidden = true
         }
         
         func makeTitleCell() -> knTableCell {
@@ -63,6 +68,7 @@ extension CTFoodDetailCtr {
             cell.backgroundColor = .clear
             cell.addSubviews(views: imgView)
             imgView.fill(toView: cell)
+            imgView.clipsToBounds = true
             return cell
         }
     }

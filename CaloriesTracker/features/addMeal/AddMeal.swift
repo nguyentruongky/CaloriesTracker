@@ -192,12 +192,22 @@ class CTAddMealCtr: knGridController<CTFoodCell, CTFood>, CTBottomSheetDelegate 
     func selectFood(_ food: CTFood) {
         mealOptionView.meal.foods.append(food)
         checkoutButton.increase(amount: 1)
+        
+        if let index = datasource.firstIndex(of: food) {
+            let cell = collectionView.cellForItem(at: IndexPath(row: index, section: 0)) as? CTFoodCell
+            cell?.removeButton.isHidden = false
+        }
     }
     
     func removeFood(_ food: CTFood) {
         guard let index = mealOptionView.meal.foods.firstIndex(where: { return $0.id == food.id }) else { return }
         mealOptionView.meal.foods.remove(at: index)
         checkoutButton.descrease(amount: 1)
+        
+        if let index = datasource.firstIndex(of: food) {
+            let cell = collectionView.cellForItem(at: IndexPath(row: index, section: 0)) as? CTFoodCell
+            cell?.removeButton.isHidden = true
+        }
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {

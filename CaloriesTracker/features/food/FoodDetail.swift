@@ -21,13 +21,19 @@ class CTFoodDetailCtr: knStaticListController {
         ui.fixedImgView.top(toView: view)
         ui.fixedImgView.horizontal(toView: view)
         ui.fixedImgView.height(ui.headerHeight)
+        ui.fixedImgView.clipsToBounds = true
         
         ui.addSelectButton(to: view)
         
         tableView.backgroundColor = .clear
         ui.backButton = addFakeBackButton()
         
+        ui.selectButton.addTarget(self, action: #selector(selectThisFood))
+        ui.removeButton.addTarget(self, action: #selector(removeFood))
+        
         fetchData()
+        
+        view.clipsToBounds = true
     }
     
     override func fetchData() {
@@ -42,6 +48,36 @@ class CTFoodDetailCtr: knStaticListController {
         cells.append(contentsOf: [descriptionCell])
         datasource = cells
         view.layoutIfNeeded()
+        
+        guard let controllers = navigationController?.viewControllers else { return }
+        for ctr in controllers where ctr is CTAddMealCtr {
+            if let isSelected = (ctr as? CTAddMealCtr)?.mealOptionView.meal.foods.contains(data) {
+                ui.removeButton.isHidden = !isSelected
+            }
+            break
+        }
+    }
+    
+    @objc func selectThisFood() {
+        guard let data = data else { return }
+        guard let controllers = navigationController?.viewControllers else { return }
+        for ctr in controllers where ctr is CTAddMealCtr {
+            (ctr as? CTAddMealCtr)?.selectFood(data)
+            break
+        }
+        
+        ui.removeButton.isHidden = false
+    }
+    
+    @objc func removeFood() {
+        guard let data = data else { return }
+        guard let controllers = navigationController?.viewControllers else { return }
+        for ctr in controllers where ctr is CTAddMealCtr {
+            (ctr as? CTAddMealCtr)?.removeFood(data)
+            break
+        }
+        
+        ui.removeButton.isHidden = true
     }
     
     func addFakeBackButton() -> UIButton {

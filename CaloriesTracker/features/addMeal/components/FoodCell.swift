@@ -19,17 +19,7 @@ class CTFood: Equatable {
     var calories = 0
     var description: String?
     var ingredient: String?
-    var isSelected = false
-    
-    init(id: Int) {
-        self.id = id
-    }
-    
-    init(image: String, name: String) {
-        self.image = image
-        self.name = name
-    }
-    
+
     init(raw: AnyObject) {
         id = raw["id"] as? Int
         name = raw["title"] as? String
