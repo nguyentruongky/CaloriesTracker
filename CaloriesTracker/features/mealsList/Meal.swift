@@ -28,15 +28,14 @@ class CTMeal {
         guard let time = time else { return .breakfast }
         guard let hourRaw = time.splitString(":").first, let hour = Int(hourRaw)
             else { return .breakfast }
-        if hour > 4 && hour < 10 { return .breakfast }
-        if hour > 10 && hour < 14 { return .lunch }
-        if hour > 14 && hour < 21 { return .dinner }
-        return .midnight_snack
+        if hour >= 4 && hour < 10 { return .breakfast }
+        if hour >= 10 && hour < 15 { return .lunch }
+        if hour >= 15 && hour < 21 { return .dinner }
+        return .collation
     }
     
     func getMealTypeString() -> String {
         let type = mealType.rawValue
-        if mealType == .midnight_snack { return "Midnight Snack" }
         return type.capitalized
     }
     
