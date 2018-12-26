@@ -30,6 +30,8 @@ class CTUserProfileCtr: knListController<CTMealCell, CTMeal> {
         
         fetchData()
         
+        ui.backButton.addTarget(self, action: #selector(back))
+        
     }
     override func fetchData() {
         ui.avatarImgView.downloadImage(from: "https://realitybuzz.files.wordpress.com/2010/01/steve_harvey.jpeg")

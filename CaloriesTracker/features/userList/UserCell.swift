@@ -104,16 +104,38 @@ class CTUserCell: knListCell<CTUser> {
         ctr.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         UIApplication.present(ctr)
     }
-    
+    var newRole: UserRole?
     func promoteToAdmin(_ action: UIAlertAction) {
         print("promoteToAdmin")
+        guard let id = data?.userId else { return }
+        newRole = .admin
+        CTSetUserRoleWorker(role: .admin, userId: id, successAction: didChangeRole,
+                            failAction: didChangeRoleFail).execute()
+    }
+    
+    func didChangeRole() {
+        guard let newRole = newRole else { return }
+        data?.role = newRole
+        updateUIByRole(role: newRole)
+        layoutIfNeeded()
+        CTMessage.showMessage("Updated")
+        self.newRole = nil
+    }
+    
+    func didChangeRoleFail(_ err: knError) {
+        CTMessage.showError(err.message ?? "Can't update role at this time")
     }
     
     func promoteToManager(_ action: UIAlertAction) {
         print("promoteToManager")
+        guard let id = data?.userId else { return }
+        newRole = .manager
+        CTSetUserRoleWorker(role: .manager, userId: id, successAction: didChangeRole,
+                            failAction: didChangeRoleFail).execute()
     }
 
     func deactivateAccount(_ action: UIAlertAction) {
         print("deactivateAccount")
+        
     }
 }

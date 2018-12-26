@@ -34,8 +34,7 @@ struct CTRegisterWorker {
                 return
             }
             guard let fbUserId = authResult?.user.uid else { return }
-            let id = Helper.generateId()
-            let user = CTUser(id: id, name: self.name, email: self.email, role: UserRole.user)
+            let user = CTUser(id: fbUserId, name: self.name, email: self.email, role: UserRole.user)
             self.success?(user)
             
             let bucket = CTDataBucket.users.rawValue
