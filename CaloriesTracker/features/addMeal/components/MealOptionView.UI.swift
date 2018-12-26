@@ -10,8 +10,8 @@ import UIKit
 
 extension CTMealOptionView {
     class UI: NSObject {
-        private let dateView = knDateView()
-        private let timeView = knTimePicker()
+        let dateView = knDateView()
+        let timeView = knTimePicker()
         let caloriesSlider: UISlider = {
             let view = UISlider()
             view.translatesAutoresizingMaskIntoConstraints = false
@@ -22,7 +22,7 @@ extension CTMealOptionView {
             
             return view
         }()
-        let amountLabel = UIMaker.makeLabel(text: String(appSetting.standardCalories),
+        let caloriesAmountLabel = UIMaker.makeLabel(text: String(appSetting.standardCalories),
                                             font: UIFont.main(.bold, size: 45),
                                             color: .CT_25)
         let noteTextView = UIMaker.makeTextView(placeholder: "Your note goes here",
@@ -90,10 +90,10 @@ extension CTMealOptionView {
             let titleLabel = UIMaker.makeLabel(text: title, font: UIFont.main(.bold, size: 17),
                                                color: .CT_25, numberOfLines: 2)
             let view = UIMaker.makeView()
-            view.addSubviews(views: titleLabel, amountLabel, caloriesSlider)
-            view.addConstraints(withFormat: "V:|-16-[v0]-24-[v1]-24-[v2]-32-|", views: titleLabel, amountLabel, caloriesSlider)
+            view.addSubviews(views: titleLabel, caloriesAmountLabel, caloriesSlider)
+            view.addConstraints(withFormat: "V:|-16-[v0]-24-[v1]-24-[v2]-32-|", views: titleLabel, caloriesAmountLabel, caloriesSlider)
             titleLabel.horizontal(toView: view, space: padding)
-            amountLabel.centerX(toView: view)
+            caloriesAmountLabel.centerX(toView: view)
             caloriesSlider.horizontal(toView: titleLabel)
             
             let cell = knTableCell()
@@ -141,7 +141,7 @@ extension CTMealOptionView {
         }
         
         @objc func updateCaloriesValue() {
-            amountLabel.text = String(Int(caloriesSlider.value))
+            caloriesAmountLabel.text = String(Int(caloriesSlider.value))
         }
     }
 }
@@ -157,7 +157,7 @@ extension CTMealOptionView.UI {
         return dates
     }
     
-    private func getTimeSlots() -> [String] {
+    func getTimeSlots() -> [String] {
         if dateView.selectedIndex?.row == 0 {
             return getTodaySlots()
         } else {

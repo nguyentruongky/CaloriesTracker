@@ -208,7 +208,7 @@ class CTAddMealCtr: knGridController<CTFoodCell, CTFood>, CTBottomSheetDelegate 
     }
     
     @objc func hideSheet() {
-        animateTransitionIfNeeded(to: currentState.opposite, duration: 0.35)
+        animateTransitionIfNeeded(to: .closed, duration: 0.35)
     }
 }
 

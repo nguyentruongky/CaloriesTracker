@@ -40,6 +40,7 @@ final class CTUpcomingMealsView: knGridView<CTUpcomingMealCell, CTMeal> {
     override func didSelectItem(at indexPath: IndexPath) {
         let ctr = CTMealDetailCtr()
         ctr.data = datasource[indexPath.row]
+        ctr.hidesBottomBarWhenPushed = true
         UIApplication.push(ctr)
     }
 }

@@ -39,12 +39,18 @@ class CTMealDetailCtr: knStaticListController {
         }
         
         ui.ateFoodView.datasource = data.foods
+        
+        if (data.interval ?? 0) > Date().timeIntervalSince1970 + 60 * 60 {
+            navigationItem.rightBarButtonItem = editButtonItem
+        }
     }}
     let ui = UI()
     
     override func setupView() {
         addBackButton()
         tableView.backgroundColor = UIColor.bg
+        editButtonItem.set(font: .main(.medium, size: 12), textColor: UIColor.CT_105)
+        editButtonItem.action = #selector(editMeal)
         navigationController?.hideBar(false)
         super.setupView()
         datasource = ui.setupView()
@@ -54,6 +60,12 @@ class CTMealDetailCtr: knStaticListController {
         ui.fixedImgView.top(toView: view)
         ui.fixedImgView.horizontal(toView: view)
         ui.fixedImgView.height(ui.headerHeight)
+    }
+    
+    @objc func editMeal() {
+        let ctr = CTEditMealCtr()
+        ctr.meal = data
+        push(ctr)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

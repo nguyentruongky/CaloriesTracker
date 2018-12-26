@@ -20,7 +20,7 @@ extension Optional {
 }
 
 extension UIBarButtonItem {
-    func format(font: UIFont, textColor: UIColor) {
+    func set(font: UIFont, textColor: UIColor) {
         let attributes = [NSAttributedString.Key.font: font,
                           NSAttributedString.Key.foregroundColor: textColor]
         setTitleTextAttributes(attributes, for: UIControl.State.normal)
