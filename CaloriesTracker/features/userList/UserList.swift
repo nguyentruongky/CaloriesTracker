@@ -13,7 +13,7 @@ class CTUserList: knListController<CTUserCell, CTUserDetail> {
         navigationController?.hideBar(false)
     }
     override func setupView() {
-        title = "USERS"
+        navigationItem.title = "USERS"
         rowHeight = 72
         contentInset = UIEdgeInsets(top: padding, bottom: padding)
         super.setupView()

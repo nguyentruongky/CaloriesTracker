@@ -12,6 +12,7 @@ var boss: CTBigBoss?
 class CTBigBoss: UITabBarController, UITabBarControllerDelegate {
     let mealsCtr = CTMealsDashboard()
     let settingCtr = CTSettingCtr()
+    var usersCtr: CTUserList!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,12 +25,22 @@ class CTBigBoss: UITabBarController, UITabBarControllerDelegate {
     func setupView() {
         let wrappedMeal = wrap(mealsCtr)
         let wrappedSetting = wrap(settingCtr)
-        settingCtr.view.backgroundColor = .red
         
-        viewControllers = [
-            wrappedMeal,
-            wrappedSetting
-        ]
+        if appSetting.userRole == .admin || appSetting.userRole == .manager {
+            usersCtr = CTUserList()
+            let wrapUsers = wrap(usersCtr)
+            viewControllers = [
+                wrappedMeal,
+                wrapUsers,
+                wrappedSetting
+            ]
+            setTabItem(wrapUsers.tabBarItem, image: UIImage(named: "users_list"), title: "Users")
+        } else {
+            viewControllers = [
+                wrappedMeal,
+                wrappedSetting
+            ]
+        }
         
         setTabItem(wrappedMeal.tabBarItem, image: UIImage(named: "meals"), title: "Meals")
         setTabItem(wrappedSetting.tabBarItem, image: UIImage(named: "setting"), title: "Settings")

@@ -19,7 +19,7 @@ class CTSettingCtr: knStaticListController {
     var actions = [Menu: (() -> Void)]()
     
     override func setupView() {
-        title = "SETTINGS"
+        navigationItem.title = "SETTINGS"
         rowHeight = 66
         super.setupView()
         view.addFill(tableView)
@@ -34,7 +34,6 @@ class CTSettingCtr: knStaticListController {
         let ctr = CTMessage.showMessage("Are you sure you want to logout?", title: "Confirm logout", cancelActionName: "Cancel")
         ctr.addAction(UIAlertAction(title: "Log out", style: .default, handler: { _ in
             CTLogoutWorker().execute()
-            appSetting.didLogin = false
             let loginCtr = CTLoginCtr()
             UIApplication.present(wrap(loginCtr))
         }))
