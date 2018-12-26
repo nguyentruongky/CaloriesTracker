@@ -12,6 +12,7 @@ class CTMealsDashboard: knListController<CTMealCell, CTMeal> {
     let ui = UI()
     var didLoadUpcomingMeals = false
     var didLoadPreviousMeals = false
+    static var shouldReload = false
     
     override var datasource: [CTMeal] { didSet {
         ui.setPreviousMealLabel(visible: !datasource.isEmpty)
@@ -26,7 +27,10 @@ class CTMealsDashboard: knListController<CTMealCell, CTMeal> {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.hideBar(true)
-        fetchData()
+        if CTMealsDashboard.shouldReload {
+            fetchData()
+            CTMealsDashboard.shouldReload = false
+        }
     }
     
     override func setupView() {
@@ -38,6 +42,8 @@ class CTMealsDashboard: knListController<CTMealCell, CTMeal> {
         view.addFill(ui.stateWrapper)
         
         (ui.greetingView.viewWithTag(1001) as? UIButton)?.addTarget(self, action: #selector(showAddMeal))
+        
+        fetchData()
     }
     
     @objc func showAddMeal() {
@@ -76,6 +82,6 @@ class CTMealsDashboard: knListController<CTMealCell, CTMeal> {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 { return UITableView.automaticDimension }
-        return 244
+        return 265
     }
 }

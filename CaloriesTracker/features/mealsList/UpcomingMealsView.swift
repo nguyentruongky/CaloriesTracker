@@ -50,12 +50,18 @@ final class CTUpcomingMealCell: knGridCell<CTMeal> {
         imgView.downloadImage(from: data.images.first)
         nameLabel.text = data.name
         ingredientLabel.text = data.ingredient
+        let mealType = data.getMealTypeString().uppercased()
+        if let date = data.date, let time = data.time {
+            let dateTime = time + " - " + date
+            caloriesLabel.text = "\(mealType) - \(dateTime)"
+        } else {
+            caloriesLabel.text = mealType
+        }
+        
         if let calories = data.calories {
-            let mealType = data.getMealTypeString().uppercased()
-            caloriesLabel.text = "\(mealType) - \(calories) KCAL"
             let caloriesSet = CaloriesTracker().check(calories: calories)
             attentionView.backgroundColor = caloriesSet.bgColor
-            messageLabel.text = caloriesSet.message
+            messageLabel.text = caloriesSet.message + " - \(calories) KCAL"
             messageLabel.textColor = caloriesSet.textColor
         }
     }}

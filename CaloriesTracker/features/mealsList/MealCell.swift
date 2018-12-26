@@ -12,11 +12,13 @@ final class CTMealCell: knListCell<CTMeal> {
         guard let data = data else { return }
         imgView.downloadImage(from: data.images.first)
         nameLabel.text = data.name
-        ingredientLabel.text = data.ingredient
+        timeLabel.text = data.getMealTypeString().uppercased()
+        if let date = data.date, let time = data.time {
+            timeLabel.text = timeLabel.text! + " - \(time) - \(date)"
+        }
         
         if let calories = data.calories {
-            let mealType = data.getMealTypeString().uppercased()
-            caloriesLabel.text = "\(mealType) - \(calories) KCAL"
+            caloriesLabel.text = "\(calories) KCAL"
             let caloriesSet = CaloriesTracker().check(calories: calories)
             attentionView.backgroundColor = caloriesSet.bgColor
             messageLabel.text = caloriesSet.message
@@ -26,7 +28,7 @@ final class CTMealCell: knListCell<CTMeal> {
     let imgView = UIMaker.makeImageView(contentMode: .scaleAspectFill)
     let nameLabel = UIMaker.makeLabel(font: UIFont.main(.bold, size: 15),
                                       color: UIColor.CT_25)
-    let ingredientLabel = UIMaker.makeLabel(font: UIFont.main(size: 12),
+    let timeLabel = UIMaker.makeLabel(font: UIFont.main(.bold, size: 12),
                                             color: UIColor.lightGray)
     let caloriesLabel = UIMaker.makeLabel(font: UIFont.main(.bold, size: 12),
                                         color: UIColor.lightGray)
@@ -42,11 +44,11 @@ final class CTMealCell: knListCell<CTMeal> {
         backgroundColor = UIColor.bg
         let view = UIMaker.makeView(background: UIColor.white)
         view.setCorner(radius: 7)
-        view.addSubviews(views: imgView, nameLabel, ingredientLabel, caloriesLabel, attentionView)
+        view.addSubviews(views: imgView, nameLabel, timeLabel, caloriesLabel, attentionView)
         view.addConstraints(withFormat: "V:|-\(padding / 2)-[v0]-8-[v1]-8-[v2]",
-                            views: nameLabel, ingredientLabel, caloriesLabel)
+                            views: nameLabel, timeLabel, caloriesLabel)
         nameLabel.horizontal(toView: view, space: padding / 2)
-        ingredientLabel.horizontal(toView: nameLabel)
+        timeLabel.horizontal(toView: nameLabel)
         caloriesLabel.left(toView: nameLabel)
         
         imgView.horizontal(toView: view)

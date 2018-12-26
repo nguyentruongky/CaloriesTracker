@@ -44,7 +44,7 @@ extension CTMealDetailCtr {
         }
         
         func makeDetailCell() -> knTableCell {
-            let view = UIMaker.makeStackView(space: 16)
+            let view = UIMaker.makeStackView(space: 6)
             view.addViews(titleLabel, noteLabel, timeLabel)
             titleLabel.horizontal(toView: view, space: padding)
             noteLabel.horizontal(toView: titleLabel)

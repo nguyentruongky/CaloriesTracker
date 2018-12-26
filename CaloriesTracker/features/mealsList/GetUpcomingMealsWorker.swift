@@ -35,7 +35,7 @@ struct CTGetUpcomingMealsWorker {
         let meals = values.map({ return CTMeal(raw: $0) })
         let now = Date().timeIntervalSince1970
         var upcoming = meals.filter({ return ($0.interval) ?? 0 > now })
-        upcoming.sort(by: { return ($0.interval ?? 0) > ($1.interval ?? 0) })
+        upcoming.sort(by: { return ($0.interval ?? 0) < ($1.interval ?? 0) })
         successAction?(upcoming)
     }
     
