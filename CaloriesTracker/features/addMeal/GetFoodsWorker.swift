@@ -26,16 +26,17 @@ struct CTGetFoodsWorker {
     func execute() {
         let bucket = CTDataBucket.foods.rawValue
         let ref = Database.database().reference().child(bucket)
-        let query = ref.queryLimited(toFirst: UInt(page) * MAX_ITEM)
+//        let query = ref.queryLimited(toFirst: UInt(page) * MAX_ITEM)
         
-        query.observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
             guard let raws = snapshot.value as? [String: AnyObject] else {
                 let error = knError(code: "no_data")
                 self.failAction?(error)
                 return
             }
             
-            let foods = Array(raws.values).map({ return CTFood(raw: $0) })
+            var foods = Array(raws.values).map({ return CTFood(raw: $0) })
+            foods.sort(by: { return ($0.id ?? 0) < ($1.id ?? 0) })
             self.successAction?(foods)
             
         }) { (err) in
