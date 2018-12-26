@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupApp()
         setupNavigationBar()
         FirebaseApp.configure()
-        
+
         return true
     }
     

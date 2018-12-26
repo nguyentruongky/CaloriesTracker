@@ -15,10 +15,7 @@ class CTRegisterCtr: knStaticListController {
     
     override func setupView() {
         title = "JOIN CALORIES TRACKER"
-        let closeButton = UIBarButtonItem(image: UIImage(named: "close"),
-                                          style: .done, target: self, action: #selector(close))
         navigationController?.hideBar(false)
-        navigationItem.leftBarButtonItem = closeButton
         contentInset = UIEdgeInsets(top: padding)
         super.setupView()
         datasource = ui.setupView()

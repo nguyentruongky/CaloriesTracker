@@ -8,34 +8,53 @@
 
 import UIKit
 
-class CTUserDetail {
-    var user: CTUser?
-    var mealCount = 0
-    init(user: CTUser, mealCount: Int) {
-        self.user = user
-        self.mealCount = mealCount
-    }
-}
-
-class CTUserCell: knListCell<CTUserDetail> {
-    override var data: CTUserDetail? { didSet {
-        avatarImgView.downloadImage(from: data?.user?.avatar)
-        nameLabel.text = data?.user?.name
-        let mealCount = data?.mealCount ?? 0
-        mealCountLabel.text = "\(mealCount) meals"
+class CTUserCell: knListCell<CTUser> {
+    override var data: CTUser? { didSet {
+        avatarImgView.downloadImage(from: data?.avatar)
+        nameLabel.text = data?.name
+        emailLabel.text = data?.email
+        updateUIByRole(role: data?.role ?? .user)
     }}
     
-    let avatarImgView = UIMaker.makeImageView(contentMode: .scaleAspectFill)
+    func updateUIByRole(role: UserRole) {
+        roleView.isHidden = true
+        optionButton.isHidden = false
+        
+        switch role {
+        case .admin:
+            roleLabel.text = data?.role.rawValue.capitalized
+            roleView.backgroundColor = UIColor.main
+            optionButton.isHidden = true
+            roleView.isHidden = false
+        case .manager:
+            roleLabel.text = data?.role.rawValue.capitalized
+            roleView.backgroundColor = UIColor.CT_163_169_175
+            roleView.isHidden = false
+        case .user: break
+        }
+    }
+    
+    let avatarImgView = UIMaker.makeImageView(image: UIImage(named: "user_profile"),
+                                              contentMode: .scaleAspectFill)
     let nameLabel = UIMaker.makeLabel(font: UIFont.main(.bold, size: 14),
                                       color: UIColor.CT_25, alignment: .center)
-    let mealCountLabel = UIMaker.makeLabel(font: UIFont.main(size: 12),
+    let emailLabel = UIMaker.makeLabel(font: UIFont.main(size: 12),
                                       color: UIColor.CT_105, alignment: .center)
-    let deleteButton = UIMaker.makeButton(title: "Delete", titleColor: UIColor.CT_25,
-                                          font: UIFont.main(.bold, size: 13))
-    
+    let optionButton = UIMaker.makeButton(image: UIImage(named: "more"))
+    let roleLabel = UIMaker.makeLabel(font: UIFont.main(.bold, size: 10),
+                                           color: UIColor.white, alignment: .center)
+    let roleView = UIMaker.makeView(background: UIColor.main)
+
     override func setupView() {
+        roleView.addSubviews(views: roleLabel)
+        roleLabel.horizontal(toView: roleView, space: 8)
+        roleLabel.centerY(toView: roleView)
+        let roleHeight: CGFloat = 20
+        roleView.height(roleHeight)
+        roleView.setCorner(radius: roleHeight / 2)
+        
         let view = UIMaker.makeView()
-        view.addSubviews(views: avatarImgView, nameLabel, mealCountLabel, deleteButton)
+        view.addSubviews(views: avatarImgView, nameLabel, emailLabel, optionButton, roleView)
         avatarImgView.left(toView: view)
         avatarImgView.vertical(toView: view)
         let avatarHeight: CGFloat = 44
@@ -45,14 +64,56 @@ class CTUserCell: knListCell<CTUserDetail> {
         nameLabel.bottom(toAnchor: view.centerYAnchor, space: -2)
         nameLabel.leftHorizontalSpacing(toView: avatarImgView, space: -16)
         
-        mealCountLabel.left(toView: nameLabel)
-        mealCountLabel.verticalSpacing(toView: nameLabel, space: 4)
+        emailLabel.left(toView: nameLabel)
+        emailLabel.verticalSpacing(toView: nameLabel, space: 4)
         
-        deleteButton.right(toView: view)
-        deleteButton.centerY(toView: view)
+        optionButton.right(toView: view)
+        optionButton.centerY(toView: view)
+        optionButton.square(edge: 44)
+        optionButton.contentEdgeInsets = UIEdgeInsets(space: 8)
+        optionButton.imageView?.contentMode = .scaleAspectFit
+        
+        roleView.leftHorizontalSpacing(toView: nameLabel, space: -12)
+        roleView.centerY(toView: nameLabel)
         
         addSubviews(views: view)
         view.horizontal(toView: self, space: padding)
         view.top(toView: self)
+        
+        optionButton.addTarget(self, action: #selector(showOption))
+    }
+    
+    @objc func showOption() {
+        let ctr = UIAlertController(title: "More options", message: nil, preferredStyle: .actionSheet)
+        guard let role = data?.role else { return }
+        switch role {
+        case .admin:
+            break
+        case .manager:
+            ctr.addAction(UIAlertAction(title: "Promote to Admin", style: .default,
+                                        handler: promoteToAdmin))
+            
+        case .user:
+            ctr.addAction(UIAlertAction(title: "Promote to Manager", style: .default,
+                                        handler: promoteToManager))
+            
+        }
+        
+        ctr.addAction(UIAlertAction(title: "Deactivate account", style: .default,
+                                    handler: deactivateAccount))
+        ctr.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        UIApplication.present(ctr)
+    }
+    
+    func promoteToAdmin(_ action: UIAlertAction) {
+        print("promoteToAdmin")
+    }
+    
+    func promoteToManager(_ action: UIAlertAction) {
+        print("promoteToManager")
+    }
+
+    func deactivateAccount(_ action: UIAlertAction) {
+        print("deactivateAccount")
     }
 }

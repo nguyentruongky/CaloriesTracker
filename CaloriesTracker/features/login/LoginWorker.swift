@@ -40,6 +40,12 @@ struct CTLoginWorker {
             let db = Helper.getUserDb()
             db.child(fbUserId).observeSingleEvent(of: .value, with: { (snapshot) in
                 let rawData = snapshot.value as AnyObject
+                let isActive = rawData["is_active"] as? Bool ?? true
+                if isActive == false {
+                    self.fail?(knError(code: "inactive", message: "Your account is deactivated by violation reporting. Please contact to help@caloriestracker.com to get help"))
+                    try? Auth.auth().signOut()
+                    return
+                }
                 let user = CTUser(raw: rawData)
                 self.success?(user)
             })

@@ -24,28 +24,26 @@ struct CTGetMyProfileWorker {
             return
         }
         
-        let user = CTUser(fbUser: userRaw)
-        
-        let bucket = CTDataBucket.users.rawValue
-        let db = Database.database().reference().child(bucket)
+        let db = Helper.getUserDb()
         
         db.queryOrdered(byChild: "user_id")
             .queryEqual(toValue: userRaw.uid)
             .observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let raws = snapshot.value as? [String: AnyObject] else {
-                let error = knError(code: "no_data")
-                self.failAction?(error)
-                return
-            }
+                guard let _ = snapshot.value as? [String: AnyObject] else {
+                    let error = knError(code: "no_data")
+                    self.failAction?(error)
+                    return
+                }
             
-            
-            
+                let raw = snapshot.value as AnyObject
+                let user = CTUser(raw: raw)
+                self.successAction?(user)
+
         }) { (err) in
             let error = knError(code: "no_data", message: err.localizedDescription)
             self.failAction?(error)
         }
         
-        successAction?(user)
     }
 }
 

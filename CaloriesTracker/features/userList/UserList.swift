@@ -7,10 +7,11 @@
 //
 
 import UIKit
-class CTUserList: knListController<CTUserCell, CTUserDetail> {
+class CTUserList: knListController<CTUserCell, CTUser> {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.hideBar(false)
+        fetchData()
     }
     override func setupView() {
         navigationItem.title = "USERS"
@@ -19,21 +20,31 @@ class CTUserList: knListController<CTUserCell, CTUserDetail> {
         super.setupView()
         view.addFill(tableView)
         
-        fetchData()
+        addState()
+        stateView?.state = .loading
     }
     
     override func fetchData() {
-        let user = CTUser(name: "Steve Harley", avatar: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/SteveHarveyHWOFMay2013.jpg/250px-SteveHarveyHWOFMay2013.jpg")
-        datasource = [
-            CTUserDetail(user: user, mealCount: 6),
-            CTUserDetail(user: user, mealCount: 6),
-            CTUserDetail(user: user, mealCount: 6),
-            CTUserDetail(user: user, mealCount: 6),
-            CTUserDetail(user: user, mealCount: 6),
-            CTUserDetail(user: user, mealCount: 6),
-            CTUserDetail(user: user, mealCount: 6),
-            CTUserDetail(user: user, mealCount: 6),
-        ]
+        CTGetAllUsersWorker(successAction: didGetUsers, failAction: didGetUserFail).execute()
+    }
+    
+    func didGetUsers(_ users: [CTUser]) {
+        if users.isEmpty {
+            stateView?.state = .empty
+        } else {
+            datasource = users
+            stateView?.state = .success
+        }
+    }
+    
+    func didGetUserFail(_ err: knError) {
+        stateView?.state = .error
+    }
+    
+    override func didSelectRow(at indexPath: IndexPath) {
+        let ctr = CTUserProfileCtr()
+        ctr.data = datasource[indexPath.row]
+        push(ctr)
     }
 }
 

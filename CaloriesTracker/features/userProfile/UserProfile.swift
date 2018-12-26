@@ -9,6 +9,7 @@
 import UIKit
 class CTUserProfileCtr: knListController<CTMealCell, CTMeal> {
     let ui = UI()
+    var data: CTUser?
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.hideBar(true)
