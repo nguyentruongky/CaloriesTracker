@@ -21,7 +21,6 @@ struct CTGetCaloriesWorker {
         let bucket = CTDataBucket.users.rawValue
         let db = Database.database().reference().child(bucket).child(uid)
         db.child("calories_limit").observeSingleEvent(of: .value) { (snapshot) in
-            print(snapshot.value)
             let value = snapshot.value as? Int ?? appSetting.standardCalories
             self.successAction?(value)
         }
