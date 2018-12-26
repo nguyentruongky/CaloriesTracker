@@ -95,7 +95,7 @@ class knBarButtonNumber: UIBarButtonItem {
     
     func descrease(amount: Int) {
         guard let value = Int(badgeValue) else { return }
-        badgeValue = String(amount - value)
+        badgeValue = String(value - amount)
     }
     
     private func removeBadge() {

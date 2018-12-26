@@ -93,7 +93,7 @@ extension Date {
     init(dateString: String, format: String, locale: Locale = Locale(identifier: "en_US_POSIX")) {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = locale
-        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+        dateFormatter.timeZone = TimeZone.current
         dateFormatter.dateFormat = format
         dateFormatter.calendar =  Calendar(identifier: Calendar.Identifier.iso8601)
         
