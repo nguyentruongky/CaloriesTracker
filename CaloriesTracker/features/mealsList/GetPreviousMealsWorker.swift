@@ -30,7 +30,10 @@ struct CTGetPreviousMealsWorker {
     }
     
     private func mapRawData(_ returnData: Any?) {
-        guard let rawData = returnData as? [String: AnyObject] else { return }
+        guard let rawData = returnData as? [String: AnyObject] else {
+            successAction?([])
+            return
+        }
         let values = Array(rawData.values)
         let meals = values.map({ return CTMeal(raw: $0) })
         CaloriesTracker().checkCaloriesStandard(for: meals)

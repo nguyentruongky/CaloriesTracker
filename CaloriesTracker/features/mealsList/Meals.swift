@@ -44,6 +44,7 @@ class CTMealsDashboard: knListController<CTMealCell, CTMeal> {
         view.addFill(ui.stateWrapper)
         
         (ui.greetingView.viewWithTag(1001) as? UIButton)?.addTarget(self, action: #selector(showAddMeal))
+        (ui.stateWrapper.viewWithTag(1001) as? UIButton)?.addTarget(self, action: #selector(showAddMeal))
         
         fetchData()
     }

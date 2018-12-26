@@ -11,7 +11,7 @@ import UIKit
 extension CTMealsDashboard {
     class UI {
         let upcomingMealsView = CTUpcomingMealsView()
-        let upcomingContainer = UIMaker.makeStackView(space: 32)
+        let upcomingStack = UIMaker.makeStackView(space: 32)
         let previousLabel = UIMaker.makeLabel(text: "PREVIOUS MEALS",
                                               font: UIFont.main(.bold, size: 15), color: .CT_25)
         let stateView = knStateView()
@@ -50,10 +50,10 @@ extension CTMealsDashboard {
         func makeUpcomingCell() -> knTableCell {
             let cell = knTableCell()
             cell.backgroundColor = .bg
-            cell.addSubviews(views: upcomingContainer)
-            upcomingContainer.horizontal(toView: cell)
-            upcomingContainer.top(toView: cell, space: padding)
-            let topViewBottom = upcomingContainer.bottom(toView: cell, space: -12, isActive: false)
+            cell.addSubviews(views: upcomingStack)
+            upcomingStack.horizontal(toView: cell)
+            upcomingStack.top(toView: cell, space: padding)
+            let topViewBottom = upcomingStack.bottom(toView: cell, space: -12, isActive: false)
             topViewBottom.priority = UILayoutPriority(rawValue: 999)
             topViewBottom.isActive = true 
             return cell
@@ -61,9 +61,9 @@ extension CTMealsDashboard {
         
         func setUpcomingView(visible: Bool) {
             if visible {
-                upcomingContainer.insertArrangedSubview(upcomingMealsView, at: 0)
+                upcomingStack.insertArrangedSubview(upcomingMealsView, at: 0)
                 upcomingMealsView.height(400)
-                upcomingMealsView.horizontal(toView: upcomingContainer)
+                upcomingMealsView.horizontal(toView: upcomingStack)
             } else {
                 upcomingMealsView.removeFromSuperview()
                 upcomingMealsView.removeAllConstraints()
@@ -72,8 +72,8 @@ extension CTMealsDashboard {
         
         func setPreviousMealLabel(visible: Bool) {
             if visible {
-                upcomingContainer.insertArrangedSubview(previousLabel, at: upcomingContainer.subviews.count)
-                previousLabel.left(toView: upcomingContainer, space: padding)
+                upcomingStack.insertArrangedSubview(previousLabel, at: upcomingStack.subviews.count)
+                previousLabel.left(toView: upcomingStack, space: padding)
             } else {
                 upcomingMealsView.removeFromSuperview()
             }
@@ -87,6 +87,8 @@ extension CTMealsDashboard {
         }
         
         func makeStateView() -> UIView {
+            stateView.setStateContent(state: .empty, imageName: "no_meal", title: "You have no meal", content: "Start tracking your calories everyday by adding meals")
+            
             let view = UIMaker.makeView()
             let greetingView = makeGreetingView()
             view.addSubviews(views: stateView, greetingView)
