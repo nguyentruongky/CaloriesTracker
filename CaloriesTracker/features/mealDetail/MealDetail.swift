@@ -46,20 +46,14 @@ class CTMealDetailCtr: knStaticListController {
         addBackButton()
         tableView.backgroundColor = UIColor.bg
         navigationController?.hideBar(false)
-        title = "Breakfast"
         super.setupView()
         datasource = ui.setupView()
-        view.addSubviews(views: ui.fixedImgView, tableView)
+        view.addSubviews(views: tableView, ui.fixedImgView)
         tableView.fill(toView: view)
+        
         ui.fixedImgView.top(toView: view)
         ui.fixedImgView.horizontal(toView: view)
         ui.fixedImgView.height(ui.headerHeight)
-        
-        fetchData()
-    }
-    
-    override func fetchData() {
-        
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
