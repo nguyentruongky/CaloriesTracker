@@ -13,6 +13,8 @@ struct CTLogoutWorker {
     init() { }
     
     func execute() {
+        appSetting.didLogin = false
+        appSetting.standardCalories = appSetting.DEFAULT_CALORIES
         try? Auth.auth().signOut()
     }
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 import FirebaseAuth
+import FirebaseDatabase
 
 struct CTRegisterWorker {
     var name: String
@@ -32,22 +33,14 @@ struct CTRegisterWorker {
                 self.fail?(knError(code: "register_fail", message: error.localizedDescription))
                 return
             }
-            if let fbUser = authResult?.user {
-                let user = self.mapUser(from: fbUser)
-                self.success?(user)
-            }
-
-            let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-            changeRequest?.displayName = self.name
-            changeRequest?.commitChanges(completion: nil)
+            guard let fbUserId = authResult?.user.uid else { return }
+            let id = Helper.generateId()
+            let user = CTUser(id: id, name: self.name, email: self.email, role: UserRole.user)
+            self.success?(user)
+            
+            let bucket = CTDataBucket.users.rawValue
+            let db = Database.database().reference().child(bucket).child(fbUserId)
+            db.setValue(user.toDict())
         }
-    }
-    
-    private func mapUser(from fbUser: User) -> CTUser {
-        let user = CTUser()
-        user.name = name
-        user.email = email
-        user.userId = fbUser.providerID
-        return user
     }
 }

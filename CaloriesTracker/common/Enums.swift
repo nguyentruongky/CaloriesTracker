@@ -11,9 +11,6 @@ enum CTMealType: String {
     case breakfast, lunch, dinner, collation
 }
 
-enum CTMealTypeColor: String {
-    case breakfast = "EFC05F"
-    case lunch = "ED9456"
-    case dinner = "3B4353"
+enum UserRole: String {
+    case user, manager, admin
 }
-

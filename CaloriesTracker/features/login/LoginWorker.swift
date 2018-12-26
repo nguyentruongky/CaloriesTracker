@@ -8,24 +8,7 @@
 
 import Foundation
 import FirebaseAuth
-
-class CTUser {
-    var email: String?
-    var name: String?
-    var userId: String?
-    var avatar: String?
-    
-    init() { }
-    init(fbUser: User) {
-        email = fbUser.email
-        name = fbUser.displayName
-        userId = fbUser.uid
-    }
-    init(name: String, avatar: String) {
-        self.name = name
-        self.avatar = avatar
-    }
-}
+import FirebaseDatabase
 
 struct CTLoginWorker {
     var email: String
@@ -48,10 +31,19 @@ struct CTLoginWorker {
                 self.fail?(knError(code: "login_fail", message: error.localizedDescription))
                 return
             }
-            if let fbUser = result?.user {
-                let user = self.mapUser(from: fbUser)
-                self.success?(user)
+            
+            guard let fbUserId = result?.user.uid else {
+                self.fail?(knError(code: "no_user_data"))
+                return
             }
+            
+            let db = Helper.getUserDb()
+            db.child(fbUserId).observeSingleEvent(of: .value, with: { (snapshot) in
+                let rawData = snapshot.value as AnyObject
+                let user = CTUser(raw: rawData)
+                self.success?(user)
+            })
+            
         }
     }
     
