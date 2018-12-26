@@ -43,7 +43,7 @@ class CTMealOptionView: knStaticListView {
     @objc func saveMeal() {
         meal.date = ui.date
         meal.time = ui.time
-        meal.calorie = Int(ui.caloriesSlider.value)
+        meal.calories = Int(ui.caloriesSlider.value)
         meal.note = ui.noteTextView.text
         delegate?.saveMeal()
         delegate?.hideSheet()

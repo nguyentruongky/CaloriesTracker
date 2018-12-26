@@ -54,7 +54,7 @@ class CTMealsDashboard: knListController<CTMealCell, CTMeal> {
     
     override func didSelectRow(at indexPath: IndexPath) {
         let ctr = CTMealDetailCtr()
-        ctr.data = datasource[indexPath.row]
+        ctr.data = datasource[indexPath.row - 1]
         push(ctr)
     }
     

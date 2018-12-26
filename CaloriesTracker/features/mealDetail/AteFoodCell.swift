@@ -43,7 +43,7 @@ final class CTAteFoodCell: knGridCell<CTFood> {
         view.addConstraints(withFormat: "V:|[v0]-16-[v1]-16-|", views: imgView, nameLabel)
         imgView.height(120)
         imgView.horizontal(toView: view)
-        nameLabel.horizontal(toView: view)
+        nameLabel.horizontal(toView: view, space: 8)
         
         addSubviews(views: view)
         view.horizontal(toView: self)

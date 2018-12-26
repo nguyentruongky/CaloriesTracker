@@ -30,7 +30,7 @@ struct CTAddMealWorker {
             "foods": foods,
             "time": meal.time,
             "date": meal.date,
-            "calories": meal.calorie,
+            "calories": meal.calories,
             "note": meal.note
         ] as [String : Any?]
         let bucket = CTDataBucket.meals.rawValue

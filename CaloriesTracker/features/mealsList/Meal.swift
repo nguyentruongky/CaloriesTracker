@@ -13,7 +13,7 @@ class CTMeal {
     var images = [String]()
     var name: String?
     var ingredient: String?
-    var calorie: Int?
+    var calories: Int?
     var date: String?
     var time: String?
     var note: String?
@@ -44,7 +44,7 @@ class CTMeal {
     
     init(raw: AnyObject) {
         id = raw["meal_id"] as? String
-        calorie = raw["calories"] as? Int ?? 0
+        calories = raw["calories"] as? Int ?? 0
         date = raw["date"] as? String
         time = raw["time"] as? String
         

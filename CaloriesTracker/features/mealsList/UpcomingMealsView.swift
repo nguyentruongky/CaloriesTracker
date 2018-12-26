@@ -36,25 +36,27 @@ final class CTUpcomingMealsView: knGridView<CTUpcomingMealCell, CTMeal> {
         label.left(toView: self, space: padding)
         collectionView.horizontal(toView: self)
     }
+    
+    override func didSelectItem(at indexPath: IndexPath) {
+        let ctr = CTMealDetailCtr()
+        ctr.data = datasource[indexPath.row]
+        UIApplication.push(ctr)
+    }
 }
 
 final class CTUpcomingMealCell: knGridCell<CTMeal> {
     override var data: CTMeal? { didSet {
-        imgView.downloadImage(from: data?.images.first)
-        nameLabel.text = data?.name
-        ingredientLabel.text = data?.ingredient
-        let mealType = data?.mealType.rawValue.uppercased() ?? ""
-        if let calorie = data?.calorie {
-            caloryLabel.text = "\(mealType) - \(calorie) KCAL"
-            if calorie > appSetting.standardCalory {
-                attentionView.backgroundColor = .red
-                messageLabel.text = "High calories"
-                messageLabel.textColor = .white
-            } else {
-                attentionView.backgroundColor = .green
-                messageLabel.text = "Standard"
-                messageLabel.textColor = .darkGray
-            }
+        guard let data = data else { return }
+        imgView.downloadImage(from: data.images.first)
+        nameLabel.text = data.name
+        ingredientLabel.text = data.ingredient
+        if let calories = data.calories {
+            let mealType = data.getMealTypeString().uppercased()
+            caloriesLabel.text = "\(mealType) - \(calories) KCAL"
+            let caloriesSet = CaloriesTracker().check(calories: calories)
+            attentionView.backgroundColor = caloriesSet.bgColor
+            messageLabel.text = caloriesSet.message
+            messageLabel.textColor = caloriesSet.textColor
         }
     }}
     let imgView = UIMaker.makeImageView(contentMode: .scaleAspectFill)
@@ -62,25 +64,26 @@ final class CTUpcomingMealCell: knGridCell<CTMeal> {
                                              color: UIColor.CT_25)
     let ingredientLabel = UIMaker.makeLabel(font: UIFont.main(size: 12),
                                             color: UIColor.lightGray)
-    let caloryLabel = UIMaker.makeLabel(font: UIFont.main(.bold, size: 12),
+    let caloriesLabel = UIMaker.makeLabel(font: UIFont.main(.bold, size: 12),
                                         color: UIColor.lightGray)
     let messageLabel = UIMaker.makeLabel(font: UIFont.main(.bold),
                                          color: UIColor.lightGray)
     let attentionView = UIMaker.makeView()
+    
     override func setupView() {
         attentionView.addSubviews(views: messageLabel)
         messageLabel.fill(toView: attentionView, space: UIEdgeInsets(space: padding / 2))
         
         let view = UIMaker.makeView(background: .white)
         view.setCorner(radius: 7)
-        view.addSubviews(views: imgView, nameLabel, ingredientLabel, caloryLabel, attentionView)
-        view.addConstraints(withFormat: "V:|[v0]-16-[v1]-4-[v2]-4-[v3]-16-[v4]|", views: imgView, nameLabel, ingredientLabel, caloryLabel, attentionView)
+        view.addSubviews(views: imgView, nameLabel, ingredientLabel, caloriesLabel, attentionView)
+        view.addConstraints(withFormat: "V:|[v0]-16-[v1]-4-[v2]-4-[v3]-16-[v4]|", views: imgView, nameLabel, ingredientLabel, caloriesLabel, attentionView)
         imgView.horizontal(toView: view)
         imgView.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 239), for: .vertical)
         
         nameLabel.horizontal(toView: view, space: padding / 2)
         ingredientLabel.horizontal(toView: nameLabel)
-        caloryLabel.left(toView: nameLabel)
+        caloriesLabel.left(toView: nameLabel)
         attentionView.horizontal(toView: view)
         
         addSubview(view)

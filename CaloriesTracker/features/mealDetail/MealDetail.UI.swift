@@ -15,13 +15,13 @@ extension CTMealDetailCtr {
         let imgView = UIMaker.makeImageView(contentMode: .scaleAspectFill)
         let titleLabel = UIMaker.makeLabel(font: UIFont.main(.bold, size: 25),
                                            color: UIColor.CT_25, numberOfLines: 0)
-        let timeLabel = UIMaker.makeLabel(font: UIFont.main(size: 14),
+        let timeLabel = UIMaker.makeLabel(font: UIFont.main(.medium, size: 13),
                                               color: UIColor.CT_170)
         let caloriesLabel = UIMaker.makeLabel(font: UIFont.main(.bold, size: 15),
                                           color: UIColor(r: 252, g: 61, b: 86))
         let messageLabel = UIMaker.makeLabel(font: UIFont.main(.bold, size: 12),
                                              color: UIColor.lightGray)
-        let noteLabel = UIMaker.makeLabel(font: UIFont.main(size: 14),
+        let noteLabel = UIMaker.makeLabel(font: UIFont.main(.medium, size: 13),
                                           color: UIColor.CT_170, numberOfLines: 0)
         let ateFoodView = CTAteFoodView()
         

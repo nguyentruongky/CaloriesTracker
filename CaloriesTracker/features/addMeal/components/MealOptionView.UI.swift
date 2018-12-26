@@ -15,14 +15,14 @@ extension CTMealOptionView {
         let caloriesSlider: UISlider = {
             let view = UISlider()
             view.translatesAutoresizingMaskIntoConstraints = false
-            let currentValue = Float(appSetting.standardCalory)
+            let currentValue = Float(appSetting.standardCalories)
             view.minimumValue = currentValue / 2
             view.maximumValue = currentValue * 1.5
             view.value = currentValue
             
             return view
         }()
-        let amountLabel = UIMaker.makeLabel(text: String(appSetting.standardCalory),
+        let amountLabel = UIMaker.makeLabel(text: String(appSetting.standardCalories),
                                             font: UIFont.main(.bold, size: 45),
                                             color: .CT_25)
         let noteTextView = UIMaker.makeTextView(placeholder: "Your note goes here",

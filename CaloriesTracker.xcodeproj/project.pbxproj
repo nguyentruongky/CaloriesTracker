@@ -97,6 +97,7 @@
 		C193050D21D2D00200315ED3 /* GetFoodDetailWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193050C21D2D00200315ED3 /* GetFoodDetailWorker.swift */; };
 		C193050F21D2D69500315ED3 /* GetUpcomingMealsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193050E21D2D69500315ED3 /* GetUpcomingMealsWorker.swift */; };
 		C193051121D3171000315ED3 /* UpcomingMealsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193051021D3171000315ED3 /* UpcomingMealsView.swift */; };
+		C193051321D31E3B00315ED3 /* CaloriesChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193051221D31E3B00315ED3 /* CaloriesChecker.swift */; };
 		C2F0A07394AADE51D770740B /* Pods_CaloriesTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B86763ED8DC2891F52136858 /* Pods_CaloriesTracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -195,6 +196,7 @@
 		C193050C21D2D00200315ED3 /* GetFoodDetailWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFoodDetailWorker.swift; sourceTree = "<group>"; };
 		C193050E21D2D69500315ED3 /* GetUpcomingMealsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUpcomingMealsWorker.swift; sourceTree = "<group>"; };
 		C193051021D3171000315ED3 /* UpcomingMealsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingMealsView.swift; sourceTree = "<group>"; };
+		C193051221D31E3B00315ED3 /* CaloriesChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesChecker.swift; sourceTree = "<group>"; };
 		EE7D234AAD8C0C68B809DD8C /* Pods-CaloriesTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaloriesTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CaloriesTracker/Pods-CaloriesTracker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -364,6 +366,7 @@
 				C120CD8221CB87200080EC15 /* CTMessage.swift */,
 				C193047621CB95E500315ED3 /* DataBucket.swift */,
 				C19304E021CF54CF00315ED3 /* MealEnums.swift */,
+				C193051221D31E3B00315ED3 /* CaloriesChecker.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -640,6 +643,7 @@
 				C120CD4521CB80FB0080EC15 /* UIColorExtension.swift in Sources */,
 				C193048E21CCE86C00315ED3 /* AddMeal.swift in Sources */,
 				C19304FE21D20FE000315ED3 /* MealOptionView.UI.swift in Sources */,
+				C193051321D31E3B00315ED3 /* CaloriesChecker.swift in Sources */,
 				C120CD1621CB3D230080EC15 /* AppDelegate.swift in Sources */,
 				C120CD7921CB83F30080EC15 /* Login.Interactor.swift in Sources */,
 				C120CD5A21CB80FB0080EC15 /* UIImageExtension.swift in Sources */,

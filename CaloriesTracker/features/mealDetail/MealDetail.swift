@@ -9,7 +9,36 @@
 import UIKit
 class CTMealDetailCtr: knStaticListController {
     var data: CTMeal? { didSet {
+        guard let data = data else { return }
         
+        ui.titleLabel.text = data.name
+        let imgUrl = data.images.first
+        ui.imgView.downloadImage(from: imgUrl)
+        ui.fixedImgView.downloadImage(from: imgUrl)
+        let calories = data.calories.or(0)
+        ui.caloriesLabel.text = "\(calories) KCAL"
+        title = data.getMealTypeString().uppercased()
+        
+        if let calories = data.calories {
+            let caloriesSet = CaloriesTracker().check(calories: calories)
+            ui.attentionView.backgroundColor = caloriesSet.bgColor
+            ui.messageLabel.text = caloriesSet.message
+            ui.messageLabel.textColor = caloriesSet.textColor
+        }
+        
+        if let date = data.date, let time = data.time {
+            ui.timeLabel.text = time + " - " + date
+        } else {
+            ui.timeLabel.removeFromSuperview()
+        }
+        
+        if let note = data.note {
+            ui.noteLabel.text = note
+        } else {
+            ui.noteLabel.removeFromSuperview()
+        }
+        
+        ui.ateFoodView.datasource = data.foods
     }}
     let ui = UI()
     
@@ -30,18 +59,7 @@ class CTMealDetailCtr: knStaticListController {
     }
     
     override func fetchData() {
-        let imgUrl = "https://imagesvc.timeincapp.com/v3/mm/image?url=https%3A%2F%2Fimg1.cookinglight.timeinc.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2F4_3_horizontal_-_1200x900%2Fpublic%2Fimage%2F2017%2F03%2Fmain%2Fspinach-pesto-pasta-shrimp_0_1_0.jpg%3Fitok%3DiEn-0uVj%261530126200&w=1000&c=sc&poi=face&q=70"
-        ui.titleLabel.text = "Peppery Shrimp with Grits and Greens"
-        ui.imgView.downloadImage(from: imgUrl)
-        ui.fixedImgView.downloadImage(from: imgUrl)
-        ui.caloriesLabel.text = "270 KCAL"
-        ui.attentionView.backgroundColor = UIColor.CT_254_196_68
-        ui.messageLabel.text = "Standard"
-        ui.timeLabel.text = "12:00 - Dec 24, 2018"
-        ui.noteLabel.text = "The best weeknight dinners don't require special cooking skills or out-of-the-ordinary ingredients, yet are still delicious and nourishing. "
-        ui.ateFoodView.datasource = [
-            CTFood(image: imgUrl, name: "Arugula (Rocket)")
-        ]
+        
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
