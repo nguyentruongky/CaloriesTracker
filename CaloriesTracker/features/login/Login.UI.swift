@@ -10,7 +10,6 @@ import UIKit
 
 extension CTLoginCtr {
     class UI {
-        let coverImgView = UIMaker.makeImageView(image: UIImage(named: "login_cover"), contentMode: .scaleAspectFill)
         let emailTextField = UIMaker.makeTextField(placeholder: "Email",
                                                    icon: UIImage(named: "email"))
         let passwordTextField = UIMaker.makeTextField(placeholder: "Password",
@@ -19,7 +18,6 @@ extension CTLoginCtr {
         let forgotButton = UIMaker.makeButton(title: "Forgot Password",
                                               titleColor: UIColor.CT_163_169_175,
                                               font: UIFont.main(size: 13))
-        let closeButton = UIMaker.makeButton(image: UIImage(named: "close"))
         let loginButton = UIMaker.makeMainButton(title: "LOG IN")
         lazy var registerButton = makeRegisterButton()
         func makeRegisterButton() -> UIButton {

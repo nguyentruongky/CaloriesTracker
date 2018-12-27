@@ -19,7 +19,7 @@ struct CTUpdateCaloriesWorker {
     }
     
     func execute() {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
+        guard let uid = appSetting.userId else { return }
         let bucket = CTDataBucket.users.rawValue
         let db = Database.database().reference().child(bucket).child(uid)
         db.child("calories_limit").setValue(calories)

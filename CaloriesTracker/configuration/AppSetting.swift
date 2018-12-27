@@ -14,7 +14,13 @@ struct AppSetting {
     let DEFAULT_CALORIES = 2000
     var user: CTUser? { didSet {
         userRole = (user?.role ?? UserRole.user)
+        userId = user?.userId
     }}
+    
+    var userId: String? {
+        get { return UserDefaults.get(key: "userId") as String? }
+        set { UserDefaults.set(key: "userId", value: newValue) }
+    }
     
     var userRole: UserRole {
         get {

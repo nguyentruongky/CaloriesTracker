@@ -23,15 +23,12 @@ class CTLoginCtr: knStaticListController {
         
         ui.registerButton.addTarget(self, action: #selector(showRegister))
         ui.forgotButton.addTarget(self, action: #selector(showForgot))
-        ui.closeButton.addTarget(self, action: #selector(dismissScreen))
         ui.loginButton.addTarget(self, action: #selector(login))
         
         ui.emailTextField.delegate = self
         ui.passwordTextField.delegate = self
         ui.emailTextField.becomeFirstResponder()
     }
-    
-    @objc func dismissScreen() { dismiss() }
     
     @objc func showRegister(){
         navigationController?.setControllers([CTRegisterCtr()])

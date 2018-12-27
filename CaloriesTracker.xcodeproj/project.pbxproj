@@ -12,6 +12,10 @@
 		C10E3E4421D41C400012C0DE /* GetAllUsersWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E3E4321D41C400012C0DE /* GetAllUsersWorker.swift */; };
 		C10E3E4621D463700012C0DE /* DeactivateUserWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E3E4521D463700012C0DE /* DeactivateUserWorker.swift */; };
 		C10E3E4821D46A5C0012C0DE /* DeleteUserWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E3E4721D46A5C0012C0DE /* DeleteUserWorker.swift */; };
+		C10E3E4A21D4762B0012C0DE /* AddUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E3E4921D4762B0012C0DE /* AddUser.swift */; };
+		C10E3E4C21D476410012C0DE /* AddUser.UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E3E4B21D476410012C0DE /* AddUser.UI.swift */; };
+		C10E3E4E21D4777D0012C0DE /* AddUser.Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E3E4D21D4777D0012C0DE /* AddUser.Interactor.swift */; };
+		C10E3E5121D477F70012C0DE /* AddUserWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E3E5021D477F70012C0DE /* AddUserWorker.swift */; };
 		C120CD1621CB3D230080EC15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD1521CB3D230080EC15 /* AppDelegate.swift */; };
 		C120CD1D21CB3D240080EC15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C120CD1C21CB3D240080EC15 /* Assets.xcassets */; };
 		C120CD2021CB3D240080EC15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C120CD1E21CB3D240080EC15 /* LaunchScreen.storyboard */; };
@@ -123,6 +127,10 @@
 		C10E3E4321D41C400012C0DE /* GetAllUsersWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllUsersWorker.swift; sourceTree = "<group>"; };
 		C10E3E4521D463700012C0DE /* DeactivateUserWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeactivateUserWorker.swift; sourceTree = "<group>"; };
 		C10E3E4721D46A5C0012C0DE /* DeleteUserWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserWorker.swift; sourceTree = "<group>"; };
+		C10E3E4921D4762B0012C0DE /* AddUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUser.swift; sourceTree = "<group>"; };
+		C10E3E4B21D476410012C0DE /* AddUser.UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUser.UI.swift; sourceTree = "<group>"; };
+		C10E3E4D21D4777D0012C0DE /* AddUser.Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUser.Interactor.swift; sourceTree = "<group>"; };
+		C10E3E5021D477F70012C0DE /* AddUserWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserWorker.swift; sourceTree = "<group>"; };
 		C120CD1221CB3D230080EC15 /* CaloriesTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaloriesTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C120CD1521CB3D230080EC15 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C120CD1C21CB3D240080EC15 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -246,6 +254,17 @@
 				B86763ED8DC2891F52136858 /* Pods_CaloriesTracker.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C10E3E4F21D477EA0012C0DE /* addUser */ = {
+			isa = PBXGroup;
+			children = (
+				C10E3E4921D4762B0012C0DE /* AddUser.swift */,
+				C10E3E4D21D4777D0012C0DE /* AddUser.Interactor.swift */,
+				C10E3E4B21D476410012C0DE /* AddUser.UI.swift */,
+				C10E3E5021D477F70012C0DE /* AddUserWorker.swift */,
+			);
+			path = addUser;
 			sourceTree = "<group>";
 		};
 		C120CD0921CB3D230080EC15 = {
@@ -493,6 +512,7 @@
 				C10E3E4321D41C400012C0DE /* GetAllUsersWorker.swift */,
 				C10E3E4521D463700012C0DE /* DeactivateUserWorker.swift */,
 				C10E3E4721D46A5C0012C0DE /* DeleteUserWorker.swift */,
+				C10E3E4F21D477EA0012C0DE /* addUser */,
 			);
 			path = userList;
 			sourceTree = "<group>";
@@ -740,6 +760,8 @@
 				C19304EB21D0326A00315ED3 /* UserProfile.UI.swift in Sources */,
 				C193051A21D33EDC00315ED3 /* UpdateMealWorker.swift in Sources */,
 				C193050D21D2D00200315ED3 /* GetFoodDetailWorker.swift in Sources */,
+				C10E3E5121D477F70012C0DE /* AddUserWorker.swift in Sources */,
+				C10E3E4A21D4762B0012C0DE /* AddUser.swift in Sources */,
 				C120CD5121CB80FB0080EC15 /* OtherExtensions.swift in Sources */,
 				C193051621D3397100315ED3 /* EditMeal.swift in Sources */,
 				C193047321CB91D500315ED3 /* PasswordValidation.swift in Sources */,
@@ -760,6 +782,7 @@
 				C10E3E4621D463700012C0DE /* DeactivateUserWorker.swift in Sources */,
 				C19304DF21CF501D00315ED3 /* AteFoodCell.swift in Sources */,
 				C1458F7E21D387BD000F63D5 /* SetUserRoleWorker.swift in Sources */,
+				C10E3E4C21D476410012C0DE /* AddUser.UI.swift in Sources */,
 				C193048321CC246B00315ED3 /* FAPaginationLayout.swift in Sources */,
 				C120CD9121CB874A0080EC15 /* WhistleFactory.swift in Sources */,
 				C120CD5221CB80FB0080EC15 /* knUIMaker.swift in Sources */,
@@ -771,6 +794,7 @@
 				C193050721D2407C00315ED3 /* Setting.UI.swift in Sources */,
 				C120CD5621CB80FB0080EC15 /* StringExtension.swift in Sources */,
 				C120CD5321CB80FB0080EC15 /* knListView.swift in Sources */,
+				C10E3E4E21D4777D0012C0DE /* AddUser.Interactor.swift in Sources */,
 				C120CD8F21CB874A0080EC15 /* Showing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

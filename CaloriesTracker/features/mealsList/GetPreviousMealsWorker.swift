@@ -21,7 +21,7 @@ struct CTGetPreviousMealsWorker {
     }
     
     func execute() {
-        guard let userId = Auth.auth().currentUser?.uid else { return }
+        guard let userId = appSetting.userId else { return }
         let bucket = CTDataBucket.meals.rawValue
         let ref = Database.database().reference().child(bucket)
         ref.queryOrdered(byChild: "user_id").queryEqual(toValue: userId).observeSingleEvent(of: .value) { (snapshot) in

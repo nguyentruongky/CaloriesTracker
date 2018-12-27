@@ -21,7 +21,7 @@ struct CTUpdateMealWorker {
     }
     
     func execute() {
-        guard let userId = Auth.auth().currentUser?.uid, let mealId = meal.id else { return }
+        guard let userId = appSetting.userId, let mealId = meal.id else { return }
         let foods = meal.foods.map({ return $0.toDict() })
         let data = [
             "meal_id": mealId,
