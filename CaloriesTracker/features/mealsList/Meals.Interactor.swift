@@ -20,6 +20,8 @@ extension CTMealsDashboard {
         let isEmpty = upcomingMeals.isEmpty && datasource.isEmpty
         if isEmpty == false {
             ui.stateWrapper.removeFromSuperview()
+            tableView.reloadData()
+            ui.upcomingStack.layoutIfNeeded()
         } else {
             ui.stateView.state = .empty
         }

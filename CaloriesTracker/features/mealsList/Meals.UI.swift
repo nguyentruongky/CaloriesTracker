@@ -22,7 +22,7 @@ extension CTMealsDashboard {
         func makeGreetingView() -> UIView {
             let bg = UIMaker.makeImageView()
             bg.backgroundColor = UIColor.main
-            let name = appSetting.user?.name ?? ""
+            let name = appSetting.userName ?? ""
             let hello = "Hello" + (name == "" ? "" : " " + name)
             let greetingLabel = UIMaker.makeLabel(text: "\(hello), what would you like to eat?",
                                                   font: UIFont.main(.medium, size: 15),
@@ -66,7 +66,6 @@ extension CTMealsDashboard {
                 upcomingMealsView.horizontal(toView: upcomingStack)
             } else {
                 upcomingMealsView.removeFromSuperview()
-                upcomingMealsView.removeAllConstraints()
             }
         }
         
@@ -75,7 +74,7 @@ extension CTMealsDashboard {
                 upcomingStack.insertArrangedSubview(previousLabel, at: upcomingStack.subviews.count)
                 previousLabel.left(toView: upcomingStack, space: padding)
             } else {
-                upcomingMealsView.removeFromSuperview()
+                previousLabel.removeFromSuperview()
             }
         }
         

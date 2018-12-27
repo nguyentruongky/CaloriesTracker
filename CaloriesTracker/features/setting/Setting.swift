@@ -18,6 +18,11 @@ class CTSettingCtr: knStaticListController {
     let menus: [Menu] = [.profile, .calories, .logout]
     var actions = [Menu: (() -> Void)]()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.hideBar(false)
+    }
+    
     override func setupView() {
         navigationItem.title = "SETTINGS"
         rowHeight = 66
@@ -26,8 +31,9 @@ class CTSettingCtr: knStaticListController {
         contentInset = UIEdgeInsets(top: 16)
         datasource = ui.setupView()
         
-        actions[Menu.logout] = askLogoutConfirmation
-        actions[Menu.calories] = changeCalories
+        actions[.logout] = askLogoutConfirmation
+        actions[.calories] = changeCalories
+        actions[.profile] = showMyProfile
     }
     
     func askLogoutConfirmation() {
@@ -43,6 +49,13 @@ class CTSettingCtr: knStaticListController {
     
     func changeCalories() {
         let ctr = CTCaloriesCtr()
+        ctr.hidesBottomBarWhenPushed = true
+        push(ctr)
+    }
+    
+    func showMyProfile() {
+        let ctr = CTUserProfileCtr()
+        ctr.data = appSetting.user
         ctr.hidesBottomBarWhenPushed = true
         push(ctr)
     }

@@ -77,12 +77,14 @@ extension CTMealOptionView {
             
             var times = getTodaySlots().map({ return knTime(time: $0) })
             times[0].selected = true
+            timeView.selectedIndex = IndexPath.zero
             timeView.datasource = times
             
             dateView.selectAction = { [weak self] in
                 guard let `self` = self else { return }
                 var times = self.getTimeSlots().map({ return knTime(time: $0) })
                 times[0].selected = true
+                self.timeView.selectedIndex = IndexPath.zero
                 self.timeView.datasource = times
             }
             

@@ -15,11 +15,17 @@ struct AppSetting {
     var user: CTUser? { didSet {
         userRole = (user?.role ?? UserRole.user)
         userId = user?.userId
+        userName = user?.name
     }}
     
     var userId: String? {
         get { return UserDefaults.get(key: "userId") as String? }
         set { UserDefaults.set(key: "userId", value: newValue) }
+    }
+    
+    var userName: String? {
+        get { return UserDefaults.get(key: "userName") as String? }
+        set { UserDefaults.set(key: "userName", value: newValue) }
     }
     
     var userRole: UserRole {

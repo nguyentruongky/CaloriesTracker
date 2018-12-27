@@ -85,7 +85,7 @@
 		C193048E21CCE86C00315ED3 /* AddMeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193048D21CCE86C00315ED3 /* AddMeal.swift */; };
 		C193049021CCEC5700315ED3 /* FoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193048F21CCEC5700315ED3 /* FoodCell.swift */; };
 		C19304C521CE1DEE00315ED3 /* MealOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19304C421CE1DEE00315ED3 /* MealOptionView.swift */; };
-		C19304CA21CE23BF00315ED3 /* ShowTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19304C821CE23BF00315ED3 /* ShowTimePicker.swift */; };
+		C19304CA21CE23BF00315ED3 /* TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19304C821CE23BF00315ED3 /* TimePicker.swift */; };
 		C19304CB21CE23BF00315ED3 /* DateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19304C921CE23BF00315ED3 /* DateView.swift */; };
 		C19304D321CECE8700315ED3 /* KMPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19304D221CECE8700315ED3 /* KMPlaceholderTextView.swift */; };
 		C19304D621CED9CD00315ED3 /* FoodDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19304D521CED9CD00315ED3 /* FoodDetail.swift */; };
@@ -204,7 +204,7 @@
 		C193048D21CCE86C00315ED3 /* AddMeal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMeal.swift; sourceTree = "<group>"; };
 		C193048F21CCEC5700315ED3 /* FoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCell.swift; sourceTree = "<group>"; };
 		C19304C421CE1DEE00315ED3 /* MealOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealOptionView.swift; sourceTree = "<group>"; };
-		C19304C821CE23BF00315ED3 /* ShowTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTimePicker.swift; sourceTree = "<group>"; };
+		C19304C821CE23BF00315ED3 /* TimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePicker.swift; sourceTree = "<group>"; };
 		C19304C921CE23BF00315ED3 /* DateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateView.swift; sourceTree = "<group>"; };
 		C19304D221CECE8700315ED3 /* KMPlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMPlaceholderTextView.swift; sourceTree = "<group>"; };
 		C19304D521CED9CD00315ED3 /* FoodDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetail.swift; sourceTree = "<group>"; };
@@ -360,7 +360,7 @@
 				C19304F721D0ADDD00315ED3 /* UIImage+Gif.swift */,
 				C19304D221CECE8700315ED3 /* KMPlaceholderTextView.swift */,
 				C19304C921CE23BF00315ED3 /* DateView.swift */,
-				C19304C821CE23BF00315ED3 /* ShowTimePicker.swift */,
+				C19304C821CE23BF00315ED3 /* TimePicker.swift */,
 				C193048221CC246B00315ED3 /* FAPaginationLayout.swift */,
 				C193047421CB927500315ED3 /* TermLabel.swift */,
 				C120CD8421CB874A0080EC15 /* Whisper */,
@@ -757,7 +757,7 @@
 				C193047521CB927500315ED3 /* TermLabel.swift in Sources */,
 				C19304F821D0ADDD00315ED3 /* UIImage+Gif.swift in Sources */,
 				C120CD5021CB80FB0080EC15 /* knController.swift in Sources */,
-				C19304CA21CE23BF00315ED3 /* ShowTimePicker.swift in Sources */,
+				C19304CA21CE23BF00315ED3 /* TimePicker.swift in Sources */,
 				C193050921D2CA5D00315ED3 /* GetPreviousMealsWorker.swift in Sources */,
 				C19304DB21CF4C3B00315ED3 /* MealDetail.swift in Sources */,
 				C120CD4C21CB80FB0080EC15 /* UIViewControllerExtension.swift in Sources */,

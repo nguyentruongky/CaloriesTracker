@@ -12,7 +12,7 @@ class CTMealsDashboard: knListController<CTMealCell, CTMeal> {
     let ui = UI()
     var didLoadUpcomingMeals = false
     var didLoadPreviousMeals = false
-    static var shouldReload = false
+    static var shouldUpdateUpcoming = false
     
     override var datasource: [CTMeal] { didSet {
         ui.setPreviousMealLabel(visible: !datasource.isEmpty)
@@ -29,10 +29,15 @@ class CTMealsDashboard: knListController<CTMealCell, CTMeal> {
         statusBarStyle = .lightContent
         
         navigationController?.hideBar(true)
-        if CTMealsDashboard.shouldReload {
-            fetchData()
-            CTMealsDashboard.shouldReload = false
+        if CTMealsDashboard.shouldUpdateUpcoming {
+            updateUpcomingMeals()
+            CTMealsDashboard.shouldUpdateUpcoming = false
         }
+    }
+    
+    func updateUpcomingMeals() {
+        didLoadUpcomingMeals = false
+        output.getUpcomingMeals()
     }
     
     override func setupView() {
@@ -62,6 +67,7 @@ class CTMealsDashboard: knListController<CTMealCell, CTMeal> {
     }
     
     override func didSelectRow(at indexPath: IndexPath) {
+        if indexPath.row == 0 { return }
         let ctr = CTMealDetailCtr()
         ctr.data = datasource[indexPath.row - 1]
         push(ctr)

@@ -25,7 +25,7 @@ class CTCheckoutEditCtr: CTCheckoutCtr {
         CTMessage.showMessage("Meal updated")
         dismiss()
         addMealCtr?.pop()
-        CTMealsDashboard.shouldReload = true
+        CTMealsDashboard.shouldUpdateUpcoming = true
         guard let controllers = addMealCtr?.navigationController?.viewControllers else { return }
         for ctr in controllers where ctr is CTMealDetailCtr {
             var meals = boss!.mealsCtr.datasource

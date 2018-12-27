@@ -36,13 +36,13 @@ struct CTGetProfileWorker {
         db.queryOrdered(byChild: "user_id")
             .queryEqual(toValue: userId)
             .observeSingleEvent(of: .value, with: { (snapshot) in
-                guard let _ = snapshot.value as? [String: AnyObject] else {
+                guard let rawData = snapshot.value as? [String: AnyObject],
+                    let raw = rawData.first?.value else {
                     let error = knError(code: "no_data")
                     self.failAction?(error)
                     return
                 }
-            
-                let raw = snapshot.value as AnyObject
+                
                 let user = CTUser(raw: raw)
                 self.successAction?(user)
 

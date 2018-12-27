@@ -16,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupApp()
         setupNavigationBar()
         FirebaseApp.configure()
+        
+        getMyProfile()
         return true
     }
     
@@ -36,6 +38,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         bar.barTintColor = UIColor.white
         bar.tintColor = UIColor.CT_25
         bar.setBackgroundImage(UIImage.createImage(from: .white), for: .default)
+    }
+    
+    func getMyProfile() {
+        func didGet(_ user: CTUser) {
+            appSetting.user = user
+        }
+        
+        guard let id = appSetting.userId else { return }
+        CTGetProfileWorker(userId: id, successAction: didGet, failAction: nil).execute()
     }
     
     @objc func hideKeyboard(){

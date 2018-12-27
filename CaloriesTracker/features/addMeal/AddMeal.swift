@@ -186,6 +186,7 @@ class CTAddMealCtr: knGridController<CTFoodCell, CTFood>, CTBottomSheetDelegate 
     override func getCell(at indexPath: IndexPath) -> CTFoodCell {
         let cell = super.getCell(at: indexPath)
         cell.parent = self
+        cell.data = datasource[indexPath.row]
         return cell
     }
     

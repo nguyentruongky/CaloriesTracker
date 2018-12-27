@@ -42,7 +42,7 @@ class CTCheckoutCtr: knListController<CTCheckoutItemCell, CTFood> {
         CTMessage.showMessage("Recorded new meal")
         dismiss()
         addMealCtr?.pop()
-        CTMealsDashboard.shouldReload = true
+        CTMealsDashboard.shouldUpdateUpcoming = true
     }
     
     func didAddMealFail(_ err: knError) {

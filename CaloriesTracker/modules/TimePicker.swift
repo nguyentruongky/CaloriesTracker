@@ -59,8 +59,10 @@ class knTimePicker: knGridView<knTimeSlot, knTime> {
     }
     
     override func didSelectItem(at indexPath: IndexPath) {
-        let cell = getCell(at: indexPath)
-        cell.isSelected = true
+        if let idxPath = selectedIndex {
+            datasource[idxPath.row].selected = false
+        }
+        datasource[indexPath.row].selected = true
         selectedIndex = indexPath
     }
 }
