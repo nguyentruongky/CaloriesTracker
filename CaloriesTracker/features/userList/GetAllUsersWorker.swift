@@ -25,11 +25,7 @@ struct CTGetAllUsersWorker {
                 return
             }
             if let myId = Auth.auth().currentUser?.uid {
-                raws = raws.filter({ user in
-                    let isActive = user.value["is_active"] as? Bool ?? true
-                    let notMe = user.key != myId
-                    return notMe && isActive
-                })
+                raws = raws.filter({ return $0.key != myId })
             }
             
             var users = Array(raws.values).map({ return CTUser(raw: $0) })

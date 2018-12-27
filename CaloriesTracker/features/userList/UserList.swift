@@ -46,7 +46,23 @@ class CTUserList: knListController<CTUserCell, CTUser> {
         ctr.data = datasource[indexPath.row]
         push(ctr)
     }
+    
+    override func getCell(at index: IndexPath) -> UITableViewCell {
+        let cell = super.getCell(at: index) as! CTUserCell
+        cell.delegate = self
+        return cell
+    }
 }
 
+extension CTUserList: CTUserListDelegate {
+    func deleteUser(_ user: CTUser) {
+        guard let index = datasource.firstIndex(where:
+            { $0.userId == user.userId }) else { return }
+        datasource.remove(at: index)
+    }
+}
 
+protocol CTUserListDelegate: class {
+    func deleteUser(_ user: CTUser)
+}
 

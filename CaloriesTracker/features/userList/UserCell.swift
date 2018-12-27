@@ -12,9 +12,11 @@ class CTUserCell: knListCell<CTUser> {
     override var data: CTUser? { didSet {
         avatarImgView.downloadImage(from: data?.avatar)
         nameLabel.text = data?.name
-        emailLabel.text = data?.email
+        emailLabel.text = data?.isActive == true ? data?.email : "Deactivated"
         updateUIByRole(role: data?.role ?? .user)
     }}
+    
+    weak var delegate: CTUserListDelegate?
     
     func updateUIByRole(role: UserRole) {
         roleView.isHidden = true
@@ -98,15 +100,20 @@ class CTUserCell: knListCell<CTUser> {
                                         handler: promoteToManager))
             
         }
-        
-        ctr.addAction(UIAlertAction(title: "Deactivate account", style: .default,
-                                    handler: deactivateAccount))
+        if data?.isActive == true {
+            ctr.addAction(UIAlertAction(title: "Deactivate account", style: .default,
+                                        handler: deactivateAccount))
+        } else {
+            ctr.addAction(UIAlertAction(title: "Activate account", style: .default,
+                                        handler: activateAccount))
+        }
+        ctr.addAction(UIAlertAction(title: "Delete", style: .default,
+                                    handler: deleteAccount))
         ctr.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         UIApplication.present(ctr)
     }
     var newRole: UserRole?
     func promoteToAdmin(_ action: UIAlertAction) {
-        print("promoteToAdmin")
         guard let id = data?.userId else { return }
         newRole = .admin
         CTSetUserRoleWorker(role: .admin, userId: id, successAction: didChangeRole,
@@ -127,7 +134,6 @@ class CTUserCell: knListCell<CTUser> {
     }
     
     func promoteToManager(_ action: UIAlertAction) {
-        print("promoteToManager")
         guard let id = data?.userId else { return }
         newRole = .manager
         CTSetUserRoleWorker(role: .manager, userId: id, successAction: didChangeRole,
@@ -135,7 +141,45 @@ class CTUserCell: knListCell<CTUser> {
     }
 
     func deactivateAccount(_ action: UIAlertAction) {
-        print("deactivateAccount")
+        guard let id = data?.userId else { return }
+        CTSetUserStatusWorker(userId: id, isActive: false, successAction: didDeactivate,
+                               failAction: nil).execute()
+    }
+    
+    func didActive() {
+        data?.isActive = true
+        emailLabel.text = data?.email
+    }
+    
+    func activateAccount(_ action: UIAlertAction) {
+        guard let id = data?.userId else { return }
+        CTSetUserStatusWorker(userId: id, isActive: true, successAction: didActive,
+                               failAction: nil).execute()
+    }
+    
+    func didDeactivate() {
+        data?.isActive = false
+        emailLabel.text = "Deactivated"
+    }
+    
+    func deleteAccount(_ action: UIAlertAction) {
+        let name = data?.name ?? (data?.email ?? "")
+        let ctr = CTMessage.showMessage("This action can't undo. Are you sure to delete user \(name)?", title: "Delete confirmation", cancelActionName: "Cancel")
+        ctr.addAction(UIAlertAction(title: "Delete account", style: .default, handler: confirmDelete))
+        UIApplication.present(ctr)
+    }
+    
+    func confirmDelete(_ action: UIAlertAction) {
+        guard let id = data?.userId else { return }
+        CTDeleteUserWorker(userId: id, successAction: didDelete, failAction: didDeleteFail).execute()
+    }
+    
+    func didDelete() {
+        guard let data = data else { return }
+        delegate?.deleteUser(data)
+    }
+    
+    func didDeleteFail(_ err: knError) {
         
     }
 }

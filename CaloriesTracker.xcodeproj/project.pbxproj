@@ -10,6 +10,8 @@
 		C10E3E4021D40C460012C0DE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E3E3F21D40C460012C0DE /* User.swift */; };
 		C10E3E4221D40CBA0012C0DE /* GeneralHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E3E4121D40CBA0012C0DE /* GeneralHelper.swift */; };
 		C10E3E4421D41C400012C0DE /* GetAllUsersWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E3E4321D41C400012C0DE /* GetAllUsersWorker.swift */; };
+		C10E3E4621D463700012C0DE /* DeactivateUserWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E3E4521D463700012C0DE /* DeactivateUserWorker.swift */; };
+		C10E3E4821D46A5C0012C0DE /* DeleteUserWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E3E4721D46A5C0012C0DE /* DeleteUserWorker.swift */; };
 		C120CD1621CB3D230080EC15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120CD1521CB3D230080EC15 /* AppDelegate.swift */; };
 		C120CD1D21CB3D240080EC15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C120CD1C21CB3D240080EC15 /* Assets.xcassets */; };
 		C120CD2021CB3D240080EC15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C120CD1E21CB3D240080EC15 /* LaunchScreen.storyboard */; };
@@ -119,6 +121,8 @@
 		C10E3E3F21D40C460012C0DE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C10E3E4121D40CBA0012C0DE /* GeneralHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralHelper.swift; sourceTree = "<group>"; };
 		C10E3E4321D41C400012C0DE /* GetAllUsersWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllUsersWorker.swift; sourceTree = "<group>"; };
+		C10E3E4521D463700012C0DE /* DeactivateUserWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeactivateUserWorker.swift; sourceTree = "<group>"; };
+		C10E3E4721D46A5C0012C0DE /* DeleteUserWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserWorker.swift; sourceTree = "<group>"; };
 		C120CD1221CB3D230080EC15 /* CaloriesTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaloriesTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C120CD1521CB3D230080EC15 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C120CD1C21CB3D240080EC15 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -487,6 +491,8 @@
 				C19304E221D02D2900315ED3 /* UserList.swift */,
 				C19304E521D02D5800315ED3 /* UserCell.swift */,
 				C10E3E4321D41C400012C0DE /* GetAllUsersWorker.swift */,
+				C10E3E4521D463700012C0DE /* DeactivateUserWorker.swift */,
+				C10E3E4721D46A5C0012C0DE /* DeleteUserWorker.swift */,
 			);
 			path = userList;
 			sourceTree = "<group>";
@@ -695,6 +701,7 @@
 				C19304FE21D20FE000315ED3 /* MealOptionView.UI.swift in Sources */,
 				C193051321D31E3B00315ED3 /* CaloriesChecker.swift in Sources */,
 				C120CD1621CB3D230080EC15 /* AppDelegate.swift in Sources */,
+				C10E3E4821D46A5C0012C0DE /* DeleteUserWorker.swift in Sources */,
 				C1458F7A21D37FBD000F63D5 /* UpdateCaloriesWorker.swift in Sources */,
 				C120CD7921CB83F30080EC15 /* Login.Interactor.swift in Sources */,
 				C120CD5A21CB80FB0080EC15 /* UIImageExtension.swift in Sources */,
@@ -750,6 +757,7 @@
 				C120CD4321CB80FB0080EC15 /* UIButtonExtension.swift in Sources */,
 				C120CD5421CB80FB0080EC15 /* NavigationExtension.swift in Sources */,
 				C120CD5B21CB80FB0080EC15 /* DateExtension.swift in Sources */,
+				C10E3E4621D463700012C0DE /* DeactivateUserWorker.swift in Sources */,
 				C19304DF21CF501D00315ED3 /* AteFoodCell.swift in Sources */,
 				C1458F7E21D387BD000F63D5 /* SetUserRoleWorker.swift in Sources */,
 				C193048321CC246B00315ED3 /* FAPaginationLayout.swift in Sources */,
