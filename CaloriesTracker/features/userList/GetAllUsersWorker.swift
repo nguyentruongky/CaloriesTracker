@@ -24,7 +24,7 @@ struct CTGetAllUsersWorker {
                 self.failAction?(knError(code: "no_data"))
                 return
             }
-            if let myId = Auth.auth().currentUser?.uid {
+            if let myId = appSetting.userId {
                 raws = raws.filter({ return $0.key != myId })
             }
             

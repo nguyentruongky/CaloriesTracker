@@ -13,7 +13,9 @@ class CTUserList: knListController<CTUserCell, CTUser> {
         navigationController?.hideBar(false)
         fetchData()
     }
+    
     override func setupView() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "add"), style: .done, target: self, action: #selector(addNewUser))
         navigationItem.title = "USERS"
         rowHeight = 72
         contentInset = UIEdgeInsets(top: padding, bottom: padding)
@@ -51,6 +53,12 @@ class CTUserList: knListController<CTUserCell, CTUser> {
         let cell = super.getCell(at: index) as! CTUserCell
         cell.delegate = self
         return cell
+    }
+    
+    @objc func addNewUser() {
+        let ctr = CTAddUserCtr()
+        ctr.hidesBottomBarWhenPushed = true
+        push(ctr)
     }
 }
 
