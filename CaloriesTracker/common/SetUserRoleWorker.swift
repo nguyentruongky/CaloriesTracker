@@ -29,7 +29,7 @@ struct CTSetUserRoleWorker {
             return
         }
         
-        if newRole == .manager && appSetting.userRole == .manager {
+        if newRole == .admin && appSetting.userRole == .manager {
             failAction?(knError(code: "forbidden", message: "You don't have permission to do this"))
             return
         }

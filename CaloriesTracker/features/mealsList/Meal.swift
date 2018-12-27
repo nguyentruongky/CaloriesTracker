@@ -10,6 +10,7 @@ import Foundation
 
 class CTMeal {
     var id: String?
+    var ownerId: String?
     var images = [String]()
     var name: String?
     var ingredient: String?
@@ -54,6 +55,7 @@ class CTMeal {
         }
         name = foods.first?.name
         note = raw["note"] as? String
+        ownerId = raw["user_id"] as? String
     }
     
 }

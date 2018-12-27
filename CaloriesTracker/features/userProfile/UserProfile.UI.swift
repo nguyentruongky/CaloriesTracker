@@ -96,7 +96,7 @@ extension CTUserProfileCtr {
             let bottomLine = UIMaker.makeHorizontalLine(color: UIColor.CT_222, height: 1)
             let view = UIMaker.makeView(background: UIColor.white)
             let mealView = makeView(contentView: mealCountTextField, title: "meals")
-            let caloriesView = makeView(contentView: calorieLimitTextField, title: "KCAL/meal")
+            let caloriesView = makeView(contentView: calorieLimitTextField, title: "KCAL/day")
 
             view.addSubviews(views: mealView, caloriesView, line, verticalLine, bottomLine)
             view.addConstraints(withFormat: "H:|[v0][v1]|", views: mealView, caloriesView)

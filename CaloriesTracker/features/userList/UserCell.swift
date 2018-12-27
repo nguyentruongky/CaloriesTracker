@@ -92,8 +92,10 @@ class CTUserCell: knListCell<CTUser> {
         case .admin:
             break
         case .manager:
-            ctr.addAction(UIAlertAction(title: "Promote to Admin", style: .default,
-                                        handler: promoteToAdmin))
+            if appSetting.userRole == .admin {
+                ctr.addAction(UIAlertAction(title: "Promote to Admin", style: .default,
+                                            handler: promoteToAdmin))
+            }
             
         case .user:
             ctr.addAction(UIAlertAction(title: "Promote to Manager", style: .default,

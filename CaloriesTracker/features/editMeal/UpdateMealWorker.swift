@@ -21,11 +21,23 @@ struct CTUpdateMealWorker {
     }
     
     func execute() {
-        guard let userId = appSetting.userId, let mealId = meal.id else { return }
+        guard let userId = appSetting.userId,
+            let ownerId = meal.ownerId,
+            let mealId = meal.id else { return }
+        var hasPermission = true
+        if userId != ownerId && appSetting.userRole != .admin {
+            hasPermission = false
+        }
+        
+        if hasPermission == false {
+            failAction?(knError(code: "forbidden", message: "You don't have permission to change this"))
+            return
+        }
+        
         let foods = meal.foods.map({ return $0.toDict() })
         let data = [
             "meal_id": mealId,
-            "user_id": userId,
+            "user_id": ownerId,
             "foods": foods,
             "time": meal.time,
             "date": meal.date,
