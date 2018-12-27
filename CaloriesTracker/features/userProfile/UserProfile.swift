@@ -8,38 +8,54 @@
 
 import UIKit
 class CTUserProfileCtr: knListController<CTMealCell, CTMeal> {
+    lazy var output = Interactor(controller: self)
     let ui = UI()
     var data: CTUser?
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.hideBar(true)
     }
     
     override func setupView() {
-        rowHeight = 244
+        statusBarStyle = .default
+        rowHeight = 265
         super.setupView()
-        tableView.backgroundColor = .bg
-        let headerView = ui.makeHeaderView()
-        view.addSubviews(views: headerView, tableView)
-        headerView.horizontal(toView: view)
-        headerView.top(toView: view)
-        
-        tableView.horizontal(toView: view)
-        tableView.verticalSpacing(toView: headerView)
-        tableView.bottom(toView: view)
-        
-        fetchData()
-        
+        tableView.backgroundColor = .white
+        tableView.setHeader(ui.makeHeaderView(), height: 310)
+        view.addFill(tableView)
+
+        stateView = knStateView()
+        stateView?.setStateContent(state: .empty, imageName: "no_meal", title: "You have no meal yet", content: "Tracking your calories everyday for your health")
+
         ui.backButton.addTarget(self, action: #selector(back))
         
+        fetchData()
     }
+    
+    func setupEmptyView(visible: Bool) {
+        if visible {
+            stateView?.state = .empty
+            ui.mealTitleView.isHidden = true
+            tableView.setFooter(stateView!, height: 400)
+        } else {
+            tableView.tableFooterView = nil
+            ui.mealTitleView.isHidden = false
+        }
+    }
+    
     override func fetchData() {
-        ui.avatarImgView.downloadImage(from: "https://realitybuzz.files.wordpress.com/2010/01/steve_harvey.jpeg")
-        ui.nameTextField.text = "Steve Harley"
-        ui.emailTextField.text = "steve.harley@gmail.com"
-        ui.mealCountTextField.text = "5"
-        ui.calorieLimitTextField.text = "270"
+        guard let user = data, let id = user.userId else { return }
+        ui.editButton.isHidden = id != appSetting.userId
         
+        ui.avatarImgView.downloadImage(from: user.avatar)
+        ui.nameTextField.text = user.name
+        ui.emailTextField.text = user.email
+        ui.calorieLimitTextField.text = String(user.calories)
+        
+        setupEmptyView(visible: true)
+        stateView?.state = .loading
+        output.getMeals(userId: id)
     }
     
     override func didSelectRow(at indexPath: IndexPath) {

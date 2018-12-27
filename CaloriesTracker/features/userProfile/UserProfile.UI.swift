@@ -10,7 +10,7 @@ import UIKit
 
 extension CTUserProfileCtr {
     class UI {
-        let avatarImgView = UIMaker.makeImageView(contentMode: .scaleAspectFill)
+        let avatarImgView = UIMaker.makeImageView(image: UIImage(named: "user_profile"), contentMode: .scaleAspectFill)
         let nameTextField = UIMaker.makeTextField(font: UIFont.main(.bold, size: 20),
                                                   color: .CT_25)
         let emailTextField = UIMaker.makeTextField(font: UIFont.main(size: 14),
@@ -32,16 +32,17 @@ extension CTUserProfileCtr {
             button.square(edge: 44)
             return button
         }
-            
+        
+        let mealTitleView = UIMaker.makeView(background: .bg)
+
         func makeHeaderView() -> UIView {
             let mealLabel = UIMaker.makeLabel(text: "MEALS", font: UIFont.main(.bold, size: 17),
                                               color: .CT_25)
-            let mealView = UIMaker.makeView(background: .bg)
-            mealView.addSubviews(views: mealLabel)
-            mealLabel.left(toView: mealView, space: padding)
-            mealLabel.vertical(toView: mealView, space: padding)
+            mealTitleView.addSubviews(views: mealLabel)
+            mealLabel.left(toView: mealTitleView, space: padding)
+            mealLabel.vertical(toView: mealTitleView, space: padding)
             
-            let view = UIMaker.makeView()
+            let view = UIMaker.makeView(background: .white)
             let detailView = UIMaker.makeStackView(distributon: .fill, alignment: .leading, space: 8)
             detailView.addViews(nameTextField, emailTextField, editButton)
             nameTextField.left(toView: detailView)
@@ -54,8 +55,9 @@ extension CTUserProfileCtr {
 
             let figureView = makeFigureView()
             
-            view.addSubviews(views: avatarImgView, detailView, backButton, figureView, mealView)
-            backButton.topLeft(toView: view, top: padding + 16, left: 0)
+            view.addSubviews(views: avatarImgView, detailView, backButton, figureView, mealTitleView)
+            backButton.contentVerticalAlignment = .top
+            backButton.topLeft(toView: view)
             
             let avatarHeight: CGFloat = 96
             avatarImgView.square(edge: avatarHeight)
@@ -69,12 +71,9 @@ extension CTUserProfileCtr {
 
             figureView.horizontal(toView: view)
             figureView.verticalSpacing(toView: avatarImgView, space: padding)
-            figureView.verticalSpacingDown(toView: mealView)
+            figureView.verticalSpacingDown(toView: mealTitleView)
             
-            mealView.horizontal(toView: view)
-            mealView.bottom(toView: view)
-            
-            view.height(350)
+            mealTitleView.horizontal(toView: view)            
             return view
         }
         
@@ -90,13 +89,16 @@ extension CTUserProfileCtr {
                 titleView.horizontal(toView: view)
                 return view
             }
+            mealCountTextField.isEnabled = false
+            
             let verticalLine = UIMaker.makeVerticalLine(color: UIColor.CT_222, width: 1)
             let line = UIMaker.makeHorizontalLine(color: UIColor.CT_222, height: 1)
+            let bottomLine = UIMaker.makeHorizontalLine(color: UIColor.CT_222, height: 1)
             let view = UIMaker.makeView(background: UIColor.white)
             let mealView = makeView(contentView: mealCountTextField, title: "meals")
             let caloriesView = makeView(contentView: calorieLimitTextField, title: "KCAL/meal")
 
-            view.addSubviews(views: mealView, caloriesView, line, verticalLine)
+            view.addSubviews(views: mealView, caloriesView, line, verticalLine, bottomLine)
             view.addConstraints(withFormat: "H:|[v0][v1]|", views: mealView, caloriesView)
             mealView.vertical(toView: view, space: padding / 3)
             caloriesView.vertical(toView: mealView)
@@ -107,6 +109,9 @@ extension CTUserProfileCtr {
             
             line.horizontal(toView: view)
             line.top(toView: view)
+            
+            bottomLine.horizontal(toView: view)
+            bottomLine.bottom(toView: view)
             
             return view
         }

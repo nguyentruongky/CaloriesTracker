@@ -11,7 +11,14 @@ import FirebaseDatabase
 
 struct Helper {
     static func getUserDb() -> DatabaseReference {
-        let bucket = CTDataBucket.users.rawValue
+        return getDb(bucket: CTDataBucket.users.rawValue)
+    }
+    
+    static func getMealDb() -> DatabaseReference {
+        return getDb(bucket: CTDataBucket.meals.rawValue)
+    }
+    
+    private static func getDb(bucket: String) -> DatabaseReference {
         let db = Database.database().reference().child(bucket)
         return db
     }

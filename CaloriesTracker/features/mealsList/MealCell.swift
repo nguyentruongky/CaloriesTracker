@@ -64,6 +64,7 @@ final class CTMealCell: knListCell<CTMeal> {
 
         addSubview(view)
         view.fill(toView: self, space: UIEdgeInsets(left: padding, bottom: padding, right: padding))
+        backgroundColor = .bg
     }
 }
 

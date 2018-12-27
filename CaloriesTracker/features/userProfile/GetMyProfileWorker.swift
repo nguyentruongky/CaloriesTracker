@@ -10,24 +10,31 @@ import Foundation
 import FirebaseDatabase
 import FirebaseAuth
 
-struct CTGetMyProfileWorker {
+struct CTGetProfileWorker {
+    var userId: String
     private var successAction: ((CTUser) -> Void)?
     private var failAction: ((knError) -> Void)?
-    init(successAction: ((CTUser) -> Void)?, failAction: ((knError) -> Void)?) {
+    init(userId: String, successAction: ((CTUser) -> Void)?, failAction: ((knError) -> Void)?) {
+        self.userId = userId
         self.successAction = successAction
         self.failAction = failAction
     }
     
     func execute() {
-        guard let userRaw = Auth.auth().currentUser else {
-            failAction?(knError(code: "no_user_data"))
+        let roles: [UserRole] = [.admin, .manager]
+        var hasPermission = true
+        if roles.contains(appSetting.userRole) == false {
+            hasPermission = userId == appSetting.userId
+        }
+        
+        guard hasPermission else {
+            failAction?(knError(code: "forbidden", message: "You don't have permission to view this profile"))
             return
         }
         
         let db = Helper.getUserDb()
-        
         db.queryOrdered(byChild: "user_id")
-            .queryEqual(toValue: userRaw.uid)
+            .queryEqual(toValue: userId)
             .observeSingleEvent(of: .value, with: { (snapshot) in
                 guard let _ = snapshot.value as? [String: AnyObject] else {
                     let error = knError(code: "no_data")
