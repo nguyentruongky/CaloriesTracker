@@ -26,12 +26,12 @@ class CTCaloriesCtr: knController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        
         fetchData()
     }
     
     override func setupView() {
         title = "CALORIES LIMIT"
+        navigationController?.hideBar(false)
         addBackButton(tintColor: .CT_25)
         caloriesSlider.addTarget(self, action: #selector(updateCaloriesValue), for: .valueChanged)
         caloriesSlider.addTarget(self, action: #selector(endEditing), for: .touchUpOutside)
@@ -59,7 +59,9 @@ class CTCaloriesCtr: knController {
     }
     
     @objc func updateCaloriesValue() {
-        caloriesAmountLabel.text = String(Int(caloriesSlider.value))
+        let calories = Int(caloriesSlider.value)
+        caloriesAmountLabel.text = String(calories)
+        appSetting.standardCalories = calories
     }
     
     @objc func endEditing() {

@@ -11,12 +11,13 @@ import UIKit
 extension CTUserProfileCtr {
     class UI {
         let avatarImgView = UIMaker.makeImageView(image: UIImage(named: "user_profile"), contentMode: .scaleAspectFill)
+        let emailLabel = UIMaker.makeLabel(font: UIFont.main(size: 14),
+                                     color: .CT_25)
         let nameTextField = UIMaker.makeTextField(font: UIFont.main(.bold, size: 20),
-                                                  color: .CT_25)
-        let emailTextField = UIMaker.makeTextField(font: UIFont.main(size: 14),
                                                   color: .CT_25)
         let calorieLimitTextField = UIMaker.makeTextField(font: UIFont.main(.bold, size: 28),
                                                    color: .CT_25, alignment: .center)
+        let changeCaloriesButton = UIMaker.makeButton()
         let mealCountTextField = UIMaker.makeTextField(font: UIFont.main(.bold, size: 28),
                                                    color: .CT_25, alignment: .center)
         
@@ -36,6 +37,8 @@ extension CTUserProfileCtr {
         let mealTitleView = UIMaker.makeView(background: .bg)
 
         func makeHeaderView() -> UIView {
+            nameTextField.autocorrectionType = .no
+            nameTextField.autocapitalizationType = .words
             avatarImgView.isUserInteractionEnabled = true
             let mealLabel = UIMaker.makeLabel(text: "MEALS", font: UIFont.main(.bold, size: 17),
                                               color: .CT_25)
@@ -45,9 +48,9 @@ extension CTUserProfileCtr {
             
             let view = UIMaker.makeView(background: .white)
             let detailView = UIMaker.makeStackView(distributon: .fill, alignment: .leading, space: 8)
-            detailView.addViews(nameTextField, emailTextField, editButton)
+            detailView.addViews(nameTextField, emailLabel, editButton)
             nameTextField.left(toView: detailView)
-            emailTextField.left(toView: detailView)
+            emailLabel.left(toView: detailView)
 
             editButton.left(toView: detailView)
             let editHeight: CGFloat = 32
@@ -73,6 +76,9 @@ extension CTUserProfileCtr {
             figureView.horizontal(toView: view)
             figureView.verticalSpacing(toView: avatarImgView, space: padding)
             figureView.verticalSpacingDown(toView: mealTitleView)
+            
+            figureView.addSubview(changeCaloriesButton)
+            changeCaloriesButton.fill(toView: calorieLimitTextField)
             
             mealTitleView.horizontal(toView: view)            
             return view

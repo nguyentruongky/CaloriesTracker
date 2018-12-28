@@ -85,10 +85,10 @@ extension CTMealsDashboard {
             let view = UIMaker.makeView()
             let greetingView = makeGreetingView()
             view.addSubviews(views: stateView, greetingView)
-            view.addConstraints(withFormat: "V:|-44-[v0]-(-24)-[v1]|", views: greetingView, stateView)
+            let topPadding: CGFloat = hasNotch() ? 44 : 20
+            view.addConstraints(withFormat: "V:|-\(topPadding)-[v0]-(-24)-[v1]|", views: greetingView, stateView)
             greetingView.horizontal(toView: view)
-            greetingView.height(170)
-            
+            greetingView.height(170)            
             stateView.horizontal(toView: view)
             return view
         }

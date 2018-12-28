@@ -15,6 +15,7 @@ class CTUserProfileCtr: knListController<CTMealCell, CTMeal> {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.hideBar(true)
+        ui.calorieLimitTextField.text = String(appSetting.standardCalories)
     }
     
     override func setupView() {
@@ -30,7 +31,17 @@ class CTUserProfileCtr: knListController<CTMealCell, CTMeal> {
 
         ui.backButton.addTarget(self, action: #selector(back))
         ui.avatarImgView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pickAvatar)))
+        ui.editButton.addTarget(self, action: #selector(editName))
+        ui.changeCaloriesButton.addTarget(self, action: #selector(changeCalories))
         fetchData()
+    }
+    
+    @objc func changeCalories() {
+        push(CTCaloriesCtr())
+    }
+    
+    @objc func editName() {
+        ui.nameTextField.becomeFirstResponder()
     }
     
     func setupEmptyView(visible: Bool) {
@@ -50,7 +61,7 @@ class CTUserProfileCtr: knListController<CTMealCell, CTMeal> {
         
         ui.avatarImgView.downloadImage(from: user.avatar, placeholder: UIImage(named: "user_profile"))
         ui.nameTextField.text = user.name
-        ui.emailTextField.text = user.email
+        ui.emailLabel.text = user.email
         ui.calorieLimitTextField.text = String(user.calories)
         
         setupEmptyView(visible: true)
