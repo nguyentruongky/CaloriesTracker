@@ -35,9 +35,9 @@ class CTLoginCtr: knStaticListController {
     }
     
     @objc func showForgot(){
-//        let ctr = snForgotPassCtr()
-//        ctr.ui.emailTextField.text = ui.emailTextField.text
-//        push(ctr)
+        let ctr = CTForgotPassCtr()
+        ctr.ui.emailTextField.text = ui.emailTextField.text
+        push(ctr)
     }
     
     @objc func login() {

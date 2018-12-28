@@ -125,6 +125,9 @@
 		C1C8A66521D4D7BA00A8C7C2 /* FilterWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C8A66421D4D7BA00A8C7C2 /* FilterWorker.swift */; };
 		C1C8A66D21D6ACD300A8C7C2 /* MealList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C8A66C21D6ACD300A8C7C2 /* MealList.swift */; };
 		C1C8A66F21D6B9BB00A8C7C2 /* GetCountryWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C8A66E21D6B9BB00A8C7C2 /* GetCountryWorker.swift */; };
+		C1C8A67421D6BD1800A8C7C2 /* ForgotPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C8A67121D6BD1800A8C7C2 /* ForgotPassword.swift */; };
+		C1C8A67521D6BD1800A8C7C2 /* ForgotPassword.UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C8A67221D6BD1800A8C7C2 /* ForgotPassword.UI.swift */; };
+		C1C8A67621D6BD1800A8C7C2 /* ForgotPassWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C8A67321D6BD1800A8C7C2 /* ForgotPassWorker.swift */; };
 		C2F0A07394AADE51D770740B /* Pods_CaloriesTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B86763ED8DC2891F52136858 /* Pods_CaloriesTracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -251,6 +254,9 @@
 		C1C8A66421D4D7BA00A8C7C2 /* FilterWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterWorker.swift; sourceTree = "<group>"; };
 		C1C8A66C21D6ACD300A8C7C2 /* MealList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealList.swift; sourceTree = "<group>"; };
 		C1C8A66E21D6B9BB00A8C7C2 /* GetCountryWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCountryWorker.swift; sourceTree = "<group>"; };
+		C1C8A67121D6BD1800A8C7C2 /* ForgotPassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPassword.swift; sourceTree = "<group>"; };
+		C1C8A67221D6BD1800A8C7C2 /* ForgotPassword.UI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPassword.UI.swift; sourceTree = "<group>"; };
+		C1C8A67321D6BD1800A8C7C2 /* ForgotPassWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPassWorker.swift; sourceTree = "<group>"; };
 		EE7D234AAD8C0C68B809DD8C /* Pods-CaloriesTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaloriesTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CaloriesTracker/Pods-CaloriesTracker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -389,6 +395,7 @@
 		C120CD5D21CB810B0080EC15 /* features */ = {
 			isa = PBXGroup;
 			children = (
+				C1C8A67021D6BD1800A8C7C2 /* forgotPassword */,
 				C1C8A65D21D4AEB200A8C7C2 /* filter */,
 				C193051421D3395F00315ED3 /* editMeal */,
 				C193048C21CCE81900315ED3 /* addMeal */,
@@ -594,6 +601,16 @@
 			path = filter;
 			sourceTree = "<group>";
 		};
+		C1C8A67021D6BD1800A8C7C2 /* forgotPassword */ = {
+			isa = PBXGroup;
+			children = (
+				C1C8A67121D6BD1800A8C7C2 /* ForgotPassword.swift */,
+				C1C8A67221D6BD1800A8C7C2 /* ForgotPassword.UI.swift */,
+				C1C8A67321D6BD1800A8C7C2 /* ForgotPassWorker.swift */,
+			);
+			path = forgotPassword;
+			sourceTree = "<group>";
+		};
 		DDA226BB38BE9112A6EEAD1D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -760,6 +777,7 @@
 				C120CD1621CB3D230080EC15 /* AppDelegate.swift in Sources */,
 				C10E3E4821D46A5C0012C0DE /* DeleteUserWorker.swift in Sources */,
 				C1458F7A21D37FBD000F63D5 /* UpdateCaloriesWorker.swift in Sources */,
+				C1C8A67521D6BD1800A8C7C2 /* ForgotPassword.UI.swift in Sources */,
 				C120CD7921CB83F30080EC15 /* Login.Interactor.swift in Sources */,
 				C120CD5A21CB80FB0080EC15 /* UIImageExtension.swift in Sources */,
 				C1C8A66D21D6ACD300A8C7C2 /* MealList.swift in Sources */,
@@ -796,6 +814,7 @@
 				C120CD4C21CB80FB0080EC15 /* UIViewControllerExtension.swift in Sources */,
 				C120CD7721CB83F30080EC15 /* Login.swift in Sources */,
 				C193048B21CCD4B100315ED3 /* MealCell.swift in Sources */,
+				C1C8A67421D6BD1800A8C7C2 /* ForgotPassword.swift in Sources */,
 				C120CD4721CB80FB0080EC15 /* General.swift in Sources */,
 				C193051821D33E5900315ED3 /* CheckoutEdit.swift in Sources */,
 				C19304EB21D0326A00315ED3 /* UserProfile.UI.swift in Sources */,
@@ -816,6 +835,7 @@
 				C120CD4B21CB80FB0080EC15 /* StartPoint.swift in Sources */,
 				C120CD8E21CB874A0080EC15 /* Message.swift in Sources */,
 				C19304E321D02D2900315ED3 /* UserList.swift in Sources */,
+				C1C8A67621D6BD1800A8C7C2 /* ForgotPassWorker.swift in Sources */,
 				C193047A21CB9B2F00315ED3 /* Boss.swift in Sources */,
 				C193048521CC3ECE00315ED3 /* Meal.swift in Sources */,
 				C120CD4321CB80FB0080EC15 /* UIButtonExtension.swift in Sources */,

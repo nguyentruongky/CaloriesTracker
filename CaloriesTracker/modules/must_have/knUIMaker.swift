@@ -131,7 +131,7 @@ class UIMaker {
     static func makeMainButton(title: String,
                                bgColor: UIColor = UIColor.main,
                                titleColor: UIColor = UIColor.white,
-                               font: UIFont = UIFont.main(.bold, size: 18)) -> UIButton {
+                               font: UIFont = UIFont.main(.bold, size: 16)) -> UIButton {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle(title, for: .normal)

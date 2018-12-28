@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let bar = UINavigationBar.appearance()
         bar.titleTextAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor.CT_25,
-            NSAttributedString.Key.font: UIFont.main(.bold, size: 17),
+            NSAttributedString.Key.font: UIFont.main(.bold, size: 16),
         ]
         
         bar.barTintColor = UIColor.white
