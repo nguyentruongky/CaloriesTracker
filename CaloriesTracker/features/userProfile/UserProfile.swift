@@ -7,10 +7,13 @@
 //
 
 import UIKit
-class CTUserProfileCtr: knListController<CTMealCell, CTMeal> {
+class CTUserProfileCtr: knListController<CTMealCell, CTMeal>, UITextFieldDelegate {
     lazy var output = Interactor(controller: self)
     let ui = UI()
-    var data: CTUser?
+    var isMyProfile = false
+    var data: CTUser? { didSet {
+        isMyProfile = data?.userId == appSetting.userId
+    }}
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -37,11 +40,14 @@ class CTUserProfileCtr: knListController<CTMealCell, CTMeal> {
     }
     
     @objc func changeCalories() {
+        guard isMyProfile else { return }
         push(CTCaloriesCtr())
     }
     
     @objc func editName() {
+        ui.nameTextField.isEnabled = true
         ui.nameTextField.becomeFirstResponder()
+        ui.nameTextField.delegate = self
     }
     
     func setupEmptyView(visible: Bool) {
@@ -70,6 +76,7 @@ class CTUserProfileCtr: knListController<CTMealCell, CTMeal> {
     }
     
     @objc func pickAvatar() {
+        guard isMyProfile else { return }
         func didSelectImage(_ image: UIImage) {
             DispatchQueue.main.async { [weak self] in
                 self?.ui.avatarImgView.image = image
@@ -90,4 +97,14 @@ class CTUserProfileCtr: knListController<CTMealCell, CTMeal> {
         statusBarHidden = scrollView.contentOffset.y > 0
     }
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        let name = ["name": textField.text!]
+        CTUpdateMyProfileWorker(data: name, successAction: nil, failAction: nil).execute()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textFieldDidEndEditing(textField)
+        hideKeyboard()
+        return true
+    }
 }

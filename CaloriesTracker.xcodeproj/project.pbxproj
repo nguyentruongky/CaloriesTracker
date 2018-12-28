@@ -130,6 +130,7 @@
 		C1C8A67621D6BD1800A8C7C2 /* ForgotPassWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C8A67321D6BD1800A8C7C2 /* ForgotPassWorker.swift */; };
 		C1C8A67821D6CAAF00A8C7C2 /* knPhotoSelectWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C8A67721D6CAAF00A8C7C2 /* knPhotoSelectWorker.swift */; };
 		C1C8A67A21D6CC9E00A8C7C2 /* UploadAvatarWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C8A67921D6CC9E00A8C7C2 /* UploadAvatarWorker.swift */; };
+		C1C8A67C21D6D32400A8C7C2 /* UpdateMyProfileWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C8A67B21D6D32400A8C7C2 /* UpdateMyProfileWorker.swift */; };
 		C2F0A07394AADE51D770740B /* Pods_CaloriesTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B86763ED8DC2891F52136858 /* Pods_CaloriesTracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -261,6 +262,7 @@
 		C1C8A67321D6BD1800A8C7C2 /* ForgotPassWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPassWorker.swift; sourceTree = "<group>"; };
 		C1C8A67721D6CAAF00A8C7C2 /* knPhotoSelectWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = knPhotoSelectWorker.swift; sourceTree = "<group>"; };
 		C1C8A67921D6CC9E00A8C7C2 /* UploadAvatarWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadAvatarWorker.swift; sourceTree = "<group>"; };
+		C1C8A67B21D6D32400A8C7C2 /* UpdateMyProfileWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMyProfileWorker.swift; sourceTree = "<group>"; };
 		EE7D234AAD8C0C68B809DD8C /* Pods-CaloriesTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaloriesTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CaloriesTracker/Pods-CaloriesTracker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -558,6 +560,7 @@
 				C10E3E5221D47E570012C0DE /* UserProfile.Interactor.swift */,
 				C10E3E5421D480710012C0DE /* GetAllMealsWorker.swift */,
 				C1C8A67921D6CC9E00A8C7C2 /* UploadAvatarWorker.swift */,
+				C1C8A67B21D6D32400A8C7C2 /* UpdateMyProfileWorker.swift */,
 			);
 			path = userProfile;
 			sourceTree = "<group>";
@@ -803,6 +806,7 @@
 				C19304EF21D093BA00315ED3 /* GetFoodsWorker.swift in Sources */,
 				C120CD4921CB80FB0080EC15 /* UIApplicationExtension.swift in Sources */,
 				C10E3E5321D47E570012C0DE /* UserProfile.Interactor.swift in Sources */,
+				C1C8A67C21D6D32400A8C7C2 /* UpdateMyProfileWorker.swift in Sources */,
 				C120CD8C21CB874A0080EC15 /* WhisperFactory.swift in Sources */,
 				C19304FC21D17AA300315ED3 /* AddMealWorker.swift in Sources */,
 				C193051121D3171000315ED3 /* UpcomingMealsView.swift in Sources */,

@@ -39,6 +39,7 @@ extension CTUserProfileCtr {
         func makeHeaderView() -> UIView {
             nameTextField.autocorrectionType = .no
             nameTextField.autocapitalizationType = .words
+            nameTextField.isEnabled = false
             avatarImgView.isUserInteractionEnabled = true
             let mealLabel = UIMaker.makeLabel(text: "MEALS", font: UIFont.main(.bold, size: 17),
                                               color: .CT_25)
