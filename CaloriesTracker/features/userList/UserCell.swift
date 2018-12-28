@@ -11,7 +11,12 @@ import UIKit
 class CTUserCell: knListCell<CTUser> {
     override var data: CTUser? { didSet {
         avatarImgView.downloadImage(from: data?.avatar)
-        nameLabel.text = data?.name
+        if let name = data?.name, let myId = appSetting.userId, myId == data?.userId {
+            nameLabel.text = name + " (Me)"
+        } else {
+            nameLabel.text = data?.name
+        }
+        
         emailLabel.text = data?.isActive == true ? data?.email : "Deactivated"
         updateUIByRole(role: data?.role ?? .user)
     }}

@@ -24,12 +24,14 @@ struct CTGetAllUsersWorker {
                 self.failAction?(knError(code: "no_data"))
                 return
             }
-            if let myId = appSetting.userId {
-                raws = raws.filter({ return $0.key != myId })
-            }
             
             var users = Array(raws.values).map({ return CTUser(raw: $0) })
             users.sort(by: { return ($0.name ?? "") < ($1.name ?? "") })
+            if let index = users.firstIndex(where: { return $0.userId == appSetting.userId }) {
+                let me = users.remove(at: index)
+                users.insert(me, at: 0)
+            }
+            
             self.successAction?(users)
         }
     }
