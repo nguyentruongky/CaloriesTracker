@@ -118,6 +118,12 @@
 		C193051621D3397100315ED3 /* EditMeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193051521D3397100315ED3 /* EditMeal.swift */; };
 		C193051821D33E5900315ED3 /* CheckoutEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193051721D33E5900315ED3 /* CheckoutEdit.swift */; };
 		C193051A21D33EDC00315ED3 /* UpdateMealWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193051921D33EDC00315ED3 /* UpdateMealWorker.swift */; };
+		C1C8A65C21D4AEAC00A8C7C2 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C8A65B21D4AEAC00A8C7C2 /* Filter.swift */; };
+		C1C8A65F21D4AED200A8C7C2 /* Filter.UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C8A65E21D4AED200A8C7C2 /* Filter.UI.swift */; };
+		C1C8A66121D4C20500A8C7C2 /* DailyRegimen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C8A66021D4C20500A8C7C2 /* DailyRegimen.swift */; };
+		C1C8A66321D4CEBF00A8C7C2 /* knPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C8A66221D4CEBF00A8C7C2 /* knPicker.swift */; };
+		C1C8A66521D4D7BA00A8C7C2 /* FilterWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C8A66421D4D7BA00A8C7C2 /* FilterWorker.swift */; };
+		C1C8A66D21D6ACD300A8C7C2 /* MealList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C8A66C21D6ACD300A8C7C2 /* MealList.swift */; };
 		C2F0A07394AADE51D770740B /* Pods_CaloriesTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B86763ED8DC2891F52136858 /* Pods_CaloriesTracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -237,6 +243,12 @@
 		C193051521D3397100315ED3 /* EditMeal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMeal.swift; sourceTree = "<group>"; };
 		C193051721D33E5900315ED3 /* CheckoutEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutEdit.swift; sourceTree = "<group>"; };
 		C193051921D33EDC00315ED3 /* UpdateMealWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMealWorker.swift; sourceTree = "<group>"; };
+		C1C8A65B21D4AEAC00A8C7C2 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		C1C8A65E21D4AED200A8C7C2 /* Filter.UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.UI.swift; sourceTree = "<group>"; };
+		C1C8A66021D4C20500A8C7C2 /* DailyRegimen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRegimen.swift; sourceTree = "<group>"; };
+		C1C8A66221D4CEBF00A8C7C2 /* knPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = knPicker.swift; sourceTree = "<group>"; };
+		C1C8A66421D4D7BA00A8C7C2 /* FilterWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterWorker.swift; sourceTree = "<group>"; };
+		C1C8A66C21D6ACD300A8C7C2 /* MealList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealList.swift; sourceTree = "<group>"; };
 		EE7D234AAD8C0C68B809DD8C /* Pods-CaloriesTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaloriesTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CaloriesTracker/Pods-CaloriesTracker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -357,6 +369,7 @@
 		C120CD5C21CB81000080EC15 /* modules */ = {
 			isa = PBXGroup;
 			children = (
+				C1C8A66221D4CEBF00A8C7C2 /* knPicker.swift */,
 				C19304F721D0ADDD00315ED3 /* UIImage+Gif.swift */,
 				C19304D221CECE8700315ED3 /* KMPlaceholderTextView.swift */,
 				C19304C921CE23BF00315ED3 /* DateView.swift */,
@@ -374,6 +387,7 @@
 		C120CD5D21CB810B0080EC15 /* features */ = {
 			isa = PBXGroup;
 			children = (
+				C1C8A65D21D4AEB200A8C7C2 /* filter */,
 				C193051421D3395F00315ED3 /* editMeal */,
 				C193048C21CCE81900315ED3 /* addMeal */,
 				C193047821CB9B2900315ED3 /* boss */,
@@ -565,6 +579,18 @@
 			path = editMeal;
 			sourceTree = "<group>";
 		};
+		C1C8A65D21D4AEB200A8C7C2 /* filter */ = {
+			isa = PBXGroup;
+			children = (
+				C1C8A65B21D4AEAC00A8C7C2 /* Filter.swift */,
+				C1C8A65E21D4AED200A8C7C2 /* Filter.UI.swift */,
+				C1C8A66021D4C20500A8C7C2 /* DailyRegimen.swift */,
+				C1C8A66421D4D7BA00A8C7C2 /* FilterWorker.swift */,
+				C1C8A66C21D6ACD300A8C7C2 /* MealList.swift */,
+			);
+			path = filter;
+			sourceTree = "<group>";
+		};
 		DDA226BB38BE9112A6EEAD1D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -732,10 +758,13 @@
 				C1458F7A21D37FBD000F63D5 /* UpdateCaloriesWorker.swift in Sources */,
 				C120CD7921CB83F30080EC15 /* Login.Interactor.swift in Sources */,
 				C120CD5A21CB80FB0080EC15 /* UIImageExtension.swift in Sources */,
+				C1C8A66D21D6ACD300A8C7C2 /* MealList.swift in Sources */,
 				C193047121CB913D00315ED3 /* Register.Interactor.swift in Sources */,
 				C193050B21D2CD2600315ED3 /* Meals.Interactor.swift in Sources */,
 				C193046E21CB913D00315ED3 /* RegisterWorker.swift in Sources */,
 				C193050F21D2D69500315ED3 /* GetUpcomingMealsWorker.swift in Sources */,
+				C1C8A66521D4D7BA00A8C7C2 /* FilterWorker.swift in Sources */,
+				C1C8A66321D4CEBF00A8C7C2 /* knPicker.swift in Sources */,
 				C19304D821CED9E700315ED3 /* FoodDetail.UI.swift in Sources */,
 				C19304C521CE1DEE00315ED3 /* MealOptionView.swift in Sources */,
 				C120CD5721CB80FB0080EC15 /* DeviceType.swift in Sources */,
@@ -770,6 +799,7 @@
 				C193050D21D2D00200315ED3 /* GetFoodDetailWorker.swift in Sources */,
 				C10E3E5121D477F70012C0DE /* AddUserWorker.swift in Sources */,
 				C10E3E4A21D4762B0012C0DE /* AddUser.swift in Sources */,
+				C1C8A66121D4C20500A8C7C2 /* DailyRegimen.swift in Sources */,
 				C120CD5121CB80FB0080EC15 /* OtherExtensions.swift in Sources */,
 				C193051621D3397100315ED3 /* EditMeal.swift in Sources */,
 				C193047321CB91D500315ED3 /* PasswordValidation.swift in Sources */,
@@ -791,6 +821,7 @@
 				C19304DF21CF501D00315ED3 /* AteFoodCell.swift in Sources */,
 				C1458F7E21D387BD000F63D5 /* SetUserRoleWorker.swift in Sources */,
 				C10E3E4C21D476410012C0DE /* AddUser.UI.swift in Sources */,
+				C1C8A65C21D4AEAC00A8C7C2 /* Filter.swift in Sources */,
 				C193048321CC246B00315ED3 /* FAPaginationLayout.swift in Sources */,
 				C120CD9121CB874A0080EC15 /* WhistleFactory.swift in Sources */,
 				C120CD5221CB80FB0080EC15 /* knUIMaker.swift in Sources */,
@@ -799,6 +830,7 @@
 				C120CD9221CB874A0080EC15 /* ShoutFactory.swift in Sources */,
 				C193047721CB95E500315ED3 /* DataBucket.swift in Sources */,
 				C120CD5821CB80FB0080EC15 /* ServiceConnector.swift in Sources */,
+				C1C8A65F21D4AED200A8C7C2 /* Filter.UI.swift in Sources */,
 				C193050721D2407C00315ED3 /* Setting.UI.swift in Sources */,
 				C120CD5621CB80FB0080EC15 /* StringExtension.swift in Sources */,
 				C120CD5321CB80FB0080EC15 /* knListView.swift in Sources */,

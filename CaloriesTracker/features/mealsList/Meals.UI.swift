@@ -18,6 +18,7 @@ extension CTMealsDashboard {
         lazy var stateWrapper = makeStateView()
         lazy var greetingView = makeGreetingView()
         lazy var upcomingCell = makeUpcomingCell()
+        lazy var filterButton = makeFilterButton()
         
         func makeGreetingView() -> UIView {
             let bg = UIMaker.makeImageView()
@@ -77,14 +78,7 @@ extension CTMealsDashboard {
                 previousLabel.removeFromSuperview()
             }
         }
-        
-        func setupView(_ view: UIView) {
-            view.addSubviews(views: greetingView)
-            greetingView.horizontal(toView: view)
-            greetingView.top(toView: view)
-            greetingView.height(170)
-        }
-        
+            
         func makeStateView() -> UIView {
             stateView.setStateContent(state: .empty, imageName: "no_meal", title: "You have no meal", content: "Start tracking your calories everyday by adding meals")
             
@@ -97,6 +91,17 @@ extension CTMealsDashboard {
             
             stateView.horizontal(toView: view)
             return view
+        }
+        
+        func makeFilterButton() -> UIButton {
+            let button = UIMaker.makeButton(image: UIImage(named: "filter"))
+            button.backgroundColor = .white
+            button.setBorder(1, color: UIColor.gray)
+            let edge: CGFloat = 44
+            button.square(edge: edge)
+            button.setCorner(radius: edge / 2)
+            button.contentEdgeInsets = UIEdgeInsets(space: 12)
+            return button
         }
     }
 }

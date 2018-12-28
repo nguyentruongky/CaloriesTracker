@@ -46,12 +46,21 @@ class CTMealsDashboard: knListController<CTMealCell, CTMeal> {
         view.addFill(tableView)
         tableView.setHeader(ui.greetingView, height: 170)
         
+        view.addSubviews(views: ui.filterButton)
+        ui.filterButton.centerX(toView: view)
+        ui.filterButton.bottom(toAnchor: view.safeAreaLayoutGuide.bottomAnchor, space: -padding)
+        
         view.addFill(ui.stateWrapper)
         
         (ui.greetingView.viewWithTag(1001) as? UIButton)?.addTarget(self, action: #selector(showAddMeal))
         (ui.stateWrapper.viewWithTag(1001) as? UIButton)?.addTarget(self, action: #selector(showAddMeal))
+        ui.filterButton.addTarget(self, action: #selector(showFilter))
         
         fetchData()
+    }
+    
+    @objc func showFilter() {
+        present(wrap(CTFilterCtr()))
     }
     
     @objc func showAddMeal() {

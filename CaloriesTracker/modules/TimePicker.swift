@@ -42,9 +42,6 @@ class knTimeSlot: knGridCell<knTime> {
 }
 
 class knTimePicker: knGridView<knTimeSlot, knTime> {
-    override var datasource: [knTime] { didSet {
-        collectionView.reloadData()
-        }}
     override func setupView() {
         lineSpacing = padding
         layout = UICollectionViewFlowLayout()

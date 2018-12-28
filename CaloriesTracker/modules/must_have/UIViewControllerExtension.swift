@@ -15,11 +15,16 @@ extension UIViewController {
         view.isUserInteractionEnabled = enabled
     }
     
-    private func createFakeBackButton() -> [UIBarButtonItem] {
+    private func createFakeBackButton(tintColor: UIColor? = nil) -> [UIBarButtonItem] {
         let height: CGFloat = 36
         let backView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: height))
-        let image = UIImage(named: "back_arrow")
+        let image = UIImage(named: "back_arrow")?.changeColor()
         let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleAspectFit
+        if let color = tintColor {
+            imageView.changeColor(to: color)
+        }
+        
         imageView.frame = CGRect(x: 0, y: 0, width: 36, height: height)
         backView.addSubview(imageView)
         let content = UILabel()
@@ -38,8 +43,8 @@ extension UIViewController {
         return [negativeSpacer, barButton]
     }
     
-    func addFakeBackButton() {
-        navigationItem.leftBarButtonItems = createFakeBackButton()
+    func addFakeBackButton(tintColor: UIColor? = nil) {
+        navigationItem.leftBarButtonItems = createFakeBackButton(tintColor: tintColor)
     }
     
     @objc func dismissBack() {
