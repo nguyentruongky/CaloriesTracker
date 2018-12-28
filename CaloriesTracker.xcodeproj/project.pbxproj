@@ -124,6 +124,7 @@
 		C1C8A66321D4CEBF00A8C7C2 /* knPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C8A66221D4CEBF00A8C7C2 /* knPicker.swift */; };
 		C1C8A66521D4D7BA00A8C7C2 /* FilterWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C8A66421D4D7BA00A8C7C2 /* FilterWorker.swift */; };
 		C1C8A66D21D6ACD300A8C7C2 /* MealList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C8A66C21D6ACD300A8C7C2 /* MealList.swift */; };
+		C1C8A66F21D6B9BB00A8C7C2 /* GetCountryWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C8A66E21D6B9BB00A8C7C2 /* GetCountryWorker.swift */; };
 		C2F0A07394AADE51D770740B /* Pods_CaloriesTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B86763ED8DC2891F52136858 /* Pods_CaloriesTracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -249,6 +250,7 @@
 		C1C8A66221D4CEBF00A8C7C2 /* knPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = knPicker.swift; sourceTree = "<group>"; };
 		C1C8A66421D4D7BA00A8C7C2 /* FilterWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterWorker.swift; sourceTree = "<group>"; };
 		C1C8A66C21D6ACD300A8C7C2 /* MealList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealList.swift; sourceTree = "<group>"; };
+		C1C8A66E21D6B9BB00A8C7C2 /* GetCountryWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCountryWorker.swift; sourceTree = "<group>"; };
 		EE7D234AAD8C0C68B809DD8C /* Pods-CaloriesTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaloriesTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CaloriesTracker/Pods-CaloriesTracker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -436,6 +438,7 @@
 				C1458F7D21D387BD000F63D5 /* SetUserRoleWorker.swift */,
 				C10E3E3F21D40C460012C0DE /* User.swift */,
 				C10E3E4121D40CBA0012C0DE /* GeneralHelper.swift */,
+				C1C8A66E21D6B9BB00A8C7C2 /* GetCountryWorker.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -729,6 +732,7 @@
 				C120CD5921CB80FB0080EC15 /* knConstraints.swift in Sources */,
 				C120CD4F21CB80FB0080EC15 /* UIViewExtension.swift in Sources */,
 				C10E3E4021D40C460012C0DE /* User.swift in Sources */,
+				C1C8A66F21D6B9BB00A8C7C2 /* GetCountryWorker.swift in Sources */,
 				C120CD7821CB83F30080EC15 /* Login.UI.swift in Sources */,
 				C193048721CC3EF100315ED3 /* Meals.UI.swift in Sources */,
 				C120CD8D21CB874A0080EC15 /* WhisperView.swift in Sources */,

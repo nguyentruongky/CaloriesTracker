@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         getMyProfile()
+        getCountry()
         return true
     }
     
@@ -52,6 +53,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     @objc func hideKeyboard(){
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
                                         to: nil, from: nil, for: nil)
+    }
+    
+    func getCountry() {
+        knGetCountryWorker(successAction: didGetCountry, failAction: nil).execute()
+    }
+    
+    private func didGetCountry(_ country: Country) {
+        // save and get cuisine in country, etc
+        print(country.city.or("unknown city"))
     }
 }
 
