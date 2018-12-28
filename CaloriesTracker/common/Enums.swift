@@ -14,3 +14,7 @@ enum CTMealType: String {
 enum UserRole: String {
     case user, manager, admin
 }
+
+enum CTStorageBucket: String {
+    case avatar
+}

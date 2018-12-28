@@ -36,6 +36,7 @@ extension CTUserProfileCtr {
         let mealTitleView = UIMaker.makeView(background: .bg)
 
         func makeHeaderView() -> UIView {
+            avatarImgView.isUserInteractionEnabled = true
             let mealLabel = UIMaker.makeLabel(text: "MEALS", font: UIFont.main(.bold, size: 17),
                                               color: .CT_25)
             mealTitleView.addSubviews(views: mealLabel)
@@ -57,13 +58,13 @@ extension CTUserProfileCtr {
             
             view.addSubviews(views: avatarImgView, detailView, backButton, figureView, mealTitleView)
             backButton.contentVerticalAlignment = .top
-            backButton.topLeft(toView: view)
+            backButton.topLeft(toView: view, top: hasNotch() ? 0 : 16, left: 0)
             
             let avatarHeight: CGFloat = 96
             avatarImgView.square(edge: avatarHeight)
             avatarImgView.setCorner(radius: avatarHeight / 2)
             avatarImgView.left(toView: view, space: padding)
-            avatarImgView.verticalSpacing(toView: backButton, space: padding / 3)
+            avatarImgView.verticalSpacing(toView: backButton, space: hasNotch() ? 8 : -8)
 
             detailView.leftHorizontalSpacing(toView: avatarImgView, space: -padding)
             detailView.right(toView: view, space: -padding)

@@ -10,5 +10,5 @@ target 'CaloriesTracker' do
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
-#  pod 'fluid-slider'
+  pod 'Firebase/Storage'
 end

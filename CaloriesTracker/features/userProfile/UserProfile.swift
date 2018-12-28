@@ -29,7 +29,7 @@ class CTUserProfileCtr: knListController<CTMealCell, CTMeal> {
         stateView?.setStateContent(state: .empty, imageName: "no_meal", title: "You have no meal yet", content: "Tracking your calories everyday for your health")
 
         ui.backButton.addTarget(self, action: #selector(back))
-        
+        ui.avatarImgView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pickAvatar)))
         fetchData()
     }
     
@@ -48,7 +48,7 @@ class CTUserProfileCtr: knListController<CTMealCell, CTMeal> {
         guard let user = data, let id = user.userId else { return }
         ui.editButton.isHidden = id != appSetting.userId
         
-        ui.avatarImgView.downloadImage(from: user.avatar)
+        ui.avatarImgView.downloadImage(from: user.avatar, placeholder: UIImage(named: "user_profile"))
         ui.nameTextField.text = user.name
         ui.emailTextField.text = user.email
         ui.calorieLimitTextField.text = String(user.calories)
@@ -56,6 +56,17 @@ class CTUserProfileCtr: knListController<CTMealCell, CTMeal> {
         setupEmptyView(visible: true)
         stateView?.state = .loading
         output.getMeals(userId: id)
+    }
+    
+    @objc func pickAvatar() {
+        func didSelectImage(_ image: UIImage) {
+            DispatchQueue.main.async { [weak self] in
+                self?.ui.avatarImgView.image = image
+                let name = appSetting.userId ?? Date().toISO8601String()
+                CTUploadAvatarWorker(image: image, fileName: name, complete: nil).execute()
+            }
+        }
+        knPhotoSelectorWorker(finishSelection: didSelectImage).execute()
     }
     
     override func didSelectRow(at indexPath: IndexPath) {
