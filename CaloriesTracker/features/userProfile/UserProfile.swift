@@ -64,4 +64,8 @@ class CTUserProfileCtr: knListController<CTMealCell, CTMeal> {
         push(ctr)
     }
     
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        statusBarHidden = scrollView.contentOffset.y > 0
+    }
+    
 }

@@ -25,7 +25,7 @@ class CTCheckoutCtr: knListController<CTCheckoutItemCell, CTFood> {
         confirmButton.horizontal(toView: view, space: padding)
         
         addState()
-        stateView?.setStateContent(state: .empty, imageName: nil, title: nil, content: "You didn't choose any foods")
+        stateView?.setStateContent(state: .empty, imageName: "no_food", title: nil, content: "You didn't choose any foods")
         confirmButton.addTarget(self, action: #selector(confirmAddingMeal))
         
         fetchData()
