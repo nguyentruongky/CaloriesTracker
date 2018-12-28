@@ -10,7 +10,7 @@ import UIKit
 
 class CTUserCell: knListCell<CTUser> {
     override var data: CTUser? { didSet {
-        avatarImgView.downloadImage(from: data?.avatar)
+        avatarImgView.downloadImage(from: data?.avatar, placeholder: UIImage(named: "user_profile"))
         if let name = data?.name, let myId = appSetting.userId, myId == data?.userId {
             nameLabel.text = name + " (Me)"
         } else {

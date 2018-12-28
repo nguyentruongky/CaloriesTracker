@@ -11,8 +11,8 @@ import UIKit
 extension CTMealDetailCtr {
     class UI {
         let headerHeight: CGFloat = 250
-        let fixedImgView = UIMaker.makeImageView(contentMode: .scaleAspectFill)
-        let imgView = UIMaker.makeImageView(contentMode: .scaleAspectFill)
+        lazy var fixedImgView = makeImageView()
+        lazy var imgView = makeImageView()
         let titleLabel = UIMaker.makeLabel(font: UIFont.main(.bold, size: 25),
                                            color: UIColor.CT_25, numberOfLines: 0)
         let timeLabel = UIMaker.makeLabel(font: UIFont.main(.medium, size: 13),
@@ -95,7 +95,10 @@ extension CTMealDetailCtr {
             ateFoodView.height(200)
             return cell
         }
-        
+        func makeImageView() -> UIImageView {
+            return UIMaker.makeImageView(image: UIImage(named: "meal_placeholder"),
+                                         contentMode: .scaleAspectFill)
+        }
     }
 }
 

@@ -49,7 +49,7 @@ class CTFood: Equatable {
 class CTFoodCell: knGridCell<CTFood> {
     override var data: CTFood? { didSet {
         guard let data = data else { return }
-        imgView.downloadImage(from: data.image)
+        imgView.downloadImage(from: data.image, placeholder: UIImage(named: "meal_placeholder"))
         nameLabel.text = data.name
         
         guard let foods = parent?.mealOptionView.meal.foods else { return }
@@ -57,7 +57,8 @@ class CTFoodCell: knGridCell<CTFood> {
     }}
     weak var parent: CTAddMealCtr?
     
-    let imgView = UIMaker.makeImageView(contentMode: .scaleAspectFill)
+    let imgView = UIMaker.makeImageView(image: UIImage(named: "meal_placeholder"),
+                                        contentMode: .scaleAspectFill)
     let nameLabel = UIMaker.makeLabel(font: UIFont.main(size: 13),
                                       color: UIColor.CT_25, alignment: .center)
     let selectButton = UIMaker.makeButton(title: "Select", titleColor: UIColor.CT_25,

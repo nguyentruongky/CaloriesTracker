@@ -12,10 +12,10 @@ class CTFoodDetailCtr: knStaticListController {
     var data: CTFood?
     
     override func setupView() {
+        statusBarStyle = .default
         navigationController?.hideBar(true)
         super.setupView()
         datasource = ui.setupView()
-        
         view.addSubviews(views: ui.fixedImgView, tableView)
         tableView.fill(toView: view)
         ui.fixedImgView.top(toView: view)
@@ -32,15 +32,15 @@ class CTFoodDetailCtr: knStaticListController {
         ui.removeButton.addTarget(self, action: #selector(removeFood))
         
         fetchData()
-        
         view.clipsToBounds = true
     }
     
     override func fetchData() {
         guard let data = data else { return }
         let image = data.image
-        ui.imgView.downloadImage(from: image)
-        ui.fixedImgView.downloadImage(from: image)
+        let placeholder = UIImage(named: "meal_placeholder")
+        ui.imgView.downloadImage(from: image, placeholder: placeholder)
+        ui.fixedImgView.downloadImage(from: image, placeholder: placeholder)
         ui.titleLabel.text = data.name
         ui.caloriesLabel.text = "Energy: \(data.calories) KCAL"
         let descriptionCell = ui.makeTextCell(title: "Description", content: data.description)

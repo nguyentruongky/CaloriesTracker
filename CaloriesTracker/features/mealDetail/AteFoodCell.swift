@@ -28,11 +28,12 @@ final class CTAteFoodView: knGridView<CTAteFoodCell, CTFood> {
 final class CTAteFoodCell: knGridCell<CTFood> {
     override var data: CTFood? { didSet {
         nameLabel.text = data?.name
-        imgView.downloadImage(from: data?.image)
+        imgView.downloadImage(from: data?.image, placeholder: UIImage(named: "meal_placeholder"))
     }}
     let nameLabel = UIMaker.makeLabel(font: UIFont.main(.regular, size: 14),
                                       color: UIColor.CT_25, alignment: .center)
-    let imgView = UIMaker.makeImageView(contentMode: .scaleAspectFill)
+    let imgView = UIMaker.makeImageView(image: UIImage(named: "meal_placeholder"),
+                                        contentMode: .scaleAspectFill)
     
     override func setupView() {
         let view = UIMaker.makeView(background: .white)

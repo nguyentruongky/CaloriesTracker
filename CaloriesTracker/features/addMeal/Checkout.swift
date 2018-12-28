@@ -68,11 +68,12 @@ class CTCheckoutCtr: knListController<CTCheckoutItemCell, CTFood> {
 
 class CTCheckoutItemCell: knListCell<CTFood> {
     override var data: CTFood? { didSet {
-        imgView.downloadImage(from: data?.image)
+//        imgView.downloadImage(from: data?.image,  placeholder: UIImage(named: "no_food"))
         nameLabel.text = data?.name
         }}
     
-    let imgView = UIMaker.makeImageView(contentMode: .scaleAspectFill)
+    let imgView = UIMaker.makeImageView(image: UIImage(named: "no_food"),
+                                        contentMode: .scaleAspectFill)
     let nameLabel = UIMaker.makeLabel(font: UIFont.main(size: 13),
                                       color: UIColor.CT_25, numberOfLines: 2)
     

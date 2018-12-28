@@ -289,9 +289,9 @@
 		C10E3E4F21D477EA0012C0DE /* addUser */ = {
 			isa = PBXGroup;
 			children = (
-				C10E3E4921D4762B0012C0DE /* AddUser.swift */,
 				C10E3E4D21D4777D0012C0DE /* AddUser.Interactor.swift */,
 				C10E3E4B21D476410012C0DE /* AddUser.UI.swift */,
+				C10E3E4921D4762B0012C0DE /* AddUser.swift */,
 				C10E3E5021D477F70012C0DE /* AddUserWorker.swift */,
 			);
 			path = addUser;
@@ -301,9 +301,9 @@
 			isa = PBXGroup;
 			children = (
 				C120CD1421CB3D230080EC15 /* CaloriesTracker */,
-				C120CD1321CB3D230080EC15 /* Products */,
-				DDA226BB38BE9112A6EEAD1D /* Pods */,
 				60DE173E4146DD58E6E69115 /* Frameworks */,
+				DDA226BB38BE9112A6EEAD1D /* Pods */,
+				C120CD1321CB3D230080EC15 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -319,8 +319,8 @@
 			isa = PBXGroup;
 			children = (
 				C120CD2821CB80E40080EC15 /* assets */,
-				C120CD2721CB80D90080EC15 /* configuration */,
 				C120CD8121CB87180080EC15 /* common */,
+				C120CD2721CB80D90080EC15 /* configuration */,
 				C120CD5D21CB810B0080EC15 /* features */,
 				C120CD5C21CB81000080EC15 /* modules */,
 			);
@@ -330,11 +330,11 @@
 		C120CD2721CB80D90080EC15 /* configuration */ = {
 			isa = PBXGroup;
 			children = (
-				C120CD9621CB8E8A0080EC15 /* GoogleService-Info.plist */,
 				C120CD1521CB3D230080EC15 /* AppDelegate.swift */,
+				C120CD3421CB80FB0080EC15 /* AppSetting.swift */,
+				C120CD9621CB8E8A0080EC15 /* GoogleService-Info.plist */,
 				C120CD2121CB3D240080EC15 /* Info.plist */,
 				C120CD3221CB80FB0080EC15 /* StartPoint.swift */,
-				C120CD3421CB80FB0080EC15 /* AppSetting.swift */,
 			);
 			path = configuration;
 			sourceTree = "<group>";
@@ -342,10 +342,10 @@
 		C120CD2821CB80E40080EC15 /* assets */ = {
 			isa = PBXGroup;
 			children = (
-				C19304F421D0AD0C00315ED3 /* loading.gif */,
 				C120CD7D21CB858A0080EC15 /* fonts */,
 				C120CD1C21CB3D240080EC15 /* Assets.xcassets */,
 				C120CD1E21CB3D240080EC15 /* LaunchScreen.storyboard */,
+				C19304F421D0AD0C00315ED3 /* loading.gif */,
 			);
 			path = assets;
 			sourceTree = "<group>";
@@ -357,12 +357,6 @@
 				C120CD3E21CB80FB0080EC15 /* DeviceType.swift */,
 				C120CD2E21CB80FB0080EC15 /* General.swift */,
 				C120CD3121CB80FB0080EC15 /* IntExtension.swift */,
-				C120CD4021CB80FB0080EC15 /* knConstraints.swift */,
-				C120CD3721CB80FB0080EC15 /* knController.swift */,
-				C120CD2B21CB80FB0080EC15 /* knGridView.swift */,
-				C120CD3A21CB80FB0080EC15 /* knListView.swift */,
-				C120CD3921CB80FB0080EC15 /* knUIMaker.swift */,
-				C120CD3521CB80FB0080EC15 /* knView.swift */,
 				C120CD3B21CB80FB0080EC15 /* NavigationExtension.swift */,
 				C120CD3821CB80FB0080EC15 /* OtherExtensions.swift */,
 				C120CD3F21CB80FB0080EC15 /* ServiceConnector.swift */,
@@ -376,6 +370,12 @@
 				C120CD2F21CB80FB0080EC15 /* UITextFieldExtension.swift */,
 				C120CD3321CB80FB0080EC15 /* UIViewControllerExtension.swift */,
 				C120CD3621CB80FB0080EC15 /* UIViewExtension.swift */,
+				C120CD4021CB80FB0080EC15 /* knConstraints.swift */,
+				C120CD3721CB80FB0080EC15 /* knController.swift */,
+				C120CD2B21CB80FB0080EC15 /* knGridView.swift */,
+				C120CD3A21CB80FB0080EC15 /* knListView.swift */,
+				C120CD3921CB80FB0080EC15 /* knUIMaker.swift */,
+				C120CD3521CB80FB0080EC15 /* knView.swift */,
 			);
 			path = must_have;
 			sourceTree = "<group>";
@@ -383,18 +383,18 @@
 		C120CD5C21CB81000080EC15 /* modules */ = {
 			isa = PBXGroup;
 			children = (
-				C1C8A67721D6CAAF00A8C7C2 /* knPhotoSelectWorker.swift */,
-				C1C8A66221D4CEBF00A8C7C2 /* knPicker.swift */,
-				C19304F721D0ADDD00315ED3 /* UIImage+Gif.swift */,
-				C19304D221CECE8700315ED3 /* KMPlaceholderTextView.swift */,
-				C19304C921CE23BF00315ED3 /* DateView.swift */,
-				C19304C821CE23BF00315ED3 /* TimePicker.swift */,
-				C193048221CC246B00315ED3 /* FAPaginationLayout.swift */,
-				C193047421CB927500315ED3 /* TermLabel.swift */,
 				C120CD8421CB874A0080EC15 /* Whisper */,
 				C120CD2921CB80FB0080EC15 /* must_have */,
-				C19304F221D0ABE700315ED3 /* StateView.swift */,
 				C19304FF21D2253400315ED3 /* BarButtonBadge.swift */,
+				C19304C921CE23BF00315ED3 /* DateView.swift */,
+				C193048221CC246B00315ED3 /* FAPaginationLayout.swift */,
+				C19304D221CECE8700315ED3 /* KMPlaceholderTextView.swift */,
+				C19304F221D0ABE700315ED3 /* StateView.swift */,
+				C193047421CB927500315ED3 /* TermLabel.swift */,
+				C19304C821CE23BF00315ED3 /* TimePicker.swift */,
+				C19304F721D0ADDD00315ED3 /* UIImage+Gif.swift */,
+				C1C8A67721D6CAAF00A8C7C2 /* knPhotoSelectWorker.swift */,
+				C1C8A66221D4CEBF00A8C7C2 /* knPicker.swift */,
 			);
 			path = modules;
 			sourceTree = "<group>";
@@ -402,12 +402,12 @@
 		C120CD5D21CB810B0080EC15 /* features */ = {
 			isa = PBXGroup;
 			children = (
-				C1C8A67021D6BD1800A8C7C2 /* forgotPassword */,
-				C1C8A65D21D4AEB200A8C7C2 /* filter */,
-				C193051421D3395F00315ED3 /* editMeal */,
 				C193048C21CCE81900315ED3 /* addMeal */,
 				C193047821CB9B2900315ED3 /* boss */,
+				C193051421D3395F00315ED3 /* editMeal */,
+				C1C8A65D21D4AEB200A8C7C2 /* filter */,
 				C19304D421CED9C700315ED3 /* food */,
+				C1C8A67021D6BD1800A8C7C2 /* forgotPassword */,
 				C120CD7221CB83F30080EC15 /* login */,
 				C19304D921CF4C3400315ED3 /* mealDetail */,
 				C193047B21CC226300315ED3 /* mealsList */,
@@ -422,9 +422,9 @@
 		C120CD7221CB83F30080EC15 /* login */ = {
 			isa = PBXGroup;
 			children = (
-				C120CD7321CB83F30080EC15 /* Login.swift */,
-				C120CD7421CB83F30080EC15 /* Login.UI.swift */,
 				C120CD7521CB83F30080EC15 /* Login.Interactor.swift */,
+				C120CD7421CB83F30080EC15 /* Login.UI.swift */,
+				C120CD7321CB83F30080EC15 /* Login.swift */,
 				C120CD7621CB83F30080EC15 /* LoginWorker.swift */,
 			);
 			path = login;
@@ -443,16 +443,16 @@
 		C120CD8121CB87180080EC15 /* common */ = {
 			isa = PBXGroup;
 			children = (
-				C193047221CB91D500315ED3 /* PasswordValidation.swift */,
-				C120CD7B21CB84990080EC15 /* Colors.swift */,
 				C120CD8221CB87200080EC15 /* CTMessage.swift */,
+				C193051221D31E3B00315ED3 /* CaloriesChecker.swift */,
+				C120CD7B21CB84990080EC15 /* Colors.swift */,
 				C193047621CB95E500315ED3 /* DataBucket.swift */,
 				C19304E021CF54CF00315ED3 /* Enums.swift */,
-				C193051221D31E3B00315ED3 /* CaloriesChecker.swift */,
-				C1458F7D21D387BD000F63D5 /* SetUserRoleWorker.swift */,
-				C10E3E3F21D40C460012C0DE /* User.swift */,
 				C10E3E4121D40CBA0012C0DE /* GeneralHelper.swift */,
 				C1C8A66E21D6B9BB00A8C7C2 /* GetCountryWorker.swift */,
+				C193047221CB91D500315ED3 /* PasswordValidation.swift */,
+				C1458F7D21D387BD000F63D5 /* SetUserRoleWorker.swift */,
+				C10E3E3F21D40C460012C0DE /* User.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -460,13 +460,13 @@
 		C120CD8421CB874A0080EC15 /* Whisper */ = {
 			isa = PBXGroup;
 			children = (
+				C120CD8921CB874A0080EC15 /* Config.swift */,
+				C120CD8721CB874A0080EC15 /* Message.swift */,
+				C120CD8B21CB874A0080EC15 /* ShoutFactory.swift */,
+				C120CD8821CB874A0080EC15 /* Showing.swift */,
 				C120CD8521CB874A0080EC15 /* WhisperFactory.swift */,
 				C120CD8621CB874A0080EC15 /* WhisperView.swift */,
-				C120CD8721CB874A0080EC15 /* Message.swift */,
-				C120CD8821CB874A0080EC15 /* Showing.swift */,
-				C120CD8921CB874A0080EC15 /* Config.swift */,
 				C120CD8A21CB874A0080EC15 /* WhistleFactory.swift */,
-				C120CD8B21CB874A0080EC15 /* ShoutFactory.swift */,
 			);
 			path = Whisper;
 			sourceTree = "<group>";
@@ -474,10 +474,10 @@
 		C193046921CB913D00315ED3 /* register */ = {
 			isa = PBXGroup;
 			children = (
-				C193046A21CB913D00315ED3 /* RegisterWorker.swift */,
+				C193046D21CB913D00315ED3 /* Register.Interactor.swift */,
 				C193046B21CB913D00315ED3 /* Register.UI.swift */,
 				C193046C21CB913D00315ED3 /* Register.swift */,
-				C193046D21CB913D00315ED3 /* Register.Interactor.swift */,
+				C193046A21CB913D00315ED3 /* RegisterWorker.swift */,
 			);
 			path = register;
 			sourceTree = "<group>";
@@ -494,13 +494,13 @@
 			isa = PBXGroup;
 			children = (
 				C193050821D2CA5D00315ED3 /* GetPreviousMealsWorker.swift */,
+				C193050E21D2D69500315ED3 /* GetUpcomingMealsWorker.swift */,
 				C193048421CC3ECE00315ED3 /* Meal.swift */,
 				C193048A21CCD4B100315ED3 /* MealCell.swift */,
 				C193050A21D2CD2600315ED3 /* Meals.Interactor.swift */,
-				C193047C21CC226800315ED3 /* Meals.swift */,
 				C193048621CC3EF100315ED3 /* Meals.UI.swift */,
+				C193047C21CC226800315ED3 /* Meals.swift */,
 				C193051021D3171000315ED3 /* UpcomingMealsView.swift */,
-				C193050E21D2D69500315ED3 /* GetUpcomingMealsWorker.swift */,
 			);
 			path = mealsList;
 			sourceTree = "<group>";
@@ -512,8 +512,8 @@
 				C19304F021D0988C00315ED3 /* AddMeal.Interactor.swift */,
 				C193048D21CCE86C00315ED3 /* AddMeal.swift */,
 				C19304FB21D17AA300315ED3 /* AddMealWorker.swift */,
-				C19304EE21D093BA00315ED3 /* GetFoodsWorker.swift */,
 				C193050121D2304B00315ED3 /* Checkout.swift */,
+				C19304EE21D093BA00315ED3 /* GetFoodsWorker.swift */,
 			);
 			path = addMeal;
 			sourceTree = "<group>";
@@ -521,8 +521,8 @@
 		C19304D421CED9C700315ED3 /* food */ = {
 			isa = PBXGroup;
 			children = (
-				C19304D521CED9CD00315ED3 /* FoodDetail.swift */,
 				C19304D721CED9E700315ED3 /* FoodDetail.UI.swift */,
+				C19304D521CED9CD00315ED3 /* FoodDetail.swift */,
 				C193050C21D2D00200315ED3 /* GetFoodDetailWorker.swift */,
 			);
 			path = food;
@@ -531,9 +531,9 @@
 		C19304D921CF4C3400315ED3 /* mealDetail */ = {
 			isa = PBXGroup;
 			children = (
-				C19304DA21CF4C3B00315ED3 /* MealDetail.swift */,
-				C19304DC21CF4C7000315ED3 /* MealDetail.UI.swift */,
 				C19304DE21CF501D00315ED3 /* AteFoodCell.swift */,
+				C19304DC21CF4C7000315ED3 /* MealDetail.UI.swift */,
+				C19304DA21CF4C3B00315ED3 /* MealDetail.swift */,
 			);
 			path = mealDetail;
 			sourceTree = "<group>";
@@ -541,12 +541,12 @@
 		C19304E421D02D2D00315ED3 /* userList */ = {
 			isa = PBXGroup;
 			children = (
-				C19304E221D02D2900315ED3 /* UserList.swift */,
-				C19304E521D02D5800315ED3 /* UserCell.swift */,
-				C10E3E4321D41C400012C0DE /* GetAllUsersWorker.swift */,
+				C10E3E4F21D477EA0012C0DE /* addUser */,
 				C10E3E4521D463700012C0DE /* DeactivateUserWorker.swift */,
 				C10E3E4721D46A5C0012C0DE /* DeleteUserWorker.swift */,
-				C10E3E4F21D477EA0012C0DE /* addUser */,
+				C10E3E4321D41C400012C0DE /* GetAllUsersWorker.swift */,
+				C19304E521D02D5800315ED3 /* UserCell.swift */,
+				C19304E221D02D2900315ED3 /* UserList.swift */,
 			);
 			path = userList;
 			sourceTree = "<group>";
@@ -554,13 +554,13 @@
 		C19304E721D0321400315ED3 /* userProfile */ = {
 			isa = PBXGroup;
 			children = (
-				C1458F7521D37CF0000F63D5 /* GetMyProfileWorker.swift */,
-				C19304E821D0321D00315ED3 /* UserProfile.swift */,
-				C19304EA21D0326A00315ED3 /* UserProfile.UI.swift */,
-				C10E3E5221D47E570012C0DE /* UserProfile.Interactor.swift */,
 				C10E3E5421D480710012C0DE /* GetAllMealsWorker.swift */,
-				C1C8A67921D6CC9E00A8C7C2 /* UploadAvatarWorker.swift */,
+				C1458F7521D37CF0000F63D5 /* GetMyProfileWorker.swift */,
 				C1C8A67B21D6D32400A8C7C2 /* UpdateMyProfileWorker.swift */,
+				C1C8A67921D6CC9E00A8C7C2 /* UploadAvatarWorker.swift */,
+				C10E3E5221D47E570012C0DE /* UserProfile.Interactor.swift */,
+				C19304EA21D0326A00315ED3 /* UserProfile.UI.swift */,
+				C19304E821D0321D00315ED3 /* UserProfile.swift */,
 			);
 			path = userProfile;
 			sourceTree = "<group>";
@@ -568,9 +568,9 @@
 		C19304F621D0AD7E00315ED3 /* components */ = {
 			isa = PBXGroup;
 			children = (
-				C19304C421CE1DEE00315ED3 /* MealOptionView.swift */,
-				C19304FD21D20FE000315ED3 /* MealOptionView.UI.swift */,
 				C193048F21CCEC5700315ED3 /* FoodCell.swift */,
+				C19304FD21D20FE000315ED3 /* MealOptionView.UI.swift */,
+				C19304C421CE1DEE00315ED3 /* MealOptionView.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -578,11 +578,11 @@
 		C193050321D23FF200315ED3 /* setting */ = {
 			isa = PBXGroup;
 			children = (
-				C193050421D23FF900315ED3 /* Setting.swift */,
-				C193050621D2407C00315ED3 /* Setting.UI.swift */,
-				C1458F7121D34E13000F63D5 /* LogoutWorker.swift */,
 				C1458F7721D37E50000F63D5 /* Calories.swift */,
 				C1458F7B21D38211000F63D5 /* GetCaloriesWorker.swift */,
+				C1458F7121D34E13000F63D5 /* LogoutWorker.swift */,
+				C193050621D2407C00315ED3 /* Setting.UI.swift */,
+				C193050421D23FF900315ED3 /* Setting.swift */,
 				C1458F7921D37FBD000F63D5 /* UpdateCaloriesWorker.swift */,
 			);
 			path = setting;
@@ -591,8 +591,8 @@
 		C193051421D3395F00315ED3 /* editMeal */ = {
 			isa = PBXGroup;
 			children = (
-				C193051521D3397100315ED3 /* EditMeal.swift */,
 				C193051721D33E5900315ED3 /* CheckoutEdit.swift */,
+				C193051521D3397100315ED3 /* EditMeal.swift */,
 				C193051921D33EDC00315ED3 /* UpdateMealWorker.swift */,
 			);
 			path = editMeal;
@@ -601,9 +601,9 @@
 		C1C8A65D21D4AEB200A8C7C2 /* filter */ = {
 			isa = PBXGroup;
 			children = (
-				C1C8A65B21D4AEAC00A8C7C2 /* Filter.swift */,
-				C1C8A65E21D4AED200A8C7C2 /* Filter.UI.swift */,
 				C1C8A66021D4C20500A8C7C2 /* DailyRegimen.swift */,
+				C1C8A65E21D4AED200A8C7C2 /* Filter.UI.swift */,
+				C1C8A65B21D4AEAC00A8C7C2 /* Filter.swift */,
 				C1C8A66421D4D7BA00A8C7C2 /* FilterWorker.swift */,
 				C1C8A66C21D6ACD300A8C7C2 /* MealList.swift */,
 			);
@@ -613,9 +613,9 @@
 		C1C8A67021D6BD1800A8C7C2 /* forgotPassword */ = {
 			isa = PBXGroup;
 			children = (
-				C1C8A67121D6BD1800A8C7C2 /* ForgotPassword.swift */,
-				C1C8A67221D6BD1800A8C7C2 /* ForgotPassword.UI.swift */,
 				C1C8A67321D6BD1800A8C7C2 /* ForgotPassWorker.swift */,
+				C1C8A67221D6BD1800A8C7C2 /* ForgotPassword.UI.swift */,
+				C1C8A67121D6BD1800A8C7C2 /* ForgotPassword.swift */,
 			);
 			path = forgotPassword;
 			sourceTree = "<group>";
@@ -884,6 +884,7 @@
 				C120CD1F21CB3D240080EC15 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -11,8 +11,8 @@ import UIKit
 extension CTFoodDetailCtr {
     class UI {
         let headerHeight: CGFloat = 250
-        let fixedImgView = UIMaker.makeImageView(contentMode: .scaleAspectFill)
-        let imgView = UIMaker.makeImageView(contentMode: .scaleAspectFill)
+        lazy var fixedImgView = makeImageView()
+        lazy var imgView = makeImageView()
         let titleLabel = UIMaker.makeLabel(font: UIFont.main(.bold, size: 20),
                                            color: UIColor.CT_25, numberOfLines: 0)
         let caloriesLabel = UIMaker.makeLabel(font: UIFont.main(.bold, size: 15),
@@ -70,6 +70,11 @@ extension CTFoodDetailCtr {
             imgView.fill(toView: cell)
             imgView.clipsToBounds = true
             return cell
+        }
+        
+        func makeImageView() -> UIImageView {
+            return UIMaker.makeImageView(image: UIImage(named: "meal_placeholder"),
+                                         contentMode: .scaleAspectFill)
         }
     }
 }

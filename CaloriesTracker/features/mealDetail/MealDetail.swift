@@ -13,8 +13,9 @@ class CTMealDetailCtr: knStaticListController {
         
         ui.titleLabel.text = data.name
         let imgUrl = data.images.first
-        ui.imgView.downloadImage(from: imgUrl)
-        ui.fixedImgView.downloadImage(from: imgUrl)
+        let placeholder = UIImage(named: "meal_placeholder")
+        ui.imgView.downloadImage(from: imgUrl, placeholder: placeholder)
+        ui.fixedImgView.downloadImage(from: imgUrl, placeholder: placeholder)
         let calories = data.calories.or(0)
         ui.caloriesLabel.text = "\(calories) KCAL"
         title = data.getMealTypeString().uppercased()

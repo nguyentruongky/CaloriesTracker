@@ -16,6 +16,7 @@ struct AppSetting {
         userRole = (user?.role ?? UserRole.user)
         userId = user?.userId
         userName = user?.name
+        standardCalories = user?.calories ?? DEFAULT_CALORIES
     }}
     
     var userId: String? {

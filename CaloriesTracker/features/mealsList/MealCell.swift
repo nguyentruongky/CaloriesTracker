@@ -10,7 +10,7 @@ import UIKit
 final class CTMealCell: knListCell<CTMeal> {
     override var data: CTMeal? { didSet {
         guard let data = data else { return }
-        imgView.downloadImage(from: data.images.first)
+        imgView.downloadImage(from: data.images.first, placeholder: UIImage(named: "meal_placeholder"))
         nameLabel.text = data.name
         timeLabel.text = data.getMealTypeString().uppercased()
         if let date = data.date, let time = data.time {
@@ -25,7 +25,8 @@ final class CTMealCell: knListCell<CTMeal> {
             messageLabel.textColor = caloriesSet.textColor
         }
     }}
-    let imgView = UIMaker.makeImageView(contentMode: .scaleAspectFill)
+    let imgView = UIMaker.makeImageView(image: UIImage(named: "meal_placeholder"),
+                                        contentMode: .scaleAspectFill)
     let nameLabel = UIMaker.makeLabel(font: UIFont.main(.bold, size: 15),
                                       color: UIColor.CT_25)
     let timeLabel = UIMaker.makeLabel(font: UIFont.main(.bold, size: 12),
