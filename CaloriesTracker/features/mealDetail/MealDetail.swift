@@ -20,7 +20,7 @@ class CTMealDetailCtr: knStaticListController {
         ui.caloriesLabel.text = "\(calories) KCAL"
         title = data.getMealTypeString().uppercased()
         
-        let caloriesSet = CaloriesTracker().getFormat(isStandard: data.isStandard)
+        let caloriesSet = CaloriesChecker().getFormat(isStandard: data.isStandard)
         ui.attentionView.backgroundColor = caloriesSet.bgColor
         ui.messageLabel.text = caloriesSet.message
         ui.messageLabel.textColor = caloriesSet.textColor

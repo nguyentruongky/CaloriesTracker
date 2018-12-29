@@ -18,7 +18,7 @@ struct CTGetAllMealsWorker {
     }
     
     func execute() {
-        let db = Helper.getMealDb()
+        let db = CTDataBucket.getMealDb()
         db.queryOrdered(byChild: "user_id")
             .queryEqual(toValue: userId)
             .observeSingleEvent(of: .value) { (snapshot) in

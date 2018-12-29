@@ -30,7 +30,7 @@ struct CTUploadAvatarWorker {
         imageRef.putData(data, metadata: nil, completion: { (meta, err) in
             imageRef.downloadURL(completion: { (link, err) in
                 guard let link = link?.absoluteString, let userId = appSetting.userId else { return }
-                let db = Helper.getUserDb()
+                let db = CTDataBucket.getUserDb()
                 db.child(userId).child("avatar").setValue(link)
                 appSetting.user?.avatar = link
             })

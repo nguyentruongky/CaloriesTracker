@@ -23,7 +23,7 @@ struct CTAddMealWorker {
     func execute() {
         guard let userId = appSetting.userId else { return }
         let foods = meal.foods.map({ return $0.toDict() })
-        let mealId = Helper.generateId()
+        let mealId = UUID().uuidString
         let data = [
             "meal_id": mealId,
             "user_id": userId,

@@ -18,7 +18,7 @@ struct CTGetAllUsersWorker {
     }
     
     func execute() {
-        let db = Helper.getUserDb()
+        let db = CTDataBucket.getUserDb()
         db.observeSingleEvent(of: .value) { (snapshot) in
             guard var raws = snapshot.value as? [String: AnyObject] else {
                 self.failAction?(knError(code: "no_data"))

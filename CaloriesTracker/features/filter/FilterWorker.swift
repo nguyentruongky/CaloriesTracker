@@ -20,7 +20,7 @@ struct CTFilterWorker {
     }
     
     func execute() {
-        let db = Helper.getMealDb()
+        let db = CTDataBucket.getMealDb()
         guard let userId = appSetting.userId else { return }
         db.queryOrdered(byChild: "user_id")
             .queryEqual(toValue: userId).observeSingleEvent(of: .value) { (snapshot) in

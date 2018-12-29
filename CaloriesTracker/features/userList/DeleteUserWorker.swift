@@ -18,7 +18,7 @@ struct CTDeleteUserWorker {
     }
     
     func execute() {
-        let db = Helper.getUserDb()
+        let db = CTDataBucket.getUserDb()
         db.child(userId).removeValue { (error, _) in
             if error == nil {
                 self.successAction?()

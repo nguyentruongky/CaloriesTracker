@@ -24,17 +24,18 @@ struct CTSetUserRoleWorker {
     
     func execute() {
         let roles: [UserRole] = [.admin, .manager]
+        let noPermissionMessage = "You don't have permission to do this"
         if roles.contains(appSetting.userRole) == false {
-            failAction?(knError(code: "forbidden", message: "You don't have permission to do this"))
+            failAction?(knError(code: "forbidden", message: noPermissionMessage))
             return
         }
         
         if newRole == .admin && appSetting.userRole == .manager {
-            failAction?(knError(code: "forbidden", message: "You don't have permission to do this"))
+            failAction?(knError(code: "forbidden", message: noPermissionMessage))
             return
         }
         
-        let db = Helper.getUserDb()
+        let db = CTDataBucket.getUserDb()
         db.child(userId).child("role").setValue(newRole.rawValue)
         successAction?()
     }

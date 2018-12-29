@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseDatabase
+
 enum CTMealType: String {
     case breakfast, lunch, dinner, collation
 }
@@ -17,4 +19,20 @@ enum UserRole: String {
 
 enum CTStorageBucket: String {
     case avatar
+}
+
+enum CTDataBucket: String {
+    case users, foods, meals
+    static func getUserDb() -> DatabaseReference {
+        return getDb(bucket: CTDataBucket.users.rawValue)
+    }
+    
+    static func getMealDb() -> DatabaseReference {
+        return getDb(bucket: CTDataBucket.meals.rawValue)
+    }
+    
+    private static func getDb(bucket: String) -> DatabaseReference {
+        let db = Database.database().reference().child(bucket)
+        return db
+    }
 }

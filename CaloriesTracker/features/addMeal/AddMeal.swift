@@ -12,46 +12,37 @@ import UIKit.UIGestureRecognizerSubclass
 class CTAddMealCtr: knGridController<CTFoodCell, CTFood>, CTBottomSheetDelegate {
     lazy var output = Interactor(controller: self)
     var checkoutButton: knBarButtonNumber!
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.hideBar(false)
-    }
-    
+
     override func setupView() {
         title = "NEW MEAL"
-        hidesBottomBarWhenPushed = true
-        navigationController?.hideBar(false)
+        navBarHidden = .show
         
+        addCartButton()
+        addBackButton(tintColor: .CT_25)
+
+        layout = UICollectionViewFlowLayout()
+        itemSize = CGSize(width: screenWidth / 2 - 8, height: 250)
+        contentInset = UIEdgeInsets(top: 8, left: 8,
+                                    bottom: sheetHeight - fitBottomHeight, right: 8)
+        super.setupView()
+        collectionView.backgroundColor = UIColor.bg
+        view.addFill(collectionView)
+        
+        setupBottomView()
+        openSheetOnStart()
+        
+        addState()
+        
+        fetchData()
+    }
+    
+    func addCartButton() {
         let cartButton = UIMaker.makeButton(image: UIImage(named: "cart"))
         cartButton.addTarget(self, action: #selector(showCheckout))
         checkoutButton = knBarButtonNumber(view: cartButton)
         navigationItem.rightBarButtonItem = checkoutButton
-        
-        addBackButton(tintColor: .CT_25)
-
-        layout = UICollectionViewFlowLayout()
-        contentInset = UIEdgeInsets.zero
-        lineSpacing = 0
-        columnSpacing = 0
-        let width = (screenWidth) / 2 - 8
-        itemSize = CGSize(width: width, height: 250)
-        super.setupView()
-        collectionView.backgroundColor = UIColor.bg
-        view.addSubviews(views: collectionView)
-        collectionView.fill(toView: view)
-        collectionView.contentInset = UIEdgeInsets(top: 8, left: 8,
-                                                   bottom: sheetHeight - fitBottomHeight,
-                                                   right: 8)
-        addState()
-        
-        setupBottomView()
-        fetchData()
-        run({ [weak self] in
-            self?.animateTransitionIfNeeded(to: .open, duration: 0.35)
-            }, after: 0.1)
     }
-    
+
     override func fetchData() {
         stateView?.state = .loading
         output.getFoods()
@@ -68,6 +59,30 @@ class CTAddMealCtr: knGridController<CTFoodCell, CTFood>, CTBottomSheetDelegate 
         ctr.addMealCtr = self
         present(wrap(ctr))
     }
+    
+    override func didSelectItem(at indexPath: IndexPath) {
+        let ctr = CTFoodDetailCtr()
+        ctr.data = datasource[indexPath.row]
+        push(ctr)
+    }
+    
+    override func getCell(at indexPath: IndexPath) -> CTFoodCell {
+        let cell = super.getCell(at: indexPath)
+        cell.parent = self
+        return cell
+    }
+    
+    func selectFood(_ food: CTFood) {
+        mealOptionView.meal.foods.append(food)
+        checkoutButton.increase(amount: 1)
+    }
+    
+    func removeFood(_ food: CTFood) {
+        guard let index = mealOptionView.meal.foods.firstIndex(where: { return $0.id == food.id }) else { return }
+        mealOptionView.meal.foods.remove(at: index)
+        checkoutButton.descrease(amount: 1)
+    }
+    
     
     // MARK: BOTTOM SHEET
     
@@ -93,7 +108,6 @@ class CTAddMealCtr: knGridController<CTFoodCell, CTFood>, CTBottomSheetDelegate 
         
         mealOptionView.panView.addGestureRecognizer(InstantPanGestureRecognizer(target: self, action: #selector(popupViewPanned)))
         mealOptionView.panView.addGestureRecognizer(tapRecognizer)
-        
         
         view.insertSubview(blackView, belowSubview: mealOptionView)
         blackView.fill(toView: view)
@@ -177,40 +191,6 @@ class CTAddMealCtr: knGridController<CTFoodCell, CTFood>, CTBottomSheetDelegate 
         }
     }
     
-    override func didSelectItem(at indexPath: IndexPath) {
-        let ctr = CTFoodDetailCtr()
-        ctr.data = datasource[indexPath.row]
-        push(ctr)
-    }
-    
-    override func getCell(at indexPath: IndexPath) -> CTFoodCell {
-        let cell = super.getCell(at: indexPath)
-        cell.parent = self
-        cell.data = datasource[indexPath.row]
-        return cell
-    }
-    
-    func selectFood(_ food: CTFood) {
-        mealOptionView.meal.foods.append(food)
-        checkoutButton.increase(amount: 1)
-        
-        if let index = datasource.firstIndex(of: food) {
-            let cell = collectionView.cellForItem(at: IndexPath(row: index, section: 0)) as? CTFoodCell
-            cell?.removeButton.isHidden = false
-        }
-    }
-    
-    func removeFood(_ food: CTFood) {
-        guard let index = mealOptionView.meal.foods.firstIndex(where: { return $0.id == food.id }) else { return }
-        mealOptionView.meal.foods.remove(at: index)
-        checkoutButton.descrease(amount: 1)
-        
-        if let index = datasource.firstIndex(of: food) {
-            let cell = collectionView.cellForItem(at: IndexPath(row: index, section: 0)) as? CTFoodCell
-            cell?.removeButton.isHidden = true
-        }
-    }
-    
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard scrollView.contentSize.height > 0 else { return }
         if scrollView.contentOffset.y > scrollView.contentSize.height - screenHeight - 100 {
@@ -220,6 +200,12 @@ class CTAddMealCtr: knGridController<CTFoodCell, CTFood>, CTBottomSheetDelegate 
     
     @objc func hideSheet() {
         animateTransitionIfNeeded(to: .closed, duration: 0.35)
+    }
+    
+    func openSheetOnStart() {
+        run({ [weak self] in
+            self?.animateTransitionIfNeeded(to: .open, duration: 0.35)
+            }, after: 0.1)
     }
 }
 

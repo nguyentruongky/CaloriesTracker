@@ -19,7 +19,7 @@ final class CTMealCell: knListCell<CTMeal> {
         
         if let calories = data.calories {
             caloriesLabel.text = "\(calories) KCAL"
-            let caloriesSet = CaloriesTracker().getFormat(isStandard: data.isStandard)
+            let caloriesSet = CaloriesChecker().getFormat(isStandard: data.isStandard)
             attentionView.backgroundColor = caloriesSet.bgColor
             messageLabel.text = caloriesSet.message
             messageLabel.textColor = caloriesSet.textColor

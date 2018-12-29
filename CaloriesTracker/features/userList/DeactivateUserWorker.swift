@@ -21,7 +21,7 @@ struct CTSetUserStatusWorker {
     }
     
     func execute() {
-        let db = Helper.getUserDb()
+        let db = CTDataBucket.getUserDb()
         db.child(userId).child("is_active").setValue(isActive)
         successAction?()
     }

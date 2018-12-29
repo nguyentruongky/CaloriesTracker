@@ -20,7 +20,7 @@ struct CTUpdateMyProfileWorker {
     
     func execute() {
         guard let userId = appSetting.userId else { return }
-        let db = Helper.getUserDb().child(userId)
+        let db = CTDataBucket.getUserDb().child(userId)
         for (key, value) in data {
             db.child(key).setValue(value)
         }

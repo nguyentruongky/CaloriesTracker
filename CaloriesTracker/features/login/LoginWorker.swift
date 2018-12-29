@@ -37,7 +37,7 @@ struct CTLoginWorker {
                 return
             }
             
-            let db = Helper.getUserDb()
+            let db = CTDataBucket.getUserDb()
             db.child(fbUserId).observeSingleEvent(of: .value, with: { (snapshot) in
                 let rawData = snapshot.value as AnyObject
                 let isActive = rawData["is_active"] as? Bool ?? true

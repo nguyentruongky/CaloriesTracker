@@ -7,10 +7,22 @@
 //
 
 import UIKit
+enum knNavBarStatus {
+    case hidden
+    case show
+    case doNotCheck
+}
+
 class knController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if navBarHidden != .doNotCheck {
+            navigationController?.hideBar(navBarHidden == .hidden)
+        }
     }
     
     var stateView: knStateView?
@@ -30,6 +42,7 @@ class knController : UIViewController {
         stateView!.fill(toView: view)
     }
     
+    var navBarHidden = knNavBarStatus.doNotCheck
     var statusBarStyle = UIStatusBarStyle.lightContent
         { didSet { setNeedsStatusBarAppearanceUpdate() } }
     var statusBarHidden = false { didSet { setNeedsStatusBarAppearanceUpdate() }}

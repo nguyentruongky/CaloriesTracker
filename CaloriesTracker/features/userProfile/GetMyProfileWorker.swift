@@ -32,7 +32,7 @@ struct CTGetProfileWorker {
             return
         }
         
-        let db = Helper.getUserDb()
+        let db = CTDataBucket.getUserDb()
         db.queryOrdered(byChild: "user_id")
             .queryEqual(toValue: userId)
             .observeSingleEvent(of: .value, with: { (snapshot) in

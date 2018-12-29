@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct CaloriesTracker {
+struct CaloriesChecker {
     func getFormat(isStandard: Bool) -> (bgColor: UIColor, textColor: UIColor, message: String) {
         if isStandard {
             return (UIColor.green, UIColor.darkGray, "Standard")

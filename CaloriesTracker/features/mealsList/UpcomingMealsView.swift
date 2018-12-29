@@ -60,7 +60,7 @@ final class CTUpcomingMealCell: knGridCell<CTMeal> {
         }
         
         if let calories = data.calories {
-            let caloriesSet = CaloriesTracker().getFormat(isStandard: data.isStandard)
+            let caloriesSet = CaloriesChecker().getFormat(isStandard: data.isStandard)
             attentionView.backgroundColor = caloriesSet.bgColor
             messageLabel.text = caloriesSet.message + " - \(calories) KCAL"
             messageLabel.textColor = caloriesSet.textColor
