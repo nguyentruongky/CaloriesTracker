@@ -26,7 +26,7 @@ extension CTMealDetailCtr {
         let ateFoodView = CTAteFoodView()
         
         lazy var attentionView = makeAttentionView()
-        func makeAttentionView() -> UIView {
+        private func makeAttentionView() -> UIView {
             let view = UIMaker.makeView()
             view.addSubviews(views: messageLabel)
             messageLabel.horizontal(toView: view, space: padding)
@@ -43,7 +43,7 @@ extension CTMealDetailCtr {
             ]
         }
         
-        func makeDetailCell() -> knTableCell {
+        private func makeDetailCell() -> knTableCell {
             let view = UIMaker.makeStackView(space: 6)
             view.addViews(titleLabel, noteLabel, timeLabel)
             titleLabel.horizontal(toView: view, space: padding)
@@ -56,7 +56,7 @@ extension CTMealDetailCtr {
             return cell
         }
         
-        func makeNutritionCell() -> knTableCell {
+        private func makeNutritionCell() -> knTableCell {
             let calorieWrapper = UIMaker.makeView(background: .white)
             calorieWrapper.addSubviews(views: caloriesLabel)
             caloriesLabel.horizontal(toView: calorieWrapper, space: padding)
@@ -75,7 +75,7 @@ extension CTMealDetailCtr {
             return cell
         }
         
-        func makeHeaderCell() -> knTableCell {
+        private func makeHeaderCell() -> knTableCell {
             let cell = knTableCell()
             cell.addSubviews(views: imgView)
             imgView.fill(toView: cell)
@@ -83,7 +83,7 @@ extension CTMealDetailCtr {
             return cell
         }
         
-        func makeFoodCell() -> knTableCell {
+        private func makeFoodCell() -> knTableCell {
             let titleLabel = UIMaker.makeLabel(text: "FOODS", font: UIFont.main(.bold, size: 12),
                                                  color: UIColor.CT_105)
             let cell = knTableCell()
@@ -95,7 +95,8 @@ extension CTMealDetailCtr {
             ateFoodView.height(200)
             return cell
         }
-        func makeImageView() -> UIImageView {
+        
+        private func makeImageView() -> UIImageView {
             return UIMaker.makeImageView(image: UIImage(named: "meal_placeholder"),
                                          contentMode: .scaleAspectFill)
         }

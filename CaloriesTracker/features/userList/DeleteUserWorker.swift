@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import FirebaseAuth
 struct CTDeleteUserWorker {
-    var userId: String
+    private var userId: String
     private var successAction: (() -> Void)?
     private var failAction: ((knError) -> Void)?
     init(userId: String, successAction: (() -> Void)?, failAction: ((knError) -> Void)?) {
@@ -19,13 +20,8 @@ struct CTDeleteUserWorker {
     
     func execute() {
         let db = CTDataBucket.getUserDb()
-        db.child(userId).removeValue { (error, _) in
-            if error == nil {
-                self.successAction?()
-            } else {
-                self.failAction?(knError(code: "delete_fail", message: error!.localizedDescription))
-            }
-        }
+        db.child(userId).child("is_deleted").setValue(true)
+        successAction?()
     }
 }
 

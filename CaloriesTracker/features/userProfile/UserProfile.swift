@@ -29,7 +29,9 @@ class CTUserProfileCtr: knListController<CTMealCell, CTMeal>, UITextFieldDelegat
         tableView.setHeader(ui.makeHeaderView(), height: 310)
         let whiteView = UIMaker.makeView(background: .white)
         view.addSubview(whiteView)
-        whiteView.fill(toView: view, space: UIEdgeInsets(bottom: 250))
+        whiteView.horizontal(toView: view)
+        whiteView.top(toView: view)
+        whiteView.height(screenHeight / 2)
         view.backgroundColor = .bg
         view.addFill(tableView)
 

@@ -10,7 +10,7 @@ import UIKit
 
 extension CTAddUserCtr {
     class UI {
-        let padding: CGFloat = 32
+        private let padding: CGFloat = 32
         let nameTextField = UIMaker.makeTextField(placeholder: "Full Name",
                                                   icon: UIImage(named: "profile"))
         let emailTextField = UIMaker.makeTextField(placeholder: "Email",
@@ -19,7 +19,7 @@ extension CTAddUserCtr {
                                                       icon: UIImage(named: "password"))
         let createButton = UIMaker.makeMainButton(title: "CREATE ACCOUNT")
         
-        func makeCell(tf: UITextField) -> knTableCell {
+        private func makeCell(tf: UITextField) -> knTableCell {
             let cell = knTableCell()
             cell.addSubviews(views: tf)
             tf.fill(toView: cell, space: UIEdgeInsets(left: padding, bottom: 16, right: padding))

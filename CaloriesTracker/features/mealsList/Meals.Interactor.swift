@@ -18,12 +18,14 @@ extension CTMealsDashboard {
     func checkData() {
         guard didLoadPreviousMeals && didLoadUpcomingMeals else { return }
         let isEmpty = upcomingMeals.isEmpty && datasource.isEmpty
-        if isEmpty == false {
+        if isEmpty {
+            ui.greetingView.backgroundColor = .white
+            ui.stateView.state = .empty
+        } else {
+            ui.greetingView.backgroundColor = .bg
             ui.stateWrapper.removeFromSuperview()
             tableView.reloadData()
             ui.upcomingStack.layoutIfNeeded()
-        } else {
-            ui.stateView.state = .empty
         }
     }
     

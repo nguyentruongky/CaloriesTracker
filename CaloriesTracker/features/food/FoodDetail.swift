@@ -8,8 +8,9 @@
 
 import UIKit
 class CTFoodDetailCtr: knStaticListController {
-    let ui = UI()
+    private let ui = UI()
     var data: CTFood?
+    weak var foodList: CTAddMealCtr?
     
     override func setupView() {
         statusBarStyle = .default
@@ -60,12 +61,7 @@ class CTFoodDetailCtr: knStaticListController {
     
     @objc func selectThisFood() {
         guard let data = data else { return }
-        guard let controllers = navigationController?.viewControllers else { return }
-        for ctr in controllers where ctr is CTAddMealCtr {
-            (ctr as? CTAddMealCtr)?.selectFood(data)
-            break
-        }
-        
+        foodList?.selectFood(data)
         ui.removeButton.isHidden = false
     }
     
@@ -80,7 +76,7 @@ class CTFoodDetailCtr: knStaticListController {
         ui.removeButton.isHidden = true
     }
     
-    func addFakeBackButton() -> UIButton {
+    private func addFakeBackButton() -> UIButton {
         let button = UIMaker.makeButton(image: UIImage(named: "back_arrow")?.changeColor())
         button.imageView?.changeColor(to: UIColor.CT_25)
         button.addTarget(self, action: #selector(back))

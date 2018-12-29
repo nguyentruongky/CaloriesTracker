@@ -14,9 +14,9 @@ class CTSettingCtr: knStaticListController {
         case profile, calories, logout
     }
     
-    let ui = UI()
-    let menus: [Menu] = [.profile, .calories, .logout]
-    var actions = [Menu: (() -> Void)]()
+    private let ui = UI()
+    private let menus: [Menu] = [.profile, .calories, .logout]
+    private var actions = [Menu: (() -> Void)]()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -36,7 +36,7 @@ class CTSettingCtr: knStaticListController {
         actions[.profile] = showMyProfile
     }
     
-    func askLogoutConfirmation() {
+    private func askLogoutConfirmation() {
         let ctr = CTMessage.showMessage("Are you sure you want to logout?", title: "Confirm logout", cancelActionName: "Cancel")
         ctr.addAction(UIAlertAction(title: "Log out", style: .default, handler: { _ in
             CTLogoutWorker().execute()
@@ -47,13 +47,13 @@ class CTSettingCtr: knStaticListController {
         present(ctr)
     }
     
-    func changeCalories() {
+    private func changeCalories() {
         let ctr = CTCaloriesCtr()
         ctr.hidesBottomBarWhenPushed = true
         push(ctr)
     }
     
-    func showMyProfile() {
+    private func showMyProfile() {
         let ctr = CTUserProfileCtr()
         ctr.data = appSetting.user
         ctr.hidesBottomBarWhenPushed = true

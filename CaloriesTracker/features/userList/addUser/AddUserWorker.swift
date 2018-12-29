@@ -11,11 +11,11 @@ import FirebaseAuth
 import FirebaseDatabase
 
 struct CTCreateUserWorker {
-    var email: String
-    var password: String
-    var name: String
-    var success: (() -> Void)?
-    var fail: ((knError) -> Void)?
+    private var email: String
+    private var password: String
+    private var name: String
+    private var successAction: (() -> Void)?
+    private var failAction: ((knError) -> Void)?
     
     init(email: String, password: String,
          name: String,
@@ -24,18 +24,18 @@ struct CTCreateUserWorker {
         self.email = email
         self.password = password
         self.name = name
-        self.fail = fail
-        self.success = success
+        self.failAction = fail
+        self.successAction = success
     }
     
     func execute() {
         Auth.auth().createUser(withEmail: email, password: password) { (authResult, err) in
             if let error = err {
-                self.fail?(knError(code: "create_fail", message: error.localizedDescription))
+                self.failAction?(knError(code: "create_fail", message: error.localizedDescription))
                 return
             }
             guard let fbUserId = authResult?.user.uid else { return }
-            self.success?()
+            self.successAction?()
             
             let user = CTUser(id: fbUserId, name: self.name, email: self.email, role: UserRole.user)
             let bucket = CTDataBucket.users.rawValue

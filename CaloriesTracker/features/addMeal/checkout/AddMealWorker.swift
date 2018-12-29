@@ -10,8 +10,8 @@ import Foundation
 
 struct CTAddMealWorker {
     private var meal: CTMeal
-    var successAction: (() -> Void)?
-    var failAction: ((knError) -> Void)?
+    private var successAction: (() -> Void)?
+    private var failAction: ((knError) -> Void)?
     init(meal: CTMeal, successAction: (() -> Void)?, failAction: ((knError) -> Void)?) {
         self.meal = meal
         self.successAction = successAction

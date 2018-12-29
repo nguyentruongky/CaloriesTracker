@@ -19,8 +19,8 @@ extension CTRegisterCtr {
                                                       icon: UIImage(named: "password"))
         let registerButton = UIMaker.makeMainButton(title: "CREATE ACCOUNT ")
         lazy var signinButton = makeSigninButton()
-        var revealButton: UIButton!
-        func makeSigninButton() -> UIButton {
+        private var revealButton: UIButton!
+        private func makeSigninButton() -> UIButton {
             let strongText = "Sign In"
             let button = UIMaker.makeButton(title: "Already have an account? \(strongText)",
                                             titleColor: UIColor.CT_163_169_175,
@@ -46,11 +46,11 @@ extension CTRegisterCtr {
             return label
         }()
         
-        @objc func viewTerm() {
-            
+        @objc private  func viewTerm() {
+            openUrlInSafari("https://toptal.com")
         }
         
-        func makeCell(tf: UITextField) -> knTableCell {
+        private func makeCell(tf: UITextField) -> knTableCell {
             let cell = knTableCell()
             cell.addSubviews(views: tf)
             tf.fill(toView: cell, space: UIEdgeInsets(left: padding, bottom: 16, right: padding))
@@ -83,7 +83,7 @@ extension CTRegisterCtr {
             ]
         }
         
-        @objc func showPassword() {
+        @objc private func showPassword() {
             passwordTextField.toggleSecure()
             let image = passwordTextField.isSecureTextEntry ? UIImage(named: "show_pass_inactive") : UIImage(named: "show_pass_active")
             revealButton.setImage(image, for: .normal)

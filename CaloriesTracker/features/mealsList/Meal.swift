@@ -20,8 +20,8 @@ class CTMeal {
     var note: String?
     var isStandard = true
     var foods = [CTFood]()
-    var interval: TimeInterval? {
-        guard let date = date, let time = time else { return nil }
+    var interval: TimeInterval {
+        guard let date = date, let time = time else { return 0 }
         let string = date + " - " + time
         let realDate = Date(dateString: string, format: "dd MMM yyyy - hh:mm")
         return realDate.timeIntervalSince1970

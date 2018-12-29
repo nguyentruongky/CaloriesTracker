@@ -31,21 +31,21 @@ class CTCheckoutCtr: knListController<CTCheckoutItemCell, CTFood> {
         fetchData()
     }
     
-    @objc func confirmAddingMeal() {
+    @objc  func confirmAddingMeal() {
         guard let meal = meal else { return }
         confirmButton.setProcess(visible: true)
         CTAddMealWorker(meal: meal, successAction: didAddMeal,
                         failAction: didAddMealFail).execute()
     }
     
-    func didAddMeal() {
+    private func didAddMeal() {
         CTMessage.showMessage("Recorded new meal")
         dismiss()
         addMealCtr?.pop()
         CTMealsDashboard.shouldUpdateUpcoming = true
     }
     
-    func didAddMealFail(_ err: knError) {
+    private func didAddMealFail(_ err: knError) {
         CTMessage.showError(err.message ?? "Can't add meal at this time. It's not your fault, it's ours")
     }
     
@@ -53,14 +53,6 @@ class CTCheckoutCtr: knListController<CTCheckoutItemCell, CTFood> {
         guard let foods = meal?.foods else { return }
         datasource = foods
         stateView?.state = foods.isEmpty ? .empty : .success
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let index = indexPath.row
-            datasource.remove(at: index)
-            meal?.foods.remove(at: index)
-        }
     }
 }
 

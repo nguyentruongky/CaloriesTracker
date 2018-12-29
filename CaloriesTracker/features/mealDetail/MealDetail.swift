@@ -39,7 +39,7 @@ class CTMealDetailCtr: knStaticListController {
         
         ui.ateFoodView.datasource = data.foods
         
-        let canEdit = (data.interval ?? 0) > Date().timeIntervalSince1970 + 60 * 60
+        let canEdit = data.interval > Date().timeIntervalSince1970 + 60 * 60
         var hasPermission = true
         if appSetting.userId != data.ownerId && appSetting.userRole != .admin {
             hasPermission = false

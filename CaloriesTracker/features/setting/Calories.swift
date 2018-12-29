@@ -50,7 +50,7 @@ class CTCaloriesCtr: knController {
         CTGetCaloriesWorker(successAction: didGetCalories).execute()
     }
     
-    func didGetCalories(_ calories: Int) {
+    private func didGetCalories(_ calories: Int) {
         caloriesAmountLabel.text = String(calories)
         appSetting.standardCalories = calories
         caloriesSlider.value = Float(calories)
@@ -58,13 +58,14 @@ class CTCaloriesCtr: knController {
         caloriesSlider.maximumValue = Float(max(2500, calories * 2))
     }
     
-    @objc func updateCaloriesValue() {
+    @objc private func updateCaloriesValue() {
         let calories = Int(caloriesSlider.value)
         caloriesAmountLabel.text = String(calories)
         appSetting.standardCalories = calories
     }
     
-    @objc func endEditing() {
+    @objc private func endEditing() {
+        CTMealsDashboard.needRecheckCalories = true
         CTUpdateCaloriesWorker(calories: Int(caloriesSlider.value)).execute()
     }
 }

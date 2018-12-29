@@ -11,7 +11,7 @@ import FirebaseAuth
 import FirebaseDatabase
 
 struct CTUpdateCaloriesWorker {
-    var calories: Int
+    private var calories: Int
     private var successAction: (() -> Void)?
     private var failAction: ((knError) -> Void)?
     init(calories: Int) {

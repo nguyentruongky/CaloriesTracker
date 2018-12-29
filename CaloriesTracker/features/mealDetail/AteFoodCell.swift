@@ -30,9 +30,9 @@ final class CTAteFoodCell: knGridCell<CTFood> {
         nameLabel.text = data?.name
         imgView.downloadImage(from: data?.image, placeholder: UIImage(named: "meal_placeholder"))
     }}
-    let nameLabel = UIMaker.makeLabel(font: UIFont.main(.regular, size: 14),
+    private let nameLabel = UIMaker.makeLabel(font: UIFont.main(.regular, size: 14),
                                       color: UIColor.CT_25, alignment: .center)
-    let imgView = UIMaker.makeImageView(image: UIImage(named: "meal_placeholder"),
+    private let imgView = UIMaker.makeImageView(image: UIImage(named: "meal_placeholder"),
                                         contentMode: .scaleAspectFill)
     
     override func setupView() {

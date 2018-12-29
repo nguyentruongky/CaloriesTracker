@@ -86,6 +86,4 @@ class CTEditMealCtr: CTAddMealCtr {
         ctr.addMealCtr = self
         present(wrap(ctr))
     }
-    
-    
 }

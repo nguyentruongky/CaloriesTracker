@@ -29,11 +29,11 @@ struct CTFilterWorker {
                 var filterMeal = meals
 
                 if let from = self.options.fromDate?.timeIntervalSince1970 {
-                   filterMeal = filterMeal.filter({ ($0.interval ?? 0) > from })
+                   filterMeal = filterMeal.filter({ $0.interval > from })
                 }
                 
                 if let to = self.options.toDate?.timeIntervalSince1970 {
-                    filterMeal = filterMeal.filter({ ($0.interval ?? 0) < to })
+                    filterMeal = filterMeal.filter({ $0.interval < to })
                 }
                 
                 let regimens = self.options.regimens

@@ -23,24 +23,6 @@ class CTUserCell: knListCell<CTUser> {
     
     weak var delegate: CTUserListDelegate?
     
-    func updateUIByRole(role: UserRole) {
-        roleView.isHidden = true
-        optionButton.isHidden = false
-        
-        switch role {
-        case .admin:
-            roleLabel.text = data?.role.rawValue.capitalized
-            roleView.backgroundColor = UIColor.main
-            optionButton.isHidden = true
-            roleView.isHidden = false
-        case .manager:
-            roleLabel.text = data?.role.rawValue.capitalized
-            roleView.backgroundColor = UIColor.CT_163_169_175
-            roleView.isHidden = false
-        case .user: break
-        }
-    }
-    
     let avatarImgView = UIMaker.makeImageView(image: UIImage(named: "user_profile"),
                                               contentMode: .scaleAspectFill)
     let nameLabel = UIMaker.makeLabel(font: UIFont.main(.bold, size: 14),
@@ -51,6 +33,7 @@ class CTUserCell: knListCell<CTUser> {
     let roleLabel = UIMaker.makeLabel(font: UIFont.main(.bold, size: 10),
                                            color: UIColor.white, alignment: .center)
     let roleView = UIMaker.makeView(background: UIColor.main)
+    var newRole: UserRole?
 
     override func setupView() {
         roleView.addSubviews(views: roleLabel)
@@ -75,7 +58,7 @@ class CTUserCell: knListCell<CTUser> {
         emailLabel.verticalSpacing(toView: nameLabel, space: 4)
         
         optionButton.right(toView: view)
-        optionButton.centerY(toView: view)
+        optionButton.top(toView: nameLabel)
         optionButton.square(edge: 44)
         optionButton.contentEdgeInsets = UIEdgeInsets(space: 8)
         optionButton.imageView?.contentMode = .scaleAspectFit
@@ -90,7 +73,25 @@ class CTUserCell: knListCell<CTUser> {
         optionButton.addTarget(self, action: #selector(showOption))
     }
     
-    @objc func showOption() {
+    private func updateUIByRole(role: UserRole) {
+        roleView.isHidden = true
+        optionButton.isHidden = false
+        
+        switch role {
+        case .admin:
+            roleLabel.text = data?.role.rawValue.capitalized
+            roleView.backgroundColor = UIColor.main
+            optionButton.isHidden = true
+            roleView.isHidden = false
+        case .manager:
+            roleLabel.text = data?.role.rawValue.capitalized
+            roleView.backgroundColor = UIColor.CT_163_169_175
+            roleView.isHidden = false
+        case .user: break
+        }
+    }
+
+    @objc private func showOption() {
         let ctr = UIAlertController(title: "More options", message: nil, preferredStyle: .actionSheet)
         guard let role = data?.role else { return }
         switch role {
@@ -117,17 +118,20 @@ class CTUserCell: knListCell<CTUser> {
         ctr.addAction(UIAlertAction(title: "Delete", style: .default,
                                     handler: deleteAccount))
         ctr.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        if DeviceType.IS_IPAD {
+            ctr.popoverPresentationController?.sourceView = optionButton
+        }
         UIApplication.present(ctr)
     }
-    var newRole: UserRole?
-    func promoteToAdmin(_ action: UIAlertAction) {
+
+    private func promoteToAdmin(_ action: UIAlertAction) {
         guard let id = data?.userId else { return }
         newRole = .admin
         CTSetUserRoleWorker(role: .admin, userId: id, successAction: didChangeRole,
                             failAction: didChangeRoleFail).execute()
     }
     
-    func didChangeRole() {
+    private func didChangeRole() {
         guard let newRole = newRole else { return }
         data?.role = newRole
         updateUIByRole(role: newRole)
@@ -136,57 +140,57 @@ class CTUserCell: knListCell<CTUser> {
         self.newRole = nil
     }
     
-    func didChangeRoleFail(_ err: knError) {
+    private func didChangeRoleFail(_ err: knError) {
         CTMessage.showError(err.message ?? "Can't update role at this time")
     }
     
-    func promoteToManager(_ action: UIAlertAction) {
+    private func promoteToManager(_ action: UIAlertAction) {
         guard let id = data?.userId else { return }
         newRole = .manager
         CTSetUserRoleWorker(role: .manager, userId: id, successAction: didChangeRole,
                             failAction: didChangeRoleFail).execute()
     }
 
-    func deactivateAccount(_ action: UIAlertAction) {
+    private func deactivateAccount(_ action: UIAlertAction) {
         guard let id = data?.userId else { return }
         CTSetUserStatusWorker(userId: id, isActive: false, successAction: didDeactivate,
                                failAction: nil).execute()
     }
     
-    func didActive() {
+    private func didActive() {
         data?.isActive = true
         emailLabel.text = data?.email
     }
     
-    func activateAccount(_ action: UIAlertAction) {
+    private func activateAccount(_ action: UIAlertAction) {
         guard let id = data?.userId else { return }
         CTSetUserStatusWorker(userId: id, isActive: true, successAction: didActive,
                                failAction: nil).execute()
     }
     
-    func didDeactivate() {
+    private func didDeactivate() {
         data?.isActive = false
         emailLabel.text = "Deactivated"
     }
     
-    func deleteAccount(_ action: UIAlertAction) {
+    private func deleteAccount(_ action: UIAlertAction) {
         let name = data?.name ?? (data?.email ?? "")
         let ctr = CTMessage.showMessage("This action can't undo. Are you sure to delete user \(name)?", title: "Delete confirmation", cancelActionName: "Cancel")
         ctr.addAction(UIAlertAction(title: "Delete account", style: .default, handler: confirmDelete))
         UIApplication.present(ctr)
     }
     
-    func confirmDelete(_ action: UIAlertAction) {
+    private func confirmDelete(_ action: UIAlertAction) {
         guard let id = data?.userId else { return }
         CTDeleteUserWorker(userId: id, successAction: didDelete, failAction: didDeleteFail).execute()
     }
     
-    func didDelete() {
+    private func didDelete() {
         guard let data = data else { return }
         delegate?.deleteUser(data)
     }
     
-    func didDeleteFail(_ err: knError) {
+    private func didDeleteFail(_ err: knError) {
         
     }
 }

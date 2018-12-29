@@ -12,6 +12,7 @@ class CTMealsDashboard: knListController<CTMealCell, CTMeal> {
     let ui = UI()
     var didLoadUpcomingMeals = false
     var didLoadPreviousMeals = false
+    static var needRecheckCalories = false
     static var shouldUpdateUpcoming = false
     
     override var datasource: [CTMeal] { didSet {
@@ -28,10 +29,14 @@ class CTMealsDashboard: knListController<CTMealCell, CTMeal> {
         super.viewWillAppear(animated)
         statusBarStyle = .lightContent
         
-        navigationController?.hideBar(true)
         if CTMealsDashboard.shouldUpdateUpcoming {
             updateUpcomingMeals()
             CTMealsDashboard.shouldUpdateUpcoming = false
+        }
+        
+        if CTMealsDashboard.needRecheckCalories {
+            recheckCalories()
+            CTMealsDashboard.needRecheckCalories = false
         }
     }
     
@@ -40,8 +45,17 @@ class CTMealsDashboard: knListController<CTMealCell, CTMeal> {
         output.getUpcomingMeals()
     }
     
+    func recheckCalories() {
+        var meals = datasource
+        meals.append(contentsOf: upcomingMeals)
+        CaloriesChecker().checkCaloriesStandard(for: meals)
+        ui.upcomingMealsView.collectionView.reloadData()
+        tableView.reloadData()
+    }
+    
     override func setupView() {
         super.setupView()
+        navBarHidden = .hidden
         tableView.backgroundColor = UIColor.bg
         view.addFill(tableView)
         tableView.setHeader(ui.greetingView, height: 170)

@@ -11,8 +11,8 @@ import FirebaseDatabase
 import FirebaseAuth
 
 struct CTSetUserRoleWorker {
-    var newRole: UserRole
-    var userId: String
+    private var newRole: UserRole
+    private var userId: String
     private var successAction: (() -> Void)?
     private var failAction: ((knError) -> Void)?
     init(role: UserRole, userId: String, successAction: (() -> Void)?, failAction: ((knError) -> Void)?) {

@@ -26,7 +26,7 @@ class CTRegimenCell: knGridCell<CTRegimen> {
     let contentLabel = UIMaker.makeLabel(font: UIFont.main(.medium, size: 13),
                                       color: UIColor.CT_170,
                                       alignment: .center)
-    let view = UIMaker.makeView()
+    private let view = UIMaker.makeView()
     override func setupView() {
         view.addSubviews(views: contentLabel)
         let vSpace: CGFloat = 8
@@ -40,7 +40,7 @@ class CTRegimenCell: knGridCell<CTRegimen> {
         view.centerY(toView: self)
     }
     
-    var checkSelected: Bool = false { didSet {
+    private var checkSelected: Bool = false { didSet {
         contentLabel.textColor = checkSelected ? .white : .CT_25
         view.backgroundColor = checkSelected ? .main : .white
         view.setBorder(checkSelected ? 0 : 1, color: .CT_222)
@@ -74,4 +74,3 @@ class CTRegimenView: knGridView<CTRegimenCell, CTRegimen> {
         return CGSize(width: size.width + 20, height: size.height + 16)
     }
 }
-

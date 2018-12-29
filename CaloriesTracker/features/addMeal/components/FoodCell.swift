@@ -91,6 +91,10 @@ class CTFoodCell: knGridCell<CTFood> {
         removeButton.addTarget(self, action: #selector(removeThisFood))
     }
     
+    func setSelected(_ selected: Bool) {
+        removeButton.isHidden = !selected
+    }
+    
     @objc func selectThisFood() {
         guard let data = data else { return }
         parent?.selectFood(data)

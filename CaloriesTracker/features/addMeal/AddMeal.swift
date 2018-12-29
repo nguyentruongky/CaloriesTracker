@@ -68,6 +68,7 @@ class CTAddMealCtr: knGridController<CTFoodCell, CTFood>, CTBottomSheetDelegate 
     
     override func didSelectItem(at indexPath: IndexPath) {
         let ctr = CTFoodDetailCtr()
+        ctr.foodList = self
         ctr.data = datasource[indexPath.row]
         push(ctr)
     }
@@ -81,12 +82,21 @@ class CTAddMealCtr: knGridController<CTFoodCell, CTFood>, CTBottomSheetDelegate 
     func selectFood(_ food: CTFood) {
         mealOptionView.meal.foods.append(food)
         checkoutButton.increase(amount: 1)
+        guard let index = datasource.firstIndex(of: food) else { return }
+        let cell = getCell(forItem: index)
+        cell?.setSelected(true)
     }
     
     func removeFood(_ food: CTFood) {
-        guard let index = mealOptionView.meal.foods.firstIndex(where: { return $0.id == food.id }) else { return }
-        mealOptionView.meal.foods.remove(at: index)
-        checkoutButton.descrease(amount: 1)
+        if let index = mealOptionView.meal.foods.firstIndex(of: food) {
+            mealOptionView.meal.foods.remove(at: index)
+            checkoutButton.descrease(amount: 1)
+        }
+        
+        if let index = datasource.firstIndex(of: food) {
+            let cell = getCell(forItem: index)
+            cell?.setSelected(false)
+        }
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {

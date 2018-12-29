@@ -113,6 +113,12 @@ class knGridController<C: knGridCell<U>, U>: knController, UICollectionViewDeleg
         cell.data = datasource[indexPath.row]
         return cell
     }
+    
+    func getCell(forItem row: Int, section: Int = 0) -> C? {
+        let cell = collectionView.cellForItem(at: IndexPath(row: row, section: section)) as? C
+        return cell
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return itemSize }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat { return columnSpacing }

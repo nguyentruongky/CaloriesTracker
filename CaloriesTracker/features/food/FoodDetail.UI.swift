@@ -41,7 +41,7 @@ extension CTFoodDetailCtr {
             removeButton.isHidden = true
         }
         
-        func makeTitleCell() -> knTableCell {
+        private func makeTitleCell() -> knTableCell {
             let cell = knTableCell()
             cell.addSubviews(views: titleLabel, caloriesLabel)
             cell.addConstraints(withFormat: "V:|-\(padding / 2)-[v0]-\(padding / 3)-[v1]|", views: titleLabel, caloriesLabel)
@@ -63,7 +63,7 @@ extension CTFoodDetailCtr {
             return cell
         }
         
-        func makeHeaderCell() -> knTableCell {
+        private func makeHeaderCell() -> knTableCell {
             let cell = knTableCell()
             cell.backgroundColor = .clear
             cell.addSubviews(views: imgView)
@@ -72,7 +72,7 @@ extension CTFoodDetailCtr {
             return cell
         }
         
-        func makeImageView() -> UIImageView {
+        private func makeImageView() -> UIImageView {
             return UIMaker.makeImageView(image: UIImage(named: "meal_placeholder"),
                                          contentMode: .scaleAspectFill)
         }

@@ -20,7 +20,7 @@ extension CTLoginCtr {
                                               font: UIFont.main(size: 13))
         let loginButton = UIMaker.makeMainButton(title: "LOG IN")
         lazy var registerButton = makeRegisterButton()
-        func makeRegisterButton() -> UIButton {
+        private func makeRegisterButton() -> UIButton {
             let button = UIMaker.makeButton(title: "Don't have an account? Join Us",
                                             titleColor: UIColor.CT_163_169_175,
                                             font: UIFont.main(size: 13))
@@ -57,7 +57,7 @@ extension CTLoginCtr {
             return [contentCell]
         }
         
-        @objc func showPass() {
+        @objc private func showPass() {
             passwordTextField.toggleSecure()
             let show = passwordTextField.isSecureTextEntry
             let iconName = show ? "show_pass_inactive" : "show_pass_active"

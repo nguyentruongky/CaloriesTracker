@@ -38,8 +38,8 @@ struct CTGetPreviousMealsWorker {
         let meals = values.map({ return CTMeal(raw: $0) })
         CaloriesChecker().checkCaloriesStandard(for: meals)
         let now = Date().timeIntervalSince1970
-        var previousMeals = meals.filter({ return ($0.interval) ?? 0 < now })
-        previousMeals.sort(by: { return ($0.interval ?? 0) > ($1.interval ?? 0) })
+        var previousMeals = meals.filter({ return $0.interval < now })
+        previousMeals.sort(by: { return $0.interval > $1.interval })
         successAction?(previousMeals)
     }
     

@@ -36,7 +36,7 @@ extension CTFilterCtr {
             return UIMaker.makeLabel(text: title, font: UIFont.main(.medium, size: 13), color: .CT_25)
         }
         
-        func makeSelectionCell(contentView: UIView, title: String) -> knTableCell {
+        private func makeSelectionCell(contentView: UIView, title: String) -> knTableCell {
             let label = makeTitleLabel(title: title)
             let cell = knTableCell()
             cell.addSubviews(views: contentView, label)
@@ -46,7 +46,7 @@ extension CTFilterCtr {
             return cell
         }
         
-        func makeButtonCell() -> knTableCell {
+        private func makeButtonCell() -> knTableCell {
             let cell = knTableCell()
             cell.addSubviews(views: applyButton)
             applyButton.fill(toView: cell, space: UIEdgeInsets(space: padding))

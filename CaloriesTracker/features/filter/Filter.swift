@@ -11,19 +11,16 @@ class CTFilterOptions {
     var fromDate: Date?
     var toDate: Date?
     var regimens = [String]()
-    var calorifics = [String]()
 }
-
-
 
 class CTFilterCtr: knStaticListController {
     enum DateTypeFilter {
         case from, to
     }
     
-    let ui = UI()
-    var options = CTFilterOptions()
-    var dateFilter = DateTypeFilter.from
+    private let ui = UI()
+    private var options = CTFilterOptions()
+    private var dateFilter = DateTypeFilter.from
     
     override func setupView() {
         title = "FILTER"
@@ -57,12 +54,12 @@ class CTFilterCtr: knStaticListController {
         CTFilterWorker(options: options, successAction: didFilter, failAction: nil).execute()
     }
     
-    func saveRegimenOptions() {
+    private func saveRegimenOptions() {
         let selectedRegimens = ui.regimenView.datasource.filter({ return $0.selected == true })
         options.regimens = selectedRegimens.map({ return $0.text })
     }
     
-    func didFilter(_ meals: [CTMeal]) {
+    private func didFilter(_ meals: [CTMeal]) {
         ui.applyButton.setProcess(visible: false)
         let ctr = CTMealList()
         ctr.datasource = meals

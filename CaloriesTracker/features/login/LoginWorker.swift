@@ -42,10 +42,18 @@ struct CTLoginWorker {
                 let rawData = snapshot.value as AnyObject
                 let isActive = rawData["is_active"] as? Bool ?? true
                 if isActive == false {
-                    self.fail?(knError(code: "inactive", message: "Your account is deactivated by violation reporting. Please contact to help@caloriestracker.com to get help"))
+                    self.fail?(knError(code: "inactive", message: "Your account is deactivated because of violation. Please contact to help@caloriestracker.com to get help"))
                     try? Auth.auth().signOut()
                     return
                 }
+                
+                let isDeleted = rawData["is_deleted"] as? Bool ?? true
+                if isDeleted == false {
+                    self.fail?(knError(code: "deleted", message: "Your account is deleted because of violation. Please contact to help@caloriestracker.com to get help"))
+                    try? Auth.auth().signOut()
+                    return
+                }
+                
                 let user = CTUser(raw: rawData)
                 self.success?(user)
             })

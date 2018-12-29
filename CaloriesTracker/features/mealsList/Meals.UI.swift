@@ -25,13 +25,15 @@ extension CTMealsDashboard {
             bg.backgroundColor = UIColor.main
             let name = appSetting.userName ?? ""
             let hello = "Hello" + (name == "" ? "there" : " " + name)
-            let greetingLabel = UIMaker.makeLabel(text: "\(hello), \nwhat would you like to eat?",
+            let greeting = "\(hello), \(DeviceType.IS_IPAD ? "" : "\n")what would you like to eat?"
+            let greetingLabel = UIMaker.makeLabel(text: greeting,
                                                   font: UIFont.main(.medium, size: 15),
-                                                  color: .white, numberOfLines: 2, alignment: .center)
+                                                  color: .white, numberOfLines: 2,
+                                                  alignment: .center)
             let addButton = UIMaker.makeMainButton(title: "Add meals",
                                                    bgColor: .white, titleColor: .main)
             addButton.tag = 1001
-            let view = UIMaker.makeView()
+            let view = UIMaker.makeView(background: .white)
             view.addSubviews(views: bg, greetingLabel, addButton)
             
             bg.centerX(toView: view)
@@ -43,7 +45,8 @@ extension CTMealsDashboard {
             greetingLabel.horizontal(toView: view, space: padding)
             greetingLabel.top(toView: view, space: padding)
             
-            addButton.horizontal(toView: view, space: padding)
+            addButton.centerX(toView: view)
+            addButton.width(screenWidth / 2)
             addButton.verticalSpacing(toView: greetingLabel, space: padding)            
             return view
         }

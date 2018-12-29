@@ -28,8 +28,8 @@ class CTSettingCell: knTableCell {
         iconImageView.changeColor(to: UIColor.main)
     }
     
-    let iconImageView = UIMaker.makeImageView()
-    let titleLabel = UIMaker.makeLabel(font: UIFont.main(.medium),
+    private let iconImageView = UIMaker.makeImageView()
+    private let titleLabel = UIMaker.makeLabel(font: UIFont.main(.medium),
                                        color: UIColor.CT_25)
     
     override func setupView() {

@@ -58,11 +58,11 @@ class CTBigBoss: UITabBarController, UITabBarControllerDelegate {
     }
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        animateFading(fromController: selectedViewController, toController: viewController)
+        fade(from: selectedViewController, to: viewController)
         return true
     }
     
-    func animateFading(fromController: UIViewController?, toController: UIViewController?) {
+    func fade(from fromController: UIViewController?, to toController: UIViewController?) {
         if fromController == nil || toController == fromController { return }
         
         guard let selectView = (selectedViewController as? UINavigationController)?.viewControllers.first?.view,

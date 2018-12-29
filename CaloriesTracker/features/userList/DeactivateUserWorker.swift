@@ -9,8 +9,8 @@
 import Foundation
 
 struct CTSetUserStatusWorker {
-    var userId: String
-    var isActive: Bool
+    private var userId: String
+    private var isActive: Bool
     private var successAction: (() -> Void)?
     private var failAction: ((knError) -> Void)?
     init(userId: String, isActive: Bool, successAction: (() -> Void)?, failAction: ((knError) -> Void)?) {

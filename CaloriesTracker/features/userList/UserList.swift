@@ -30,7 +30,7 @@ class CTUserList: knListController<CTUserCell, CTUser> {
         CTGetAllUsersWorker(successAction: didGetUsers, failAction: didGetUserFail).execute()
     }
     
-    func didGetUsers(_ users: [CTUser]) {
+    private func didGetUsers(_ users: [CTUser]) {
         if users.isEmpty {
             stateView?.state = .empty
         } else {
@@ -39,7 +39,7 @@ class CTUserList: knListController<CTUserCell, CTUser> {
         }
     }
     
-    func didGetUserFail(_ err: knError) {
+    private func didGetUserFail(_ err: knError) {
         stateView?.state = .error
     }
     
@@ -56,7 +56,7 @@ class CTUserList: knListController<CTUserCell, CTUser> {
         return cell
     }
     
-    @objc func addNewUser() {
+    @objc private func addNewUser() {
         let ctr = CTAddUserCtr()
         ctr.hidesBottomBarWhenPushed = true
         push(ctr)

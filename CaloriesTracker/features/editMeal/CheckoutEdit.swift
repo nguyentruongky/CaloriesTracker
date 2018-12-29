@@ -21,7 +21,7 @@ class CTCheckoutEditCtr: CTCheckoutCtr {
                         failAction: didUpdateFail).execute()
     }
     
-    func didUpdate() {
+    private func didUpdate() {
         CTMessage.showMessage("Meal updated")
         dismiss()
         addMealCtr?.pop()
@@ -35,7 +35,7 @@ class CTCheckoutEditCtr: CTCheckoutCtr {
         }
     }
     
-    func didUpdateFail(_ err: knError) {
+    private func didUpdateFail(_ err: knError) {
         CTMessage.showError(err.message ?? "Can't change your meal at this time. It's not your fault, it's ours")
     }
 }

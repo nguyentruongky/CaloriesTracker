@@ -10,7 +10,6 @@ import UIKit
 
 class CTForgotPassCtr: knStaticListController {
     let ui = UI()
-    lazy var output = Interactor(controller: self)
     override func setupView() {
         navigationController?.hideBar(false)
         addBackButton(tintColor: UIColor.CT_25)
@@ -29,7 +28,8 @@ class CTForgotPassCtr: knStaticListController {
         }
         
         ui.sendButton.setProcess(visible: true)
-        output.forgotPass(email: ui.emailTextField.text!)
+        CTForgotPassWorker(email: ui.emailTextField.text!, successAction: didSend,
+                           failAction: didSendFail).execute()
     }
 }
 
@@ -49,17 +49,4 @@ extension CTForgotPassCtr: UITextFieldDelegate {
         sendRequest()
         return false
     }
-}
-
-extension CTForgotPassCtr {
-    class Interactor {
-        func forgotPass(email: String) {
-            CTForgotPassWorker(email: email, successAction: output?.didSend,
-                               failAction: output?.didSendFail).execute()
-        }
-        
-        private weak var output: Controller?
-        init(controller: Controller) { output = controller }
-    }
-    typealias Controller = CTForgotPassCtr
 }
