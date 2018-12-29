@@ -25,12 +25,18 @@ class CTUserProfileCtr: knListController<CTMealCell, CTMeal>, UITextFieldDelegat
         statusBarStyle = .default
         rowHeight = 265
         super.setupView()
-        tableView.backgroundColor = .white
+        tableView.backgroundColor = .clear
         tableView.setHeader(ui.makeHeaderView(), height: 310)
+        let whiteView = UIMaker.makeView(background: .white)
+        view.addSubview(whiteView)
+        whiteView.fill(toView: view, space: UIEdgeInsets(bottom: 250))
+        view.backgroundColor = .bg
         view.addFill(tableView)
 
         stateView = knStateView()
-        stateView?.setStateContent(state: .empty, imageName: "no_meal", title: "You have no meal yet", content: "Tracking your calories everyday for your health")
+        stateView?.setStateContent(state: .empty, imageName: "no_meal",
+                                   title: "You have no meal yet",
+                                   content: "Tracking your calories everyday for your health")
 
         ui.backButton.addTarget(self, action: #selector(back))
         ui.avatarImgView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pickAvatar)))
@@ -55,9 +61,11 @@ class CTUserProfileCtr: knListController<CTMealCell, CTMeal>, UITextFieldDelegat
             stateView?.state = .empty
             ui.mealTitleView.isHidden = true
             tableView.setFooter(stateView!, height: 400)
+            view.backgroundColor = .white
         } else {
             tableView.tableFooterView = nil
             ui.mealTitleView.isHidden = false
+            view.backgroundColor = .bg
         }
     }
     

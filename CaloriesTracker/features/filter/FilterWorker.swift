@@ -33,7 +33,7 @@ struct CTFilterWorker {
                 }
                 
                 if let to = self.options.toDate?.timeIntervalSince1970 {
-                    filterMeal = filterMeal.filter({ ($0.interval ?? 0) > to })
+                    filterMeal = filterMeal.filter({ ($0.interval ?? 0) < to })
                 }
                 
                 let regimens = self.options.regimens

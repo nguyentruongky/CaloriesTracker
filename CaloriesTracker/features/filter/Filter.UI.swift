@@ -11,9 +11,9 @@ import UIKit
 extension CTFilterCtr {
     class UI {
         let fromButton = UIMaker.makeButton(title: "Select", titleColor: .CT_170,
-                                            font: UIFont.main(.bold, size: 16))
+                                            font: UIFont.main(.bold, size: 17))
         let toButton = UIMaker.makeButton(title: "Select", titleColor: .CT_170,
-                                            font: UIFont.main(.bold, size: 16))
+                                            font: UIFont.main(.bold, size: 17))
         let regimenView = CTRegimenView()
         let applyButton = UIMaker.makeMainButton(title: "Go")
         
@@ -33,7 +33,7 @@ extension CTFilterCtr {
         }
         
         private func makeTitleLabel(title: String) -> UILabel {
-            return UIMaker.makeLabel(text: title, font: UIFont.main(.bold, size: 13), color: .CT_25)
+            return UIMaker.makeLabel(text: title, font: UIFont.main(.medium, size: 13), color: .CT_25)
         }
         
         func makeSelectionCell(contentView: UIView, title: String) -> knTableCell {

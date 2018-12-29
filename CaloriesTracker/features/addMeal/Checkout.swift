@@ -68,7 +68,7 @@ class CTCheckoutCtr: knListController<CTCheckoutItemCell, CTFood> {
 
 class CTCheckoutItemCell: knListCell<CTFood> {
     override var data: CTFood? { didSet {
-//        imgView.downloadImage(from: data?.image,  placeholder: UIImage(named: "no_food"))
+        imgView.downloadImage(from: data?.image,  placeholder: UIImage(named: "no_food"))
         nameLabel.text = data?.name
         }}
     

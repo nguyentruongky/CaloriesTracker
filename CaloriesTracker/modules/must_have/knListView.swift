@@ -102,8 +102,8 @@ class knListController<C: knListCell<U>, U>: knController, UITableViewDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
         view.backgroundColor = .white
+        setupView()
     }
     
     override func setupView() {
