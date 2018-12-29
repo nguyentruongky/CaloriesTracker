@@ -62,8 +62,6 @@ class CTCheckoutCtr: knListController<CTCheckoutItemCell, CTFood> {
             meal?.foods.remove(at: index)
         }
     }
-    
-    
 }
 
 class CTCheckoutItemCell: knListCell<CTFood> {

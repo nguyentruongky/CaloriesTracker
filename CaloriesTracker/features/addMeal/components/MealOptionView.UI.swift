@@ -46,7 +46,7 @@ extension CTMealOptionView {
             return [makeTimeCell(), makeCaloriesCell(), makeNoteCell(), makeButtonCell()]
         }
         
-        func makeTimeCell() -> knTableCell {
+        private func makeTimeCell() -> knTableCell {
             let title = "What time do you want to eat?"
             let titleLabel = UIMaker.makeLabel(text: title, font: UIFont.main(.bold, size: 17),
                                                color: .CT_25, numberOfLines: 2)
@@ -91,7 +91,7 @@ extension CTMealOptionView {
             return cell
         }
         
-        func makeCaloriesCell() -> knTableCell {
+        private func makeCaloriesCell() -> knTableCell {
             caloriesSlider.addTarget(self, action: #selector(updateCaloriesValue), for: .valueChanged)
             
             let title = "How many calories would you like to eat?"
@@ -113,7 +113,7 @@ extension CTMealOptionView {
             return cell
         }
         
-        func makeNoteCell() -> knTableCell {
+        private func makeNoteCell() -> knTableCell {
             noteTextView.autocorrectionType = .no
             noteTextView.autocapitalizationType = .sentences
             
@@ -141,7 +141,7 @@ extension CTMealOptionView {
             return cell
         }
         
-        func makeButtonCell() -> knTableCell {
+        private func makeButtonCell() -> knTableCell {
             let cell = knTableCell()
             cell.addSubviews(views: saveButton)
             saveButton.fill(toView: cell, space: UIEdgeInsets(left: padding, bottom: 32, right: padding))

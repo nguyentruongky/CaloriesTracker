@@ -7,8 +7,6 @@
 //
 
 import Foundation
-import FirebaseDatabase
-import FirebaseAuth
 
 struct CTAddMealWorker {
     private var meal: CTMeal
@@ -33,9 +31,9 @@ struct CTAddMealWorker {
             "calories": meal.calories,
             "note": meal.note
         ] as [String : Any?]
-        let bucket = CTDataBucket.meals.rawValue
-        let ref = Database.database().reference().child(bucket)
-        ref.child(mealId).setValue(data)
+        
+        let db = CTDataBucket.getMealDb()
+        db.child(mealId).setValue(data)
         successAction?()
     }
 }

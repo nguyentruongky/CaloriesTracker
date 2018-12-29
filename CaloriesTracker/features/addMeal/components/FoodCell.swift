@@ -57,13 +57,13 @@ class CTFoodCell: knGridCell<CTFood> {
     }}
     weak var parent: CTAddMealCtr?
     
-    let imgView = UIMaker.makeImageView(image: UIImage(named: "meal_placeholder"),
+    private let imgView = UIMaker.makeImageView(image: UIImage(named: "meal_placeholder"),
                                         contentMode: .scaleAspectFill)
-    let nameLabel = UIMaker.makeLabel(font: UIFont.main(size: 13),
+    private let nameLabel = UIMaker.makeLabel(font: UIFont.main(size: 13),
                                       color: UIColor.CT_25, alignment: .center)
-    let selectButton = UIMaker.makeButton(title: "Select", titleColor: UIColor.CT_25,
+    private let selectButton = UIMaker.makeButton(title: "Select", titleColor: UIColor.CT_25,
                                           font: UIFont.main(.bold, size: 13))
-    let removeButton = UIMaker.makeButton(title: "Remove", titleColor: .white,
+    private let removeButton = UIMaker.makeButton(title: "Remove", titleColor: .white,
                                           font: UIFont.main(.bold, size: 13),
                                           background: .main)
     
