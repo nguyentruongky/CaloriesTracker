@@ -103,10 +103,13 @@ class knStateView: knView {
                 currentView = view
                 addSubviews(views: view)
                 view.center(toView: self)
+                clearState()
+                currentView = view
                 return
             }
             
             if let stateData = stateContents[state] {
+                clearState()
                 set(icon: stateData.icon, title: stateData.title, content: stateData.content)
                 return
             }
@@ -123,7 +126,7 @@ class knStateView: knView {
         }
     }
     
-    private let imgView = UIMaker.makeImageView()
+    private var imgView = UIMaker.makeImageView()
     private let titleLabel = UIMaker.makeLabel(font: UIFont.main(.bold, size: 17),
                                                color: UIColor.darkGray,
                                                numberOfLines: 2, alignment: .center)
@@ -145,6 +148,13 @@ class knStateView: knView {
         addSubviews(views: container)
         container.horizontal(toView: self)
         container.centerY(toView: self, space: -75)
+    }
+    
+    private func clearState() {
+        imgView.stopAnimating()
+        imgView.image = nil
+        titleLabel.text = ""
+        contentLabel.text = ""
     }
 }
 

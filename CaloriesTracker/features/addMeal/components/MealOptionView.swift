@@ -29,6 +29,7 @@ class CTMealOptionView: knStaticListView {
         meal.time = ui.time
         meal.calories = Int(ui.caloriesSlider.value)
         meal.note = ui.noteTextView.text
+        tableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
         delegate?.hideSheet()
     }
 }

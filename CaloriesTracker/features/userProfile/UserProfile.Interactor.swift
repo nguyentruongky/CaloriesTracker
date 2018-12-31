@@ -18,10 +18,25 @@ extension CTUserProfileCtr {
     func didGetMealsFail(_ err: knError) {
         setupEmptyView(visible: true)
     }
+    
+    func didGetProfile(_ user: CTUser) {
+        updateUI(user: user)
+        appSetting.user = user
+    }
+    
+    func didGetProfileFail(_ err: knError) {
+        stateView?.state = .error
+    }
 }
 
 extension CTUserProfileCtr {
     class Interactor {
+        
+        func getUserProfile(id: String) {
+            CTGetProfileWorker(userId: id, successAction: output?.didGetProfile,
+                               failAction: output?.didGetProfileFail).execute()
+        }
+        
         func getMeals(userId: String) {
             CTGetAllMealsWorker(userId: userId, successAction: output?.didGetMeals,
                                 failAction: output?.didGetMealsFail).execute()

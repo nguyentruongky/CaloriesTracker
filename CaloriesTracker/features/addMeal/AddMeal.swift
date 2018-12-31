@@ -39,6 +39,8 @@ class CTAddMealCtr: knGridController<CTFoodCell, CTFood>, CTBottomSheetDelegate 
         bottomSheet.containerView.addFill(mealOptionView)
         openSheetOnStart()
         
+        mealOptionView.delegate = self
+        
         fetchData()
     }
     
@@ -50,7 +52,6 @@ class CTAddMealCtr: knGridController<CTFoodCell, CTFood>, CTBottomSheetDelegate 
     }
 
     override func fetchData() {
-        stateView?.state = .loading
         output.getFoods()
     }
     

@@ -101,6 +101,12 @@ class knPickerView: knView {
         picker?._picker.datePickerMode = mode
     }
     
+    func changeMinuteInterval(minutes: Int) {
+        if minutes >= 60 { return }
+        let picker = self as? knDatePicker
+        picker?._picker.minuteInterval = minutes
+    }
+    
     func updateDatasource(_ texts: [String]) {
         let picker = self as? knTextPicker
         picker?.textDatasource = texts

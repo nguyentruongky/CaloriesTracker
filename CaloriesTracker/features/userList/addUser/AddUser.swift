@@ -31,6 +31,7 @@ class CTAddUserCtr: knStaticListController {
     
     @objc func createAccount() {
         ui.createButton.setProcess(visible: true)
+        hideKeyboard()
         output.createAccount(email: ui.emailTextField.text!,
                              password: ui.passwordTextField.text!,
                              name: ui.nameTextField.text!)

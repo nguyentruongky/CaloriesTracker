@@ -23,6 +23,7 @@ extension CTFilterCtr {
             toButton.contentHorizontalAlignment = .left
             regimenView.height(48)
             datePicker.changeDateMode(mode: .dateAndTime)
+            datePicker.changeMinuteInterval(minutes: 15)
             
             return [
                 makeSelectionCell(contentView: fromButton, title: "From date/time"),

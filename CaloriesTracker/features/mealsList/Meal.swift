@@ -22,8 +22,13 @@ class CTMeal {
     var foods = [CTFood]()
     var interval: TimeInterval {
         guard let date = date, let time = time else { return 0 }
-        let string = date + " - " + time
-        let realDate = Date(dateString: string, format: "dd MMM yyyy - hh:mm")
+        var string = date + " - " + time
+        var format = "dd MMM yyyy - hh:mm"
+        if time.starts(with: "12") {
+            format = "dd MMM yyyy - hh:mm a"
+            string = date + " - " + time + " pm"
+        }
+        let realDate = Date(dateString: string, format: format)
         return realDate.timeIntervalSince1970
     }
     var mealType: CTMealType {

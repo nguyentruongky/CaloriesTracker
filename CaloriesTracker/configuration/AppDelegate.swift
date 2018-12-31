@@ -43,7 +43,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func getMyProfile() {
         func didGet(_ user: CTUser) {
+            let oldRole = appSetting.userRole
             appSetting.user = user
+            
+            if oldRole != user.role {
+                boss?.setupView()
+            }
         }
         
         guard let id = appSetting.userId else { return }

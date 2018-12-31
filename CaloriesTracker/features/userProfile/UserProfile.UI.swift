@@ -27,7 +27,7 @@ extension CTUserProfileCtr {
                                             background: UIColor(r: 250, g: 103, b: 105))
         
         lazy var backButton = makeBackButton()
-        private func makeBackButton() -> UIButton {
+        func makeBackButton() -> UIButton {
             let button = UIMaker.makeButton(image: UIImage(named: "back_arrow")?.changeColor())
             button.imageView?.changeColor(to: .CT_25)
             button.square(edge: 44)

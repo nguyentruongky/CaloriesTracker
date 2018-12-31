@@ -30,7 +30,8 @@ extension CTMealsDashboard {
     }
     
     func didGetUpcomingMealsFail(_ err: knError) {
-        
+        showState(.error)
+        CTMessage.showError(err.message ?? "Server error")
     }
     
     func didGetPreviousMeals(_ meals: [CTMeal]) {
@@ -40,18 +41,33 @@ extension CTMealsDashboard {
     }
     
     func didGetPreviousMealsFail(_ err: knError) {
-        
+        showState(.error)
+        CTMessage.showError(err.message ?? "Server error")
+    }
+    
+    func showState(_ state: knState) {
+        ui.stateView.state = state
     }
 }
 
 extension CTMealsDashboard {
     class Interactor {
         func getUpcomingMeals() {
+            if hasConnection() == false { return }
             CTGetUpcomingMealsWorker(successAction: output?.didGetUpcomingMeals,
                                      failAction: output?.didGetUpcomingMealsFail).execute()
         }
         
+        func hasConnection() -> Bool {
+            if Reachability.isConnected == false {
+                output?.showState(.noInternet)
+                return false
+            }
+            output?.showState(.loading)
+            return true
+        }
         func getPreviousMeals() {
+            if hasConnection() == false { return }
             CTGetPreviousMealsWorker(successAction: output?.didGetPreviousMeals,
                                      failAction: output?.didGetPreviousMealsFail).execute()
         }

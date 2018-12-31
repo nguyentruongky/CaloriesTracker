@@ -13,8 +13,8 @@ extension UIImageView {
     public func loadGif(name: String) {
         DispatchQueue.global().async {
             let image = UIImage.gif(name: name)
-            DispatchQueue.main.async {
-                self.image = image
+            DispatchQueue.main.async { [weak self] in
+                self?.image = image
             }
         }
     }
@@ -186,7 +186,6 @@ extension UIImage {
         // Heyhey
         let animation = UIImage.animatedImage(with: frames,
                                               duration: Double(duration) / 1000.0)
-        
         return animation
     }
 }

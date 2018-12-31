@@ -55,6 +55,7 @@ class CTSettingCtr: knStaticListController {
     
     private func showMyProfile() {
         let ctr = CTUserProfileCtr()
+        ctr.isMyProfile = true
         ctr.data = appSetting.user
         ctr.hidesBottomBarWhenPushed = true
         push(ctr)

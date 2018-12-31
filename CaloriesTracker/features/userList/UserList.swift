@@ -23,10 +23,14 @@ class CTUserList: knListController<CTUserCell, CTUser> {
         view.addFill(tableView)
         
         addState()
-        stateView?.state = .loading
     }
     
     override func fetchData() {
+        if Reachability.isConnected == false {
+            stateView?.state = .noInternet
+            return
+        }
+        stateView?.state = .loading
         CTGetAllUsersWorker(successAction: didGetUsers, failAction: didGetUserFail).execute()
     }
     

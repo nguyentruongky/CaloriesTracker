@@ -84,7 +84,6 @@ class CTMealsDashboard: knListController<CTMealCell, CTMeal> {
     }
     
     override func fetchData() {
-        ui.stateView.state = .loading
         output.getPreviousMeals()
         output.getUpcomingMeals()
     }

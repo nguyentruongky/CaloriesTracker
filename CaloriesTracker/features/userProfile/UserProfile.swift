@@ -11,10 +11,7 @@ class CTUserProfileCtr: knListController<CTMealCell, CTMeal>, UITextFieldDelegat
     lazy var output = Interactor(controller: self)
     let ui = UI()
     var isMyProfile = false
-    var data: CTUser? { didSet {
-        isMyProfile = data?.userId == appSetting.userId
-    }}
-    
+    var data: CTUser?
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.hideBar(true)
@@ -72,9 +69,31 @@ class CTUserProfileCtr: knListController<CTMealCell, CTMeal>, UITextFieldDelegat
     }
     
     override func fetchData() {
-        guard let user = data, let id = user.userId else { return }
-        ui.editButton.isHidden = id != appSetting.userId
+        addState()
+        guard let user = data, let id = user.userId else {
+            if Reachability.isConnected == false {
+                let backButton = ui.makeBackButton()
+                stateView!.addSubview(backButton)
+                backButton.topLeft(toView: view, top: hasNotch() ? 48 : 32, left: 0)
+                backButton.addTarget(self, action: #selector(back))
+                stateView?.state = .noInternet
+                return
+            } else {
+                stateView?.state = .error
+            }
+            
+            if let id = appSetting.userId, isMyProfile == true {
+                output.getUserProfile(id: id)
+            }
+            return
+        }
         
+        updateUI(user: user)
+        output.getMeals(userId: id)
+    }
+    
+    func updateUI(user: CTUser) {
+        ui.editButton.isHidden = !isMyProfile
         ui.avatarImgView.downloadImage(from: user.avatar, placeholder: UIImage(named: "user_profile"))
         ui.nameTextField.text = user.name
         ui.emailLabel.text = user.email
@@ -82,8 +101,8 @@ class CTUserProfileCtr: knListController<CTMealCell, CTMeal>, UITextFieldDelegat
         
         setupEmptyView(visible: true)
         stateView?.state = .loading
-        output.getMeals(userId: id)
     }
+    
     
     @objc func pickAvatar() {
         guard isMyProfile else { return }

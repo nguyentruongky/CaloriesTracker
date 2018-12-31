@@ -30,6 +30,11 @@ extension CTAddMealCtr {
         private var canGetMore = true
         func getFoods() {
             guard loading == false && canGetMore else { return }
+            if Reachability.isConnected == false {
+                output?.stateView?.state = .noInternet
+            } else {
+                output?.stateView?.state = .loading
+            }
             loading = true
             CTGetFoodsWorker(page: page, successAction: didGetFoods,
                              failAction: output?.didGetFoodsFail).execute()

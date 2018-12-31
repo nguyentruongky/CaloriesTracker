@@ -23,17 +23,17 @@ class CTUserCell: knListCell<CTUser> {
     
     weak var delegate: CTUserListDelegate?
     
-    let avatarImgView = UIMaker.makeImageView(image: UIImage(named: "user_profile"),
+    private let avatarImgView = UIMaker.makeImageView(image: UIImage(named: "user_profile"),
                                               contentMode: .scaleAspectFill)
-    let nameLabel = UIMaker.makeLabel(font: UIFont.main(.bold, size: 14),
+    private let nameLabel = UIMaker.makeLabel(font: UIFont.main(.bold, size: 14),
                                       color: UIColor.CT_25, alignment: .center)
-    let emailLabel = UIMaker.makeLabel(font: UIFont.main(size: 12),
+    private let emailLabel = UIMaker.makeLabel(font: UIFont.main(size: 12),
                                       color: UIColor.CT_105, alignment: .center)
-    let optionButton = UIMaker.makeButton(image: UIImage(named: "more"))
-    let roleLabel = UIMaker.makeLabel(font: UIFont.main(.bold, size: 10),
+    private let optionButton = UIMaker.makeButton(image: UIImage(named: "more"))
+    private let roleLabel = UIMaker.makeLabel(font: UIFont.main(.bold, size: 10),
                                            color: UIColor.white, alignment: .center)
-    let roleView = UIMaker.makeView(background: UIColor.main)
-    var newRole: UserRole?
+    private let roleView = UIMaker.makeView(background: UIColor.main)
+    private var newRole: UserRole?
 
     override func setupView() {
         roleView.addSubviews(views: roleLabel)
