@@ -75,7 +75,7 @@ extension CTMealOptionView {
             dateView.selectedIndex = IndexPath.zero
             dateView.datasource = dates
             
-            var times = getTodaySlots().map({ return knTime(time: $0) })
+            var times = CTTimeGetter().getTodaySlots().map({ return knTime(time: $0) })
             times[0].selected = true
             timeView.selectedIndex = IndexPath.zero
             timeView.datasource = times
@@ -166,43 +166,13 @@ extension CTMealOptionView.UI {
     }
     
     func getTimeSlots() -> [String] {
+        let timeGetter = CTTimeGetter()
         if dateView.selectedIndex?.row == 0 {
-            return getTodaySlots()
+            return timeGetter.getTodaySlots()
         } else {
-            return getSlots(startHour: 0, startMinute: 0)
+            return timeGetter.getSlots(startHour: 0, startMinute: 0)
         }
     }
     
-    private func getSlots(startHour: Int, startMinute: Int) -> [String] {
-        var slots = [String]()
-        var hour = startHour
-        let minute = startMinute
-        if minute != 0 {
-            let quarters = [15, 30, 45, 60]
-            for q in quarters where minute < q {
-                if q < 60 {
-                    slots.append(formatSlots(hour: hour, minute: q))
-                }
-            }
-            hour += 1
-        }
-        
-        let quarters = [0, 15, 30, 45]
-        for h in hour ..< 24 {
-            for q in quarters {
-                slots.append(formatSlots(hour: h, minute: q))
-            }
-        }
-        
-        return slots
-    }
     
-    private func getTodaySlots() -> [String] {
-        let now = Date()
-        return getSlots(startHour: now.hour, startMinute: now.minute)
-    }
-    
-    private func formatSlots(hour: Int, minute: Int) -> String {
-        return String(format: "%02d:%02d", hour, minute)
-    }
 }

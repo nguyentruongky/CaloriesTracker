@@ -10,10 +10,6 @@ import UIKit
 
 class StartPoint {
     static var startingController: UIViewController {
-//        return CTBigBoss()
-//        let ctr = CTFilterCtr()
-//        return wrap(ctr)
-        
         if appSetting.didLogin {
             return CTBigBoss()
         }

@@ -29,7 +29,8 @@ struct CTGetAllMealsWorker {
                 
                 var meals = Array(rawData.values).map({ return CTMeal(raw: $0) })
                 meals.sort(by: { return $0.interval < $1.interval })
-                CaloriesChecker().checkCaloriesStandard(for: meals)
+                CaloriesChecker().checkCaloriesStandard(for: meals,
+                                                        standard: appSetting.standardCalories)
                 self.successAction?(meals)
         }
     }

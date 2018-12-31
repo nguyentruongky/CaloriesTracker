@@ -48,7 +48,8 @@ class CTMealsDashboard: knListController<CTMealCell, CTMeal> {
     func recheckCalories() {
         var meals = datasource
         meals.append(contentsOf: upcomingMeals)
-        CaloriesChecker().checkCaloriesStandard(for: meals)
+        CaloriesChecker().checkCaloriesStandard(for: meals,
+                                                standard: appSetting.standardCalories)
         ui.upcomingMealsView.collectionView.reloadData()
         tableView.reloadData()
     }

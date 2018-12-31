@@ -30,7 +30,8 @@ class CTCheckoutEditCtr: CTCheckoutCtr {
         for ctr in controllers where ctr is CTMealDetailCtr {
             var meals = boss!.mealsCtr.datasource
             meals.append(contentsOf: boss!.mealsCtr.upcomingMeals)
-            CaloriesChecker().checkCaloriesStandard(for: meals)
+            CaloriesChecker().checkCaloriesStandard(for: meals,
+                                                    standard: appSetting.standardCalories)
             (ctr as? CTMealDetailCtr)?.data = meal
         }
     }

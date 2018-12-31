@@ -17,14 +17,14 @@ struct CaloriesChecker {
         }
     }
     
-    func checkCaloriesStandard(for meals: [CTMeal]) {
+    func checkCaloriesStandard(for meals: [CTMeal], standard: Int) {
         let grouppedMeals = Dictionary(grouping: meals, by: { return $0.date })
         for (_, values) in grouppedMeals {
             let totalCalories = values.reduce(0) { (totalCalories, meal) -> Int in
                 return totalCalories + meal.calories.or(0)
             }
             for item in values {
-                item.isStandard = totalCalories <= appSetting.standardCalories
+                item.isStandard = totalCalories <= standard
             }
         }
     }
