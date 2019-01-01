@@ -16,10 +16,23 @@ class CTUserCell: knListCell<CTUser> {
         } else {
             nameLabel.text = data?.name
         }
-        
-        emailLabel.text = data?.isActive == true ? data?.email : "Deactivated"
+        setUserActive(data?.isActive == true)
         updateUIByRole(role: data?.role ?? .user)
     }}
+    
+    func setUserActive(_ isActive: Bool) {
+        if isActive == false {
+            emailLabel.text = "(Deactivated)"
+            let color = UIColor.CT_222
+            nameLabel.textColor = color
+            emailLabel.textColor = color
+        } else {
+            emailLabel.text = data?.email
+            let color = UIColor.CT_25
+            nameLabel.textColor = color
+            emailLabel.textColor = color
+        }
+    }
     
     weak var delegate: CTUserListDelegate?
     
@@ -87,8 +100,12 @@ class CTUserCell: knListCell<CTUser> {
             roleLabel.text = data?.role.rawValue.capitalized
             roleView.backgroundColor = UIColor.CT_163_169_175
             roleView.isHidden = false
+            let isMyProfile = data?.userId == appSetting.userId
+            optionButton.isHidden = isMyProfile
         case .user: break
         }
+        
+        
     }
 
     @objc private func showOption() {
@@ -159,7 +176,7 @@ class CTUserCell: knListCell<CTUser> {
     
     private func didActive() {
         data?.isActive = true
-        emailLabel.text = data?.email
+        setUserActive(true)
     }
     
     private func activateAccount(_ action: UIAlertAction) {
@@ -170,7 +187,7 @@ class CTUserCell: knListCell<CTUser> {
     
     private func didDeactivate() {
         data?.isActive = false
-        emailLabel.text = "Deactivated"
+        setUserActive(false)
     }
     
     private func deleteAccount(_ action: UIAlertAction) {

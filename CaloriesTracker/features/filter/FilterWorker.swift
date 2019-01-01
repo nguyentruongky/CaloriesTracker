@@ -27,6 +27,7 @@ struct CTFilterWorker {
                 guard let raws = snapshot.value as? [String: AnyObject] else { return }
                 let meals = Array(raws.values).map({ return CTMeal(raw: $0) })
                 var filterMeal = meals
+                CaloriesChecker().checkCaloriesStandard(for: filterMeal, standard: appSetting.standardCalories)
 
                 if let from = self.options.fromDate?.timeIntervalSince1970 {
                    filterMeal = filterMeal.filter({ $0.interval > from })

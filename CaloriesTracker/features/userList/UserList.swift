@@ -50,7 +50,9 @@ class CTUserList: knListController<CTUserCell, CTUser> {
     override func didSelectRow(at indexPath: IndexPath) {
         let ctr = CTUserProfileCtr()
         ctr.hidesBottomBarWhenPushed = true
-        ctr.data = datasource[indexPath.row]
+        let user = datasource[indexPath.row]
+        ctr.data = user
+        ctr.isMyProfile = user.userId == appSetting.userId
         push(ctr)
     }
     

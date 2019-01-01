@@ -47,8 +47,8 @@ struct CTLoginWorker {
                     return
                 }
                 
-                let isDeleted = rawData["is_deleted"] as? Bool ?? true
-                if isDeleted == false {
+                let isDeleted = rawData["is_deleted"] as? Bool ?? false
+                if isDeleted {
                     self.fail?(knError(code: "deleted", message: "Your account is deleted because of violation. Please contact to help@caloriestracker.com to get help"))
                     try? Auth.auth().signOut()
                     return

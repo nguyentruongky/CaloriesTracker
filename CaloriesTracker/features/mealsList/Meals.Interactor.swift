@@ -13,6 +13,7 @@ extension CTMealsDashboard {
         upcomingMeals = meals
         didLoadUpcomingMeals = true
         checkData()
+        recheckCalories()
     }
     
     func checkData() {
@@ -52,10 +53,20 @@ extension CTMealsDashboard {
 
 extension CTMealsDashboard {
     class Interactor {
+        let PERSISTENT_TIME: Double = 30
+        private var lastUpdated = Date()
+        var needUpdate: Bool {
+            return Date().timeIntervalSince(lastUpdated) > PERSISTENT_TIME
+        }
         func getUpcomingMeals() {
             if hasConnection() == false { return }
-            CTGetUpcomingMealsWorker(successAction: output?.didGetUpcomingMeals,
+            CTGetUpcomingMealsWorker(successAction: didGetUpcomingMeals,
                                      failAction: output?.didGetUpcomingMealsFail).execute()
+        }
+        
+        func didGetUpcomingMeals(_ meals: [CTMeal]) {
+            output?.didGetUpcomingMeals(meals)
+            lastUpdated = Date()
         }
         
         func hasConnection() -> Bool {
@@ -68,8 +79,13 @@ extension CTMealsDashboard {
         }
         func getPreviousMeals() {
             if hasConnection() == false { return }
-            CTGetPreviousMealsWorker(successAction: output?.didGetPreviousMeals,
+            CTGetPreviousMealsWorker(successAction: didGetPreviousMeals,
                                      failAction: output?.didGetPreviousMealsFail).execute()
+        }
+        
+        func didGetPreviousMeals(_ meals: [CTMeal]) {
+            output?.didGetPreviousMeals(meals)
+            lastUpdated = Date()
         }
         
         private weak var output: Controller?

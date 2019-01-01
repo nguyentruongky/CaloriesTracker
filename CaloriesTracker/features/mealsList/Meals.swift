@@ -35,8 +35,12 @@ class CTMealsDashboard: knListController<CTMealCell, CTMeal> {
         }
         
         if CTMealsDashboard.needRecheckCalories {
-            recheckCalories()
             CTMealsDashboard.needRecheckCalories = false
+            recheckCalories()
+        }
+        
+        if output.needUpdate {
+            fetchData()
         }
     }
     

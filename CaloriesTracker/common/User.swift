@@ -16,6 +16,7 @@ class CTUser {
     var role: UserRole = .user
     var calories = 2000
     var isActive = true
+    var isDeleted = false
     
     init() { }
     init(name: String, avatar: String) {
@@ -33,6 +34,7 @@ class CTUser {
         avatar = raw["avatar"] as? String
         calories = raw["calories_limit"] as? Int ?? 2000
         isActive = raw["is_active"] as? Bool ?? true
+        isDeleted = raw["is_deleted"] as? Bool ?? false
     }
     
     init(id: String, name: String, email: String, role: UserRole) {
@@ -50,7 +52,8 @@ class CTUser {
             "email": email,
             "avatar": avatar,
             "calories_limit": calories,
-            "is_active": isActive
+            "is_active": isActive,
+            "is_deleted": isDeleted
         ]
     }
 }

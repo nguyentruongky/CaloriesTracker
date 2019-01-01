@@ -70,7 +70,7 @@ class CTFilterCtr: knStaticListController {
         ui.regimenView.datasource = [
             CTRegimen(text: "Breakfast"),
             CTRegimen(text: "Lunch"),
-            CTRegimen(text: "Snack"),
+            CTRegimen(text: "Collation"),
             CTRegimen(text: "Dinner")
         ]
     }
